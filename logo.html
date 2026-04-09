@@ -4,198 +4,125 @@
 <meta charset="UTF-8">
 <title>Private Boxing Zürich – Logo</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Black+Han+Sans&family=Anton&family=Bebas+Neue&family=Barlow+Condensed:wght@800;900&family=Barlow:wght@600;700&display=swap');
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
-    background: #cdd1d9;
+    background: #e8eaed;
     display: flex;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    gap: 80px;
-    flex-wrap: wrap;
-    padding: 60px;
   }
-  .card {
-    padding: 60px 70px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .card.light { background: #eaedf2; }
-  .card.dark  { background: #07101f; }
 </style>
 </head>
 <body>
 
-<!-- LIGHT -->
-<div class="card light">
-<svg width="340" height="490" viewBox="0 0 340 490" xmlns="http://www.w3.org/2000/svg">
+<svg width="500" height="500" viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <clipPath id="oval-l">
-      <!-- Oval: wider than tall, like the sketch -->
-      <ellipse cx="170" cy="162" rx="155" ry="148"/>
+    <clipPath id="clip">
+      <circle cx="250" cy="250" r="224"/>
     </clipPath>
-    <linearGradient id="bar-l" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#d4e8ff"/>
-    </linearGradient>
-    <!-- 14 diagonal: barely visible -->
-    <linearGradient id="diag-l" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#a0ccff" stop-opacity="0.22"/>
-      <stop offset="100%" stop-color="#5090e0" stop-opacity="0.08"/>
-    </linearGradient>
-    <filter id="shadow-l">
-      <feDropShadow dx="0" dy="8" stdDeviation="14" flood-color="#04184a" flood-opacity="0.38"/>
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="4" stdDeviation="10" flood-color="#1a3564" flood-opacity="0.15"/>
     </filter>
+    <linearGradient id="zurich-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#3a5fa8" stop-opacity="0"/>
+      <stop offset="25%"  stop-color="#3a5fa8" stop-opacity="0.85"/>
+      <stop offset="50%"  stop-color="#3a5fa8" stop-opacity="1"/>
+      <stop offset="75%"  stop-color="#3a5fa8" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#3a5fa8" stop-opacity="0"/>
+    </linearGradient>
   </defs>
 
-  <!-- OVAL BADGE (like sketch) -->
-  <ellipse cx="170" cy="162" rx="160" ry="153" fill="#0b2860" filter="url(#shadow-l)"/>
-  <ellipse cx="170" cy="162" rx="153" ry="146" fill="none" stroke="#1e54c2" stroke-width="3.5"/>
-  <ellipse cx="170" cy="162" rx="143" ry="136" fill="none" stroke="rgba(255,255,255,0.22)" stroke-width="1.5"/>
 
-  <!-- SYMBOL clipped to oval -->
-  <g clip-path="url(#oval-l)">
+  <!-- Blauer Kreis -->
+  <circle cx="250" cy="250" r="240" fill="#1a3564"/>
 
-    <!-- Shadow -->
-    <g fill="rgba(0,0,0,0.25)" transform="translate(4,6)">
-      <rect x="96"  y="38"  width="42" height="248" rx="5"/>
-      <rect x="202" y="38"  width="42" height="248" rx="5"/>
-      <rect x="58"  y="112" width="224" height="42" rx="5"/>
-      <rect x="58"  y="182" width="224" height="42" rx="5"/>
-    </g>
+  <!-- Zürich Skyline Silhouette -->
+  <g fill="#7ec8ff" opacity="0.18" clip-path="url(#clip)">
+    <!-- Linkes Gebäude-Cluster -->
+    <rect x="78" y="408" width="22" height="27"/>
+    <rect x="104" y="396" width="18" height="39"/>
+    <rect x="126" y="412" width="20" height="23"/>
 
-    <!-- Main bars: B · H · Z visible, 14 hidden -->
-    <g fill="url(#bar-l)">
-      <!-- LEFT VERTICAL  — "1" hidden · left of B · left of H -->
-      <rect x="96"  y="38"  width="42" height="248" rx="5"/>
-      <!-- RIGHT VERTICAL — part of "4" hidden · right of H -->
-      <rect x="202" y="38"  width="42" height="248" rx="5"/>
-      <!-- TOP HORIZONTAL — top of Z · top of B · crossbar top of H -->
-      <rect x="58"  y="112" width="224" height="42" rx="5"/>
-      <!-- BOTTOM HORIZONTAL — bottom of Z · bottom of B -->
-      <rect x="58"  y="182" width="224" height="42" rx="5"/>
-    </g>
+    <!-- Fraumünster (schlanker Spitzturm) -->
+    <rect x="156" y="383" width="13" height="52"/>
+    <polygon points="156,383 162.5,356 169,383"/>
 
-    <!-- 14 diagonal: very subtle (like in sketch — barely there) -->
-    <line
-      x1="238" y1="36"
-      x2="102" y2="286"
-      stroke="url(#diag-l)"
-      stroke-width="36"
-      stroke-linecap="square"
-    />
+    <!-- Grossmünster Turm 1 -->
+    <rect x="196" y="370" width="21" height="65"/>
+    <polygon points="196,370 206.5,348 217,370"/>
 
-    <!-- Depth engraving -->
-    <g stroke="rgba(3,16,60,0.14)" stroke-width="2.5" fill="none">
-      <rect x="101" y="43"  width="32" height="238" rx="4"/>
-      <rect x="207" y="43"  width="32" height="238" rx="4"/>
-      <rect x="63"  y="117" width="214" height="32" rx="4"/>
-      <rect x="63"  y="187" width="214" height="32" rx="4"/>
-    </g>
+    <!-- Grossmünster Turm 2 -->
+    <rect x="225" y="370" width="21" height="65"/>
+    <polygon points="225,370 235.5,348 246,370"/>
 
-    <!-- Clean up gaps between bars (background fill) -->
-    <rect x="138" y="38"  width="64" height="74"  fill="#0b2860"/>
-    <rect x="138" y="224" width="64" height="62"  fill="#0b2860"/>
+    <!-- Kirchenschiff Grossmünster -->
+    <rect x="196" y="398" width="50" height="12"/>
 
+    <!-- Mittleres Gebäude -->
+    <rect x="262" y="400" width="26" height="35"/>
+    <rect x="294" y="390" width="18" height="45"/>
+    <rect x="318" y="407" width="22" height="28"/>
+
+    <!-- Kleiner Kirchturm rechts -->
+    <rect x="348" y="391" width="11" height="44"/>
+    <polygon points="348,391 353.5,372 359,391"/>
+
+    <rect x="366" y="410" width="20" height="25"/>
+
+    <!-- Boden -->
+    <rect x="60" y="435" width="380" height="6" rx="2"/>
   </g>
 
-  <!-- TEXT -->
-  <text x="170" y="354"
+  <!-- PRIVATE BOXING -->
+  <text
+    x="250" y="205"
     text-anchor="middle"
-    font-family="'Barlow', Arial Black, sans-serif"
-    font-weight="900" font-size="44" fill="#0b2860" letter-spacing="0.5"
+    font-family="'Russo One', sans-serif"
+    font-size="48"
+    fill="#ffffff"
+    letter-spacing="2"
   >PRIVATE BOXING</text>
 
-  <rect x="34" y="364" width="272" height="42" rx="5" fill="#1f52bb"/>
-  <text x="170" y="394"
-    text-anchor="middle"
-    font-family="'Barlow', Arial Black, sans-serif"
-    font-weight="900" font-size="26" fill="white" letter-spacing="8"
-  >ZÜRICH</text>
-
-  <text x="170" y="446"
-    text-anchor="middle"
-    font-family="'Barlow', Georgia, sans-serif"
-    font-weight="700" font-size="18" fill="#2a4070" letter-spacing="0.3"
-  >Boxen statt Therapie.</text>
-
-</svg>
-</div>
-
-<!-- DARK -->
-<div class="card dark">
-<svg width="340" height="490" viewBox="0 0 340 490" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <clipPath id="oval-d">
-      <ellipse cx="170" cy="162" rx="155" ry="148"/>
-    </clipPath>
-    <linearGradient id="bar-d" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#ffffff"/>
-      <stop offset="100%" stop-color="#cfe3fa"/>
-    </linearGradient>
-    <linearGradient id="diag-d" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%"   stop-color="#a0ccff" stop-opacity="0.20"/>
-      <stop offset="100%" stop-color="#5090e0" stop-opacity="0.07"/>
-    </linearGradient>
-    <filter id="shadow-d">
-      <feDropShadow dx="0" dy="8" stdDeviation="18" flood-color="#3a70ff" flood-opacity="0.20"/>
-    </filter>
-  </defs>
-
-  <ellipse cx="170" cy="162" rx="160" ry="153" fill="#0b2860" filter="url(#shadow-d)"/>
-  <ellipse cx="170" cy="162" rx="153" ry="146" fill="none" stroke="#3060cc" stroke-width="3.5"/>
-  <ellipse cx="170" cy="162" rx="143" ry="136" fill="none" stroke="rgba(255,255,255,0.20)" stroke-width="1.5"/>
-
-  <g clip-path="url(#oval-d)">
-    <g fill="rgba(0,0,0,0.25)" transform="translate(4,6)">
-      <rect x="96"  y="38"  width="42" height="248" rx="5"/>
-      <rect x="202" y="38"  width="42" height="248" rx="5"/>
-      <rect x="58"  y="112" width="224" height="42" rx="5"/>
-      <rect x="58"  y="182" width="224" height="42" rx="5"/>
-    </g>
-    <g fill="url(#bar-d)">
-      <rect x="96"  y="38"  width="42" height="248" rx="5"/>
-      <rect x="202" y="38"  width="42" height="248" rx="5"/>
-      <rect x="58"  y="112" width="224" height="42" rx="5"/>
-      <rect x="58"  y="182" width="224" height="42" rx="5"/>
-    </g>
-    <line x1="238" y1="36" x2="102" y2="286"
-      stroke="url(#diag-d)" stroke-width="36" stroke-linecap="square"/>
-    <g stroke="rgba(3,16,60,0.14)" stroke-width="2.5" fill="none">
-      <rect x="101" y="43"  width="32" height="238" rx="4"/>
-      <rect x="207" y="43"  width="32" height="238" rx="4"/>
-      <rect x="63"  y="117" width="214" height="32" rx="4"/>
-      <rect x="63"  y="187" width="214" height="32" rx="4"/>
-    </g>
-    <rect x="138" y="38"  width="64" height="74"  fill="#0b2860"/>
-    <rect x="138" y="224" width="64" height="62"  fill="#0b2860"/>
+  <!-- Linker Boxhandschuh -->
+  <g fill="#ffffff">
+    <rect x="44" y="256" width="22" height="17" rx="4"/>
+    <ellipse cx="72" cy="250" rx="16" ry="13"/>
+    <ellipse cx="81" cy="239" rx="8" ry="6" transform="rotate(-20 81 239)"/>
   </g>
 
-  <text x="170" y="354"
-    text-anchor="middle"
-    font-family="'Barlow', Arial Black, sans-serif"
-    font-weight="900" font-size="44" fill="white" letter-spacing="0.5"
-  >PRIVATE BOXING</text>
+  <!-- Rechter Boxhandschuh (gespiegelt) -->
+  <g fill="#ffffff" transform="translate(500,0) scale(-1,1)">
+    <rect x="44" y="256" width="22" height="17" rx="4"/>
+    <ellipse cx="72" cy="250" rx="16" ry="13"/>
+    <ellipse cx="81" cy="239" rx="8" ry="6" transform="rotate(-20 81 239)"/>
+  </g>
 
-  <rect x="34" y="364" width="272" height="42" rx="5" fill="#1f52bb"/>
-  <text x="170" y="394"
+  <!-- ZÜRICH -->
+  <text
+    x="250" y="258"
     text-anchor="middle"
-    font-family="'Barlow', Arial Black, sans-serif"
-    font-weight="900" font-size="26" fill="white" letter-spacing="8"
+    dominant-baseline="middle"
+    font-family="'Bebas Neue', sans-serif"
+    font-size="58"
+    fill="#7ec8ff"
+    letter-spacing="2"
   >ZÜRICH</text>
 
-  <text x="170" y="446"
+  <!-- Boxen statt Therapie -->
+  <text
+    x="250" y="335"
     text-anchor="middle"
-    font-family="'Barlow', Georgia, sans-serif"
-    font-weight="700" font-size="18"
-    fill="rgba(170,200,255,0.88)" letter-spacing="0.3"
-  >Boxen statt Therapie.</text>
+    font-family="'Barlow', sans-serif"
+    font-style="italic"
+    font-weight="700"
+    font-size="37"
+    fill="#ffffff"
+    letter-spacing="1"
+  >Boxen statt Therapie</text>
 
 </svg>
-</div>
 
 </body>
 </html>
