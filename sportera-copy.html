@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPORTERA 360° – Kopieren</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #08152a;
+    color: #fff;
+    min-height: 100vh;
+    padding: 40px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(126,200,255,0.15);
+    border-radius: 16px;
+    padding: 32px 36px;
+    max-width: 680px;
+    width: 100%;
+  }
+  .card-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: rgba(126,200,255,0.5);
+    margin-bottom: 16px;
+  }
+  .message {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(200,232,255,0.88);
+    line-height: 1.85;
+    white-space: pre-line;
+  }
+  .copy-btn {
+    margin-top: 20px;
+    width: 100%;
+    background: linear-gradient(100deg, #1a65d6, #0e3f9a);
+    border: 1px solid rgba(126,200,255,0.30);
+    border-radius: 10px;
+    padding: 13px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .copy-btn:hover { opacity: 0.85; }
+  .copy-btn.copied { background: linear-gradient(100deg, #2a8a50, #1a6a40); }
+</style>
+</head>
+<body>
+
+<!-- VORWORT -->
+<div class="card">
+  <div class="card-label">1 · Vorwort der Gründer</div>
+  <div class="message" id="s1">Unsere Academy ist aus eigener Erfahrung entstanden.
+
+Wir haben den Weg im Nachwuchsfussball selbst erlebt – mit all seinen Möglichkeiten, aber auch mit den Grenzen, die viele junge Spieler und ihre Familien kennen. Wartelisten, fehlende individuelle Förderung und Situationen, in denen Potenzial vorhanden ist, aber nicht gezielt weiterentwickelt werden kann, sind für uns keine Theorie, sondern Realität. Gleichzeitig haben wir erfahren, wie entscheidend die richtigen Strukturen, klare Führung und verlässliche Unterstützung für die Entwicklung eines Athleten sind. Talent allein reicht nicht. Es braucht Disziplin, Orientierung und ein Umfeld, das Fortschritt möglich macht. Mit SPORTERA 360° haben wir uns genau dieses Ziel gesetzt. Wir wollten einen Rahmen schaffen, in dem junge Athleten klar geführt, gezielt gefördert und in ihrer Entwicklung ganzheitlich begleitet werden. Uns ist wichtig, dass Eltern auch Eltern bleiben können. Die sportliche Entwicklung gehört in die Hände von Bezugspersonen, die Verantwortung übernehmen, Klarheit schaffen und den Weg konsequent begleiten. Unser Anspruch ist es deshalb nicht nur, Training anzubieten, sondern Athleten auf ihrem Weg nachhaltig zu entwickeln – sportlich, körperlich und mental.</div>
+  <button class="copy-btn" onclick="copySection('s1', this)">Kopieren</button>
+</div>
+
+<!-- GRÜNDERPROFILE -->
+<div class="card">
+  <div class="card-label">4 · Gründerprofile</div>
+  <div class="message" id="s2">Angelo La Rocca – Analyse & Struktur
+
+Angelo La Rocca ist Vater, Begleiter und strategischer Kopf hinter der Academy. Über viele Jahre hinweg hat er seine Söhne auf ihrem sportlichen Weg begleitet und dabei hautnah erlebt, wie Nachwuchsfussball funktioniert – mit all seinen Chancen, aber auch mit seinen Grenzen. Diese Perspektive hat ihn geprägt. Er hat gesehen, wie entscheidend Struktur, Klarheit und die richtigen Entscheidungen im richtigen Moment sind. Als aktiver Fussballer im Seniorenbereich und langjähriger Beobachter bringt er nicht nur Leidenschaft für das Spiel mit, sondern vor allem ein tiefes Verständnis dafür, wie sich Spieler entwickeln – und wo es oft scheitert. Seine Aufgabe innerhalb der Academy ist klar: Entwicklung messbar machen. Strukturen schaffen. Orientierung geben.
+
+Giacomo La Rocca – Athletik
+
+Giacomo La Rocca begann im Fussball, entschied sich jedoch bewusst für einen anderen Weg. Der Wechsel in den Boxsport war kein Zufall, sondern das Ergebnis eigener Erfahrungen – und der Wunsch, sich unabhängig, konsequent und auf einem anderen Level weiterzuentwickeln. Diese Entscheidung prägt seinen Ansatz bis heute. Er steht für körperliche und mentale Belastbarkeit. Für die Fähigkeit, durchzuhalten, wenn es schwierig wird. Und für die Überzeugung, dass Leistung immer auch mit Disziplin, Struktur und Bereitschaft zur Arbeit verbunden ist. Sein Fokus liegt auf der Entwicklung der physischen Grundlagen: Ausdauer, Kraft, Explosivität und Beweglichkeit – kombiniert mit mentaler Stabilität.
+
+Giovanni La Rocca – Football
+
+Giovanni La Rocca ist aktiver Fussballer bei Juventus Zürich und seit seiner Kindheit tief im Fussball verankert. Parallel baut er seine eigene Fussballschule auf, in der er als Privattrainer tätig ist. Als schneller, technisch starker und abschlussorientierter Offensivspieler hat er sich über Jahre hinweg auf hohem regionalem Niveau etabliert und sich innerhalb seines Umfelds grossen Respekt erarbeitet. Der Schritt in den Spitzenfussball blieb ihm trotz vorhandenen Potenzials verwehrt, eine Erfahrung, die ihn nachhaltig geprägt hat. Genau daraus entsteht seine Motivation. Er weiss, wie viel Talent vorhanden sein kann, und wie entscheidend die richtigen Rahmenbedingungen sind, um dieses Potenzial auch wirklich auszuschöpfen.</div>
+  <button class="copy-btn" onclick="copySection('s2', this)">Kopieren</button>
+</div>
+
+<!-- KONZEPT -->
+<div class="card">
+  <div class="card-label">10 · Konzept</div>
+  <div class="message" id="s3">Das Trainingssystem verbindet Fussball, Athletik und Leistungsanalyse in einem klar strukturierten Ansatz. Ziel ist es, Athleten gezielt zu entwickeln und Fortschritt nachvollziehbar zu machen.
+
+Fussball
+Der Fokus liegt auf der gezielten Verbesserung von Technik, Spielverständnis und Entscheidungsverhalten. Trainiert wird praxisnah und individuell, mit klaren Schwerpunkten pro Einheit.
+
+Athletik
+Die körperliche Grundlage wird gezielt aufgebaut. Ausdauer, Kraft, Explosivität und Beweglichkeit werden systematisch entwickelt und durch Elemente aus dem Boxsport ergänzt, um Reaktionsfähigkeit und mentale Belastbarkeit zu stärken.
+
+Analyse
+Entwicklung wird sichtbar gemacht. Durch regelmässige Auswertungen, Reports und Videoanalyse erhalten Athleten klare Rückmeldungen und konkrete Ansatzpunkte für ihre Weiterentwicklung.
+
+Training
+Das Training erfolgt in kleinen Gruppen, um eine hohe Intensität und eine gezielte individuelle Förderung sicherzustellen. Je nach Bedarf findet es im Einzelsetting (1:1), zu zweit (1:2) oder in Kleingruppen (1:4) statt.</div>
+  <button class="copy-btn" onclick="copySection('s3', this)">Kopieren</button>
+</div>
+
+<!-- ZIELGRUPPE -->
+<div class="card">
+  <div class="card-label">11 · Zielgruppe</div>
+  <div class="message" id="s4">Das Angebot richtet sich an junge Athleten ab 10 Jahren, die ihre sportliche Entwicklung aktiv vorantreiben möchten und bereit sind, Zeit, Einsatz und Disziplin zu investieren.
+
+Dazu gehören insbesondere:
+Ambitionierte Nachwuchsspieler
+Leistungsorientierte Athleten innerhalb von Vereinen
+Spieler mit Entwicklungspotenzial, die im aktuellen Umfeld nicht ausreichend gefördert werden
+Drop-outs aus Leistungszentren
+Athleten im Reha- oder Comeback-Prozess
+
+Die Academy versteht sich nicht als Konkurrenz zu Vereinen, sondern als Ergänzung – mit dem Ziel, Athleten besser zu entwickeln und bestehende Strukturen sinnvoll zu entlasten.</div>
+  <button class="copy-btn" onclick="copySection('s4', this)">Kopieren</button>
+</div>
+
+<!-- VISION / MISSION / WERTE -->
+<div class="card">
+  <div class="card-label">7–9 · Vision · Mission · Werte</div>
+  <div class="message" id="s5">Vision
+Die Academy verfolgt das Ziel, ein fester Bestandteil der Nachwuchsförderung im Kanton Zürich zu werden. Im Mittelpunkt steht die Zusammenarbeit mit bestehenden Strukturen – insbesondere mit Vereinen, Sportschulen und Ausbildungsprogrammen.
+
+Mission
+Im Zentrum steht die gezielte Entwicklung junger Athleten durch ein strukturiertes Trainingssystem, das Fussball, Athletik und Leistungsanalyse miteinander verbindet. Fortschritt wird nicht dem Zufall überlassen, sondern Schritt für Schritt entwickelt, überprüft und angepasst.
+
+Werte
+Disziplin – Entwicklung entsteht durch Konstanz, Verbindlichkeit und die Bereitschaft, kontinuierlich an sich zu arbeiten. Talent allein reicht nicht.
+Struktur – Training folgt klaren Abläufen und Zielen.
+Verantwortung – Athleten übernehmen Verantwortung für ihre Entwicklung.
+Klare Rollen – Die sportliche Entwicklung wird bewusst geführt. Eltern bleiben in ihrer Rolle als unterstützendes Umfeld.</div>
+  <button class="copy-btn" onclick="copySection('s5', this)">Kopieren</button>
+</div>
+
+<!-- ALLES KOPIEREN -->
+<div style="max-width:680px;width:100%;">
+  <button class="copy-btn" style="margin-top:0;" onclick="copyAll(this)">Gesamtes Dokument kopieren</button>
+</div>
+
+<script>
+  function copySection(id, btn) {
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Kopiert ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Kopieren';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+
+  function copyAll(btn) {
+    const sections = ['s1','s2','s3','s4','s5'];
+    const labels = document.querySelectorAll('.card-label');
+    let full = '';
+    sections.forEach((id, i) => {
+      full += labels[i].innerText + '\n\n';
+      full += document.getElementById(id).innerText + '\n\n---\n\n';
+    });
+    navigator.clipboard.writeText(full.trim()).then(() => {
+      btn.textContent = 'Kopiert ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Gesamtes Dokument kopieren';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>

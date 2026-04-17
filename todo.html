@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todo – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #08152a;
+    color: #fff;
+    padding: 36px 48px;
+    min-height: 100vh;
+  }
+
+  .container { max-width: 700px; margin: 0 auto; }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(126,200,255,0.20);
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+  }
+  h1 span { color: #7ec8ff; }
+  .subtitle { font-size: 12px; font-weight: 600; color: rgba(200,232,255,0.35); margin-top: 4px; }
+  .progress-wrap { text-align: right; }
+  .progress-label { font-size: 11px; font-weight: 700; color: rgba(200,232,255,0.40); margin-bottom: 6px; }
+  .progress-bar {
+    width: 120px;
+    height: 6px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #1a65d6, #7ec8ff);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+  }
+  .progress-count {
+    font-size: 12px; font-weight: 800;
+    color: #7ec8ff; margin-top: 4px;
+    text-align: right;
+  }
+
+  .section { margin-bottom: 28px; }
+  .section-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #7ec8ff; opacity: 0.60;
+    margin-bottom: 10px;
+  }
+
+  .todo-list { display: flex; flex-direction: column; gap: 6px; }
+
+  .todo-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(126,200,255,0.10);
+    border-radius: 10px;
+    padding: 13px 16px;
+    cursor: pointer;
+    transition: background 0.15s, border-color 0.15s;
+    user-select: none;
+  }
+  .todo-item:hover { background: rgba(255,255,255,0.06); }
+  .todo-item.done {
+    background: rgba(76,175,128,0.07);
+    border-color: rgba(76,175,128,0.20);
+  }
+
+  .checkbox {
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    border: 2px solid rgba(126,200,255,0.35);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s;
+  }
+  .todo-item.done .checkbox {
+    background: #4caf80;
+    border-color: #4caf80;
+  }
+  .checkmark {
+    display: none;
+    width: 12px; height: 12px;
+  }
+  .checkmark::before {
+    content: '✓';
+    color: #fff;
+    font-size: 13px;
+    font-weight: 800;
+  }
+  .todo-item.done .checkmark { display: flex; align-items: center; }
+
+  .todo-text {
+    font-size: 13px; font-weight: 600;
+    color: rgba(200,232,255,0.85);
+    flex: 1;
+    line-height: 1.4;
+  }
+  .todo-item.done .todo-text {
+    color: rgba(200,232,255,0.35);
+    text-decoration: line-through;
+    text-decoration-color: rgba(76,175,128,0.50);
+  }
+
+  .todo-tag {
+    font-size: 10px; font-weight: 800;
+    letter-spacing: 0.10em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 20px;
+    flex-shrink: 0;
+  }
+  .tag-now {
+    background: rgba(255,100,100,0.15);
+    color: #ff8080;
+    border: 1px solid rgba(255,100,100,0.30);
+  }
+  .tag-week {
+    background: rgba(240,160,48,0.15);
+    color: #f0a030;
+    border: 1px solid rgba(240,160,48,0.30);
+  }
+  .tag-open {
+    background: rgba(255,255,255,0.05);
+    color: rgba(200,232,255,0.40);
+    border: 1px solid rgba(255,255,255,0.10);
+  }
+
+  .footer {
+    text-align: center; margin-top: 24px;
+    font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.15);
+    padding-top: 16px;
+    border-top: 1px solid rgba(126,200,255,0.08);
+  }
+  .footer span { color: #7ec8ff; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div>
+      <h1>TASK <span>LISTE</span></h1>
+      <div class="subtitle">Private Boxing Zürich · @giacomojaf</div>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label">Fortschritt</div>
+      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+      <div class="progress-count" id="progressCount">0 / 0</div>
+    </div>
+  </div>
+
+  <!-- JETZT -->
+  <div class="section">
+    <div class="section-label">🔴 Jetzt</div>
+    <div class="todo-list">
+      <div class="todo-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark"></span></div>
+        <div class="todo-text">ZKB Geschäftskonto eröffnen</div>
+        <div class="todo-tag tag-now">Jetzt</div>
+      </div>
+      <div class="todo-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark"></span></div>
+        <div class="todo-text">Ads schalten (Instagram / Google)</div>
+        <div class="todo-tag tag-now">Jetzt</div>
+      </div>
+      <div class="todo-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark"></span></div>
+        <div class="todo-text">Gyms anrufen für Trainingsraum → gym-anrufe.html</div>
+        <div class="todo-tag tag-now">Jetzt</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DIESE WOCHE -->
+  <div class="section">
+    <div class="section-label">🟡 Diese Woche</div>
+    <div class="todo-list">
+      <div class="todo-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark"></span></div>
+        <div class="todo-text">Ausgleichskasse Formular absenden (nach IBAN)</div>
+        <div class="todo-tag tag-week">Woche</div>
+      </div>
+      <div class="todo-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark"></span></div>
+        <div class="todo-text">J+S Antrag einreichen → info@sport.zh.ch</div>
+        <div class="todo-tag tag-week">Woche</div>
+      </div>
+      <div class="todo-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark"></span></div>
+        <div class="todo-text">J+S Einführungskurs anmelden (18. Juni Zürich)</div>
+        <div class="todo-tag tag-week">Woche</div>
+      </div>
+      <div class="todo-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark"></span></div>
+        <div class="todo-text">2–3 Schulen kontaktieren für Herbstsemester</div>
+        <div class="todo-tag tag-week">Woche</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OFFEN -->
+  <div class="section">
+    <div class="section-label">⚪ Offen</div>
+    <div class="todo-list">
+      <div class="todo-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark"></span></div>
+        <div class="todo-text">J+S Coach Ausbildung anmelden (18. August)</div>
+        <div class="todo-tag tag-open">Offen</div>
+      </div>
+      <div class="todo-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark"></span></div>
+        <div class="todo-text">Haftpflichtversicherung abschliessen</div>
+        <div class="todo-tag tag-open">Offen</div>
+      </div>
+      <div class="todo-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark"></span></div>
+        <div class="todo-text">Regelmässige Reels posten</div>
+        <div class="todo-tag tag-open">Offen</div>
+      </div>
+      <div class="todo-item" onclick="toggle(this)">
+        <div class="checkbox"><span class="checkmark"></span></div>
+        <div class="todo-text">Google Reviews weiter sammeln</div>
+        <div class="todo-tag tag-open">Offen</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">Private Boxing Zürich · <span>@giacomojaf</span></div>
+
+</div>
+
+<script>
+  function toggle(el) {
+    el.classList.toggle('done');
+    updateProgress();
+  }
+
+  function updateProgress() {
+    const all = document.querySelectorAll('.todo-item');
+    const done = document.querySelectorAll('.todo-item.done');
+    const pct = all.length ? (done.length / all.length * 100) : 0;
+    document.getElementById('progressFill').style.width = pct + '%';
+    document.getElementById('progressCount').textContent = done.length + ' / ' + all.length;
+  }
+
+  updateProgress();
+</script>
+</body>
+</html>

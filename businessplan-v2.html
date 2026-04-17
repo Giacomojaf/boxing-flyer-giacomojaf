@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Businessplan – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: A4; margin: 18mm 20mm; }
+
+  /* SEITENUMBRUCH REGELN */
+  table, .highlight-box, .info-grid, .summary-grid,
+  .info-item, tr, .section-block {
+    page-break-inside: avoid;
+  }
+  h2 { page-break-after: avoid; }
+  p { orphans: 3; widows: 3; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #111;
+    padding: 0;
+    max-width: 800px;
+    margin: 0 auto;
+    font-size: 13px;
+    line-height: 1.80;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 36px;
+    padding-bottom: 18px;
+    border-bottom: 3px solid #08152a;
+  }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 0.06em; color: #08152a; }
+  .logo span { color: #1a65d6; }
+  .logo-sub { font-size: 11px; font-weight: 600; color: #999; letter-spacing: 0.10em; text-transform: uppercase; margin-top: 4px; }
+  .doc-info { text-align: right; font-size: 12px; color: #999; font-weight: 600; }
+
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.04em; color: #08152a; margin-bottom: 6px; }
+
+  h2 {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #1a65d6;
+    margin-top: 36px;
+    margin-bottom: 14px;
+    padding-bottom: 6px;
+    border-bottom: 1.5px solid #e8eef8;
+  }
+
+  p { font-size: 13px; color: #333; margin-bottom: 12px; line-height: 1.80; }
+  strong { color: #08152a; }
+
+  .intro-box {
+    background: #f0f4ff;
+    border-left: 4px solid #1a65d6;
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+    font-size: 13px;
+    color: #333;
+    line-height: 1.80;
+    page-break-inside: avoid;
+  }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .info-item { background: #f8f9fc; border-radius: 8px; padding: 14px 16px; }
+  .info-label { font-size: 10px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: #1a65d6; margin-bottom: 6px; }
+  .info-val { font-size: 12.5px; font-weight: 600; color: #111; line-height: 1.6; }
+
+  .section-block { margin-bottom: 24px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 24px;
+    font-size: 12.5px;
+  }
+  thead tr { background: #08152a; color: #fff; }
+  thead th { padding: 10px 14px; text-align: left; font-size: 10px; font-weight: 700; letter-spacing: 0.10em; text-transform: uppercase; }
+  thead th:last-child { text-align: right; }
+  tbody tr { border-bottom: 1px solid #eee; }
+  tbody tr:nth-child(even) { background: #f9f9f9; }
+  tbody td { padding: 10px 14px; color: #333; font-weight: 500; }
+  tbody td:last-child { text-align: right; font-weight: 700; color: #111; }
+  .total-row td { background: #f0f4ff; font-weight: 800; color: #08152a; border-top: 2px solid #1a65d6; }
+
+  .highlight-box {
+    background: #08152a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 22px 28px;
+    margin: 28px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hl-label { font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #7ec8ff; margin-bottom: 6px; }
+  .hl-val { font-family: 'Bebas Neue', sans-serif; font-size: 36px; letter-spacing: 0.04em; color: #fff; line-height: 1; }
+  .hl-note { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 6px; }
+
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .summary-item { background: #e8f5ee; border: 1.5px solid #4caf80; border-radius: 8px; padding: 14px; }
+  .summary-label { font-size: 10px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #2a6a40; margin-bottom: 4px; }
+  .summary-val { font-size: 16px; font-weight: 800; color: #1a6a40; }
+
+  .timeline { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
+  .timeline-item { display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: start; page-break-inside: avoid; }
+  .tl-month { font-size: 11px; font-weight: 800; color: #1a65d6; letter-spacing: 0.08em; text-transform: uppercase; padding-top: 2px; }
+  .tl-text { font-size: 12.5px; font-weight: 500; color: #333; line-height: 1.65; border-left: 2px solid #e8eef8; padding-left: 16px; }
+
+  .source-note { font-size: 11px; color: #aaa; margin-bottom: 16px; line-height: 1.6; }
+
+  .footer {
+    margin-top: 48px;
+    padding-top: 14px;
+    border-top: 1px solid #eee;
+    font-size: 11px;
+    color: #bbb;
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="logo">PRIVATE <span>BOXING</span> ZÜRICH</div>
+    <div class="logo-sub">Giacomo Andrea La Rocca · @giacomojaf</div>
+  </div>
+  <div class="doc-info">Businessplan<br>Private Boxing Zürich<br>April 2026</div>
+</div>
+
+<h1>Businessplan</h1>
+<p style="color:#999;font-size:13px;font-weight:600;margin-bottom:24px;">Private Boxing Zürich · Einzelunternehmen · Kanton Zürich</p>
+
+<div class="intro-box">
+  Dieses Dokument beschreibt die Geschäftstätigkeit von Private Boxing Zürich, einem Einzelunternehmen mit Sitz im Kanton Zürich. Das Angebot umfasst individuelles Privattraining sowie strukturierte Gruppenangebote im Rahmen von Jugend+Sport (J+S) für Schulen und Jugendzentren. Das Geschäftsmodell ist auf zwei voneinander unabhängige Einnahmequellen aufgebaut, die gemeinsam ein stabiles und wachstumsfähiges Einkommen sicherstellen.
+</div>
+
+<h2>1. Person und Qualifikation</h2>
+<div class="info-grid">
+  <div class="info-item">
+    <div class="info-label">Gesuchsteller</div>
+    <div class="info-val">Giacomo Andrea La Rocca<br>geboren 14. Januar 2001<br>Zürich</div>
+  </div>
+  <div class="info-item">
+    <div class="info-label">Erfahrung</div>
+    <div class="info-val">Mehrere Jahre aktiv im Boxsport<br>12 eigene Wettkämpfe<br>Erfahrung als Gruppentrainer</div>
+  </div>
+  <div class="info-item">
+    <div class="info-label">J+S Status</div>
+    <div class="info-val">J+S Coach Ausbildung geplant<br>August 2026<br>Sportart: Light Contact Boxing</div>
+  </div>
+</div>
+
+<h2>2. Geschäftsidee</h2>
+<div class="section-block">
+  <p>Private Boxing Zürich bietet professionelles Boxtraining auf individueller Basis an. Das Angebot richtet sich an Personen, die strukturiertes Training ausserhalb eines Vereinsbetriebs suchen, sowie an Schulen und Jugendzentren, die ein anerkanntes Sportprogramm für Jugendliche einführen möchten.</p>
+  <p>Das Geschäftsmodell unterscheidet sich bewusst vom klassischen Vereins- oder Gruppenbetrieb. Im Zentrum steht die direkte Beziehung zwischen Trainer und Trainierendem. Jede Einheit wird individuell auf den Kunden abgestimmt, mit klarem Fokus auf Technik, Kondition und mentale Stärke. Dieses Angebot ist in Zürich kaum vorhanden und schliesst eine reale Lücke im Markt.</p>
+  <p>Das Business ist so aufgebaut, dass kein grosses Startkapital notwendig ist. Der Trainingsraum wird stundenweise gemietet. Wenn der Raum gemietet ist, können zusätzliche Personen für ein eigenständiges Training dazukommen, was die Raumkosten mitfinanziert, ohne zusätzlichen Aufwand zu erzeugen.</p>
+</div>
+
+<h2>3. Positionierung</h2>
+<div class="section-block">
+  <p>Private Boxing Zürich positioniert sich als persönliches, zugängliches und professionelles Trainingsangebot. Kunden müssen keinem Verein beitreten, keine Mitgliedschaft abschliessen und nicht in grossen Gruppen trainieren. Sie buchen direkt, trainieren mit dem Trainer und entwickeln sich in ihrem eigenen Tempo.</p>
+  <p>Im Bereich der Schulen und Jugendzentren bietet Private Boxing Zürich Light Contact Boxing als anerkannte J+S Sportart an. Light Contact Boxing fördert Koordination, Kondition, Selbstdisziplin und Selbstvertrauen. Es ist eine Sportart, die Schulen bisher kaum anbieten können, weil qualifizierte Trainer fehlen. Genau hier setzt das Angebot an.</p>
+  <p>Die Kombination aus Privattraining für Erwachsene und J+S Schulkursen für Jugendliche ermöglicht eine breite Aufstellung, die weder saisonal noch von einer einzigen Kundengruppe abhängig ist.</p>
+</div>
+
+<h2>4. Zielgruppe</h2>
+<div class="section-block">
+  <p><strong>Privattraining:</strong> Berufstätige Erwachsene zwischen 20 und 50 Jahren aus Zürich und Umgebung, die regelmässig und strukturiert trainieren möchten. Die Zielgruppe schätzt individuelle Betreuung, Flexibilität und eine klare Entwicklung im Training. Sie ist bereit, für Qualität einen marktüblichen Preis zu bezahlen.</p>
+  <p><strong>J+S Schulkurse:</strong> Jugendliche zwischen 10 und 20 Jahren, die über Schulen, Jugendzentren oder Sportvereine erreicht werden. Die Nachfrage nach niederschwelligen Kampfsportangeboten in Schulen ist vorhanden, das Angebot hingegen gering. Private Boxing Zürich kann diese Lücke direkt und ohne grosse Infrastruktur schliessen.</p>
+  <p><strong>Einzugsgebiet:</strong> Zürich Altstetten, Zürich West, Schlieren und umliegende Gemeinden.</p>
+</div>
+
+<h2>5. Angebot</h2>
+<div class="section-block">
+  <p>Das Kernangebot von Private Boxing Zürich ist das individuelle Privattraining im 1:1 Format. Jede Einheit dauert 60 Minuten und wird direkt auf den Kunden abgestimmt. Der Stundensatz beträgt CHF 80 und liegt damit am unteren Ende des Zürcher Marktes für Personal Training, der sich zwischen CHF 80 und CHF 180 bewegt. Diese Positionierung erlaubt einen raschen Aufbau des Kundenstamms in der Anfangsphase, mit Spielraum zur Anpassung ab dem zweiten Jahr.</p>
+  <p>Ergänzend dazu bietet Private Boxing Zürich Kurse im Rahmen von Jugend+Sport an. Diese richten sich an Schulen und Jugendzentren und werden in verschiedenen Formaten angeboten: als Schnupperkurs zur Einführung, als Blockkurs über mehrere Lektionen oder als Semesterkurs mit wöchentlichem Training über das gesamte Schulhalbjahr. Die Finanzierung dieser Kurse erfolgt über die Schulgebühren sowie die staatlichen J+S Beiträge von Kanton und Bund.</p>
+  <p>Wenn der Trainingsraum bereits gemietet ist, steht er auch weiteren Personen für ein eigenständiges Training offen. Diese Nutzung trägt zur Deckung der Raumkosten bei, ohne zusätzlichen Aufwand zu erzeugen.</p>
+</div>
+
+<h2>6. Finanzplanung</h2>
+
+<p>Die Finanzplanung basiert auf zwei Einnahmequellen: dem Privattraining und den J+S Schulkursen. In der Aufbauphase (April bis Juli 2026) werden die Einnahmen tiefer sein, da der Kundenstamm noch aufgebaut wird. Ab August 2026 wird mit einem stabilen Kundenstamm und laufenden J+S Kursen gerechnet.</p>
+
+<p><strong>Privattraining:</strong> Der Aufbau verläuft graduell. In den ersten Monaten werden wenige, regelmässige Kunden aufgebaut. Ab der zweiten Jahreshälfte wird ein stabiler Kundenstamm angestrebt, der wöchentlich mehrere Trainingsstunden generiert.</p>
+
+<p><strong>J+S Schulkurse:</strong> Der Kanton Zürich vergütet pro Semester CHF 1'350 an das Leiterteam (mind. 90 Min. pro Lektion, mind. 15 Lektionen, mind. 8 Teilnehmende). Der Bund leistet zusätzlich einen Grundbeitrag von CHF 100 pro Kurs sowie CHF 1.30 pro Teilnehmerstunde. Die Kurse finden direkt in den Schulen statt, die ihren Raum zur Verfügung stellen. Für Private Boxing Zürich entstehen dadurch keine Raumkosten beim J+S Angebot.</p>
+
+<p class="source-note">
+  Quellen: <strong>cr-personaltraining.ch</strong> Personal Training Zürich Marktpreise 2026 (CHF 80 bis 180/h) · <strong>zh.ch</strong> Freiwillige Schulsportkurse Kanton Zürich (CHF 1'350/Semester) · <strong>openpetition.eu</strong> J+S Tarif CHF 1.30/TN/h · <strong>Sportförderungsverordnung SR 415.0</strong> J+S Grundbeitrag CHF 100/Kurs
+</p>
+
+<p>Die Einnahmen setzen sich aus zwei Quellen zusammen. Das Privattraining generiert in der Aufbauphase von April bis Juli 2026 rund CHF 6'800. Ab August 2026 wird mit einem stabilen Kundenstamm ein monatlich wiederkehrendes Einkommen von rund CHF 2'800 aus dem Privattraining angestrebt. Die J+S Schulkurse ergänzen ab Herbst 2026 mit Kantons- und Bundesbeiträgen: zwei Kurse im Herbst und drei Kurse im Frühling 2027 resultieren in zusätzlichen Einnahmen von rund CHF 8'700. Nach Abzug der AHV-Beiträge gemäss gleitender Skala (SR 831.10) resultiert ein Nettoeinkommen von CHF 34'690 für das erste Geschäftsjahr.</p>
+
+<div class="summary-grid">
+  <div class="summary-item">
+    <div class="summary-label">Nettoeinkommen</div>
+    <div class="summary-val">CHF 2'891/Mt</div>
+  </div>
+  <div class="summary-item">
+    <div class="summary-label">Richtwert Lebensunterhalt</div>
+    <div class="summary-val">CHF 2'500/Mt</div>
+  </div>
+  <div class="summary-item">
+    <div class="summary-label">Überschuss</div>
+    <div class="summary-val">+ CHF 391/Mt ✓</div>
+  </div>
+</div>
+
+<p>Die Ausgaben sind bewusst tief gehalten. Da kein eigenes Gym betrieben wird, entfallen Fixkosten für Infrastruktur vollständig. Die Hauptausgaben umfassen die stundenweise Raummiete, Trainingsmaterial, die berufliche Haftpflichtversicherung, die einmalige Ausbildungsgebühr für den J+S Coach Kurs sowie laufende Kosten für Administration und Aussendarstellung. Die gesamten Ausgaben im ersten Jahr belaufen sich auf rund CHF 2'200.</p>
+
+<div class="highlight-box">
+  <div>
+    <div class="hl-label">Netto Jahr 1 (Apr 2026 bis Mär 2027)</div>
+    <div class="hl-val">CHF 34'690.–</div>
+    <div class="hl-note">CHF 2'891/Mt · Bedarf CHF 2'500/Mt · Überschuss CHF 391/Mt</div>
+  </div>
+  <div style="text-align:right;">
+    <div class="hl-label">Jahr 2 · 20h/Woche + 8 J+S Kurse</div>
+    <div class="hl-val" style="color:#7ec8ff;">CHF 81'684.–</div>
+    <div class="hl-note">netto · CHF 6'807/Monat · nach AHV</div>
+  </div>
+</div>
+
+<h2>7. Kundengewinnung</h2>
+<div class="section-block">
+  <p>Die Kundengewinnung erfolgt in der Anfangsphase primär über das persönliche Netzwerk und eine aktive Online-Präsenz. Private Boxing Zürich verfügt bereits über eine professionelle Website mit Buchungssystem sowie ein aktives Social-Media-Profil mit ersten öffentlichen Kundenbewertungen.</p>
+  <p>Für das Privattraining stehen die direkte Ansprache im persönlichen Umfeld sowie digitale Werbung im Vordergrund. Der Aufbau von Weiterempfehlungen durch zufriedene Kunden ist mittelfristig der wichtigste Kanal, da Vertrauen im Bereich persönliches Training entscheidend ist.</p>
+  <p>Für die J+S Schulkurse werden Schulen und Jugendzentren direkt kontaktiert. Ein kostenloser Schnupperkurs wird als Einstieg angeboten, damit Institutionen das Angebot ohne Risiko kennenlernen können. Sobald die J+S Zertifizierung abgeschlossen ist, werden mindestens zwei bis drei Institutionen im Kanton Zürich angesprochen.</p>
+</div>
+
+<h2>8. Zeitplan</h2>
+<div class="timeline">
+  <div class="timeline-item">
+    <div class="tl-month">April 2026</div>
+    <div class="tl-text">J+S Antrag einreichen · Ausgleichskasse anmelden · Geschäftskonto eröffnen · Trainingsraum fixieren</div>
+  </div>
+  <div class="timeline-item">
+    <div class="tl-month">Mai 2026</div>
+    <div class="tl-text">Erste Schulen und Jugendzentren kontaktieren · Schnupperkurs anbieten · Kundenstamm Privattraining aufbauen</div>
+  </div>
+  <div class="timeline-item">
+    <div class="tl-month">Juni 2026</div>
+    <div class="tl-text">J+S Einführungskurs Zürich absolvieren · Erste Kurse planen · Stammkunden Privattraining aufbauen</div>
+  </div>
+  <div class="timeline-item">
+    <div class="tl-month">August 2026</div>
+    <div class="tl-text">J+S Coach Ausbildung abschliessen · Erste offizielle J+S Kurse starten</div>
+  </div>
+  <div class="timeline-item">
+    <div class="tl-month">Herbst 2026</div>
+    <div class="tl-text">Regelmässige Kurse an zwei bis drei Institutionen · J+S Subventionen fliessen ein · Stabile Auslastung im Privattraining</div>
+  </div>
+</div>
+
+<h2>9. Risiken und Massnahmen</h2>
+<div class="section-block">
+  <p>Das grösste Risiko in der Anfangsphase ist ein langsamer Aufbau des Kundenstamms. Diesem wird mit direkter persönlicher Ansprache, einer aktiven Online-Präsenz und dem gezielten Fördern von Weiterempfehlungen entgegengewirkt. Erfahrungsgemäss ist Mundpropaganda im Bereich persönliches Training der wirksamste Kanal, sobald die ersten Kunden zufrieden sind.</p>
+  <p>Sollte sich der J+S Antrag verzögern, hat das keinen Einfluss auf das Privattraining, das davon vollständig unabhängig läuft. Schulen können parallel zum laufenden J+S Prozess kontaktiert und vorbereitet werden, sodass die Kurse unmittelbar nach Erhalt der Zertifizierung starten können.</p>
+  <p>Das Fehlen eines fixen Trainingsraums ist in der Anfangsphase handhabbar, da die Raummiete stundenweise bei verschiedenen Anbietern erfolgen kann. Sobald das Trainingsvolumen zunimmt, wird ein fester Standort gesucht und fixiert.</p>
+  <p>Eine allfällige Reduktion der J+S Subventionen würde das Geschäftsmodell nicht gefährden, da die Haupteinnahmen aus dem Privattraining stammen. Die J+S Beiträge sind eine Ergänzung, keine Grundlage.</p>
+</div>
+
+<h2>10. Fazit</h2>
+<p>Private Boxing Zürich ist ein niederschwelliges, kosteneffizientes Geschäftsmodell mit zwei stabilen Einnahmequellen. Das Privattraining sichert das Einkommen ab dem ersten Monat. Die J+S Schulkurse ergänzen mit verlässlichen Kantons- und Bundesbeiträgen ab Herbst 2026.</p>
+<p>Das Angebot schliesst eine reale Lücke im Markt: Individuelles Boxtraining ausserhalb des Vereinsbetriebs ist in Zürich kaum verfügbar. Die Nachfrage ist vorhanden, wie erste Kundenbewertungen und Buchungen belegen. Mit konservativer Planung resultiert im ersten Jahr ein Nettoeinkommen von CHF 34'690, was einem monatlichen Einkommen von CHF 2'891 entspricht und den Lebensunterhalt zuverlässig deckt.</p>
+<p>Ab dem zweiten Jahr, mit aufgebautem Kundenstamm, etablierten J+S Kursen und einer Erhöhung des Trainingsvolumens, ist ein Nettoeinkommen von über CHF 80'000 realistisch und erreichbar.</p>
+
+<div class="footer">
+  <span>Private Boxing Zürich · Giacomo Andrea La Rocca · Zürich</span>
+  <span>April 2026</span>
+</div>
+
+</body>
+</html>

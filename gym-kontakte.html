@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gym Kontakte – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #08152a;
+    color: #fff;
+    padding: 36px 48px;
+  }
+
+  .container { max-width: 860px; margin: 0 auto; }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(126,200,255,0.20);
+    padding-bottom: 16px;
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+  }
+  h1 span { color: #7ec8ff; }
+  .subtitle {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.45);
+  }
+  .handle {
+    font-size: 18px;
+    font-weight: 800;
+    color: #7ec8ff;
+    letter-spacing: 0.03em;
+  }
+
+  /* ANFRAGE */
+  .anfrage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+  .anfrage-box {
+    background: rgba(10,40,120,0.45);
+    border: 1.5px solid rgba(126,200,255,0.35);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .anfrage-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7ec8ff;
+    margin-bottom: 8px;
+  }
+  .anfrage-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.85);
+    line-height: 1.6;
+    border-left: 2px solid #7ec8ff;
+    padding-left: 12px;
+    margin-bottom: 8px;
+  }
+  .anfrage-tip {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.45);
+    line-height: 1.5;
+  }
+  .anfrage-tip span { color: #7ec8ff; }
+
+  /* SECTIONS */
+  .section-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #7ec8ff;
+    opacity: 0.70;
+    margin-bottom: 6px;
+    margin-top: 18px;
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 20px;
+  }
+  .contact-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .contact-row:hover { background: rgba(255,255,255,0.03); }
+
+  .td-num {
+    font-size: 11px;
+    font-weight: 800;
+    color: rgba(126,200,255,0.50);
+    width: 20px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .td-name {
+    font-size: 13px;
+    font-weight: 700;
+    color: #fff;
+    flex: 1;
+  }
+  .td-phone a {
+    font-size: 12px;
+    font-weight: 700;
+    color: #7ec8ff;
+    text-decoration: none;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .td-phone a:hover { text-decoration: underline; }
+
+  .divider {
+    height: 1px;
+    background: rgba(126,200,255,0.12);
+    margin: 14px 0;
+  }
+
+  .footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.18);
+  }
+  .footer span { color: #7ec8ff; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <h1>GYM <span>KONTAKTE</span></h1>
+      <div class="subtitle">Stundenmiete Trainingsraum · sortiert nach Priorität</div>
+    </div>
+    <div class="handle">@giacomojaf</div>
+  </div>
+
+  <!-- ANFRAGEN -->
+  <div class="anfrage-grid">
+    <div class="anfrage-box">
+      <div class="anfrage-label">📞 Raummiete Anfrage</div>
+      <div class="anfrage-text">"Guten Tag, mein Name ist Giacomo. Ich bin Privatboxtrainer und suche einen Trainingsraum zur stundenweisen Miete — mit Sandsack wenn möglich. Wäre das möglich und was würde das kosten?"</div>
+      <div class="anfrage-tip"><span>Ja:</span> "Wann sind die Zeiten verfügbar?"<br><span>Nein:</span> "Kennen Sie jemanden der sowas anbietet?"</div>
+    </div>
+    <div class="anfrage-box">
+      <div class="anfrage-label">💼 Stellenanfrage (Invictus)</div>
+      <div class="anfrage-text">"Hallo, ich bin ausgebildeter Boxtrainer und suche eine Stelle oder Kooperation als Privattrainer. Habt ihr Bedarf? Freundliche Grüsse, Giacomo"</div>
+    </div>
+  </div>
+
+  <!-- ALTSTETTEN -->
+  <div class="section-label">⭐ Priorität 1 — Altstetten</div>
+  <div class="contact-grid">
+    <div class="contact-row"><span class="td-num">1</span><span class="td-name">Klub der Sportfreunde</span><span class="td-phone"><a href="tel:+41764944374">+41 76 494 43 74</a></span></div>
+    <div class="contact-row"><span class="td-num">2</span><span class="td-name">LIONSOUL 24h Gym</span><span class="td-phone"><a href="tel:+41449190077">+41 44 919 00 77</a></span></div>
+    <div class="contact-row"><span class="td-num">3</span><span class="td-name">Dado Gym</span><span class="td-phone" style="font-size:12px;color:rgba(200,232,255,0.40);">info@dadogym.ch</span></div>
+    <div class="contact-row"><span class="td-num">4</span><span class="td-name">Boxclub Kreis 9</span><span class="td-phone"><a href="tel:+41797050201">+41 79 705 02 01</a></span></div>
+    <div class="contact-row"><span class="td-num">5</span><span class="td-name">360 Martial Arts</span><span class="td-phone"><a href="tel:+41555256259">+41 55 525 62 59</a></span></div>
+    <div class="contact-row"><span class="td-num">6</span><span class="td-name">Kickboxing & Top Karate</span><span class="td-phone"><a href="tel:+41794040729">+41 79 404 07 29</a></span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SCHLIEREN -->
+  <div class="section-label">🥈 Priorität 2 — Schlieren</div>
+  <div class="contact-grid">
+    <div class="contact-row"><span class="td-num">7</span><span class="td-name">David Gym ZH-West</span><span class="td-phone"><a href="tel:+41433111230">+41 43 311 12 30</a></span></div>
+    <div class="contact-row"><span class="td-num">8</span><span class="td-name">SPARTA Academy</span><span class="td-phone"><a href="tel:+41764092755">+41 76 409 27 55</a></span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- OERLIKON -->
+  <div class="section-label">🥉 Priorität 3 — Oerlikon</div>
+  <div class="contact-grid">
+    <div class="contact-row"><span class="td-num">9</span><span class="td-name">Natthapong Gym</span><span class="td-phone"><a href="tel:+41799018050">+41 79 901 80 50</a></span></div>
+    <div class="contact-row"><span class="td-num">10</span><span class="td-name">PowerSportsClub</span><span class="td-phone"><a href="tel:+41445434748">+41 44 543 47 48</a></span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BACKUP -->
+  <div class="section-label">📋 Backup</div>
+  <div class="contact-grid">
+    <div class="contact-row"><span class="td-num">11</span><span class="td-name">IMPACT Martial Arts</span><span class="td-phone"><a href="tel:+41772885269">+41 77 288 52 69</a></span></div>
+    <div class="contact-row"><span class="td-num">12</span><span class="td-name">Boxclub Sportring</span><span class="td-phone"><a href="tel:+41796052165">+41 79 605 21 65</a></span></div>
+    <div class="contact-row"><span class="td-num">13</span><span class="td-name">Frota Academy</span><span class="td-phone"><a href="tel:+41763686293">+41 76 368 62 93</a></span></div>
+    <div class="contact-row"><span class="td-num">14</span><span class="td-name">MKC Kickboxing Academy</span><span class="td-phone"><a href="tel:+41444514488">+41 44 451 44 88</a></span></div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- JOB -->
+  <div class="section-label">💼 Job-Möglichkeit</div>
+  <div class="contact-grid">
+    <div class="contact-row"><span class="td-num">15</span><span class="td-name">Invictus Training Horgen</span><span class="td-phone"><a href="tel:+41447701030">+41 44 770 10 30</a></span></div>
+  </div>
+
+  <div class="footer">Private Boxing Zürich · <span>@giacomojaf</span></div>
+
+</div>
+</body>
+</html>

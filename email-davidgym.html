@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email – David Gym</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #08152a;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+  }
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(126,200,255,0.15);
+    border-radius: 16px;
+    padding: 36px 40px;
+    max-width: 560px;
+    width: 100%;
+  }
+  .label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(126,200,255,0.5);
+    margin-bottom: 6px;
+  }
+  .subject {
+    font-size: 15px;
+    font-weight: 700;
+    color: #7ec8ff;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(126,200,255,0.12);
+  }
+  .message {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(200,232,255,0.90);
+    line-height: 1.85;
+    white-space: pre-line;
+  }
+  .copy-btn {
+    margin-top: 28px;
+    width: 100%;
+    background: linear-gradient(100deg, #1a65d6, #0e3f9a);
+    border: 1px solid rgba(126,200,255,0.30);
+    border-radius: 10px;
+    padding: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .copy-btn:hover { opacity: 0.85; }
+  .copy-btn.copied { background: linear-gradient(100deg, #2a8a50, #1a6a40); }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+    <div class="label">Betreff</div>
+    <button onclick="navigator.clipboard.writeText('Anfrage Trainingsraum – Private Boxing Zürich');this.textContent='✓';setTimeout(()=>this.textContent='Kopieren',1500)" style="background:rgba(126,200,255,0.10);border:1px solid rgba(126,200,255,0.20);border-radius:6px;padding:4px 12px;font-family:Inter,sans-serif;font-size:11px;font-weight:800;color:rgba(126,200,255,0.6);cursor:pointer;">Kopieren</button>
+  </div>
+  <div class="subject">Anfrage Trainingsraum – Private Boxing Zürich</div>
+
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+    <div class="label">Email</div>
+  </div>
+  <div class="message" id="msg">Guten Tag
+
+Mein Name ist Giacomo La Rocca, ich bin selbstständiger Boxtrainer in Zürich unter dem Namen Private Boxing Zürich.
+
+Ich suche einen geeigneten Trainingsraum für meine 1:1 Trainings und würde gerne anfragen, ob bei euch eine Mietmöglichkeit besteht.
+
+Ich stelle mir vor: 3 Trainings pro Woche, jeweils vormittags.
+
+Würde mich freuen, mehr über eure Konditionen zu erfahren.
+
+Freundliche Grüsse
+Giacomo La Rocca
+Private Boxing Zürich
+giacomo@privateboxingzurich.ch
+076 844 11 10</div>
+
+  <button class="copy-btn" id="copyBtn" onclick="copyText()">Email kopieren</button>
+</div>
+
+<script>
+  function copyText() {
+    const text = document.getElementById('msg').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = 'Kopiert ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Email kopieren';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>

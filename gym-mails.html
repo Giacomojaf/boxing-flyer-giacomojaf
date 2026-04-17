@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gym Mails – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #08152a;
+    color: #fff;
+    padding: 36px 48px;
+  }
+
+  .container { max-width: 860px; margin: 0 auto; }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(126,200,255,0.20);
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+  }
+  h1 span { color: #7ec8ff; }
+  .subtitle { font-size: 13px; font-weight: 600; color: rgba(200,232,255,0.40); margin-top: 4px; }
+  .handle { font-size: 16px; font-weight: 800; color: #7ec8ff; }
+
+  /* VORLAGE */
+  .template-box {
+    background: rgba(26,101,214,0.12);
+    border: 1.5px solid rgba(126,200,255,0.30);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-bottom: 36px;
+  }
+  .template-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #7ec8ff; margin-bottom: 14px;
+  }
+  .template-field {
+    margin-bottom: 10px;
+  }
+  .field-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; color: rgba(126,200,255,0.60);
+    margin-bottom: 3px;
+  }
+  .field-val {
+    font-size: 13px; font-weight: 600; color: rgba(200,232,255,0.85);
+    line-height: 1.6;
+    background: rgba(0,0,0,0.20);
+    border-radius: 6px;
+    padding: 10px 14px;
+    white-space: pre-line;
+  }
+  .field-val strong { color: #fff; }
+
+  /* SECTION */
+  .section-label {
+    font-size: 10px; font-weight: 800; letter-spacing: 0.18em;
+    text-transform: uppercase; color: #7ec8ff; opacity: 0.60;
+    margin-bottom: 10px; margin-top: 24px;
+  }
+
+  /* GYM CARDS */
+  .gym-grid { display: flex; flex-direction: column; gap: 8px; }
+
+  .gym-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(126,200,255,0.12);
+    border-radius: 10px;
+    padding: 14px 18px;
+    display: grid;
+    grid-template-columns: 28px 1fr auto;
+    align-items: center;
+    gap: 12px;
+  }
+  .gym-num {
+    font-size: 11px; font-weight: 800;
+    color: rgba(126,200,255,0.50); text-align: center;
+  }
+  .gym-name {
+    font-size: 13px; font-weight: 700; color: #fff;
+  }
+  .gym-location {
+    font-size: 11px; font-weight: 600;
+    color: rgba(200,232,255,0.40); margin-top: 2px;
+  }
+  .gym-email a {
+    font-size: 12px; font-weight: 700;
+    color: #7ec8ff; text-decoration: none; white-space: nowrap;
+  }
+  .gym-email a:hover { text-decoration: underline; }
+  .gym-no-email {
+    font-size: 11px; font-weight: 600;
+    color: rgba(200,232,255,0.30); white-space: nowrap;
+  }
+
+  .status-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: rgba(126,200,255,0.30); flex-shrink: 0;
+  }
+  .status-sent { background: #4caf80; }
+
+  .divider { height: 1px; background: rgba(126,200,255,0.10); margin: 16px 0; }
+
+  .footer {
+    text-align: center; margin-top: 24px;
+    font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.18);
+  }
+  .footer span { color: #7ec8ff; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="header">
+    <div>
+      <h1>GYM <span>MAILS</span></h1>
+      <div class="subtitle">Raummiete Anfragen · Trainingsraum stundenweise</div>
+    </div>
+    <div class="handle">@giacomojaf</div>
+  </div>
+
+  <!-- MAIL VORLAGE -->
+  <div class="template-box">
+    <div class="template-label">✉️ Mail Vorlage — kopieren & [GYM NAME] ersetzen</div>
+
+    <div class="template-field">
+      <div class="field-label">Betreff</div>
+      <div class="field-val">Anfrage: Stundenweise Raummiete für Privatboxtraining</div>
+    </div>
+
+    <div class="template-field">
+      <div class="field-label">Nachricht</div>
+      <div class="field-val">Guten Tag
+
+Mein Name ist Giacomo La Rocca, ich bin ausgebildeter Privatboxtrainer in Zürich und betreibe <strong>Private Boxing Zürich</strong> (@giacomojaf).
+
+Ich suche einen Trainingsraum zur stundenweisen Miete — idealerweise mit Sandsack. Ich benötige den Raum flexibel, je nach Kundenterminen, ca. 3–5 Stunden pro Woche.
+
+Ich wäre sehr dankbar zu erfahren:
+- Ob eine stundenweise Raummiete möglich ist
+- Welche Konditionen und Zeiten verfügbar wären
+
+Ich freue mich auf Ihre Rückmeldung und stehe für Fragen gerne zur Verfügung.
+
+Freundliche Grüsse
+Giacomo La Rocca
+Private Boxing Zürich
+giacomo@privateboxingzurich.ch
+076 844 11 10
+@giacomojaf</div>
+    </div>
+  </div>
+
+  <!-- PRIORITÄT 1 -->
+  <div class="section-label">⭐ Priorität 1 — Altstetten</div>
+  <div class="gym-grid">
+    <div class="gym-card">
+      <div class="gym-num">1</div>
+      <div><div class="gym-name">Klub der Sportfreunde</div><div class="gym-location">Hohlstrasse 506, 8048 Zürich</div></div>
+      <div class="gym-email"><a href="mailto:info@klubdersportfreunde.ch">info@klubdersportfreunde.ch</a></div>
+    </div>
+    <div class="gym-card">
+      <div class="gym-num">2</div>
+      <div><div class="gym-name">LIONSOUL 24h Gym</div><div class="gym-location">Hardgutstrasse 16, 8048 Zürich</div></div>
+      <div class="gym-email"><a href="mailto:info@lionsoul.ch">info@lionsoul.ch</a></div>
+    </div>
+    <div class="gym-card">
+      <div class="gym-num">3</div>
+      <div><div class="gym-name">Boxclub Kreis 9</div><div class="gym-location">Schulhaus Kappeli, Zürich Altstetten</div></div>
+      <div class="gym-email"><a href="mailto:bureau@boxclubkreisneun.ch">bureau@boxclubkreisneun.ch</a></div>
+    </div>
+    <div class="gym-card">
+      <div class="gym-num">4</div>
+      <div><div class="gym-name">360 Martial Arts</div><div class="gym-location">Albisriederstrasse 226, Zürich</div></div>
+      <div class="gym-email"><a href="mailto:info@360martialarts.ch">info@360martialarts.ch</a></div>
+    </div>
+    <div class="gym-card">
+      <div class="gym-num">5</div>
+      <div><div class="gym-name">Kickboxing & Top Karate</div><div class="gym-location">Hohlstrasse 534, Zürich</div></div>
+      <div class="gym-email"><a href="mailto:info@kickboxing-zh.ch">info@kickboxing-zh.ch</a></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PRIORITÄT 2 -->
+  <div class="section-label">🥈 Priorität 2 — Schlieren</div>
+  <div class="gym-grid">
+    <div class="gym-card">
+      <div class="gym-num">6</div>
+      <div><div class="gym-name">David Gym ZH-West</div><div class="gym-location">Zürcherstrasse 113, 8952 Schlieren</div></div>
+      <div class="gym-email"><a href="mailto:info@davidgymzhwest.ch">info@davidgymzhwest.ch</a></div>
+    </div>
+    <div class="gym-card">
+      <div class="gym-num">7</div>
+      <div><div class="gym-name">SPARTA Academy</div><div class="gym-location">Lättenstrasse 37, 8952 Schlieren</div></div>
+      <div class="gym-email"><a href="mailto:info@sparta-academy.ch">info@sparta-academy.ch</a></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- BACKUP -->
+  <div class="section-label">📋 Backup</div>
+  <div class="gym-grid">
+    <div class="gym-card">
+      <div class="gym-num">8</div>
+      <div><div class="gym-name">IMPACT Martial Arts</div><div class="gym-location">Josefstrasse 92, 8005 Zürich</div></div>
+      <div class="gym-email"><a href="mailto:support@impact-martialarts.com">support@impact-martialarts.com</a></div>
+    </div>
+    <div class="gym-card">
+      <div class="gym-num">9</div>
+      <div><div class="gym-name">Boxclub Sportring</div><div class="gym-location">Ankerstrasse 38, 8004 Zürich</div></div>
+      <div class="gym-email"><a href="mailto:mathis8004@hispeed.ch">mathis8004@hispeed.ch</a></div>
+    </div>
+    <div class="gym-card">
+      <div class="gym-num">10</div>
+      <div><div class="gym-name">MKC Kickboxing Academy</div><div class="gym-location">Birmensdorferstrasse 94, 8003 Zürich</div></div>
+      <div class="gym-email"><a href="mailto:mkc@kickboxing.ch">mkc@kickboxing.ch</a></div>
+    </div>
+  </div>
+
+  <div class="footer">Private Boxing Zürich · <span>@giacomojaf</span> · giacomo@privateboxingzurich.ch · 076 844 11 10</div>
+
+</div>
+</body>
+</html>

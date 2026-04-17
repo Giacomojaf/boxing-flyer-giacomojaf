@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SPORTERA 360° – Overview</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page { size: A4; margin: 8mm 10mm; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #111;
+    padding: 28px 36px;
+    max-width: 820px;
+    margin: 0 auto;
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 3px solid #111;
+  }
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+    color: #111;
+  }
+  .logo span { color: #cc2200; }
+  .logo-sub { font-size: 10px; font-weight: 600; color: #999; letter-spacing: 0.10em; text-transform: uppercase; margin-top: 2px; }
+  .doc-meta { text-align: right; font-size: 10px; font-weight: 600; color: #bbb; }
+
+  /* INTRO */
+  .intro {
+    background: #fdf2f0;
+    border-left: 4px solid #cc2200;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin-bottom: 14px;
+    font-size: 11px;
+    color: #333;
+    line-height: 1.65;
+  }
+
+  /* SECTION HEADERS */
+  h2 {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #cc2200;
+    margin-bottom: 7px;
+    padding-bottom: 4px;
+    border-bottom: 1.5px solid #f0ddd9;
+    margin-top: 14px;
+  }
+
+  /* 3-COL GRID */
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  /* 2-COL GRID */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .card {
+    background: #fafafa;
+    border: 1.5px solid #eee;
+    border-radius: 7px;
+    padding: 9px 11px;
+  }
+  .card.gold { background: #fdf9f0; border-color: #f0d8a0; }
+
+  .card-title {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #cc2200;
+    margin-bottom: 4px;
+  }
+  .card-title.green { color: #2a7a50; }
+  .card-title.gold { color: #b07000; }
+
+  .card-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 15px;
+    letter-spacing: 0.04em;
+    color: #111;
+    margin-bottom: 3px;
+  }
+  .card-name span { color: #cc2200; }
+
+  .card p {
+    font-size: 11px;
+    color: #555;
+    line-height: 1.55;
+    margin-bottom: 3px;
+  }
+  .card p:last-child { margin-bottom: 0; }
+
+  ul.dots {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  ul.dots li {
+    font-size: 11px;
+    color: #444;
+    padding-left: 13px;
+    position: relative;
+    line-height: 1.5;
+  }
+  ul.dots li::before { content: '→'; position: absolute; left: 0; color: #cc2200; font-weight: 800; font-size: 11px; }
+  ul.dots.green li::before { color: #2a7a50; content: '✓'; }
+
+  /* PRO/CON */
+  .procon {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+  .pro { background: #f0faf4; border: 1.5px solid #b8e0c8; border-radius: 7px; padding: 9px 11px; }
+  .con { background: #fdf2f0; border: 1.5px solid #f0c4bb; border-radius: 7px; padding: 9px 11px; }
+  .pro .label { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #2a7a50; margin-bottom: 6px; }
+  .con .label { font-size: 9px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: #cc2200; margin-bottom: 6px; }
+
+  /* VERDICT */
+  .verdict {
+    background: #111;
+    border-radius: 7px;
+    padding: 10px 14px;
+    margin-bottom: 8px;
+  }
+  .verdict-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 4px; }
+  .verdict p { font-size: 11px; color: rgba(255,255,255,0.75); line-height: 1.6; }
+
+  /* COLORS */
+  .color-row { display: flex; gap: 8px; margin-bottom: 8px; }
+  .color-item {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fafafa;
+    border: 1.5px solid #eee;
+    border-radius: 7px;
+    padding: 8px 10px;
+  }
+  .color-item.winner { background: #fdf9f0; border-color: #f0d8a0; }
+  .swatch { width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0; border: 1.5px solid rgba(0,0,0,0.10); }
+  .color-name { font-size: 10px; font-weight: 800; color: #111; margin-bottom: 2px; }
+  .color-desc { font-size: 9px; color: #888; line-height: 1.4; }
+
+  /* PLACEHOLDER */
+  .placeholder {
+    background: #fff8e8;
+    border: 1.5px dashed #f0a030;
+    border-radius: 6px;
+    padding: 7px 12px;
+    font-size: 10px;
+    color: #b07020;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  /* START BOX */
+  .start-box {
+    background: #111;
+    border-radius: 8px;
+    padding: 12px 18px;
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .start-label { font-size: 9px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 3px; }
+  .start-date { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.06em; color: #fff; }
+  .start-date span { color: #cc2200; }
+  .start-motto { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.35); font-style: italic; text-align: right; text-transform: uppercase; letter-spacing: 0.06em; line-height: 1.7; }
+
+  /* FOOTER */
+  .footer {
+    margin-top: 14px;
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+    font-size: 9px;
+    color: #bbb;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media print {
+    body { padding: 0; }
+    .intro, .grid-3, .grid-2, .procon, .verdict, .color-row, .start-box, h2, .card, .pro, .con { page-break-inside: avoid; }
+    h2 { page-break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div>
+    <div class="logo">SPORTERA <span>360°</span></div>
+    <div class="logo-sub">Familie La Rocca · Kanton Zürich · Overview Sheet</div>
+  </div>
+  <div class="doc-meta">April 2026<br>Vertraulich</div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  Leistungsorientierte Sportakademie im Kanton Zürich. Verbindet <strong>Fussball, Athletik und Leistungsanalyse</strong> in einem strukturierten System für junge Athleten ab 10 Jahren. Ergänzende Struktur zum Vereinsfussball: individuelle Förderung, klare Führung, messbarer Fortschritt.
+</div>
+
+<!-- GRÜNDER -->
+<h2>Gründer</h2>
+<div class="grid-3">
+  <div class="card">
+    <div class="card-title">Analyse & Struktur</div>
+    <div class="card-name">Angelo La Rocca</div>
+    <p>Strateg und Vater. Jahrelange Erfahrung im Nachwuchssport. Verantwortlich für Struktur, Planung und Leistungsanalyse.</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Athletik & Boxing</div>
+    <div class="card-name">Giacomo La Rocca</div>
+    <p>Lizenzierter Privatboxtrainer (Private Boxing Zürich). Körperliche und mentale Belastbarkeit. Ausdauer, Kraft, Explosivität.</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Football</div>
+    <div class="card-name">Giovanni La Rocca</div>
+    <p>Aktiver Fussballer bei Juventus Zürich und Privattrainer mit eigener Fussballschule. Technik, Spielverständnis, Abschluss. Direkter Zugang zu Nachwuchsspielern im Kanton Zürich.</p>
+  </div>
+</div>
+
+<!-- KONZEPT -->
+<h2>Trainingskonzept</h2>
+<div class="grid-3">
+  <div class="card">
+    <div class="card-title green">⚽ Fussball</div>
+    <p>Technik, Spielverständnis und Entscheidungsverhalten. Praxisnah und individuell.</p>
+  </div>
+  <div class="card">
+    <div class="card-title green">🥊 Athletik</div>
+    <p>Ausdauer, Kraft, Explosivität. Ergänzt durch Boxing-Elemente für Reaktion und mentale Stärke.</p>
+  </div>
+  <div class="card">
+    <div class="card-title green">📊 Analyse</div>
+    <p>Reports und Videoanalyse. Fortschritt wird messbar und sichtbar gemacht.</p>
+  </div>
+</div>
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">Trainingsformat</div>
+    <p>1:1 · 1:2 · Kleingruppen bis 4 Athleten. Hohe Intensität, gezielte Individualförderung.</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Zielgruppe</div>
+    <ul class="dots">
+      <li>Nachwuchsspieler ab 10 Jahren</li>
+      <li>Spieler die zu wenig gefördert werden</li>
+      <li>Drop-outs aus Leistungszentren</li>
+      <li>Athleten im Reha-Prozess</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PAKETE / ORT -->
+<h2>Pakete & Standort</h2>
+<div class="placeholder">⚠ Preise und Pakete folgen, wird ergänzt sobald definiert.</div>
+<div class="placeholder">⚠ Trainingsort folgt, wird ergänzt sobald Raummiete fixiert.</div>
+
+<!-- ANALYSE -->
+<h2>Stärken & Herausforderungen</h2>
+<div class="procon">
+  <div class="pro">
+    <div class="label">Stärken</div>
+    <ul class="dots green">
+      <li>Kombination Fussball + Boxing einzigartig im Markt</li>
+      <li>Familiengeschichte authentisch und glaubwürdig</li>
+      <li>Giacomo mit laufendem Business gibt sofort Credibility</li>
+      <li>Marktlücke real, Vereine können keine Individualförderung bieten</li>
+      <li>Skalierbar ohne grosses Startkapital</li>
+      <li>Giovanni's Fussballschule und Netzwerk bei Juventus Zürich direkt nutzbar</li>
+    </ul>
+  </div>
+  <div class="con">
+    <div class="label">Herausforderungen</div>
+    <ul class="dots">
+      <li>Zielgruppe zu breit, zu Beginn fokussieren</li>
+      <li>Kein Anmeldeprozess definiert</li>
+      <li>Preise noch offen</li>
+      <li>Messbarkeit konkret ausformulieren</li>
+    </ul>
+  </div>
+</div>
+
+<!-- EMPFEHLUNGEN -->
+<h2>Empfehlungen</h2>
+<div class="grid-3">
+  <div class="card">
+    <div class="card-title">Fokus zu Beginn</div>
+    <p>Mit einer Gruppe starten: <strong>10–15 Jahre</strong>. Eltern dieser Gruppe zahlen gerne für individuelle Förderung.</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Vereinskooperationen</div>
+    <p>Direkt 2–3 Vereine kontaktieren. Sofortiger Zugang zu potenziellen Athleten.</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Messbarkeit</div>
+    <p>Monatsreport oder Athleten-Dossier einführen. Macht Fortschritt greifbar und hebt euch von Vereinen ab.</p>
+  </div>
+</div>
+
+<!-- NAMEN -->
+<h2>Namen & Branding</h2>
+<div class="grid-2">
+  <div class="card">
+    <div class="card-title">Aktueller Name</div>
+    <div class="card-name">SPORTERA <span>360°</span></div>
+    <p>Stark, aber 360° wird überstrapaziert. <strong>SPORTERA allein</strong> würde stärker wirken.</p>
+  </div>
+  <div class="card gold">
+    <div class="card-title gold">⭐ Stärkste Alternative</div>
+    <div class="card-name">La Rocca Sports Academy</div>
+    <p>Familienname gibt Verantwortung und Authentizität. Klingt nach Institution. Skaliert langfristig.</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Alternative 1</div>
+    <div class="card-name">FORMA</div>
+    <p>Form, Struktur, Entwicklung. Kurz, stark, international.</p>
+  </div>
+  <div class="card">
+    <div class="card-title">Alternative 2</div>
+    <div class="card-name">APEX Academy</div>
+    <p>Spitze, Höchstleistung. Klar positioniert im Leistungssport.</p>
+  </div>
+</div>
+
+<!-- FARBEN -->
+<h2>Farben</h2>
+<div class="color-row">
+  <div class="color-item winner">
+    <div style="display:flex;gap:4px;flex-shrink:0;">
+      <div class="swatch" style="background:#0d2150;"></div>
+      <div class="swatch" style="background:#c9a84c;"></div>
+    </div>
+    <div>
+      <div class="color-name">Navy + Gold ⭐</div>
+      <div class="color-desc">Mein Favorit. Premium, seriös. Spricht Eltern an die bereit sind zu zahlen.</div>
+    </div>
+  </div>
+  <div class="color-item">
+    <div style="display:flex;gap:4px;flex-shrink:0;">
+      <div class="swatch" style="background:#cc2200;"></div>
+      <div class="swatch" style="background:#111;"></div>
+    </div>
+    <div>
+      <div class="color-name">Rot + Schwarz (aktuell)</div>
+      <div class="color-desc">Stark und sportlich, aber sehr generisch im Sportbereich.</div>
+    </div>
+  </div>
+  <div class="color-item">
+    <div style="display:flex;gap:4px;flex-shrink:0;">
+      <div class="swatch" style="background:#333;"></div>
+      <div class="swatch" style="background:#ff6a00;"></div>
+    </div>
+    <div>
+      <div class="color-name">Anthrazit + Orange</div>
+      <div class="color-desc">Warm, aktiv. Zugänglich für alle Altersgruppen.</div>
+    </div>
+  </div>
+</div>
+
+<!-- LOGO BEISPIEL NAVY + GOLD -->
+<h2>Logo Beispiel Navy + Gold</h2>
+<div style="display:flex;gap:8px;margin-bottom:8px;">
+
+  <!-- Variante 1: Dark bg -->
+  <div style="flex:1;background:#0d2150;border-radius:8px;padding:14px 18px;display:flex;align-items:center;justify-content:center;">
+    <svg width="180" height="52" viewBox="0 0 180 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="90" cy="26" rx="88" ry="24" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+      <text x="90" y="22" font-family="'Bebas Neue', sans-serif" font-size="20" fill="white" text-anchor="middle" letter-spacing="3">SPORTERA</text>
+      <text x="90" y="36" font-family="'Bebas Neue', sans-serif" font-size="11" fill="#c9a84c" text-anchor="middle" letter-spacing="5">TRAIN · PERFORM · EVOLVE</text>
+    </svg>
+  </div>
+
+  <!-- Variante 2: White bg -->
+  <div style="flex:1;background:#fff;border:1.5px solid #eee;border-radius:8px;padding:14px 18px;display:flex;align-items:center;justify-content:center;">
+    <svg width="180" height="52" viewBox="0 0 180 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="90" cy="26" rx="88" ry="24" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+      <text x="90" y="22" font-family="'Bebas Neue', sans-serif" font-size="20" fill="#0d2150" text-anchor="middle" letter-spacing="3">SPORTERA</text>
+      <text x="90" y="36" font-family="'Bebas Neue', sans-serif" font-size="11" fill="#c9a84c" text-anchor="middle" letter-spacing="5">TRAIN · PERFORM · EVOLVE</text>
+    </svg>
+  </div>
+
+  <!-- Variante 3: Gold bg -->
+  <div style="flex:1;background:#c9a84c;border-radius:8px;padding:14px 18px;display:flex;align-items:center;justify-content:center;">
+    <svg width="180" height="52" viewBox="0 0 180 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse cx="90" cy="26" rx="88" ry="24" stroke="#0d2150" stroke-width="1.5" fill="none"/>
+      <text x="90" y="22" font-family="'Bebas Neue', sans-serif" font-size="20" fill="#0d2150" text-anchor="middle" letter-spacing="3">SPORTERA</text>
+      <text x="90" y="36" font-family="'Bebas Neue', sans-serif" font-size="11" fill="#0d2150" text-anchor="middle" letter-spacing="5">TRAIN · PERFORM · EVOLVE</text>
+    </svg>
+  </div>
+
+</div>
+
+<!-- VERDICT -->
+<div class="verdict">
+  <div class="verdict-label">Gesamteinschätzung</div>
+  <p>Starkes Konzept mit echter Marktlücke. Die Kombination aus Fussball, Boxing und Analyse macht kaum jemand so strukturiert. Die Familiengeschichte ist authentisch, das spüren Eltern. Wenn ihr die ersten 5–10 Athleten wirklich gut entwickelt, spricht sich das in der Fussballcommunity Zürich schnell rum. Mundpropaganda ist in diesem Umfeld alles. <strong style="color:rgba(255,255,255,0.9);">Zukunft: Ja.</strong></p>
+</div>
+
+<!-- START -->
+<div class="start-box">
+  <div>
+    <div class="start-label">Operativer Start</div>
+    <div class="start-date">1. JUNI <span>2026</span></div>
+  </div>
+  <div class="start-motto">Struktur führt.<br>Disziplin formt.<br>Entwicklung folgt.</div>
+</div>
+
+<div class="footer">
+  <span>SPORTERA 360° · Familie La Rocca · Kanton Zürich</span>
+  <span>© 2026 · Vertraulich</span>
+</div>
+
+</body>
+</html>

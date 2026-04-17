@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Private Boxing Zürich – Giacomo</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page { size: A4 landscape; margin: 0; }
+
+  body {
+    width: 297mm;
+    height: 210mm;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    background: #08152a;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .canvas {
+    width: 297mm;
+    height: 210mm;
+    position: relative;
+    display: flex;
+  }
+
+  /* ── FOTO LINKS ── */
+  .bg-photo {
+    position: absolute;
+    inset: 0;
+    background: url('video-frame.jpg') center center / cover no-repeat;
+    z-index: 0;
+  }
+
+  /* ── OVERLAY ── */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg,
+        rgba(8,21,42,0.98) 0%,
+        rgba(8,21,42,0.92) 40%,
+        rgba(8,21,42,0.60) 65%,
+        rgba(8,21,42,0.20) 85%,
+        transparent 100%
+      ),
+      linear-gradient(to top, rgba(5,15,50,0.90) 0%, transparent 30%);
+    z-index: 1;
+  }
+
+  /* ── DEKO ── */
+  .accent-line {
+    position: absolute; top: 0; left: 14mm;
+    width: 0.8mm; height: 100%;
+    background: linear-gradient(to bottom, transparent 5%, #3a8fff 25%, #7ec8ff 65%, transparent 95%);
+    z-index: 5; opacity: 0.50;
+  }
+  .frame {
+    position: absolute; inset: 5mm;
+    border: 0.5mm solid rgba(126,200,255,0.18);
+    border-radius: 2mm;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .frame::before, .frame::after {
+    content: '';
+    position: absolute;
+    width: 10mm; height: 10mm;
+    border-color: #7ec8ff;
+    border-style: solid;
+    opacity: 0.80;
+  }
+  .frame::before { top:-0.5mm; left:-0.5mm; border-width:1mm 0 0 1mm; border-radius:1mm 0 0 0; }
+  .frame::after  { bottom:-0.5mm; right:-0.5mm; border-width:0 1mm 1mm 0; border-radius:0 0 1mm 0; }
+
+  .glow-bar {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2.5mm;
+    background: linear-gradient(90deg, transparent 3%, #1e60cc 25%, #7ec8ff 50%, #1e60cc 75%, transparent 97%);
+    z-index: 10;
+    box-shadow: 0 -2px 8px rgba(126,200,255,0.50);
+  }
+
+  /* ── CONTENT ── */
+  .content {
+    position: absolute;
+    top: 0; left: 0;
+    width: 155mm; height: 100%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    padding: 12mm 12mm 10mm 20mm;
+  }
+
+  /* TOP */
+  .location-pill {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+    color: #fff;
+    font-size: 8pt;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+  }
+  .dot {
+    width: 2mm; height: 2mm;
+    background: #7ec8ff;
+    border-radius: 50%;
+    box-shadow: 0 0 3px #7ec8ff;
+    flex-shrink: 0;
+  }
+
+  /* MIDDLE */
+  .middle {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5mm;
+  }
+
+  .headline { line-height: 0.88; }
+  .hl-main {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52pt;
+    color: #fff;
+    display: block;
+    letter-spacing: 0.04em;
+  }
+  .hl-accent { color: #7ec8ff; }
+
+  .divider {
+    width: 18mm; height: 0.8mm;
+    background: linear-gradient(90deg, #7ec8ff, transparent);
+  }
+
+  .tagline {
+    font-size: 11pt;
+    font-weight: 700;
+    color: rgba(200,232,255,0.85);
+    line-height: 1.5;
+  }
+
+  .benefit-list { display: flex; flex-direction: column; gap: 2.5mm; }
+  .benefit-item {
+    font-size: 10pt;
+    font-weight: 700;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.9);
+  }
+  .benefit-item span { color: #7ec8ff; margin-right: 2mm; }
+
+  /* BOTTOM */
+  .bottom { display: flex; flex-direction: column; gap: 3mm; }
+
+  .cta-main {
+    background: linear-gradient(100deg, #1a65d6 0%, #0e3f9a 100%);
+    border: 0.5mm solid rgba(126,200,255,0.55);
+    border-radius: 3mm;
+    padding: 5mm 7mm;
+    text-align: center;
+    box-shadow: 0 3mm 10mm rgba(30,100,220,0.55);
+  }
+  .cta-top-text {
+    font-size: 7pt; font-weight: 800;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: #c8e8ff; margin-bottom: 1mm;
+  }
+  .cta-main-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22pt; letter-spacing: 0.05em;
+    color: #fff; line-height: 1;
+  }
+  .cta-main-text span { color: #7ec8ff; }
+
+  .bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .tag-row { display: flex; gap: 2mm; }
+  .tag {
+    font-size: 7pt; font-weight: 700;
+    padding: 1.5mm 4mm; border-radius: 50mm;
+    background: rgba(255,255,255,0.10);
+    border: 0.4mm solid rgba(255,255,255,0.28);
+    color: #fff;
+  }
+  .tag-blue {
+    background: rgba(58,143,255,0.26);
+    border: 0.4mm solid rgba(126,200,255,0.55);
+  }
+  .handle {
+    color: #7ec8ff; font-size: 9pt;
+    font-weight: 800; letter-spacing: 0.02em;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+
+  <div class="bg-photo"></div>
+  <div class="overlay"></div>
+  <div class="accent-line"></div>
+  <div class="frame"></div>
+  <div class="glow-bar"></div>
+
+  <div class="content">
+
+    <div class="location-pill">
+      <span class="dot"></span>
+      Zürich · Privates Boxing Training
+    </div>
+
+    <div class="middle">
+      <div class="headline">
+        <span class="hl-main">1:1</span>
+        <span class="hl-main"><span class="hl-accent">BOXING</span></span>
+        <span class="hl-main">TRAINING</span>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="tagline">Therapie war gestern.</div>
+
+      <div class="benefit-list">
+        <div class="benefit-item"><span>✓</span>Alle Level — von Anfänger bis Fortgeschrittene</div>
+        <div class="benefit-item"><span>✓</span>Im Gym, draussen oder online</div>
+        <div class="benefit-item"><span>✓</span>Flexibel in Ort und Zeit</div>
+        <div class="benefit-item"><span>✓</span>Persönliches 1:1 Coaching</div>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <div class="cta-main">
+        <div class="cta-top-text">Plätze begrenzt — jetzt Termin sichern</div>
+        <div class="cta-main-text">DM <span>@giacomojaf</span> FÜR TERMIN</div>
+      </div>
+      <div class="bottom-row">
+        <div class="tag-row">
+          <div class="tag tag-blue">🥊 1:1 Training</div>
+          <div class="tag">Alle Level</div>
+          <div class="tag">Zürich</div>
+        </div>
+        <div class="handle">@giacomojaf</div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

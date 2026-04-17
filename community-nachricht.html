@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community Nachricht</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #08152a;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 24px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(126,200,255,0.15);
+    border-radius: 16px;
+    padding: 36px 40px;
+    max-width: 540px;
+    width: 100%;
+  }
+
+  .message {
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(200,232,255,0.90);
+    line-height: 1.85;
+    white-space: pre-line;
+  }
+
+  .message a {
+    color: #7ec8ff;
+    text-decoration: none;
+  }
+
+  .copy-btn {
+    margin-top: 28px;
+    width: 100%;
+    background: linear-gradient(100deg, #1a65d6, #0e3f9a);
+    border: 1px solid rgba(126,200,255,0.30);
+    border-radius: 10px;
+    padding: 14px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+  .copy-btn:hover { opacity: 0.85; }
+  .copy-btn.copied {
+    background: linear-gradient(100deg, #2a8a50, #1a6a40);
+  }
+
+  .lang-btn {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(126,200,255,0.20);
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(200,232,255,0.50);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .lang-btn.active {
+    background: rgba(26,101,214,0.30);
+    border-color: rgba(126,200,255,0.50);
+    color: #7ec8ff;
+  }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div style="display:flex;gap:10px;margin-bottom:20px;">
+    <button class="lang-btn active" id="btnDE" onclick="showLang('de')">Deutsch</button>
+    <button class="lang-btn" id="btnEN" onclick="showLang('en')">English</button>
+  </div>
+
+  <div class="message" id="msg-de">Hallo zusammen 💙
+
+Würde mich mega freuen wenn ihr mir ein Google Review schreiben könntet für das Training mit mir (Giacomo) 💪 Übertreiben ist erlaubt ;)
+
+https://g.page/r/CQQxx1VGdMMcEBM/review
+
+Vielen Dank 💙
+
+Ausserdem wandle ich diese Gruppe in ein Boxing Network um. Fühlt euch frei euch gegenseitig über Sparrings, Trainings und alles rund ums Boxen auszutauschen. Ihr könnt auch gerne Freunde einladen die Lust haben mitzumachen.
+
+Mein Ziel ist es einen Ort zu schaffen wo man sich offenen Sparrings anschliessen, gemeinsame Trainings organisieren und einfach Teil einer aktiven Boxcommunity in Zürich sein kann, unabhängig vom Level 💙🥊</div>
+
+  <div class="message" id="msg-en" style="display:none;">Hey everyone 💙
+
+Would mean a lot to me if you could write me a quick Google Review for the training with me (Giacomo) 💪 Exaggerating is allowed ;)
+
+https://g.page/r/CQQxx1VGdMMcEBM/review
+
+Thank you so much 💙
+
+I'm also turning this group into a Boxing Network. Feel free to talk to each other about sparrings, training sessions and everything boxing related. You're also welcome to invite friends who want to join.
+
+My goal is to create a place where people can join open sparrings, organise trainings together and simply be part of an active boxing community in Zurich, regardless of level 💙🥊</div>
+
+  <button class="copy-btn" id="copyBtn" onclick="copyText()">Nachricht kopieren</button>
+</div>
+
+<script>
+  let currentLang = 'de';
+
+  function showLang(lang) {
+    currentLang = lang;
+    document.getElementById('msg-de').style.display = lang === 'de' ? 'block' : 'none';
+    document.getElementById('msg-en').style.display = lang === 'en' ? 'block' : 'none';
+    document.getElementById('btnDE').classList.toggle('active', lang === 'de');
+    document.getElementById('btnEN').classList.toggle('active', lang === 'en');
+  }
+
+  function copyText() {
+    const id = currentLang === 'de' ? 'msg-de' : 'msg-en';
+    const text = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('copyBtn');
+      btn.textContent = 'Kopiert ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Nachricht kopieren';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+</script>
+
+</body>
+</html>

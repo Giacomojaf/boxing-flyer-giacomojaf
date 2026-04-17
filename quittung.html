@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quittung – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page { size: A4; margin: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #111;
+    padding: 60px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+    padding-bottom: 24px;
+    border-bottom: 3px solid #08152a;
+  }
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 0.06em;
+    color: #08152a;
+    line-height: 1;
+  }
+  .logo span { color: #1a65d6; }
+  .logo-sub {
+    font-size: 12px;
+    font-weight: 600;
+    color: #999;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .doc-title {
+    text-align: right;
+  }
+  .doc-title h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    letter-spacing: 0.06em;
+    color: #08152a;
+    line-height: 1;
+  }
+  .doc-title .doc-nr {
+    font-size: 13px;
+    font-weight: 600;
+    color: #999;
+    margin-top: 4px;
+  }
+
+  /* INFO GRID */
+  .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-bottom: 48px;
+  }
+  .info-block label {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #1a65d6;
+    display: block;
+    margin-bottom: 8px;
+  }
+  .info-block p {
+    font-size: 15px;
+    font-weight: 600;
+    color: #111;
+    line-height: 1.7;
+  }
+
+  /* TABLE */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 32px;
+  }
+  thead tr {
+    background: #08152a;
+    color: #fff;
+  }
+  thead th {
+    padding: 12px 16px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    text-align: left;
+  }
+  thead th:last-child { text-align: right; }
+  tbody tr {
+    border-bottom: 1px solid #eee;
+  }
+  tbody tr:nth-child(even) { background: #f9f9f9; }
+  tbody td {
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333;
+  }
+  tbody td:last-child {
+    text-align: right;
+    font-weight: 700;
+    color: #111;
+  }
+
+  /* TOTAL */
+  .total-block {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 48px;
+  }
+  .total-box {
+    background: #08152a;
+    color: #fff;
+    border-radius: 10px;
+    padding: 20px 32px;
+    min-width: 240px;
+  }
+  .total-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #7ec8ff;
+    margin-bottom: 6px;
+  }
+  .total-amount {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+  }
+  .total-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 4px;
+  }
+
+  /* PAYMENT */
+  .payment-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #e6f9f0;
+    border: 1.5px solid #2ecc71;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 800;
+    color: #1a9e55;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 48px;
+  }
+  .payment-dot {
+    width: 8px; height: 8px;
+    background: #2ecc71;
+    border-radius: 50%;
+  }
+
+  /* FOOTER */
+  .footer {
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer p {
+    font-size: 12px;
+    color: #bbb;
+    font-weight: 500;
+  }
+  .footer .instagram {
+    font-size: 12px;
+    font-weight: 700;
+    color: #1a65d6;
+  }
+
+  @media print {
+    body { padding: 40px; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <div class="header">
+    <div>
+      <div class="logo">PRIVATE <span>BOXING</span> ZÜRICH</div>
+      <div class="logo-sub">Giacomo La Rocca · Persönliches Boxtraining</div>
+    </div>
+    <div class="doc-title">
+      <h1>QUITTUNG</h1>
+      <div class="doc-nr">Nr. 2025-001 · 13. April 2026</div>
+    </div>
+  </div>
+
+  <!-- INFO -->
+  <div class="info-grid">
+    <div class="info-block">
+      <label>Trainer</label>
+      <p>Giacomo La Rocca<br>Private Boxing Zürich<br>Zürich, Schweiz<br>@giacomojaf</p>
+    </div>
+    <div class="info-block">
+      <label>Kunde</label>
+      <p>Miran & Cigdem<br>Zürich, Schweiz</p>
+    </div>
+    <div class="info-block">
+      <label>Datum</label>
+      <p>13. April 2026</p>
+    </div>
+    <div class="info-block">
+      <label>Zahlungsmethode</label>
+      <p>Bar / Überweisung</p>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <table>
+    <thead>
+      <tr>
+        <th>Pos.</th>
+        <th>Beschreibung</th>
+        <th>Abo Anzahl</th>
+        <th>Betrag</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1</td>
+        <td>Abo 1:1 Training<br><span style="font-size:12px;color:#999;">Persönliches Coaching · Private Boxing Zürich</span></td>
+        <td>10</td>
+        <td>CHF 550.–</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TOTAL -->
+  <div class="total-block">
+    <div class="total-box">
+      <div class="total-label">Gesamtbetrag</div>
+      <div class="total-amount">CHF 550.–</div>
+      <div class="total-note">inkl. MwSt. (sofern anwendbar)</div>
+    </div>
+  </div>
+
+  <!-- PAYMENT STATUS -->
+  <div class="payment-status">
+    <div class="payment-dot"></div>
+    Bezahlt
+  </div>
+
+
+</body>
+</html>
