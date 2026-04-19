@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abo System Intern – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #08152a;
+    color: #fff;
+    padding: 48px 36px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(126,200,255,0.15);
+  }
+  .header-left h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 42px;
+    letter-spacing: 0.06em;
+    color: #fff;
+    line-height: 1;
+  }
+  .header-left p {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.35);
+    margin-top: 6px;
+  }
+  .intern-badge {
+    background: rgba(255,100,100,0.15);
+    border: 1px solid rgba(255,100,100,0.30);
+    border-radius: 6px;
+    color: #ff8080;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 6px 14px;
+  }
+
+  .section-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: #7ec8ff;
+    margin-bottom: 16px;
+    opacity: 0.70;
+  }
+
+  /* HAUPTTABELLE */
+  .main-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+  }
+  .main-table thead tr {
+    background: rgba(255,255,255,0.05);
+  }
+  .main-table th {
+    padding: 12px 16px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(126,200,255,0.60);
+    text-align: left;
+    border-bottom: 1px solid rgba(126,200,255,0.12);
+  }
+  .main-table td {
+    padding: 14px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.70);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .main-table td:first-child { font-weight: 800; color: #fff; }
+  .main-table td.blue { color: #7ec8ff; font-weight: 800; }
+  .main-table td.green { color: #4caf80; font-weight: 800; }
+  .main-table td.red { color: #ff8080; font-weight: 700; }
+  .main-table td.gold { color: #f0a030; font-weight: 800; }
+  .main-table tr.highlight td {
+    background: rgba(26,101,214,0.10);
+    border-bottom: 1px solid rgba(26,101,214,0.15);
+  }
+
+  /* RENTABILITÄT */
+  .rent-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 40px;
+  }
+  .rent-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(126,200,255,0.08);
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+  }
+  .rent-box.green { border-color: rgba(76,175,128,0.25); background: rgba(76,175,128,0.06); }
+  .rent-box.blue { border-color: rgba(26,101,214,0.30); background: rgba(26,101,214,0.08); }
+  .rent-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(126,200,255,0.50);
+    margin-bottom: 8px;
+  }
+  .rent-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: #fff;
+    line-height: 1;
+  }
+  .rent-val.green { color: #4caf80; }
+  .rent-val.blue { color: #7ec8ff; }
+  .rent-sub {
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.30);
+    margin-top: 4px;
+  }
+
+  /* SZENARIEN */
+  .szenario-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+  }
+  .szenario-table thead tr { background: rgba(255,255,255,0.05); }
+  .szenario-table th {
+    padding: 11px 14px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(126,200,255,0.55);
+    text-align: left;
+    border-bottom: 1px solid rgba(126,200,255,0.10);
+  }
+  .szenario-table td {
+    padding: 12px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.65);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .szenario-table td:first-child { font-weight: 800; color: #fff; }
+  .szenario-table td.green { color: #4caf80; font-weight: 800; }
+  .szenario-table td.blue { color: #7ec8ff; font-weight: 800; }
+  .szenario-table tr.best td {
+    background: rgba(76,175,128,0.07);
+    border-bottom: 1px solid rgba(76,175,128,0.12);
+  }
+
+  /* GRUPPEN */
+  .gruppen-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+  }
+  .gruppen-table thead tr { background: rgba(255,255,255,0.05); }
+  .gruppen-table th {
+    padding: 11px 14px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(126,200,255,0.55);
+    text-align: left;
+    border-bottom: 1px solid rgba(126,200,255,0.10);
+  }
+  .gruppen-table td {
+    padding: 12px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.65);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .gruppen-table td:first-child { font-weight: 800; color: #fff; }
+  .gruppen-table td.green { color: #4caf80; font-weight: 800; }
+  .gruppen-table td.blue { color: #7ec8ff; font-weight: 800; }
+
+  /* REGELN */
+  .regeln-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 40px;
+  }
+  .regel-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(126,200,255,0.08);
+    border-radius: 10px;
+    padding: 16px 18px;
+  }
+  .regel-title {
+    font-size: 11px;
+    font-weight: 800;
+    color: #7ec8ff;
+    margin-bottom: 6px;
+  }
+  .regel-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(200,232,255,0.55);
+    line-height: 1.7;
+  }
+
+  .footer {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(126,200,255,0.08);
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.15);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <h1>ABO SYSTEM · INTERN</h1>
+    <p>Private Boxing Zürich · Giacomo La Rocca · Nur für internen Gebrauch</p>
+  </div>
+  <div class="intern-badge">Intern · Nicht für Kunden</div>
+</div>
+
+<!-- PREISÜBERSICHT -->
+<div class="section-label">Preisübersicht · Vollständig</div>
+<table class="main-table">
+  <thead>
+    <tr>
+      <th>Paket</th>
+      <th>Sessions/Mt</th>
+      <th>Kundenpreis</th>
+      <th>Einzelpreis Total</th>
+      <th>Pro Session</th>
+      <th>Raummiete/Mt</th>
+      <th>Reineinkommen/Mt</th>
+      <th>Marge/Session</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Einzelstunde</td>
+      <td>1</td>
+      <td class="blue">CHF 100</td>
+      <td>—</td>
+      <td>CHF 100</td>
+      <td class="red">CHF 40</td>
+      <td class="green">CHF 60</td>
+      <td class="gold">CHF 60</td>
+    </tr>
+    <tr>
+      <td>Starter</td>
+      <td>4x</td>
+      <td class="blue">CHF 280</td>
+      <td>CHF 320</td>
+      <td>CHF 70</td>
+      <td class="red">CHF 160</td>
+      <td class="green">CHF 120</td>
+      <td class="gold">CHF 30</td>
+    </tr>
+    <tr class="highlight">
+      <td>Standard ★</td>
+      <td>8x</td>
+      <td class="blue">CHF 520</td>
+      <td>CHF 640</td>
+      <td>CHF 65</td>
+      <td class="red">CHF 320</td>
+      <td class="green">CHF 200</td>
+      <td class="gold">CHF 25</td>
+    </tr>
+    <tr>
+      <td>Premium</td>
+      <td>12x</td>
+      <td class="blue">CHF 720</td>
+      <td>CHF 960</td>
+      <td>CHF 60</td>
+      <td class="red">CHF 480</td>
+      <td class="green">CHF 240</td>
+      <td class="gold">CHF 20</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- KEY METRICS -->
+<div class="section-label">Kennzahlen</div>
+<div class="rent-grid">
+  <div class="rent-box">
+    <div class="rent-label">Raummiete/Session</div>
+    <div class="rent-val">CHF 40</div>
+    <div class="rent-sub">Maximalkosten</div>
+  </div>
+  <div class="rent-box">
+    <div class="rent-label">Break-Even Kunden</div>
+    <div class="rent-val blue">3</div>
+    <div class="rent-sub">Standard Abo</div>
+  </div>
+  <div class="rent-box green">
+    <div class="rent-label">Ziel Monatseinkommen</div>
+    <div class="rent-val green">CHF 2'500</div>
+    <div class="rent-sub">8–10 Kunden nötig</div>
+  </div>
+  <div class="rent-box blue">
+    <div class="rent-label">Vollbetrieb (12 Kunden)</div>
+    <div class="rent-val blue">CHF 3'360</div>
+    <div class="rent-sub">netto nach Raummiete</div>
+  </div>
+</div>
+
+<!-- SZENARIEN -->
+<div class="section-label">Szenarien · Mehrere Kunden</div>
+<table class="szenario-table">
+  <thead>
+    <tr>
+      <th>Szenario</th>
+      <th>Kunden</th>
+      <th>Paket Mix</th>
+      <th>Einnahmen/Mt</th>
+      <th>Raummiete/Mt</th>
+      <th>Reineinkommen/Mt</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Einstieg</td>
+      <td>3</td>
+      <td>Standard</td>
+      <td class="blue">CHF 1'560</td>
+      <td>CHF 960</td>
+      <td class="green">CHF 600</td>
+      <td>Aufbau</td>
+    </tr>
+    <tr>
+      <td>Aufbau</td>
+      <td>5</td>
+      <td>Standard</td>
+      <td class="blue">CHF 2'600</td>
+      <td>CHF 1'600</td>
+      <td class="green">CHF 1'000</td>
+      <td>+J+S nötig</td>
+    </tr>
+    <tr>
+      <td>Stabil</td>
+      <td>8</td>
+      <td>Mix</td>
+      <td class="blue">CHF 4'400</td>
+      <td>CHF 2'560</td>
+      <td class="green">CHF 1'840</td>
+      <td>Solide</td>
+    </tr>
+    <tr class="best">
+      <td>Vollbetrieb</td>
+      <td>12</td>
+      <td>Mix</td>
+      <td class="blue">CHF 7'200</td>
+      <td>CHF 3'840</td>
+      <td class="green">CHF 3'360</td>
+      <td>Ziel ✓</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- GRUPPENTRAINING -->
+<div class="section-label">Gruppentraining · Intern</div>
+<table class="gruppen-table">
+  <thead>
+    <tr>
+      <th>Grösse</th>
+      <th>Preis/Person</th>
+      <th>Total/Stunde</th>
+      <th>Raummiete</th>
+      <th>Reineinkommen/Stunde</th>
+      <th>vs. 1:1</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>2 Personen</td>
+      <td class="blue">CHF 50</td>
+      <td>CHF 100</td>
+      <td>CHF 40</td>
+      <td class="green">CHF 60</td>
+      <td>±0 vs. 1:1</td>
+    </tr>
+    <tr>
+      <td>3 Personen</td>
+      <td class="blue">CHF 45</td>
+      <td>CHF 135</td>
+      <td>CHF 40</td>
+      <td class="green">CHF 95</td>
+      <td>+CHF 35 vs. 1:1</td>
+    </tr>
+    <tr>
+      <td>4 Personen</td>
+      <td class="blue">CHF 40</td>
+      <td>CHF 160</td>
+      <td>CHF 40</td>
+      <td class="green">CHF 120</td>
+      <td>+CHF 60 vs. 1:1</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- REGELN -->
+<div class="section-label">Interne Regeln</div>
+<div class="regeln-grid">
+  <div class="regel-box">
+    <div class="regel-title">Zahlung</div>
+    <div class="regel-text">Zahlung zu Monatsbeginn per Banküberweisung oder TWINT. Kein Training ohne Zahlung. Bei Verzug: freundliche Erinnerung nach 3 Tagen.</div>
+  </div>
+  <div class="regel-box">
+    <div class="regel-title">Absagen</div>
+    <div class="regel-text">Absage bis 24h vorher: Session wird gutgeschrieben. Kurzfristige Absage unter 24h: Session verfallen. Keine Ausnahmen ausser Notfall.</div>
+  </div>
+  <div class="regel-box">
+    <div class="regel-title">Kündigung</div>
+    <div class="regel-text">Kündigung bis 25. des Vormonats. Keine Rückerstattung für bereits bezahlte Sessions. Keine Mindestlaufzeit.</div>
+  </div>
+  <div class="regel-box">
+    <div class="regel-title">Raummiete Optimierung</div>
+    <div class="regel-text">Kunden möglichst in Blöcken einteilen (z.B. 2 Kunden morgens, 2 nachmittags) um Raumkosten auf wenige Slots zu konzentrieren.</div>
+  </div>
+  <div class="regel-box">
+    <div class="regel-title">Akquise-Strategie</div>
+    <div class="regel-text">Erstes Training zum Kennenlernen für CHF 80 anbieten. Preisliste erst danach per WhatsApp senden. Kein öffentlicher Preisaushang. Ziel: Kunde erlebt Training zuerst, Abo-Abschluss danach.</div>
+  </div>
+</div>
+
+<div class="footer">INTERN · Private Boxing Zürich · Giacomo La Rocca · Nicht für Kunden bestimmt</div>
+
+</body>
+</html>

@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abo System – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background: rgba(8,21,42,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(126,200,255,0.12);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-logo span { color: #7ec8ff; }
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.70);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #7ec8ff; }
+  .nav-cta {
+    background: linear-gradient(100deg, #1a65d6, #0e3f9a);
+    border: 1.5px solid rgba(126,200,255,0.45);
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: box-shadow 0.2s;
+  }
+  .nav-cta:hover { box-shadow: 0 4px 20px rgba(30,100,220,0.55); }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #08152a;
+    color: #fff;
+    padding: 48px 36px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding-top: 100px;
+    margin-bottom: 56px;
+  }
+  .logo {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(126,200,255,0.50);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    letter-spacing: 0.06em;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .header-sub {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(200,232,255,0.40);
+    max-width: 500px;
+    margin: 0 auto;
+    line-height: 1.7;
+  }
+
+  /* SECTION TITLE */
+  .section-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: #7ec8ff;
+    margin-bottom: 20px;
+    opacity: 0.70;
+  }
+
+  /* PAKETE CARDS */
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 56px;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(126,200,255,0.10);
+    border-radius: 16px;
+    padding: 28px 22px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .card.popular {
+    background: rgba(26,101,214,0.12);
+    border-color: rgba(26,101,214,0.50);
+  }
+  .popular-badge {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a65d6;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 4px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .card-name {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: #7ec8ff;
+    margin-bottom: 16px;
+  }
+  .card-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.02em;
+    color: #fff;
+    line-height: 1;
+  }
+  .card-price sup {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(200,232,255,0.50);
+    vertical-align: super;
+  }
+  .card-per {
+    font-size: 15px;
+    font-weight: 800;
+    color: rgba(200,232,255,0.65);
+    margin-top: 6px;
+    margin-bottom: 20px;
+  }
+  .card-divider {
+    height: 1px;
+    background: rgba(126,200,255,0.08);
+    margin-bottom: 20px;
+  }
+
+  /* STATS ROW */
+  .stats-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .stat-box {
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px;
+    padding: 10px 12px;
+  }
+  .stat-label {
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(126,200,255,0.50);
+    margin-bottom: 4px;
+  }
+  .stat-val {
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff;
+  }
+  .stat-val.green { color: #4caf80; }
+  .stat-val.blue { color: #7ec8ff; }
+
+  /* FEATURES */
+  .features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 24px;
+    flex: 1;
+  }
+  .features li {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.60);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+  .features li::before {
+    content: '✓';
+    color: #4caf80;
+    font-weight: 800;
+    font-size: 11px;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* EINZELSTUNDE */
+  .einzelstunde {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-radius: 10px;
+    padding: 16px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 56px;
+  }
+  .einzelstunde p {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.50);
+  }
+  .einzelstunde strong {
+    font-size: 20px;
+    font-weight: 800;
+    color: rgba(200,232,255,0.70);
+  }
+
+  /* RENTABILITÄT */
+  .rentabilitaet {
+    margin-bottom: 56px;
+  }
+  .rent-intro {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(200,232,255,0.55);
+    line-height: 1.8;
+    margin-bottom: 24px;
+    max-width: 680px;
+  }
+
+  .rent-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .rent-table thead tr {
+    background: rgba(255,255,255,0.04);
+  }
+  .rent-table th {
+    padding: 11px 16px;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(126,200,255,0.60);
+    text-align: left;
+    border-bottom: 1px solid rgba(126,200,255,0.10);
+  }
+  .rent-table td {
+    padding: 12px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.65);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .rent-table td:first-child { font-weight: 800; color: #fff; }
+  .rent-table td.green { color: #4caf80; font-weight: 800; }
+  .rent-table td.blue { color: #7ec8ff; font-weight: 800; }
+  .rent-table tr.total-row td {
+    background: rgba(26,101,214,0.12);
+    border-top: 1px solid rgba(26,101,214,0.30);
+    border-bottom: none;
+    font-weight: 800;
+    color: #fff;
+  }
+  .rent-table tr.total-row td.green { color: #4caf80; }
+
+  /* HIGHLIGHT BOX */
+  .highlight {
+    background: rgba(26,101,214,0.12);
+    border: 1px solid rgba(26,101,214,0.35);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+  }
+  .hl-item { text-align: center; }
+  .hl-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: rgba(126,200,255,0.60);
+    margin-bottom: 6px;
+  }
+  .hl-val {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 36px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+  }
+  .hl-val.green { color: #4caf80; }
+  .hl-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(126,200,255,0.12);
+  }
+
+  /* ERKLÄRUNG */
+  .erklaerung {
+    margin-bottom: 40px;
+  }
+  .erklaer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .erklaer-box {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(126,200,255,0.08);
+    border-radius: 10px;
+    padding: 18px 20px;
+  }
+  .erklaer-title {
+    font-size: 11px;
+    font-weight: 800;
+    color: #7ec8ff;
+    margin-bottom: 8px;
+    letter-spacing: 0.06em;
+  }
+  .erklaer-text {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(200,232,255,0.55);
+    line-height: 1.75;
+  }
+
+  /* FOOTER */
+  .footer {
+    text-align: center;
+    padding-top: 24px;
+    border-top: 1px solid rgba(126,200,255,0.08);
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.15);
+  }
+  .footer span { color: #7ec8ff; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">PRIVATE <span>BOXING</span> ZÜRICH</a>
+  <ul class="nav-links">
+    <li><a href="/#about">Über mich</a></li>
+    <li><a href="/#offers">Angebote</a></li>
+    <li><a href="/#testimonials">Stimmen</a></li>
+    <li><a href="/#institutionen">Institutionen</a></li>
+  </ul>
+  <a href="/#booking" class="nav-cta">Termin buchen</a>
+</nav>
+
+<div class="header">
+  <div class="logo">Private Boxing Zürich</div>
+  <h1>PREISE</h1>
+  <div class="header-sub">Monatliche Trainingspakete für regelmässiges 1:1 Boxtraining. Je mehr du trainierst, desto günstiger wird jede Session.</div>
+</div>
+
+<!-- SCHNUPPERSTUNDE -->
+<div style="
+  background: linear-gradient(135deg, rgba(76,175,128,0.12) 0%, rgba(26,101,214,0.10) 100%);
+  border: 1.5px solid rgba(76,175,128,0.35);
+  border-radius: 16px;
+  padding: 28px 32px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  position: relative;
+  overflow: hidden;
+">
+  <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:rgba(76,175,128,0.06);border-radius:50%;"></div>
+  <div>
+    <div style="font-size:10px;font-weight:800;letter-spacing:0.20em;text-transform:uppercase;color:#4caf80;margin-bottom:8px;">Einstieg</div>
+    <div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:4px;">Erstes Training zum Kennenlernen</div>
+    <div style="font-size:13px;font-weight:500;color:rgba(200,232,255,0.50);">Keine Bindung · Kein Risiko · Lerne mich kennen</div>
+    <div id="schnupper-extra" style="margin-top:10px;font-size:12px;font-weight:700;color:#4caf80;">✓ Gratis Branded Bandagen inklusive</div>
+  </div>
+  <div style="text-align:right;flex-shrink:0;">
+    <div id="schnupper-price" style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#4caf80;line-height:1;" data-gym="80" data-home="60">80</div>
+    <div style="font-size:12px;font-weight:700;color:rgba(76,175,128,0.60);">CHF / Session</div>
+  </div>
+</div>
+
+<!-- TOGGLE -->
+<div style="display:flex;justify-content:center;margin-bottom:32px;">
+  <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(126,200,255,0.15);border-radius:12px;padding:6px;display:flex;gap:6px;">
+    <button id="btn-home" onclick="setMode('home')" style="padding:10px 24px;border-radius:8px;border:none;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">📍 Zuhause / Outdoor</button>
+    <button id="btn-gym" onclick="setMode('gym')" style="padding:10px 24px;border-radius:8px;border:none;background:transparent;color:rgba(200,232,255,0.50);font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">🏋️ In unserem Gym</button>
+  </div>
+</div>
+
+<!-- PAKETE -->
+<div class="section-label">Trainingspakete</div>
+<div class="cards">
+
+  <div class="card">
+    <div class="card-name">Starter</div>
+    <div class="card-price"><sup>CHF </sup><span class="price-val" data-gym="360" data-home="280">360</span></div>
+    <div class="card-per">4 Sessions</div>
+    <div class="card-divider"></div>
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-label">Pro Session</div>
+        <div class="stat-val blue" data-gym="CHF 90" data-home="CHF 70">CHF 90</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Einzelpreis</div>
+        <div class="stat-val" style="text-decoration:line-through;color:rgba(255,80,80,0.70);" data-gym="CHF 480" data-home="CHF 400">CHF 480</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Ersparnis</div>
+        <div class="stat-val green">CHF 120</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Frequenz</div>
+        <div class="stat-val">1x / Woche</div>
+      </div>
+    </div>
+    <ul class="features">
+      <li>1 Training pro Woche</li>
+
+      <li>Technik und Grundlagen</li>
+      <li>Flexible Terminwahl</li>
+    </ul>
+  </div>
+
+  <div class="card popular">
+    <div class="popular-badge">Beliebteste Wahl</div>
+    <div class="card-name">Standard</div>
+    <div class="card-price"><sup>CHF </sup><span class="price-val" data-gym="640" data-home="480">640</span></div>
+    <div class="card-per">8 Sessions</div>
+    <div class="card-divider"></div>
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-label">Pro Session</div>
+        <div class="stat-val blue" data-gym="CHF 80" data-home="CHF 60">CHF 80</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Einzelpreis</div>
+        <div class="stat-val" style="text-decoration:line-through;color:rgba(255,80,80,0.70);" data-gym="CHF 960" data-home="CHF 800">CHF 960</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Ersparnis</div>
+        <div class="stat-val green">CHF 320</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Frequenz</div>
+        <div class="stat-val">2x / Woche</div>
+      </div>
+    </div>
+    <ul class="features">
+      <li>2 Trainings pro Woche</li>
+
+      <li>Technik, Kondition, Kraft</li>
+      <li>Persönlicher Trainingsplan</li>
+      <li>Fortschrittsauswertung</li>
+      <li>Flexible Terminwahl</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="card-name">Premium</div>
+    <div class="card-price"><sup>CHF </sup><span class="price-val" data-gym="900" data-home="660">900</span></div>
+    <div class="card-per">12 Sessions</div>
+    <div class="card-divider"></div>
+    <div class="stats-row">
+      <div class="stat-box">
+        <div class="stat-label">Pro Session</div>
+        <div class="stat-val blue" data-gym="CHF 75" data-home="CHF 55">CHF 75</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Einzelpreis</div>
+        <div class="stat-val" style="text-decoration:line-through;color:rgba(255,80,80,0.70);" data-gym="CHF 1440" data-home="CHF 1200">CHF 1440</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Ersparnis</div>
+        <div class="stat-val green">CHF 540</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-label">Frequenz</div>
+        <div class="stat-val">3x / Woche</div>
+      </div>
+    </div>
+    <ul class="features">
+      <li>3 Trainings pro Woche</li>
+
+      <li>Technik, Kondition, Kraft</li>
+      <li>Persönlicher Trainingsplan</li>
+      <li>Fortschrittsauswertung</li>
+      <li>Flexible Terminwahl</li>
+      <li>Priorität bei Buchungen</li>
+      <li><strong style="color:#fff;">Branded Handschuhe inklusive bei erster Buchung</strong></li>
+    </ul>
+  </div>
+
+</div>
+
+<!-- EINZELSTUNDE -->
+<div class="einzelstunde">
+  <p>Kein Abo? Einzelstunde ohne Bindung verfügbar.</p>
+  <strong id="einzelstunde-price" data-gym="CHF 120 / Session" data-home="CHF 100 / Session">CHF 120 / Session</strong>
+</div>
+
+<!-- GRUPPENTRAINING -->
+<div class="rentabilitaet">
+  <div class="section-label">Gruppentraining</div>
+  <p class="rent-intro">Trainiere gemeinsam mit Freunden oder Bekannten. Günstiger pro Person und mehr Spass.</p>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;">
+
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(126,200,255,0.12);border-radius:14px;padding:24px 20px;text-align:center;">
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;">2 Personen</div>
+      <div class="gruppe-price" data-gym="60" data-home="50" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">50</div>
+      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;">CHF / Person</div>
+    </div>
+
+    <div style="background:rgba(26,101,214,0.14);border:1px solid rgba(26,101,214,0.45);border-radius:14px;padding:24px 20px;text-align:center;position:relative;">
+      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#1a65d6;color:#fff;font-size:9px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;padding:4px 12px;border-radius:20px;white-space:nowrap;">Beliebt</div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;">3 Personen</div>
+      <div class="gruppe-price" data-gym="55" data-home="48" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">48</div>
+      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;">CHF / Person</div>
+    </div>
+
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(126,200,255,0.12);border-radius:14px;padding:24px 20px;text-align:center;">
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;">4 Personen</div>
+      <div class="gruppe-price" data-gym="50" data-home="45" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">45</div>
+      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;">CHF / Person</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ERKLÄRUNG -->
+<div class="erklaerung">
+  <div class="section-label">Wie funktioniert das Abo?</div>
+  <div class="erklaer-grid">
+    <div class="erklaer-box">
+      <div class="erklaer-title">Monatliche Zahlung</div>
+      <div class="erklaer-text">Das Abo wird monatlich per Banküberweisung bezahlt. Die Sessions werden zu Beginn des Monats gutgeschrieben und sind 30 Tage gültig.</div>
+    </div>
+    <div class="erklaer-box">
+      <div class="erklaer-title">Flexible Buchung</div>
+      <div class="erklaer-text">Trainingszeiten werden individuell vereinbart. Die Sessions können flexibel über den Monat verteilt werden, je nach Verfügbarkeit von Trainer und Kunde.</div>
+    </div>
+  </div>
+</div>
+
+<!-- OPEN BOXING -->
+<div class="rentabilitaet">
+  <div class="section-label">Open Boxing</div>
+  <p class="rent-intro">Wenn der Trainingsraum bereits gemietet ist, können weitere Personen für ein eigenständiges Training dazukommen. Kein Coaching, einfach trainieren.</p>
+
+  <table class="rent-table">
+    <thead>
+      <tr>
+        <th>Angebot</th>
+        <th>Preis</th>
+        <th>Was ist inbegriffen</th>
+        <th>Hinweis</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Drop-in Session</td>
+        <td class="blue">CHF 30</td>
+        <td>Nutzung des Raums, eigenständiges Training</td>
+        <td>Einfach melden, wir koordinieren einen Termin</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- INSTITUTIONEN -->
+<div class="rentabilitaet">
+  <div class="section-label">Schulen und Institutionen</div>
+  <p class="rent-intro">Private Boxing Zürich bietet Boxkurse für Schulen, Jugendzentren und Sportvereine an. Alle Informationen und Konditionen werden auf Anfrage mitgeteilt.</p>
+  <div style="margin-top:20px;">
+    <a href="mailto:giacomo@privateboxingzurich.ch?subject=Anfrage Schulkurs" style="display:inline-block;background:linear-gradient(100deg,#1a65d6,#0e3f9a);border:2px solid rgba(126,200,255,0.45);border-radius:10px;padding:16px 36px;font-size:16px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:0.05em;box-shadow:0 8px 30px rgba(30,100,220,0.50);font-family:'Inter',sans-serif;">Jetzt anfragen</a>
+  </div>
+</div>
+
+<div class="footer">Private Boxing Zürich · www.privateboxingzurich.ch</div>
+
+<script>
+window.onload = () => setMode('home');
+
+function setMode(mode) {
+  // Toggle buttons
+  const btnGym = document.getElementById('btn-gym');
+  const btnHome = document.getElementById('btn-home');
+  if (mode === 'gym') {
+    btnGym.style.background = 'linear-gradient(100deg,#1a65d6,#0e3f9a)';
+    btnGym.style.color = '#fff';
+    btnHome.style.background = 'transparent';
+    btnHome.style.color = 'rgba(200,232,255,0.50)';
+  } else {
+    btnHome.style.background = 'linear-gradient(100deg,#1a65d6,#0e3f9a)';
+    btnHome.style.color = '#fff';
+    btnGym.style.background = 'transparent';
+    btnGym.style.color = 'rgba(200,232,255,0.50)';
+  }
+
+  // Update all price-val spans
+  document.querySelectorAll('.price-val').forEach(el => {
+    el.textContent = el.dataset[mode];
+  });
+
+  // Update per-session and Einzelpreis stats
+  document.querySelectorAll('[data-gym][data-home]').forEach(el => {
+    if (!el.classList.contains('price-val') && el.id !== 'schnupper-price' && el.id !== 'einzelstunde-price') {
+      el.textContent = el.dataset[mode];
+    }
+  });
+
+  // Schnupperstunde price
+  const sp = document.getElementById('schnupper-price');
+  sp.textContent = sp.dataset[mode];
+
+  // Schnupperstunde extras (hide bandagen note when home)
+
+  // Einzelstunde
+  const ep = document.getElementById('einzelstunde-price');
+  ep.textContent = ep.dataset[mode];
+}
+</script>
+
+</body>
+</html>
