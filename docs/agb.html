@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AGB & Stornobedingungen – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --blue: #7ec8ff;
+    --blue-dark: #1a65d6;
+    --dark: #08152a;
+    --mid: #0e2240;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark);
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background: rgba(8,21,42,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(126,200,255,0.12);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    color: #fff;
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--blue); }
+  .nav-cta {
+    background: linear-gradient(100deg, #1a65d6, #0e3f9a);
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 22px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+  }
+
+  /* MAIN CONTENT */
+  .page-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 120px 40px 80px;
+  }
+
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .page-sub {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(126,200,255,0.55);
+    margin-bottom: 32px;
+    letter-spacing: 0.04em;
+  }
+
+  .highlight-box {
+    background: rgba(126,200,255,0.07);
+    border-left: 4px solid var(--blue);
+    border-radius: 0 10px 10px 0;
+    padding: 16px 20px;
+    margin-bottom: 40px;
+    font-size: 13px;
+    color: rgba(200,232,255,0.80);
+    line-height: 1.75;
+  }
+
+  h2 {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-top: 36px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(126,200,255,0.15);
+  }
+
+  p {
+    font-size: 13px;
+    color: rgba(200,232,255,0.75);
+    margin-bottom: 10px;
+    line-height: 1.8;
+  }
+
+  strong { color: #fff; }
+
+  /* STORNO GRID */
+  .storno-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .storno-item {
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 13px;
+  }
+  .storno-ok {
+    background: rgba(74,180,120,0.10);
+    border: 1.5px solid rgba(74,180,120,0.40);
+  }
+  .storno-nok {
+    background: rgba(220,80,80,0.10);
+    border: 1.5px solid rgba(220,80,80,0.40);
+  }
+  .storno-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .storno-label.green { color: #4ab478; }
+  .storno-label.red { color: #e06060; }
+  .storno-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: rgba(200,232,255,0.80);
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid rgba(126,200,255,0.10);
+    padding: 40px;
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    color: rgba(255,255,255,0.4);
+  }
+  .footer-logo span { color: rgba(126,200,255,0.5); }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.3);
+  }
+  .footer-links a {
+    color: rgba(126,200,255,0.6);
+    text-decoration: none;
+  }
+  .footer-links a:hover { color: var(--blue); }
+  .footer-copy {
+    font-size: 11px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.20);
+    width: 100%;
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">PRIVATE <span>BOXING</span> ZÜRICH</a>
+  <a href="/#booking" class="nav-cta">Termin buchen</a>
+</nav>
+
+<div class="page-wrap">
+
+  <div class="page-title">AGB & Storno&shy;bedingungen</div>
+  <div class="page-sub">Private Boxing Zürich · Giacomo Andrea La Rocca · Stand April 2026</div>
+
+  <div class="highlight-box">
+    Diese Allgemeinen Geschäftsbedingungen gelten für alle Trainings und Kurse von Private Boxing Zürich. Mit der Buchung eines Trainings oder Kurses akzeptierst du diese Bedingungen.
+  </div>
+
+  <h2>1. Anbieter</h2>
+  <p><strong>Private Boxing Zürich</strong><br>
+  Giacomo Andrea La Rocca<br>
+  Zürich, Schweiz<br>
+  <a href="mailto:giacomo@privateboxingzurich.ch" style="color:var(--blue);text-decoration:none;">giacomo@privateboxingzurich.ch</a></p>
+
+  <h2>2. Leistungen</h2>
+  <p>Private Boxing Zürich bietet <strong>Einzeltraining (1:1)</strong> sowie <strong>Gruppentraining</strong> im Bereich Boxing und Light Contact Boxing an. Die Kurse finden an vereinbarten Orten in Zürich und Umgebung statt.</p>
+
+  <h2>3. Buchung und Zahlung</h2>
+  <p>Buchungen erfolgen per WhatsApp, E-Mail oder über die Website. Eine Buchung gilt als bestätigt sobald eine schriftliche Bestätigung von Private Boxing Zürich vorliegt.</p>
+
+  <h2>4. Stornobedingungen</h2>
+  <div class="storno-grid">
+    <div class="storno-item storno-ok">
+      <div class="storno-label green">Kostenlose Stornierung</div>
+      <div class="storno-text">Absage mehr als <strong>24 Stunden</strong> vor dem Termin — keine Kosten, kostenlose Verschiebung möglich.</div>
+    </div>
+    <div class="storno-item storno-nok">
+      <div class="storno-label red">Volle Kosten</div>
+      <div class="storno-text">Absage weniger als <strong>24 Stunden</strong> vor dem Termin oder <strong>Nichterscheinen</strong> — voller Stundenpreis wird verrechnet.</div>
+    </div>
+  </div>
+
+  <h2>5. Absage durch Private Boxing Zürich</h2>
+  <p>Bei Absage durch Private Boxing Zürich (z.B. Krankheit, höhere Gewalt) wird der Termin kostenlos verschoben oder der bezahlte Betrag vollständig zurückerstattet.</p>
+
+  <h2>6. Gesundheit und Haftung</h2>
+  <p>Die Teilnahme am Training erfolgt <strong>auf eigene Verantwortung</strong>. Du bestätigst mit der Buchung, dass du körperlich in der Lage bist, am Training teilzunehmen. Bei gesundheitlichen Einschränkungen empfehlen wir vor Trainingsbeginn eine ärztliche Konsultation.</p>
+  <p>Private Boxing Zürich übernimmt keine Haftung für Verletzungen, die durch unsachgemässe Ausführung von Übungen entstehen. Alle Übungen werden unter professioneller Anleitung durchgeführt.</p>
+
+  <h2>7. Datenschutz</h2>
+  <p>Personendaten (Name, Kontakt) werden ausschliesslich für die Kommunikation und Rechnungsstellung verwendet und nicht an Dritte weitergegeben. Es gilt das <strong>Schweizer Datenschutzgesetz (DSG)</strong>. Auf Anfrage werden alle gespeicherten Daten gelöscht.</p>
+
+  <h2>8. Anzuwendendes Recht</h2>
+  <p>Es gilt <strong>Schweizer Recht</strong>. Gerichtsstand ist Zürich.</p>
+
+</div>
+
+<footer>
+  <div class="footer-logo">PRIVATE <span>BOXING</span> ZÜRICH</div>
+  <div class="footer-links">
+    <a href="/">← Zurück zur Website</a>
+    <a href="mailto:giacomo@privateboxingzurich.ch">giacomo@privateboxingzurich.ch</a>
+  </div>
+  <div class="footer-copy">© 2026 Private Boxing Zürich · Giacomo La Rocca · Zürich</div>
+</footer>
+
+</body>
+</html>

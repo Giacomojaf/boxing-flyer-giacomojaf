@@ -12,3 +12,6 @@
 *.WEBP
 *.pdf
 *.zip
+
+# Allow video in docs for GitHub Pages
+!docs/boxing-video.mp4
