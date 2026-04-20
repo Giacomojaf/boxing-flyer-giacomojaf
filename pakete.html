@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trainingspakete – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #08152a;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 24px;
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.20em;
+    color: rgba(126,200,255,0.60);
+    margin-bottom: 12px;
+  }
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.06em;
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 12px;
+  }
+  .subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(200,232,255,0.45);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+  }
+
+  .card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(126,200,255,0.12);
+    border-radius: 16px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    transition: border-color 0.2s;
+  }
+
+  .card.popular {
+    background: rgba(26,101,214,0.15);
+    border-color: #1a65d6;
+  }
+
+  .popular-badge {
+    position: absolute;
+    top: -14px;
+    background: #1a65d6;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+  }
+
+  .card-name {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: #7ec8ff;
+    margin-bottom: 16px;
+  }
+
+  .card-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 54px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+  }
+  .card-price span {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(200,232,255,0.50);
+  }
+
+  .card-sessions {
+    font-size: 13px;
+    font-weight: 700;
+    color: rgba(200,232,255,0.70);
+    margin: 8px 0 4px;
+  }
+
+  .card-per {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(200,232,255,0.35);
+    margin-bottom: 24px;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(126,200,255,0.10);
+    margin-bottom: 24px;
+  }
+
+  .features {
+    list-style: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+  .features li {
+    font-size: 12px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.65);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .features li::before {
+    content: '✓';
+    color: #7ec8ff;
+    font-weight: 800;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+
+  .card-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(126,200,255,0.25);
+    background: transparent;
+    color: #7ec8ff;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+    margin-top: auto;
+  }
+  .card.popular .card-btn {
+    background: #1a65d6;
+    border-color: #1a65d6;
+    color: #fff;
+  }
+
+  .single {
+    margin-top: 32px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(200,232,255,0.35);
+  }
+  .single strong {
+    color: rgba(200,232,255,0.65);
+  }
+
+  .footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.15);
+  }
+  .footer span { color: #7ec8ff; }
+
+  .lang-wrap {
+    position: fixed;
+    top: 20px;
+    right: 24px;
+    z-index: 100;
+    display: flex;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(126,200,255,0.15);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .lang-wrap button {
+    padding: 6px 14px;
+    border: none;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+  }
+</style>
+</head>
+<body>
+
+  <div class="lang-wrap">
+    <button id="btn-de" onclick="setLang('de')" style="background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;">DE</button>
+    <button id="btn-en" onclick="setLang('en')" style="background:transparent;color:rgba(200,232,255,0.50);">EN</button>
+  </div>
+
+  <div class="header">
+    <div class="logo">PRIVATE BOXING ZÜRICH</div>
+    <h1 id="page-title">TRAININGSPAKETE</h1>
+    <div class="subtitle" id="page-subtitle">Monatliche Abos · 1:1 Privattraining · Zürich</div>
+  </div>
+
+  <div class="cards">
+
+    <!-- STARTER -->
+    <div class="card">
+      <div class="card-name">Starter</div>
+      <div class="card-price">280<span> CHF</span></div>
+      <div class="card-sessions" id="s1-sessions">4 Sessions / Monat</div>
+      <div class="card-per" id="s1-per">CHF 70 pro Session</div>
+      <div class="divider"></div>
+      <ul class="features">
+        <li id="s1-f1">1x Training pro Woche</li>
+        <li id="s1-f2">60 Min. pro Einheit</li>
+        <li id="s1-f3">Individuelles Training</li>
+        <li id="s1-f4">Technik und Grundlagen</li>
+      </ul>
+      <button class="card-btn" id="s1-btn">Jetzt buchen</button>
+    </div>
+
+    <!-- STANDARD -->
+    <div class="card popular">
+      <div class="popular-badge" id="popular-badge">Beliebteste Wahl</div>
+      <div class="card-name">Standard</div>
+      <div class="card-price">520<span> CHF</span></div>
+      <div class="card-sessions" id="s2-sessions">8 Sessions / Monat</div>
+      <div class="card-per" id="s2-per">CHF 65 pro Session</div>
+      <div class="divider"></div>
+      <ul class="features">
+        <li id="s2-f1">2x Training pro Woche</li>
+        <li id="s2-f2">60 Min. pro Einheit</li>
+        <li id="s2-f3">Individuelles Training</li>
+        <li id="s2-f4">Kondition und Technik</li>
+        <li id="s2-f5">Trainingsplan inklusive</li>
+      </ul>
+      <button class="card-btn" id="s2-btn">Jetzt buchen</button>
+    </div>
+
+    <!-- PREMIUM -->
+    <div class="card">
+      <div class="card-name">Premium</div>
+      <div class="card-price">720<span> CHF</span></div>
+      <div class="card-sessions" id="s3-sessions">12 Sessions / Monat</div>
+      <div class="card-per" id="s3-per">CHF 60 pro Session</div>
+      <div class="divider"></div>
+      <ul class="features">
+        <li id="s3-f1">3x Training pro Woche</li>
+        <li id="s3-f2">60 Min. pro Einheit</li>
+        <li id="s3-f3">Individuelles Training</li>
+        <li id="s3-f4">Vollständiger Trainingsplan</li>
+        <li id="s3-f5">Ernährungsberatung</li>
+        <li id="s3-f6">Priorität bei Terminbuchung</li>
+      </ul>
+      <button class="card-btn" id="s3-btn">Jetzt buchen</button>
+    </div>
+
+  </div>
+
+  <div class="single" id="single-note">Einzelstunde ohne Abo: <strong>CHF 80</strong></div>
+
+  <div class="footer">Private Boxing Zürich · <span>@giacomojaf</span> · www.privateboxingzurich.ch</div>
+
+<script>
+  const paketeTranslations = {
+    de: {
+      'page-title': 'TRAININGSPAKETE',
+      'page-subtitle': 'Monatliche Abos · 1:1 Privattraining · Zürich',
+      'popular-badge': 'Beliebteste Wahl',
+      's1-sessions': '4 Sessions / Monat',
+      's1-per': 'CHF 70 pro Session',
+      's1-f1': '1x Training pro Woche',
+      's1-f2': '60 Min. pro Einheit',
+      's1-f3': 'Individuelles Training',
+      's1-f4': 'Technik und Grundlagen',
+      's1-btn': 'Jetzt buchen',
+      's2-sessions': '8 Sessions / Monat',
+      's2-per': 'CHF 65 pro Session',
+      's2-f1': '2x Training pro Woche',
+      's2-f2': '60 Min. pro Einheit',
+      's2-f3': 'Individuelles Training',
+      's2-f4': 'Kondition und Technik',
+      's2-f5': 'Trainingsplan inklusive',
+      's2-btn': 'Jetzt buchen',
+      's3-sessions': '12 Sessions / Monat',
+      's3-per': 'CHF 60 pro Session',
+      's3-f1': '3x Training pro Woche',
+      's3-f2': '60 Min. pro Einheit',
+      's3-f3': 'Individuelles Training',
+      's3-f4': 'Vollständiger Trainingsplan',
+      's3-f5': 'Ernährungsberatung',
+      's3-f6': 'Priorität bei Terminbuchung',
+      's3-btn': 'Jetzt buchen',
+    },
+    en: {
+      'page-title': 'TRAINING PACKAGES',
+      'page-subtitle': 'Monthly memberships · 1:1 private training · Zurich',
+      'popular-badge': 'Most popular',
+      's1-sessions': '4 Sessions / month',
+      's1-per': 'CHF 70 per session',
+      's1-f1': '1x training per week',
+      's1-f2': '60 min. per session',
+      's1-f3': 'Individual training',
+      's1-f4': 'Technique and basics',
+      's1-btn': 'Book now',
+      's2-sessions': '8 Sessions / month',
+      's2-per': 'CHF 65 per session',
+      's2-f1': '2x training per week',
+      's2-f2': '60 min. per session',
+      's2-f3': 'Individual training',
+      's2-f4': 'Fitness and technique',
+      's2-f5': 'Training plan included',
+      's2-btn': 'Book now',
+      's3-sessions': '12 Sessions / month',
+      's3-per': 'CHF 60 per session',
+      's3-f1': '3x training per week',
+      's3-f2': '60 min. per session',
+      's3-f3': 'Individual training',
+      's3-f4': 'Full training plan',
+      's3-f5': 'Nutrition coaching',
+      's3-f6': 'Priority booking',
+      's3-btn': 'Book now',
+    }
+  };
+
+  function setLang(lang) {
+    const btnDe = document.getElementById('btn-de');
+    const btnEn = document.getElementById('btn-en');
+    const active = 'linear-gradient(100deg,#1a65d6,#0e3f9a)';
+    btnDe.style.background = lang === 'de' ? active : 'transparent';
+    btnDe.style.color = lang === 'de' ? '#fff' : 'rgba(200,232,255,0.50)';
+    btnEn.style.background = lang === 'en' ? active : 'transparent';
+    btnEn.style.color = lang === 'en' ? '#fff' : 'rgba(200,232,255,0.50)';
+
+    const t = paketeTranslations[lang];
+    Object.keys(t).forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = t[id];
+    });
+
+    // single note needs innerHTML for the strong tag
+    const sn = document.getElementById('single-note');
+    if (sn) {
+      sn.innerHTML = lang === 'de'
+        ? 'Einzelstunde ohne Abo: <strong>CHF 80</strong>'
+        : 'Single session without membership: <strong>CHF 80</strong>';
+    }
+  }
+</script>
+
+</body>
+</html>
