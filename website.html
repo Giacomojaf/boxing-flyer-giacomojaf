@@ -1167,12 +1167,29 @@
   }
 
   const dealPrices = { online: 40, home: 60, gym: 80 };
+  const dealExtras = {
+    de: {
+      online: '✓ Ausrüstungsliste auf Anfrage erhältlich',
+      home:   '✓ Gratis Branded Bandagen inklusive',
+      gym:    '✓ Gratis Branded Bandagen inklusive'
+    },
+    en: {
+      online: '✓ Equipment list available on request',
+      home:   '✓ Free branded hand wraps included',
+      gym:    '✓ Free branded hand wraps included'
+    }
+  };
 
   function updateDeal(mode) {
     window._currentOrtMode = mode;
     const price = dealPrices[mode];
-    const el = document.getElementById('deal-price');
-    if (el) el.textContent = price;
+    const priceEl = document.getElementById('deal-price');
+    if (priceEl) priceEl.textContent = price;
+    const extraEl = document.getElementById('deal-extra');
+    if (extraEl) {
+      const lang = window._currentLang || 'de';
+      extraEl.textContent = dealExtras[lang][mode];
+    }
   }
 
   const translations = {
@@ -1415,6 +1432,9 @@
     inputs.forEach((inp, i) => { if (phKeys[i]) inp.placeholder = ph[phKeys[i]]; });
     const ta = document.querySelector('.booking-form textarea');
     if (ta) ta.placeholder = ph.msg;
+
+    // Refresh deal extra text after lang change
+    updateDeal(window._currentOrtMode || 'home');
 
     // Update training goal select
     const sel = document.querySelector('.booking-form select');
