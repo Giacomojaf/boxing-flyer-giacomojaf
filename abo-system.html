@@ -122,7 +122,7 @@
     background: rgba(255,255,255,0.03);
     border: 1px solid rgba(126,200,255,0.10);
     border-radius: 16px;
-    padding: 28px 22px;
+    padding: 28px 22px 0;
     display: flex;
     flex-direction: column;
     position: relative;
@@ -215,7 +215,7 @@
     display: flex;
     flex-direction: column;
     gap: 9px;
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     flex: 1;
   }
   .features li {
@@ -381,6 +381,52 @@
     color: rgba(255,255,255,0.15);
   }
   .footer span { color: #7ec8ff; }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-links { display: none; }
+    .nav-logo { font-size: 20px; }
+    .nav-cta { display: none; }
+
+    body { padding: 24px 16px; }
+
+    .header { padding-top: 80px; margin-bottom: 36px; }
+    h1 { font-size: 40px; }
+
+    /* Schnupperstunde Card: stapeln */
+    #schnupper-card {
+      flex-direction: column !important;
+      align-items: flex-start !important;
+      padding: 20px 18px !important;
+      gap: 12px !important;
+    }
+    #schnupper-price { font-size: 44px !important; }
+
+    /* Mode Toggle: Buttons wrappen */
+    #mode-toggle { justify-content: center; }
+    #mode-toggle button { flex: 1; min-width: 100px; padding: 10px 12px !important; font-size: 12px !important; }
+
+    /* Pakete: 1 Spalte */
+    .cards { grid-template-columns: 1fr; gap: 20px; }
+
+    /* Stats row: 2 Spalten */
+    .stats-row { grid-template-columns: 1fr 1fr; }
+
+    /* Einzelstunde: stapeln */
+    .einzelstunde { flex-direction: column; align-items: flex-start; gap: 8px; }
+
+    /* Rentabilität Tabelle scrollbar */
+    .rent-table { font-size: 11px; }
+    .rent-table th, .rent-table td { padding: 9px 8px; }
+
+    /* Highlight Box: stapeln */
+    .highlight { flex-direction: column; gap: 16px; }
+    .hl-divider { display: none; }
+
+    /* Erklärung: 1 Spalte */
+    .erklaer-grid { grid-template-columns: 1fr; }
+  }
 </style>
 </head>
 <body>
@@ -389,22 +435,28 @@
 <nav>
   <a href="/" class="nav-logo">PRIVATE <span>BOXING</span> ZÜRICH</a>
   <ul class="nav-links">
-    <li><a href="/#about">Über mich</a></li>
-    <li><a href="/#offers">Angebote</a></li>
-    <li><a href="/#testimonials">Stimmen</a></li>
-    <li><a href="/#institutionen">Institutionen</a></li>
+    <li><a href="/#about" id="nav-about">Über mich</a></li>
+    <li><a href="/#offers" id="nav-offers">Angebote</a></li>
+    <li><a href="/#testimonials" id="nav-testimonials">Stimmen</a></li>
+    <li><a href="/#institutionen" id="nav-institutionen">Institutionen</a></li>
   </ul>
-  <a href="/#booking" class="nav-cta">Termin buchen</a>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div style="display:flex;background:rgba(255,255,255,0.06);border:1px solid rgba(126,200,255,0.15);border-radius:8px;overflow:hidden;">
+      <button id="btn-de" onclick="setLang('de')" style="padding:6px 12px;border:none;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;">DE</button>
+      <button id="btn-en" onclick="setLang('en')" style="padding:6px 12px;border:none;background:transparent;color:rgba(200,232,255,0.50);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;">EN</button>
+    </div>
+    <a href="/#booking" class="nav-cta" id="nav-cta">Termin buchen</a>
+  </div>
 </nav>
 
 <div class="header">
   <div class="logo">Private Boxing Zürich</div>
-  <h1>PREISE</h1>
-  <div class="header-sub">Monatliche Trainingspakete für regelmässiges 1:1 Boxtraining. Je mehr du trainierst, desto günstiger wird jede Session.</div>
+  <h1 id="page-title">PREISE</h1>
+  <div class="header-sub" id="header-sub">Monatliche Trainingspakete für regelmässiges 1:1 Boxtraining. Je mehr du trainierst, desto günstiger wird jede Session.</div>
 </div>
 
 <!-- SCHNUPPERSTUNDE -->
-<div style="
+<div id="schnupper-card" style="
   background: linear-gradient(135deg, rgba(76,175,128,0.12) 0%, rgba(26,101,214,0.10) 100%);
   border: 1.5px solid rgba(76,175,128,0.35);
   border-radius: 16px;
@@ -419,126 +471,102 @@
 ">
   <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:rgba(76,175,128,0.06);border-radius:50%;"></div>
   <div>
-    <div style="font-size:10px;font-weight:800;letter-spacing:0.20em;text-transform:uppercase;color:#4caf80;margin-bottom:8px;">Einstieg</div>
-    <div style="font-size:18px;font-weight:800;color:#fff;margin-bottom:4px;">Erstes Training zum Kennenlernen</div>
-    <div style="font-size:13px;font-weight:500;color:rgba(200,232,255,0.50);">Keine Bindung · Kein Risiko · Lerne mich kennen</div>
+    <div id="schnupper-label" style="font-size:10px;font-weight:800;letter-spacing:0.20em;text-transform:uppercase;color:#4caf80;margin-bottom:8px;">Einstieg</div>
+    <div id="schnupper-title" style="font-size:18px;font-weight:800;color:#fff;margin-bottom:4px;">Erstes Training zum Kennenlernen</div>
+    <div id="schnupper-sub" style="font-size:13px;font-weight:500;color:rgba(200,232,255,0.50);">Keine Bindung · Kein Risiko · Lerne mich kennen</div>
     <div id="schnupper-extra" style="margin-top:10px;font-size:12px;font-weight:700;color:#4caf80;">✓ Gratis Branded Bandagen inklusive</div>
   </div>
   <div style="text-align:right;flex-shrink:0;">
-    <div id="schnupper-price" style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#4caf80;line-height:1;" data-gym="80" data-home="60">80</div>
+    <div id="schnupper-price" style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#4caf80;line-height:1;" data-gym="80" data-home="60" data-online="40">40</div>
     <div style="font-size:12px;font-weight:700;color:rgba(76,175,128,0.60);">CHF / Session</div>
   </div>
 </div>
 
 <!-- TOGGLE -->
 <div style="display:flex;justify-content:center;margin-bottom:32px;">
-  <div style="background:rgba(255,255,255,0.06);border:1px solid rgba(126,200,255,0.15);border-radius:12px;padding:6px;display:flex;gap:6px;">
-    <button id="btn-home" onclick="setMode('home')" style="padding:10px 24px;border-radius:8px;border:none;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">📍 Zuhause / Outdoor</button>
+  <div id="mode-toggle" style="background:rgba(255,255,255,0.06);border:1px solid rgba(126,200,255,0.15);border-radius:12px;padding:6px;display:flex;gap:6px;flex-wrap:wrap;">
+    <button id="btn-online" onclick="setMode('online')" style="padding:10px 24px;border-radius:8px;border:none;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">💻 Über Videocall</button>
+    <button id="btn-home" onclick="setMode('home')" style="padding:10px 24px;border-radius:8px;border:none;background:transparent;color:rgba(200,232,255,0.50);font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">📍 Zu Hause / Outdoor</button>
     <button id="btn-gym" onclick="setMode('gym')" style="padding:10px 24px;border-radius:8px;border:none;background:transparent;color:rgba(200,232,255,0.50);font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">🏋️ In unserem Gym</button>
   </div>
 </div>
 
 <!-- PAKETE -->
-<div class="section-label">Trainingspakete</div>
+<div class="section-label" id="label-pakete">Trainingspakete</div>
 <div class="cards">
 
   <div class="card">
     <div class="card-name">Starter</div>
-    <div class="card-price"><sup>CHF </sup><span class="price-val" data-gym="360" data-home="280">360</span></div>
+    <div class="card-price"><sup>CHF </sup><span class="price-val" data-gym="360" data-home="280" data-online="200">280</span></div>
     <div class="card-per">4 Sessions</div>
     <div class="card-divider"></div>
     <div class="stats-row">
       <div class="stat-box">
-        <div class="stat-label">Pro Session</div>
-        <div class="stat-val blue" data-gym="CHF 90" data-home="CHF 70">CHF 90</div>
+        <div class="stat-label" data-de="Pro Session" data-en="Per Session">Pro Session</div>
+        <div class="stat-val blue" data-gym="CHF 90" data-home="CHF 70" data-online="CHF 50">CHF 50</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">Einzelpreis</div>
-        <div class="stat-val" style="text-decoration:line-through;color:rgba(255,80,80,0.70);" data-gym="CHF 480" data-home="CHF 400">CHF 480</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Ersparnis</div>
-        <div class="stat-val green">CHF 120</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Frequenz</div>
-        <div class="stat-val">1x / Woche</div>
+        <div class="stat-label" data-de="Einzelpreis" data-en="Single price">Einzelpreis</div>
+        <div class="stat-val" style="text-decoration:line-through;color:rgba(255,80,80,0.70);" data-gym="CHF 480" data-home="CHF 400" data-online="CHF 320">CHF 320</div>
       </div>
     </div>
+    <div style="font-size:15px;font-weight:800;color:#4caf80;margin-bottom:14px;" data-de="Du sparst CHF 120" data-en="You save CHF 120">Du sparst CHF 120</div>
     <ul class="features">
-      <li>1 Training pro Woche</li>
-
-      <li>Technik und Grundlagen</li>
-      <li>Flexible Terminwahl</li>
+      <li data-de="max. 1 Training pro Woche" data-en="max. 1 training per week">max. 1 Training pro Woche</li>
+      <li data-de="Technik und Grundlagen" data-en="Technique and basics">Technik und Grundlagen</li>
+      <li data-de="Flexible Terminwahl" data-en="Flexible scheduling">Flexible Terminwahl</li>
     </ul>
   </div>
 
   <div class="card popular">
-    <div class="popular-badge">Beliebteste Wahl</div>
+    <div class="popular-badge" id="popular-badge">Beliebteste Wahl</div>
     <div class="card-name">Standard</div>
-    <div class="card-price"><sup>CHF </sup><span class="price-val" data-gym="640" data-home="480">640</span></div>
+    <div class="card-price"><sup>CHF </sup><span class="price-val" data-gym="680" data-home="520" data-online="360">520</span></div>
     <div class="card-per">8 Sessions</div>
     <div class="card-divider"></div>
     <div class="stats-row">
       <div class="stat-box">
-        <div class="stat-label">Pro Session</div>
-        <div class="stat-val blue" data-gym="CHF 80" data-home="CHF 60">CHF 80</div>
+        <div class="stat-label" data-de="Pro Session" data-en="Per Session">Pro Session</div>
+        <div class="stat-val blue" data-gym="CHF 85" data-home="CHF 65" data-online="CHF 45">CHF 65</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">Einzelpreis</div>
-        <div class="stat-val" style="text-decoration:line-through;color:rgba(255,80,80,0.70);" data-gym="CHF 960" data-home="CHF 800">CHF 960</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Ersparnis</div>
-        <div class="stat-val green">CHF 320</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Frequenz</div>
-        <div class="stat-val">2x / Woche</div>
+        <div class="stat-label" data-de="Einzelpreis" data-en="Single price">Einzelpreis</div>
+        <div class="stat-val" style="text-decoration:line-through;color:rgba(255,80,80,0.70);" data-gym="CHF 960" data-home="CHF 800" data-online="CHF 640">CHF 640</div>
       </div>
     </div>
+    <div style="font-size:15px;font-weight:800;color:#4caf80;margin-bottom:14px;" data-de="Du sparst CHF 280" data-en="You save CHF 280">Du sparst CHF 280</div>
     <ul class="features">
-      <li>2 Trainings pro Woche</li>
-
-      <li>Technik, Kondition, Kraft</li>
-      <li>Persönlicher Trainingsplan</li>
-      <li>Fortschrittsauswertung</li>
-      <li>Flexible Terminwahl</li>
+      <li data-de="max. 2 Trainings pro Woche" data-en="max. 2 trainings per week">max. 2 Trainings pro Woche</li>
+      <li data-de="Technik, Kondition, Kraft" data-en="Technique, fitness, strength">Technik, Kondition, Kraft</li>
+      <li data-de="Persönlicher Trainingsplan" data-en="Personal training plan">Persönlicher Trainingsplan</li>
+      <li data-de="Flexible Terminwahl" data-en="Flexible scheduling">Flexible Terminwahl</li>
     </ul>
   </div>
 
   <div class="card">
     <div class="card-name">Premium</div>
-    <div class="card-price"><sup>CHF </sup><span class="price-val" data-gym="900" data-home="660">900</span></div>
+    <div class="card-price"><sup>CHF </sup><span class="price-val" data-gym="960" data-home="720" data-online="480">720</span></div>
     <div class="card-per">12 Sessions</div>
     <div class="card-divider"></div>
     <div class="stats-row">
       <div class="stat-box">
-        <div class="stat-label">Pro Session</div>
-        <div class="stat-val blue" data-gym="CHF 75" data-home="CHF 55">CHF 75</div>
+        <div class="stat-label" data-de="Pro Session" data-en="Per Session">Pro Session</div>
+        <div class="stat-val blue" data-gym="CHF 80" data-home="CHF 60" data-online="CHF 40">CHF 60</div>
       </div>
       <div class="stat-box">
-        <div class="stat-label">Einzelpreis</div>
-        <div class="stat-val" style="text-decoration:line-through;color:rgba(255,80,80,0.70);" data-gym="CHF 1440" data-home="CHF 1200">CHF 1440</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Ersparnis</div>
-        <div class="stat-val green">CHF 540</div>
-      </div>
-      <div class="stat-box">
-        <div class="stat-label">Frequenz</div>
-        <div class="stat-val">3x / Woche</div>
+        <div class="stat-label" data-de="Einzelpreis" data-en="Single price">Einzelpreis</div>
+        <div class="stat-val" style="text-decoration:line-through;color:rgba(255,80,80,0.70);" data-gym="CHF 1440" data-home="CHF 1200" data-online="CHF 960">CHF 960</div>
       </div>
     </div>
+    <div style="font-size:15px;font-weight:800;color:#4caf80;margin-bottom:14px;" data-de="Du sparst CHF 480" data-en="You save CHF 480">Du sparst CHF 480</div>
     <ul class="features">
-      <li>3 Trainings pro Woche</li>
-
-      <li>Technik, Kondition, Kraft</li>
-      <li>Persönlicher Trainingsplan</li>
-      <li>Fortschrittsauswertung</li>
-      <li>Flexible Terminwahl</li>
-      <li>Priorität bei Buchungen</li>
-      <li><strong style="color:#fff;">Branded Handschuhe inklusive bei erster Buchung</strong></li>
+      <li data-de="max. 3 Trainings pro Woche" data-en="max. 3 trainings per week">max. 3 Trainings pro Woche</li>
+      <li data-de="Technik, Kondition, Kraft" data-en="Technique, fitness, strength">Technik, Kondition, Kraft</li>
+      <li data-de="Persönlicher Trainingsplan" data-en="Personal training plan">Persönlicher Trainingsplan</li>
+      <li data-de="Fortschrittsauswertung" data-en="Progress analysis">Fortschrittsauswertung</li>
+      <li data-de="Flexible Terminwahl" data-en="Flexible scheduling">Flexible Terminwahl</li>
+      <li data-de="Priorität bei Buchungen" data-en="Priority booking">Priorität bei Buchungen</li>
+      <li id="handschuhe-feature" data-de="Branded Handschuhe inklusive bei erster Buchung" data-en="Branded gloves included with first booking"><strong style="color:#fff;">Branded Handschuhe inklusive bei erster Buchung</strong></li>
     </ul>
   </div>
 
@@ -546,33 +574,33 @@
 
 <!-- EINZELSTUNDE -->
 <div class="einzelstunde">
-  <p>Kein Abo? Einzelstunde ohne Bindung verfügbar.</p>
-  <strong id="einzelstunde-price" data-gym="CHF 120 / Session" data-home="CHF 100 / Session">CHF 120 / Session</strong>
+  <p id="einzelstunde-text">Kein Abo? Einzelstunde ohne Bindung verfügbar.</p>
+  <strong id="einzelstunde-price" data-gym="CHF 120 / Session" data-home="CHF 100 / Session" data-online="CHF 80 / Session">CHF 80 / Session</strong>
 </div>
 
 <!-- GRUPPENTRAINING -->
-<div class="rentabilitaet">
-  <div class="section-label">Gruppentraining</div>
-  <p class="rent-intro">Trainiere gemeinsam mit Freunden oder Bekannten. Günstiger pro Person und mehr Spass.</p>
+<div class="rentabilitaet" id="rent-section">
+  <div class="section-label" id="gruppe-label">Gruppentraining</div>
+  <p class="rent-intro" id="gruppe-intro">Trainiere gemeinsam mit Freunden oder Bekannten. Günstiger pro Person und mehr Spass.</p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;">
 
     <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(126,200,255,0.12);border-radius:14px;padding:24px 20px;text-align:center;">
-      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;">2 Personen</div>
-      <div class="gruppe-price" data-gym="60" data-home="50" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">50</div>
-      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;">CHF / Person</div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;" data-de="2 Personen" data-en="2 people">2 Personen</div>
+      <div id="gp2" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">50</div>
+      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;" data-de="CHF / Person" data-en="CHF / person">CHF / Person</div>
     </div>
 
     <div style="background:rgba(26,101,214,0.14);border:1px solid rgba(26,101,214,0.45);border-radius:14px;padding:24px 20px;text-align:center;position:relative;">
-      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#1a65d6;color:#fff;font-size:9px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;padding:4px 12px;border-radius:20px;white-space:nowrap;">Beliebt</div>
-      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;">3 Personen</div>
-      <div class="gruppe-price" data-gym="55" data-home="48" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">48</div>
-      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;">CHF / Person</div>
+      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#1a65d6;color:#fff;font-size:9px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;padding:4px 12px;border-radius:20px;white-space:nowrap;" data-de="Beliebt" data-en="Popular">Beliebt</div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;" data-de="3 Personen" data-en="3 people">3 Personen</div>
+      <div id="gp3" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">45</div>
+      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;" data-de="CHF / Person" data-en="CHF / person">CHF / Person</div>
     </div>
 
     <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(126,200,255,0.12);border-radius:14px;padding:24px 20px;text-align:center;">
-      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;">4 Personen</div>
-      <div class="gruppe-price" data-gym="50" data-home="45" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">45</div>
-      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;">CHF / Person</div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;" data-de="4 Personen" data-en="4 people">4 Personen</div>
+      <div id="gp4" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">40</div>
+      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;" data-de="CHF / Person" data-en="CHF / person">CHF / Person</div>
     </div>
 
   </div>
@@ -580,73 +608,174 @@
 
 <!-- ERKLÄRUNG -->
 <div class="erklaerung">
-  <div class="section-label">Wie funktioniert das Abo?</div>
+  <div class="section-label" id="label-faq">Wie funktioniert das Abo?</div>
   <div class="erklaer-grid">
     <div class="erklaer-box">
-      <div class="erklaer-title">Monatliche Zahlung</div>
-      <div class="erklaer-text">Das Abo wird monatlich per Banküberweisung bezahlt. Die Sessions werden zu Beginn des Monats gutgeschrieben und sind 30 Tage gültig.</div>
+      <div class="erklaer-title" id="faq1-title">Monatliche Zahlung</div>
+      <div class="erklaer-text" id="faq1-text">Das Abo wird monatlich per Banküberweisung bezahlt. Die Sessions werden zu Beginn des Monats gutgeschrieben und sind 30 Tage gültig.</div>
     </div>
     <div class="erklaer-box">
-      <div class="erklaer-title">Flexible Buchung</div>
-      <div class="erklaer-text">Trainingszeiten werden individuell vereinbart. Die Sessions können flexibel über den Monat verteilt werden, je nach Verfügbarkeit von Trainer und Kunde.</div>
+      <div class="erklaer-title" id="faq2-title">Flexible Buchung</div>
+      <div class="erklaer-text" id="faq2-text">Trainingszeiten werden individuell vereinbart. Die Sessions können flexibel über den Monat verteilt werden, je nach Verfügbarkeit von Trainer und Kunde.</div>
     </div>
   </div>
 </div>
 
 <!-- OPEN BOXING -->
-<div class="rentabilitaet">
-  <div class="section-label">Open Boxing</div>
-  <p class="rent-intro">Wenn der Trainingsraum bereits gemietet ist, können weitere Personen für ein eigenständiges Training dazukommen. Kein Coaching, einfach trainieren.</p>
+<div class="rentabilitaet" id="rent-section">
+  <div class="section-label" id="label-openboxing">Open Boxing</div>
+  <p class="rent-intro" id="openboxing-intro">Wenn der Trainingsraum bereits gemietet ist, können weitere Personen für ein eigenständiges Training dazukommen. Kein Coaching, einfach trainieren.</p>
 
-  <table class="rent-table">
+  <div style="overflow-x:auto;"><table class="rent-table">
     <thead>
       <tr>
-        <th>Angebot</th>
-        <th>Preis</th>
-        <th>Was ist inbegriffen</th>
-        <th>Hinweis</th>
+        <th data-de="Angebot" data-en="Offer">Angebot</th>
+        <th data-de="Preis" data-en="Price">Preis</th>
+        <th data-de="Was ist inbegriffen" data-en="What's included">Was ist inbegriffen</th>
+        <th data-de="Hinweis" data-en="Note">Hinweis</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>Drop-in Session</td>
+        <td data-de="Drop-in Session" data-en="Drop-in Session">Drop-in Session</td>
         <td class="blue">CHF 30</td>
-        <td>Nutzung des Raums, eigenständiges Training</td>
-        <td>Einfach melden, wir koordinieren einen Termin</td>
+        <td data-de="Nutzung des Raums, eigenständiges Training" data-en="Use of the room, independent training">Nutzung des Raums, eigenständiges Training</td>
+        <td data-de="Kein Coaching, nach Verfügbarkeit" data-en="No coaching, subject to availability">Kein Coaching, nach Verfügbarkeit</td>
       </tr>
     </tbody>
   </table>
+  <p style="margin-top:14px;font-size:13px;font-weight:600;color:rgba(200,232,255,0.55);" data-de="Einfach melden, wir koordinieren einen Termin." data-en="Just get in touch, we'll coordinate a time.">Einfach melden, wir koordinieren einen Termin.</p>
 </div>
 
 <!-- INSTITUTIONEN -->
-<div class="rentabilitaet">
-  <div class="section-label">Schulen und Institutionen</div>
-  <p class="rent-intro">Private Boxing Zürich bietet Boxkurse für Schulen, Jugendzentren und Sportvereine an. Alle Informationen und Konditionen werden auf Anfrage mitgeteilt.</p>
+<div class="rentabilitaet" id="rent-section">
+  <div class="section-label" id="label-institutionen">Schulen und Institutionen</div>
+  <p class="rent-intro" id="institutionen-intro">Private Boxing Zürich bietet Boxkurse für Schulen, Jugendzentren und Sportvereine an. Alle Informationen und Konditionen werden auf Anfrage mitgeteilt.</p>
   <div style="margin-top:20px;">
-    <a href="mailto:giacomo@privateboxingzurich.ch?subject=Anfrage Schulkurs" style="display:inline-block;background:linear-gradient(100deg,#1a65d6,#0e3f9a);border:2px solid rgba(126,200,255,0.45);border-radius:10px;padding:16px 36px;font-size:16px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:0.05em;box-shadow:0 8px 30px rgba(30,100,220,0.50);font-family:'Inter',sans-serif;">Jetzt anfragen</a>
+    <a href="mailto:giacomo@privateboxingzurich.ch?subject=Anfrage Schulkurs" id="institutionen-btn" style="display:inline-block;background:linear-gradient(100deg,#1a65d6,#0e3f9a);border:2px solid rgba(126,200,255,0.45);border-radius:10px;padding:16px 36px;font-size:16px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:0.05em;box-shadow:0 8px 30px rgba(30,100,220,0.50);font-family:'Inter',sans-serif;">Jetzt anfragen</a>
   </div>
 </div>
 
 <div class="footer">Private Boxing Zürich · www.privateboxingzurich.ch</div>
 
 <script>
-window.onload = () => setMode('home');
+window.onload = () => { setMode('home'); setLang('de'); };
+
+const translations = {
+  de: {
+    'nav-about': 'Über mich',
+    'nav-offers': 'Angebote',
+    'nav-testimonials': 'Stimmen',
+    'nav-institutionen': 'Institutionen',
+    'nav-cta': 'Termin buchen',
+    'page-title': 'PREISE',
+    'header-sub': 'Monatliche Trainingspakete für regelmässiges 1:1 Boxtraining. Je mehr du trainierst, desto günstiger wird jede Session.',
+    'schnupper-label': 'Einstieg',
+    'schnupper-title': 'Erstes Training zum Kennenlernen',
+    'schnupper-sub': 'Keine Bindung · Kein Risiko · Lerne mich kennen',
+    'schnupper-extra': '✓ Gratis Branded Bandagen inklusive',
+    'btn-online': '💻 Über Videocall',
+    'btn-home': '📍 Zu Hause / Outdoor',
+    'btn-gym': '🏋️ In unserem Gym',
+    'label-pakete': 'Trainingspakete',
+    'popular-badge': 'Beliebteste Wahl',
+    'einzelstunde-text': 'Kein Abo? Einzelstunde ohne Bindung verfügbar.',
+    'gruppe-intro': 'Trainiere gemeinsam mit Freunden oder Bekannten. Günstiger pro Person und mehr Spass.',
+    'label-faq': 'Wie funktioniert das Abo?',
+    'faq1-title': 'Monatliche Zahlung',
+    'faq1-text': 'Das Abo wird monatlich per Banküberweisung bezahlt. Die Sessions werden zu Beginn des Monats gutgeschrieben und sind 30 Tage gültig.',
+    'faq2-title': 'Flexible Buchung',
+    'faq2-text': 'Trainingszeiten werden individuell vereinbart. Die Sessions können flexibel über den Monat verteilt werden, je nach Verfügbarkeit von Trainer und Kunde.',
+    'label-openboxing': 'Open Boxing',
+    'openboxing-intro': 'Wenn der Trainingsraum bereits gemietet ist, können weitere Personen für ein eigenständiges Training dazukommen. Kein Coaching, einfach trainieren.',
+    'label-institutionen': 'Schulen und Institutionen',
+    'institutionen-intro': 'Private Boxing Zürich bietet Boxkurse für Schulen, Jugendzentren und Sportvereine an. Alle Informationen und Konditionen werden auf Anfrage mitgeteilt.',
+    'institutionen-btn': 'Jetzt anfragen',
+  },
+  en: {
+    'nav-about': 'About me',
+    'nav-offers': 'Offers',
+    'nav-testimonials': 'Reviews',
+    'nav-institutionen': 'Institutions',
+    'nav-cta': 'Book session',
+    'page-title': 'PRICING',
+    'header-sub': 'Monthly training packages for regular 1:1 boxing coaching. The more you train, the cheaper each session gets.',
+    'schnupper-label': 'Get started',
+    'schnupper-title': 'First training to get to know each other',
+    'schnupper-sub': 'No commitment · No risk · Meet me',
+    'schnupper-extra': '✓ Free branded hand wraps included',
+    'btn-online': '💻 Via Video Call',
+    'btn-home': '📍 At home / Outdoor',
+    'btn-gym': '🏋️ In our gym',
+    'label-pakete': 'Training packages',
+    'popular-badge': 'Most popular',
+    'einzelstunde-text': 'No subscription? Single session available without commitment.',
+    'gruppe-intro': 'Train together with friends. Cheaper per person and more fun.',
+    'label-faq': 'How does the subscription work?',
+    'faq1-title': 'Monthly payment',
+    'faq1-text': 'The subscription is paid monthly by bank transfer. Sessions are credited at the beginning of the month and are valid for 30 days.',
+    'faq2-title': 'Flexible booking',
+    'faq2-text': 'Training times are arranged individually. Sessions can be distributed flexibly throughout the month, depending on trainer and client availability.',
+    'label-openboxing': 'Open Boxing',
+    'openboxing-intro': 'When the training room is already rented, additional people can join for independent training. No coaching, just train.',
+    'label-institutionen': 'Schools and institutions',
+    'institutionen-intro': 'Private Boxing Zürich offers boxing courses for schools, youth centres and sports clubs. All information and conditions are provided on request.',
+    'institutionen-btn': 'Get in touch',
+  }
+};
+
+function setLang(lang) {
+  const btnDe = document.getElementById('btn-de');
+  const btnEn = document.getElementById('btn-en');
+  const active = 'linear-gradient(100deg,#1a65d6,#0e3f9a)';
+  btnDe.style.background = lang === 'de' ? active : 'transparent';
+  btnDe.style.color = lang === 'de' ? '#fff' : 'rgba(200,232,255,0.50)';
+  btnEn.style.background = lang === 'en' ? active : 'transparent';
+  btnEn.style.color = lang === 'en' ? '#fff' : 'rgba(200,232,255,0.50)';
+
+  const t = translations[lang];
+  Object.keys(t).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = t[id];
+  });
+
+  // Data attribute translations
+  document.querySelectorAll('[data-de][data-en]').forEach(el => {
+    if (!el.dataset.gym) el.textContent = el.dataset[lang];
+  });
+
+  // Handschuhe feature has innerHTML (strong tag)
+  const hf = document.getElementById('handschuhe-feature');
+  if (hf) {
+    const txt = lang === 'de' ? 'Branded Handschuhe inklusive bei erster Buchung' : 'Branded gloves included with first booking';
+    hf.innerHTML = `<strong style="color:#fff;">${txt}</strong>`;
+  }
+
+  // Gruppentraining label (dynamic, preserve mode)
+  const gruppeLabels = {
+    de: { gym: 'Gruppentraining im Gym', home: 'Gruppentraining zu Hause / Outdoor', online: 'Gruppentraining über Videocall' },
+    en: { gym: 'Group training in the gym', home: 'Group training at home / outdoor', online: 'Group training via video call' }
+  };
+  const currentMode = window._currentMode || 'home';
+  document.getElementById('gruppe-label').textContent = gruppeLabels[lang][currentMode];
+
+  window._currentLang = lang;
+}
+
 
 function setMode(mode) {
   // Toggle buttons
   const btnGym = document.getElementById('btn-gym');
   const btnHome = document.getElementById('btn-home');
-  if (mode === 'gym') {
-    btnGym.style.background = 'linear-gradient(100deg,#1a65d6,#0e3f9a)';
-    btnGym.style.color = '#fff';
-    btnHome.style.background = 'transparent';
-    btnHome.style.color = 'rgba(200,232,255,0.50)';
-  } else {
-    btnHome.style.background = 'linear-gradient(100deg,#1a65d6,#0e3f9a)';
-    btnHome.style.color = '#fff';
-    btnGym.style.background = 'transparent';
-    btnGym.style.color = 'rgba(200,232,255,0.50)';
-  }
+  const btnOnline = document.getElementById('btn-online');
+  const active = 'linear-gradient(100deg,#1a65d6,#0e3f9a)';
+  const inactive = 'transparent';
+  btnOnline.style.background = mode === 'online' ? active : inactive;
+  btnOnline.style.color = mode === 'online' ? '#fff' : 'rgba(200,232,255,0.50)';
+  btnHome.style.background = mode === 'home' ? active : inactive;
+  btnHome.style.color = mode === 'home' ? '#fff' : 'rgba(200,232,255,0.50)';
+  btnGym.style.background = mode === 'gym' ? active : inactive;
+  btnGym.style.color = mode === 'gym' ? '#fff' : 'rgba(200,232,255,0.50)';
 
   // Update all price-val spans
   document.querySelectorAll('.price-val').forEach(el => {
@@ -669,6 +798,24 @@ function setMode(mode) {
   // Einzelstunde
   const ep = document.getElementById('einzelstunde-price');
   ep.textContent = ep.dataset[mode];
+
+  // Gratis-Artikel ausblenden bei Videocall
+  const isOnline = mode === 'online';
+  document.getElementById('schnupper-extra').style.display = isOnline ? 'none' : 'block';
+  document.getElementById('handschuhe-feature').style.display = isOnline ? 'none' : 'flex';
+
+  window._currentMode = mode;
+  // Gruppentraining
+  const lang = window._currentLang || 'de';
+  const gruppeLabels = {
+    de: { gym: 'Gruppentraining im Gym', home: 'Gruppentraining zu Hause / Outdoor', online: 'Gruppentraining über Videocall' },
+    en: { gym: 'Group training in the gym', home: 'Group training at home / outdoor', online: 'Group training via video call' }
+  };
+  document.getElementById('gruppe-label').textContent = gruppeLabels[lang][mode];
+  const gpreise = { gym: [60, 55, 50], home: [50, 45, 40], online: [40, 35, 30] };
+  document.getElementById('gp2').textContent = gpreise[mode][0];
+  document.getElementById('gp3').textContent = gpreise[mode][1];
+  document.getElementById('gp4').textContent = gpreise[mode][2];
 }
 </script>
 
