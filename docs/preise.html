@@ -715,7 +715,7 @@
 
 <!-- PAKETE -->
 <div class="section-label" id="label-pakete">Trainingspakete</div>
-<div class="cards">
+<div class="cards" id="abo-container">
 
   <div class="card" id="card-starter" onclick="selectCard(this,'starter')">
     <div class="card-name">Starter</div>
@@ -872,7 +872,7 @@
 </div>
 
 <!-- GRUPPENTRAINING -->
-<div class="rentabilitaet" id="rent-section">
+<div class="rentabilitaet" id="gruppe-container">
   <div class="section-label" id="gruppe-label">Gruppentraining</div>
   <p class="rent-intro" id="gruppe-intro">Trainiere gemeinsam mit Freunden oder Bekannten. Günstiger pro Person und mehr Spass.</p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;">
@@ -1009,6 +1009,20 @@ function openBuchungForm(paket) {
   document.getElementById('buchung-error').style.display = 'none';
 
   const section = document.getElementById('buchung-section');
+
+  // Move form below the relevant section
+  let anchor;
+  if (['starter','standard','premium'].includes(paket)) {
+    anchor = document.getElementById('abo-container');
+  } else if (paket === 'einzelstunde') {
+    anchor = document.getElementById('einzelstunde-card');
+  } else if (['gruppe2','gruppe3','gruppe4'].includes(paket)) {
+    anchor = document.getElementById('gruppe-container');
+  }
+  if (anchor && anchor.nextElementSibling !== section) {
+    anchor.insertAdjacentElement('afterend', section);
+  }
+
   section.classList.add('visible');
   setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
 }
