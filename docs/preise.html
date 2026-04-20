@@ -246,6 +246,13 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 56px;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .einzelstunde:hover { border-color: rgba(126,200,255,0.30); }
+  .einzelstunde.selected {
+    border-color: #4caf80 !important;
+    box-shadow: 0 0 0 2px rgba(76,175,128,0.25);
   }
   .einzelstunde p {
     font-size: 13px;
@@ -256,6 +263,60 @@
     font-size: 20px;
     font-weight: 800;
     color: rgba(200,232,255,0.70);
+  }
+  .einzelstunde-btn {
+    background: transparent;
+    border: 1.5px solid rgba(126,200,255,0.25);
+    border-radius: 7px;
+    color: #7ec8ff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+    flex-shrink: 0;
+    margin-left: 16px;
+  }
+  .einzelstunde.selected .einzelstunde-btn {
+    background: #4caf80;
+    border-color: #4caf80;
+    color: #fff;
+  }
+
+  /* GRUPPE KARTEN */
+  .gruppe-karte {
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .gruppe-karte:hover { border-color: rgba(126,200,255,0.40) !important; }
+  .gruppe-karte.selected {
+    border-color: #4caf80 !important;
+    box-shadow: 0 0 0 2px rgba(76,175,128,0.25);
+  }
+  .gruppe-karte .gruppe-buchen-btn {
+    display: block;
+    width: 100%;
+    margin-top: 14px;
+    padding: 8px;
+    border-radius: 7px;
+    border: 1.5px solid rgba(126,200,255,0.25);
+    background: transparent;
+    color: #7ec8ff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+  }
+  .gruppe-karte.selected .gruppe-buchen-btn {
+    background: #4caf80;
+    border-color: #4caf80;
+    color: #fff;
   }
 
   /* RENTABILITÄT */
@@ -761,7 +822,7 @@
       <label for="agb-check">Ich habe die <a href="/agb.html" target="_blank">AGB & Stornobedingungen</a> gelesen und akzeptiere diese verbindlich.</label>
     </div>
 
-    <button class="buchung-btn" id="buchung-btn" onclick="submitBuchung()">ABO JETZT BUCHEN →</button>
+    <button class="buchung-btn" id="buchung-btn" onclick="submitBuchung()">JETZT BUCHEN →</button>
     <div id="buchung-error" style="display:none;margin-top:12px;text-align:center;font-size:13px;font-weight:700;color:#ff8080;"></div>
   </div>
 
@@ -802,9 +863,12 @@
 </div>
 
 <!-- EINZELSTUNDE -->
-<div class="einzelstunde">
-  <p id="einzelstunde-text">Kein Abo? Einzelstunde ohne Bindung verfügbar.</p>
-  <strong id="einzelstunde-price" data-gym="CHF 120 / Session" data-home="CHF 100 / Session" data-online="CHF 80 / Session">CHF 80 / Session</strong>
+<div class="einzelstunde" id="einzelstunde-card" onclick="selectAngebot('einzelstunde', this)">
+  <div>
+    <p id="einzelstunde-text">Kein Abo? Einzelstunde ohne Bindung verfügbar.</p>
+    <strong id="einzelstunde-price" data-gym="CHF 120 / Session" data-home="CHF 100 / Session" data-online="CHF 80 / Session">CHF 80 / Session</strong>
+  </div>
+  <button class="einzelstunde-btn" id="einzelstunde-btn">Jetzt buchen</button>
 </div>
 
 <!-- GRUPPENTRAINING -->
@@ -813,23 +877,26 @@
   <p class="rent-intro" id="gruppe-intro">Trainiere gemeinsam mit Freunden oder Bekannten. Günstiger pro Person und mehr Spass.</p>
   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;">
 
-    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(126,200,255,0.12);border-radius:14px;padding:24px 20px;text-align:center;">
+    <div id="gkarte-2" class="gruppe-karte" style="background:rgba(255,255,255,0.04);border:1px solid rgba(126,200,255,0.12);border-radius:14px;padding:24px 20px;text-align:center;" onclick="selectAngebot('gruppe2', this)">
       <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;" data-de="2 Personen" data-en="2 people">2 Personen</div>
       <div id="gp2" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">50</div>
       <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;" data-de="CHF / Person" data-en="CHF / person">CHF / Person</div>
+      <button class="gruppe-buchen-btn" data-de="Buchen" data-en="Book">Buchen</button>
     </div>
 
-    <div style="background:rgba(26,101,214,0.14);border:1px solid rgba(26,101,214,0.45);border-radius:14px;padding:24px 20px;text-align:center;position:relative;">
+    <div id="gkarte-3" class="gruppe-karte" style="background:rgba(26,101,214,0.14);border:1px solid rgba(26,101,214,0.45);border-radius:14px;padding:24px 20px;text-align:center;position:relative;" onclick="selectAngebot('gruppe3', this)">
       <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#1a65d6;color:#fff;font-size:9px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;padding:4px 12px;border-radius:20px;white-space:nowrap;" data-de="Beliebt" data-en="Popular">Beliebt</div>
       <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;" data-de="3 Personen" data-en="3 people">3 Personen</div>
       <div id="gp3" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">45</div>
       <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;" data-de="CHF / Person" data-en="CHF / person">CHF / Person</div>
+      <button class="gruppe-buchen-btn" data-de="Buchen" data-en="Book">Buchen</button>
     </div>
 
-    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(126,200,255,0.12);border-radius:14px;padding:24px 20px;text-align:center;">
+    <div id="gkarte-4" class="gruppe-karte" style="background:rgba(255,255,255,0.04);border:1px solid rgba(126,200,255,0.12);border-radius:14px;padding:24px 20px;text-align:center;" onclick="selectAngebot('gruppe4', this)">
       <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;" data-de="4 Personen" data-en="4 people">4 Personen</div>
       <div id="gp4" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">40</div>
       <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;" data-de="CHF / Person" data-en="CHF / person">CHF / Person</div>
+      <button class="gruppe-buchen-btn" data-de="Buchen" data-en="Book">Buchen</button>
     </div>
 
   </div>
@@ -897,33 +964,46 @@ const IBAN                 = 'DEINE_IBAN_HIER';       // z.B. CH56 0483 5012 345
 
 // Paket-Daten
 const pakete = {
-  starter:  { name: 'Starter',  sessions: '4 Sessions / Monat' },
-  standard: { name: 'Standard', sessions: '8 Sessions / Monat' },
-  premium:  { name: 'Premium',  sessions: '12 Sessions / Monat' }
+  starter:      { name: 'Starter',                     sessions: '4 Sessions / Monat' },
+  standard:     { name: 'Standard',                    sessions: '8 Sessions / Monat' },
+  premium:      { name: 'Premium',                     sessions: '12 Sessions / Monat' },
+  einzelstunde: { name: 'Einzelstunde',                sessions: '1 Session (ohne Abo)' },
+  gruppe2:      { name: 'Gruppentraining – 2 Pers.',   sessions: 'CHF pro Person / Session' },
+  gruppe3:      { name: 'Gruppentraining – 3 Pers.',   sessions: 'CHF pro Person / Session' },
+  gruppe4:      { name: 'Gruppentraining – 4 Pers.',   sessions: 'CHF pro Person / Session' },
+};
+const paketeEN = {
+  starter:      { name: 'Starter',                     sessions: '4 sessions / month' },
+  standard:     { name: 'Standard',                    sessions: '8 sessions / month' },
+  premium:      { name: 'Premium',                     sessions: '12 sessions / month' },
+  einzelstunde: { name: 'Single session',              sessions: '1 session (no subscription)' },
+  gruppe2:      { name: 'Group training – 2 people',   sessions: 'CHF per person / session' },
+  gruppe3:      { name: 'Group training – 3 people',   sessions: 'CHF per person / session' },
+  gruppe4:      { name: 'Group training – 4 people',   sessions: 'CHF per person / session' },
 };
 const preisData = {
-  online: { starter: 200, standard: 360, premium: 480 },
-  home:   { starter: 280, standard: 520, premium: 720 },
-  gym:    { starter: 360, standard: 680, premium: 960 }
+  online: { starter: 200, standard: 360, premium: 480, einzelstunde: 80,  gruppe2: 40, gruppe3: 35, gruppe4: 30 },
+  home:   { starter: 280, standard: 520, premium: 720, einzelstunde: 100, gruppe2: 50, gruppe3: 45, gruppe4: 40 },
+  gym:    { starter: 360, standard: 680, premium: 960, einzelstunde: 120, gruppe2: 60, gruppe3: 55, gruppe4: 50 },
 };
 
 let selectedPaket = null;
 
-function selectCard(el, paket) {
-  document.querySelectorAll('.card').forEach(c => c.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedPaket = paket;
+function clearAllSelected() {
+  document.querySelectorAll('.card, .einzelstunde, .gruppe-karte').forEach(c => c.classList.remove('selected'));
+}
 
+function openBuchungForm(paket) {
+  selectedPaket = paket;
   const mode  = window._currentMode || 'home';
   const lang  = window._currentLang || 'de';
   const preis = preisData[mode][paket];
-  const info  = pakete[paket];
+  const info  = (lang === 'en' && paketeEN[paket]) ? paketeEN[paket] : pakete[paket];
 
   document.getElementById('buchung-paket-name').textContent = info.name;
   document.getElementById('buchung-paket-preis').textContent = preis;
   document.getElementById('buchung-paket-info').textContent = info.sessions;
 
-  // Reset form
   document.getElementById('buchung-form').style.display = 'block';
   document.getElementById('buchung-success').classList.remove('visible');
   document.getElementById('buchung-error').style.display = 'none';
@@ -931,6 +1011,18 @@ function selectCard(el, paket) {
   const section = document.getElementById('buchung-section');
   section.classList.add('visible');
   setTimeout(() => section.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50);
+}
+
+function selectCard(el, paket) {
+  clearAllSelected();
+  el.classList.add('selected');
+  openBuchungForm(paket);
+}
+
+function selectAngebot(paket, el) {
+  clearAllSelected();
+  if (el) el.classList.add('selected');
+  openBuchungForm(paket);
 }
 
 function submitBuchung() {
@@ -990,7 +1082,7 @@ function submitBuchung() {
     })
     .catch(() => {
       btn.disabled = false;
-      btn.textContent = 'ABO JETZT BUCHEN →';
+      btn.textContent = 'JETZT BUCHEN →';
       errEl.textContent = 'Fehler beim Senden. Bitte versuche es nochmal oder schreibe direkt an giacomo@privateboxingzurich.ch';
       errEl.style.display = 'block';
     });
@@ -1017,6 +1109,7 @@ const translations = {
     'label-pakete': 'Trainingspakete',
     'popular-badge': 'Beliebteste Wahl',
     'einzelstunde-text': 'Kein Abo? Einzelstunde ohne Bindung verfügbar.',
+    'einzelstunde-btn': 'Jetzt buchen',
     'gruppe-intro': 'Trainiere gemeinsam mit Freunden oder Bekannten. Günstiger pro Person und mehr Spass.',
     'label-faq': 'Wie funktioniert das Abo?',
     'faq1-title': 'Monatliche Zahlung',
@@ -1047,6 +1140,7 @@ const translations = {
     'label-pakete': 'Training packages',
     'popular-badge': 'Most popular',
     'einzelstunde-text': 'No subscription? Single session available without commitment.',
+    'einzelstunde-btn': 'Book now',
     'gruppe-intro': 'Train together with friends. Cheaper per person and more fun.',
     'label-faq': 'How does the subscription work?',
     'faq1-title': 'Monthly payment',
