@@ -1060,7 +1060,7 @@ function submitBuchung() {
   const preis = preisData[mode][selectedPaket];
   const info  = pakete[selectedPaket];
   const datum = new Date().toLocaleDateString('de-CH');
-  const referenz = name.trim().split(/\s+/).pop() + '_' + info.name;
+  const referenz = info.name;
   const ortLabel = { online: 'Über Videocall', home: 'Zu Hause / Outdoor', gym: 'Im Gym' };
 
   const btn = document.getElementById('buchung-btn');
