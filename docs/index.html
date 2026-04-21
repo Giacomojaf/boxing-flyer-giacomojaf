@@ -979,12 +979,12 @@
 
     <div class="booking-form">
       <div class="form-row">
-        <input type="text" placeholder="Dein Name">
-        <input type="email" placeholder="Deine Email">
+        <input type="text" id="bk-name" placeholder="Dein Name">
+        <input type="email" id="bk-email" placeholder="Deine Email">
       </div>
       <div class="form-row">
-        <input type="tel" placeholder="Telefon / WhatsApp">
-        <select>
+        <input type="tel" id="bk-phone" placeholder="Telefon / WhatsApp">
+        <select id="bk-goal">
           <option value="" disabled selected>Trainingsziel</option>
           <option>Fitness & Kondition</option>
           <option>Technik lernen</option>
@@ -1474,12 +1474,12 @@
 
   // Booking → EmailJS
   function sendToInstagram() {
-    const name  = document.querySelector('input[placeholder="Dein Name"]').value.trim();
-    const email = document.querySelector('input[placeholder="Deine Email"]').value.trim();
-    const phone = document.querySelector('input[placeholder="Telefon / WhatsApp"]').value.trim() || '–';
+    const name  = document.getElementById('bk-name')?.value.trim() || '';
+    const email = document.getElementById('bk-email')?.value.trim() || '';
+    const phone = document.getElementById('bk-phone')?.value.trim() || '–';
     const day   = document.querySelector('.cal-option.active .cal-day')?.textContent || '–';
-    const goal  = document.querySelector('select').value || '–';
-    const note  = document.querySelector('textarea').value.trim() || '–';
+    const goal  = document.getElementById('bk-goal')?.value || '–';
+    const note  = document.getElementById('bk-note')?.value.trim() || '–';
     const ort   = document.getElementById('selected-ort').value || '–';
     const btn   = document.getElementById('submit-btn');
 
