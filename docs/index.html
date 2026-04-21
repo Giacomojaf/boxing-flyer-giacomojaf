@@ -783,6 +783,8 @@
     }
   }
 </style>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('DPN76hd1SjOuEgZLb');</script>
 </head>
 <body>
 
@@ -1470,21 +1472,43 @@
   // Initialize deal with default (home)
   updateDeal('home');
 
-  // Booking → Email
+  // Booking → EmailJS
   function sendToInstagram() {
-    const name = document.querySelector('input[placeholder="Dein Name"]').value || '–';
-    const email = document.querySelector('input[placeholder="Deine Email"]').value || '–';
-    const phone = document.querySelector('input[placeholder="Telefon / WhatsApp"]').value || '–';
-    const day = document.querySelector('.cal-option.active .cal-day')?.textContent || '–';
-    const goal = document.querySelector('select').value || '–';
-    const note = document.querySelector('textarea').value || '–';
-    const ort = document.getElementById('selected-ort').value || '–';
+    const name  = document.querySelector('input[placeholder="Dein Name"]').value.trim();
+    const email = document.querySelector('input[placeholder="Deine Email"]').value.trim();
+    const phone = document.querySelector('input[placeholder="Telefon / WhatsApp"]').value.trim() || '–';
+    const day   = document.querySelector('.cal-option.active .cal-day')?.textContent || '–';
+    const goal  = document.querySelector('select').value || '–';
+    const note  = document.querySelector('textarea').value.trim() || '–';
+    const ort   = document.getElementById('selected-ort').value || '–';
+    const btn   = document.getElementById('submit-btn');
 
-    const subject = encodeURIComponent(`Trainingsanfrage, ${name}`);
-    const body = encodeURIComponent(
-      `Hallo Giacomo!\n\nIch möchte gerne einen Termin buchen.\n\nName: ${name}\nEmail: ${email}\nTelefon: ${phone}\nWunschtag: ${day}\nTrainingsort: ${ort}\nZiel: ${goal}\nNachricht: ${note}\n\nFreundliche Grüsse`
-    );
-    window.location.href = `mailto:giacomo@privateboxingzurich.ch?subject=${subject}&body=${body}`;
+    if (!name || !email) { alert('Bitte Namen und E-Mail ausfüllen.'); return; }
+
+    btn.disabled = true;
+    btn.textContent = 'WIRD GESENDET…';
+
+    const params = {
+      from_name: name, from_email: email, phone, wish_day: day,
+      location: ort, goal, message: note, reply_to: email, to_name: name
+    };
+
+    emailjs.send('service_giuepkx', 'template_oymlj1d', params)
+      .then(() => emailjs.send('service_giuepkx', 'template_63l4kqt', params))
+      .then(() => {
+        btn.textContent = 'GESENDET ✓';
+        btn.style.background = 'linear-gradient(100deg,#2e7d32,#1b5e20)';
+        const msg = document.createElement('div');
+        msg.style.cssText = 'margin-top:18px;padding:18px 20px;background:rgba(46,125,50,0.15);border:1.5px solid rgba(46,125,50,0.40);border-radius:12px;text-align:center;';
+        msg.innerHTML = '<div style="font-size:16px;font-weight:800;color:#4caf50;margin-bottom:6px;">Anfrage gesendet!</div>' +
+          '<div style="font-size:13px;font-weight:600;color:rgba(200,232,255,0.65);">Bestätigung geht an <strong style=\"color:#fff;\">' + email + '</strong>.<br>Giacomo meldet sich innerhalb von 24h.</div>';
+        btn.parentElement.appendChild(msg);
+      })
+      .catch(() => {
+        btn.disabled = false;
+        btn.textContent = 'TERMIN ANFRAGEN →';
+        alert('Fehler. Bitte schreib direkt an giacomo@privateboxingzurich.ch');
+      });
   }
 </script>
 
