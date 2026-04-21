@@ -1488,9 +1488,19 @@
     btn.disabled = true;
     btn.textContent = 'WIRD GESENDET…';
 
+    const ortLabel = { online: 'Online / Videocall', home: 'Zu Hause', gym: 'Im Gym' };
     const params = {
-      from_name: name, from_email: email, phone, wish_day: day,
-      location: ort, goal, message: note, reply_to: email, to_name: name
+      kunde_name:   name,
+      kunde_email:  email,
+      kunde_phone:  phone,
+      trainingsort: ortLabel[ort] || ort,
+      datum:        day,
+      paket:        goal,
+      sessions:     '–',
+      preis:        ort === 'online' ? 'CHF 60' : ort === 'home' ? 'CHF 100' : 'CHF 80',
+      referenz:     note || '–',
+      reply_to:     email,
+      to_name:      name,
     };
 
     emailjs.send('service_giuepkx', 'template_oymlj1d', params)
