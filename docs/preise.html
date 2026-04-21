@@ -805,7 +805,7 @@
     </div>
     <div style="text-align:right;">
       <div class="buchung-paket-preis"><sup style="font-family:Inter;font-size:14px;font-weight:700;color:rgba(76,175,128,0.70);">CHF </sup><span id="buchung-paket-preis">520</span></div>
-      <div style="font-size:11px;font-weight:600;color:rgba(76,175,128,0.55);" id="buchung-paket-info">8 Sessions / Monat</div>
+      <div style="font-size:11px;font-weight:600;color:rgba(76,175,128,0.55);" id="buchung-paket-info">8 Sessions</div>
     </div>
   </div>
 
@@ -964,9 +964,9 @@ const IBAN                 = 'DEINE_IBAN_HIER';       // z.B. CH56 0483 5012 345
 
 // Paket-Daten
 const pakete = {
-  starter:      { name: 'Starter',                     sessions: '4 Sessions / Monat' },
-  standard:     { name: 'Standard',                    sessions: '8 Sessions / Monat' },
-  premium:      { name: 'Premium',                     sessions: '12 Sessions / Monat' },
+  starter:      { name: 'Starter',                     sessions: '4 Sessions' },
+  standard:     { name: 'Standard',                    sessions: '8 Sessions' },
+  premium:      { name: 'Premium',                     sessions: '12 Sessions' },
   einzelstunde: { name: 'Einzelstunde',                sessions: '1 Session (ohne Abo)' },
   gruppe2:      { name: 'Gruppentraining – 2 Pers.',   sessions: 'CHF pro Person / Session' },
   gruppe3:      { name: 'Gruppentraining – 3 Pers.',   sessions: 'CHF pro Person / Session' },
@@ -1060,7 +1060,7 @@ function submitBuchung() {
   const preis = preisData[mode][selectedPaket];
   const info  = pakete[selectedPaket];
   const datum = new Date().toLocaleDateString('de-CH');
-  const referenz = name.replace(/\s+/g,'_') + '_' + info.name;
+  const referenz = name.trim().split(/\s+/).pop() + '_' + info.name;
   const ortLabel = { online: 'Über Videocall', home: 'Zu Hause / Outdoor', gym: 'Im Gym' };
 
   const btn = document.getElementById('buchung-btn');
