@@ -1085,7 +1085,7 @@ function submitBuchung() {
     preis:        'CHF ' + preis,
     trainingsort: ortLabel[mode],
     buchungstyp:  isGruppe ? 'Gruppentraining' : 'Abo',
-    referenz:     referenz,
+    referenz:     isGruppe ? info.name : info.name + ' Abo',
     datum:        datum,
     iban:         IBAN,
     ort_zahlung:  '8050 Zürich',
