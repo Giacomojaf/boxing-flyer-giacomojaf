@@ -1075,19 +1075,20 @@ function submitBuchung() {
 
   emailjs.init(EMAILJS_PUBLIC_KEY);
 
+  const isGruppe = selectedPaket.startsWith('gruppe');
   const params = {
     kunde_name:   name,
     kunde_email:  email,
     kunde_phone:  phone,
-    paket:        info.name + ' Abo',
-    sessions:     info.sessions,
+    paket:        isGruppe ? info.name : info.name + ' Abo',
+    sessions:     isGruppe ? '1 Session' : info.sessions,
     preis:        'CHF ' + preis,
     trainingsort: ortLabel[mode],
-    buchungstyp:  'Abo',
+    buchungstyp:  isGruppe ? 'Gruppentraining' : 'Abo',
     referenz:     referenz,
     datum:        datum,
     iban:         IBAN,
-    zweck:        'Abo Private Boxing Zürich ' + datum,
+    zweck:        (isGruppe ? 'Gruppentraining' : 'Abo') + ' Private Boxing Zürich ' + datum,
   };
 
   // Send to Giacomo
