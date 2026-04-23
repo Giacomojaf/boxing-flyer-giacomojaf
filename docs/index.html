@@ -1501,16 +1501,17 @@
     btn.disabled = true;
     btn.textContent = 'WIRD GESENDET…';
 
-    const ortLabel = { online: 'Online / Videocall', home: 'Zu Hause', gym: 'Im Gym' };
+    const mode = window._currentOrtMode || 'home';
+    const ortLabel = { online: 'Online / Videocall', home: 'Zu Hause / Outdoor', gym: 'Im Gym' };
     const params = {
       kunde_name:   name,
       kunde_email:  email,
       kunde_phone:  phone,
-      trainingsort: ortLabel[ort] || ort,
+      trainingsort: ortLabel[mode] || ort,
       datum:        day,
       paket:        goal,
       sessions:     '–',
-      preis:        ort === 'online' ? 'CHF 60' : ort === 'home' ? 'CHF 100' : 'CHF 80',
+      preis:        mode === 'online' ? 'CHF 40' : mode === 'home' ? 'CHF 60' : 'CHF 80',
       referenz:     'Ersttraining',
       buchungstyp:  'Ersttraining',
       iban:         IBAN,
