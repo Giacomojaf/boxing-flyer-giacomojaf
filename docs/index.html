@@ -1006,11 +1006,11 @@
         </select>
       </div>
       <div style="margin-bottom:16px;">
-        <div style="font-size:11px;font-weight:800;letter-spacing:0.14em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:10px;" id="ort-label">Trainingsort</div>
+        <div style="font-size:15px;font-weight:800;color:#fff;margin-bottom:10px;" id="ort-label">Wo möchtest du trainieren?</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
-          <button type="button" id="ort-btn-online" onclick="selectOrt(this,'online')" data-ort="Über Videocall" data-mode="online" style="padding:9px 16px;border-radius:8px;border:1.5px solid rgba(126,200,255,0.25);background:transparent;color:rgba(200,232,255,0.60);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">💻 Über Videocall</button>
-          <button type="button" id="ort-btn-home" onclick="selectOrt(this,'home')" data-ort="Zu Hause / Outdoor" data-mode="home" style="padding:9px 16px;border-radius:8px;border:1.5px solid #1a65d6;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">📍 Zu Hause / Outdoor</button>
-          <button type="button" id="ort-btn-gym" onclick="selectOrt(this,'gym')" data-ort="In unserem Gym" data-mode="gym" style="padding:9px 16px;border-radius:8px;border:1.5px solid rgba(126,200,255,0.25);background:transparent;color:rgba(200,232,255,0.60);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">🏋️ In unserem Gym</button>
+          <button type="button" id="ort-btn-online" onclick="selectOrt(this,'online')" data-ort="über Videocall" data-mode="online" style="padding:9px 16px;border-radius:8px;border:1.5px solid rgba(126,200,255,0.25);background:transparent;color:rgba(200,232,255,0.60);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">über Videocall 💻</button>
+          <button type="button" id="ort-btn-home" onclick="selectOrt(this,'home')" data-ort="zu Hause & Outdoor" data-mode="home" style="padding:9px 16px;border-radius:8px;border:1.5px solid #1a65d6;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">zu Hause & Outdoor 📍</button>
+          <button type="button" id="ort-btn-gym" onclick="selectOrt(this,'gym')" data-ort="im Boxgym" data-mode="gym" style="padding:9px 16px;border-radius:8px;border:1.5px solid rgba(126,200,255,0.25);background:transparent;color:rgba(200,232,255,0.60);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">im Boxgym 🥊</button>
         </div>
         <input type="hidden" id="selected-ort" value="Zu Hause / Outdoor">
 
@@ -1405,12 +1405,12 @@
 
   // Per-language text for ort buttons
   const ortLabels = {
-    de: { online: '💻 Über Videocall', home: '📍 Zu Hause / Outdoor', gym: '🏋️ In unserem Gym' },
-    en: { online: '💻 Via Video Call', home: '📍 At home / Outdoor', gym: '🏋️ In our Gym' }
+    de: { online: 'über Videocall 💻', home: 'zu Hause & Outdoor 📍', gym: 'im Boxgym 🥊' },
+    en: { online: 'via Video Call 💻', home: 'at Home & Outdoor 📍', gym: 'in the Boxing Gym 🥊' }
   };
   const ortValues = {
-    de: { online: 'Über Videocall', home: 'Zu Hause / Outdoor', gym: 'In unserem Gym' },
-    en: { online: 'Via Video Call', home: 'At home / Outdoor', gym: 'In our Gym' }
+    de: { online: 'über Videocall', home: 'zu Hause & Outdoor', gym: 'im Boxgym' },
+    en: { online: 'via Video Call', home: 'at Home & Outdoor', gym: 'in the Boxing Gym' }
   };
 
   function setLang(lang) {
@@ -1512,7 +1512,7 @@
     btn.textContent = 'WIRD GESENDET…';
 
     const mode = window._currentOrtMode || 'home';
-    const ortLabel = { online: 'Online / Videocall', home: 'Zu Hause / Outdoor', gym: 'Im Gym' };
+    const ortLabel = { online: 'über Videocall', home: 'zu Hause & Outdoor', gym: 'im Boxgym' };
     const params = {
       kunde_name:   name,
       kunde_email:  email,
