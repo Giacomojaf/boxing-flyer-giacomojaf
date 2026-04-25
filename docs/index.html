@@ -1495,8 +1495,11 @@
 
   const IBAN = 'CH34 0070 0114 9053 9000 6';
 
+  let _buchungGesendet = false;
+
   // Booking → EmailJS
   function sendToInstagram() {
+    if (_buchungGesendet) return;
     const name  = document.getElementById('bk-name')?.value.trim() || '';
     const email = document.getElementById('bk-email')?.value.trim() || '';
     const phone = document.getElementById('bk-phone')?.value.trim() || '–';
@@ -1533,6 +1536,7 @@
     emailjs.send('service_giuepkx', 'template_oymlj1d', params)
       .then(() => emailjs.send('service_giuepkx', 'template_63l4kqt', params))
       .then(() => {
+        _buchungGesendet = true;
         btn.textContent = 'GESENDET ✓';
         btn.style.background = 'linear-gradient(100deg,#2e7d32,#1b5e20)';
         const msg = document.createElement('div');
