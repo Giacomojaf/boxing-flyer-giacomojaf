@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Preise Preview – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --blue: #7ec8ff;
+    --dark: #08152a;
+    --mid: #0e2240;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--dark);
+    color: #fff;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 40px;
+    background: rgba(8,21,42,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(126,200,255,0.12);
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+    color: #fff;
+  }
+  .nav-logo span { color: var(--blue); }
+  .nav-links {
+    display: flex;
+    gap: 24px;
+    list-style: none;
+  }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.70);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .nav-links a.active { color: var(--blue); }
+  .nav-cta {
+    background: linear-gradient(100deg, #1a65d6, #0e3f9a);
+    border: 1.5px solid rgba(126,200,255,0.45);
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: box-shadow 0.2s;
+  }
+  .nav-cta:hover { box-shadow: 0 4px 20px rgba(30,100,220,0.55); }
+
+  /* SECTION BASE */
+  section { padding: 100px 80px; }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 80px);
+    letter-spacing: 0.04em;
+    line-height: 0.95;
+    color: #fff;
+    margin-bottom: 16px;
+  }
+  .section-title span { color: var(--blue); }
+  .section-divider {
+    width: 48px; height: 3px;
+    background: linear-gradient(90deg, #1a65d6, #7ec8ff);
+    margin-bottom: 56px;
+    border-radius: 2px;
+  }
+
+  /* FAKE HERO */
+  .hero-fake {
+    height: 100vh;
+    background: linear-gradient(135deg, #08152a 0%, #0e2240 100%);
+    display: flex;
+    align-items: center;
+    padding: 0 80px;
+    border-bottom: 1px solid rgba(126,200,255,0.10);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-fake::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 50%, rgba(26,101,214,0.15) 0%, transparent 65%);
+  }
+  .hero-fake-content { position: relative; z-index: 1; }
+  .hero-fake-tag {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.20em;
+    text-transform: uppercase; color: var(--blue); margin-bottom: 16px;
+  }
+  .hero-fake-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(60px, 9vw, 110px);
+    letter-spacing: 0.04em;
+    line-height: 0.90;
+    color: #fff;
+    margin-bottom: 24px;
+  }
+  .hero-fake-title span { color: var(--blue); }
+  .hero-fake-sub {
+    font-size: 15px; font-weight: 500;
+    color: rgba(200,232,255,0.55);
+    margin-bottom: 36px;
+    max-width: 420px;
+    line-height: 1.7;
+  }
+  .hero-fake-btn {
+    display: inline-block;
+    background: linear-gradient(100deg, #1a65d6, #0e3f9a);
+    border: 1.5px solid rgba(126,200,255,0.45);
+    border-radius: 8px;
+    padding: 14px 28px;
+    font-size: 14px; font-weight: 800;
+    color: #fff; text-decoration: none;
+    letter-spacing: 0.05em;
+  }
+  .hero-fake-note {
+    margin-top: 14px;
+    font-size: 11px; font-weight: 600;
+    color: rgba(200,232,255,0.30);
+  }
+  .glow-bar {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, transparent 3%, #1e60cc 25%, #7ec8ff 50%, #1e60cc 75%, transparent 97%);
+    box-shadow: 0 -4px 20px rgba(126,200,255,0.40);
+  }
+
+  /* PREISE SECTION */
+  #preise {
+    background: var(--dark);
+    padding: 100px 80px;
+  }
+
+  .preise-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 860px;
+  }
+
+  .p-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(126,200,255,0.12);
+    border-radius: 16px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .p-card:hover {
+    border-color: rgba(126,200,255,0.30);
+    transform: translateY(-3px);
+  }
+  .p-card.popular {
+    background: rgba(26,101,214,0.12);
+    border-color: #1a65d6;
+  }
+  .p-card.popular:hover { border-color: #4a85e6; }
+
+  .p-badge {
+    position: absolute;
+    top: -13px; left: 50%; transform: translateX(-50%);
+    background: linear-gradient(100deg, #1a65d6, #0e3f9a);
+    color: #fff;
+    font-size: 9px; font-weight: 800;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+
+  .p-name {
+    font-size: 10px; font-weight: 800;
+    letter-spacing: 0.20em; text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  .p-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    letter-spacing: 0.04em;
+    color: #fff;
+    line-height: 1;
+    text-align: center;
+  }
+  .p-price sup {
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: rgba(200,232,255,0.50);
+    vertical-align: super;
+    margin-right: 2px;
+  }
+
+  .p-per {
+    text-align: center;
+    font-size: 12px; font-weight: 600;
+    color: rgba(200,232,255,0.40);
+    margin: 6px 0 24px;
+  }
+
+  .p-divider {
+    width: 100%; height: 1px;
+    background: rgba(126,200,255,0.10);
+    margin-bottom: 20px;
+  }
+
+  .p-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    flex: 1;
+    margin-bottom: 24px;
+  }
+  .p-features li {
+    font-size: 12px; font-weight: 600;
+    color: rgba(200,232,255,0.65);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.4;
+  }
+  .p-features li::before {
+    content: '✓';
+    color: #4caf80;
+    font-weight: 800;
+    font-size: 13px;
+    flex-shrink: 0;
+    margin-top: 0px;
+  }
+
+  .p-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1.5px solid rgba(126,200,255,0.25);
+    background: transparent;
+    color: var(--blue);
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+  }
+  .p-btn:hover {
+    border-color: rgba(126,200,255,0.55);
+    background: rgba(126,200,255,0.06);
+  }
+  .p-card.popular .p-btn {
+    background: linear-gradient(100deg, #1a65d6, #0e3f9a);
+    border-color: #1a65d6;
+    color: #fff;
+  }
+  .p-card.popular .p-btn:hover {
+    box-shadow: 0 4px 16px rgba(30,100,220,0.50);
+  }
+
+  .p-einzelstunde {
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 28px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(126,200,255,0.10);
+    border-radius: 12px;
+    max-width: 860px;
+  }
+  .p-einzelstunde-label {
+    font-size: 10px; font-weight: 800;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: rgba(200,232,255,0.35);
+  }
+  .p-einzelstunde-text {
+    font-size: 14px; font-weight: 600;
+    color: rgba(200,232,255,0.65);
+    flex: 1;
+  }
+  .p-einzelstunde-price {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 32px;
+    color: #fff;
+    letter-spacing: 0.04em;
+  }
+  .p-einzelstunde-price span {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px; font-weight: 700;
+    color: rgba(200,232,255,0.45);
+    margin-left: 4px;
+  }
+
+  /* NEXT SECTION (shows continuity) */
+  .next-section {
+    background: var(--mid);
+    padding: 100px 80px;
+    border-top: 1px solid rgba(126,200,255,0.08);
+    opacity: 0.4;
+  }
+
+  /* PREVIEW LABEL */
+  .preview-label {
+    position: fixed;
+    top: 80px; right: 20px;
+    background: rgba(26,101,214,0.90);
+    backdrop-filter: blur(8px);
+    color: #fff;
+    font-size: 11px; font-weight: 800;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 8px 14px;
+    border-radius: 8px;
+    z-index: 200;
+    border: 1px solid rgba(126,200,255,0.30);
+  }
+</style>
+</head>
+<body>
+
+<div class="preview-label">Preview: Preise-Sektion</div>
+
+<!-- NAV (wie auf der Website) -->
+<nav>
+  <div class="nav-logo">PRIVATE BOXING <span>ZÜRICH</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Über mich</a></li>
+    <li><a href="#">Angebote</a></li>
+    <li><a href="#preise" class="active">Preise</a></li>
+    <li><a href="#">Termin</a></li>
+    <li><a href="#">FAQ</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Jetzt buchen</a>
+</nav>
+
+<!-- FAKE HERO (zeigt den Kontext) -->
+<div class="hero-fake">
+  <div class="hero-fake-content">
+    <div class="hero-fake-tag">1:1 Privattraining · Zürich</div>
+    <div class="hero-fake-title">PRIVATE<br><span>BOXING</span></div>
+    <div class="hero-fake-sub">Intensives Einzeltraining mit Fokus auf Technik, Kondition und Fortschritt.</div>
+    <a href="#preise" class="hero-fake-btn">Preise ansehen</a>
+    <div class="hero-fake-note">Scrollen für Preise</div>
+  </div>
+  <div class="glow-bar"></div>
+</div>
+
+<!-- PREISE SEKTION -->
+<section id="preise">
+  <div class="section-tag">Monatliche Abos · 1:1 Privattraining</div>
+  <div class="section-title">TRAININGS<br><span>PAKETE</span></div>
+  <div class="section-divider"></div>
+
+  <div class="preise-cards">
+
+    <div class="p-card">
+      <div class="p-name">Starter</div>
+      <div class="p-price"><sup>CHF </sup>280</div>
+      <div class="p-per">pro Monat · 4 Sessions</div>
+      <div class="p-divider"></div>
+      <ul class="p-features">
+        <li>1 Training pro Woche</li>
+        <li>60 Min. pro Einheit</li>
+        <li>Technik und Grundlagen</li>
+        <li>Individuelles Training</li>
+        <li>Monatlich kündbar</li>
+      </ul>
+      <button class="p-btn">Jetzt buchen</button>
+    </div>
+
+    <div class="p-card popular">
+      <div class="p-badge">Beliebteste Wahl</div>
+      <div class="p-name">Standard</div>
+      <div class="p-price"><sup>CHF </sup>520</div>
+      <div class="p-per">pro Monat · 8 Sessions</div>
+      <div class="p-divider"></div>
+      <ul class="p-features">
+        <li>2 Trainings pro Woche</li>
+        <li>60 Min. pro Einheit</li>
+        <li>Technik, Kondition, Kraft</li>
+        <li>Persönlicher Trainingsplan</li>
+        <li>Fortschrittsauswertung</li>
+        <li>Mindestlaufzeit 2 Monate</li>
+      </ul>
+      <button class="p-btn">Jetzt buchen</button>
+    </div>
+
+    <div class="p-card">
+      <div class="p-name">Premium</div>
+      <div class="p-price"><sup>CHF </sup>320</div>
+      <div class="p-per">pro Monat · 16 Sessions</div>
+      <div class="p-divider"></div>
+      <ul class="p-features">
+        <li>1 bis 3 Trainings pro Woche</li>
+        <li>60 Min. pro Einheit</li>
+        <li>Technik, Kondition, Kraft</li>
+        <li>Persönlicher Trainingsplan</li>
+        <li>Fortschrittsauswertung</li>
+        <li>Priorität bei Buchungen</li>
+        <li>Mindestlaufzeit 4 Monate</li>
+      </ul>
+      <button class="p-btn">Jetzt buchen</button>
+    </div>
+
+  </div>
+
+  <div class="p-einzelstunde">
+    <div>
+      <div class="p-einzelstunde-label">Ohne Abo</div>
+      <div class="p-einzelstunde-text">Einzelstunde ohne Bindung</div>
+    </div>
+    <div class="p-einzelstunde-price">100<span>CHF</span></div>
+    <button class="p-btn" style="width:auto;padding:12px 20px;white-space:nowrap;">Anfragen</button>
+  </div>
+
+</section>
+
+<!-- NÄCHSTE SEKTION (zeigt Übergang) -->
+<div class="next-section">
+  <div class="section-tag">Jetzt starten</div>
+  <div class="section-title">TERMIN<br><span>BUCHEN</span></div>
+  <div class="section-divider"></div>
+  <p style="color:rgba(200,232,255,0.30);font-size:13px;">... Buchungsformular folgt ...</p>
+</div>
+
+</body>
+</html>
