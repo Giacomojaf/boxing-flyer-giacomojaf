@@ -1009,8 +1009,8 @@
         <div style="font-size:15px;font-weight:800;color:#fff;margin-bottom:10px;" id="ort-label">Wo möchtest du trainieren?</div>
         <div style="display:flex;gap:8px;flex-wrap:wrap;">
           <button type="button" id="ort-btn-online" onclick="selectOrt(this,'online')" data-ort="über Videocall" data-mode="online" style="padding:9px 16px;border-radius:8px;border:1.5px solid rgba(126,200,255,0.25);background:transparent;color:rgba(200,232,255,0.60);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">über Videocall 💻</button>
-          <button type="button" id="ort-btn-home" onclick="selectOrt(this,'home')" data-ort="zu Hause & Outdoor" data-mode="home" style="padding:9px 16px;border-radius:8px;border:1.5px solid #1a65d6;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">zu Hause & Outdoor 📍</button>
-          <button type="button" id="ort-btn-gym" onclick="selectOrt(this,'gym')" data-ort="im Boxgym" data-mode="gym" style="padding:9px 16px;border-radius:8px;border:1.5px solid rgba(126,200,255,0.25);background:transparent;color:rgba(200,232,255,0.60);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">im Boxgym 🥊</button>
+          <button type="button" id="ort-btn-home" onclick="selectOrt(this,'home')" data-ort="zu Hause & Outdoor" data-mode="home" style="padding:9px 16px;border-radius:8px;border:1.5px solid rgba(126,200,255,0.25);background:transparent;color:rgba(200,232,255,0.60);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">zu Hause & Outdoor 📍</button>
+          <button type="button" id="ort-btn-gym" onclick="selectOrt(this,'gym')" data-ort="im Boxgym" data-mode="gym" style="padding:9px 16px;border-radius:8px;border:1.5px solid #1a65d6;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">im Boxgym 🥊</button>
         </div>
         <input type="hidden" id="selected-ort" value="Zu Hause / Outdoor">
 
@@ -1214,12 +1214,12 @@
   const dealExtras = {
     de: {
       online: '',
-      home:   '✓ Gratis Branded Bandagen inklusive',
+      home:   '',
       gym:    '✓ Gratis Branded Bandagen inklusive'
     },
     en: {
       online: '',
-      home:   '✓ Free branded hand wraps included',
+      home:   '',
       gym:    '✓ Free branded hand wraps included'
     }
   };
@@ -1440,7 +1440,7 @@
     // Update ort buttons text and hidden value
     const ol = ortLabels[lang];
     const ov = ortValues[lang];
-    const mode = window._currentOrtMode || 'home';
+    const mode = window._currentOrtMode || 'gym';
     document.getElementById('ort-btn-online').textContent = ol.online;
     document.getElementById('ort-btn-home').textContent = ol.home;
     document.getElementById('ort-btn-gym').textContent = ol.gym;
@@ -1478,7 +1478,7 @@
     if (ta) ta.placeholder = ph.msg;
 
     // Refresh deal extra text after lang change
-    updateDeal(window._currentOrtMode || 'home');
+    updateDeal(window._currentOrtMode || 'gym');
 
     // Update training goal select
     const sel = document.querySelector('.booking-form select');
@@ -1490,8 +1490,8 @@
     }
   }
 
-  // Initialize deal with default (home)
-  updateDeal('home');
+  // Initialize deal with default (gym)
+  updateDeal('gym');
 
   const IBAN = 'CH34 0070 0114 9053 9000 6';
 
@@ -1511,7 +1511,7 @@
     btn.disabled = true;
     btn.textContent = 'WIRD GESENDET…';
 
-    const mode = window._currentOrtMode || 'home';
+    const mode = window._currentOrtMode || 'gym';
     const ortLabel = { online: 'über Videocall', home: 'zu Hause & Outdoor', gym: 'im Boxgym' };
     const params = {
       kunde_name:   name,
