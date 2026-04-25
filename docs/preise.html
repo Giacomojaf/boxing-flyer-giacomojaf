@@ -656,6 +656,9 @@
 
     /* Erklärung: 1 Spalte */
     .erklaer-grid { grid-template-columns: 1fr; }
+
+    /* Gruppentraining: 1 Spalte */
+    #gruppe-grid { grid-template-columns: 1fr !important; }
   }
 </style>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -902,7 +905,7 @@
 <div class="rentabilitaet" id="gruppe-container">
   <div class="section-label" id="gruppe-label">Gruppentraining</div>
   <p class="rent-intro" id="gruppe-intro">Trainiere gemeinsam mit Freunden oder Bekannten. Günstiger pro Person und mehr Spass.</p>
-  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;">
+  <div id="gruppe-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;">
 
     <div id="gkarte-2" class="gruppe-karte" style="background:rgba(255,255,255,0.04);border:1px solid rgba(126,200,255,0.12);border-radius:14px;padding:24px 20px;text-align:center;" onclick="selectAngebot('gruppe2', this)">
       <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;" data-de="2 Personen" data-en="2 people">2 Personen</div>
