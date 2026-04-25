@@ -841,6 +841,8 @@
       <input class="buchung-input" id="b-name" type="text" placeholder="Vollständiger Name *" required>
       <input class="buchung-input" id="b-email" type="email" placeholder="Email-Adresse *" required>
       <input class="buchung-input" id="b-phone" type="tel" placeholder="Telefon / WhatsApp *" required>
+      <input class="buchung-input" id="b-adresse" type="text" placeholder="Strasse und Hausnummer *" required>
+      <input class="buchung-input" id="b-plz" type="text" placeholder="PLZ und Ort *" required>
     </div>
 
     <div class="agb-row">
@@ -1074,14 +1076,16 @@ function selectAngebot(paket, el) {
 }
 
 function submitBuchung() {
-  const name  = document.getElementById('b-name').value.trim();
-  const email = document.getElementById('b-email').value.trim();
-  const phone = document.getElementById('b-phone').value.trim();
+  const name    = document.getElementById('b-name').value.trim();
+  const email   = document.getElementById('b-email').value.trim();
+  const phone   = document.getElementById('b-phone').value.trim();
+  const adresse = document.getElementById('b-adresse').value.trim();
+  const plz     = document.getElementById('b-plz').value.trim();
   const agb     = document.getElementById('agb-check').checked;
   const vertrag = document.getElementById('vertrag-check').checked;
   const errEl = document.getElementById('buchung-error');
 
-  if (!name || !email || !phone) {
+  if (!name || !email || !phone || !adresse || !plz) {
     errEl.textContent = 'Bitte alle Felder ausfüllen.';
     errEl.style.display = 'block'; return;
   }
@@ -1110,9 +1114,10 @@ function submitBuchung() {
 
   const isGruppe = selectedPaket.startsWith('gruppe');
   const params = {
-    kunde_name:   name,
-    kunde_email:  email,
-    kunde_phone:  phone,
+    kunde_name:    name,
+    kunde_email:   email,
+    kunde_phone:   phone,
+    kunde_adresse: adresse + ', ' + plz,
     paket:        isGruppe ? info.name : info.name + ' Abo',
     sessions:     isGruppe ? '1 Session' : info.sessions,
     preis:        'CHF ' + preis,
