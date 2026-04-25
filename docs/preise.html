@@ -1012,9 +1012,9 @@ const paketeEN = {
   gruppe6:      { name: 'Group training – 6 people',   sessions: 'CHF per person / training' },
 };
 const preisData = {
-  online: { starter: 200, standard: 360, premium: 480, einzelstunde: 80,  gruppe2: 40, gruppe4: 20, gruppe6: 15 },
-  home:   { starter: 280, standard: 520, premium: 720, einzelstunde: 100, gruppe2: 50, gruppe4: 25, gruppe6: 20 },
-  gym:    { starter: 360, standard: 680, premium: 960, einzelstunde: 120, gruppe2: 60, gruppe4: 30, gruppe6: 20 },
+  online: { starter: 200, standard: 360, premium: 480, einzelstunde: 80,  gruppe2: 40, gruppe4: 20 },
+  home:   { starter: 320, standard: 560, premium: 720, einzelstunde: 100, gruppe2: 50, gruppe4: 25 },
+  gym:    { starter: 400, standard: 720, premium: 960, einzelstunde: 120, gruppe2: 60, gruppe4: 30 },
 };
 
 let selectedPaket = null;
@@ -1297,7 +1297,6 @@ function setMode(mode) {
   const r5 = v => Math.ceil(v / 5) * 5;
   document.getElementById('gp2').textContent = r5(einzelPreise[mode] / 2);
   document.getElementById('gp4').textContent = r5(einzelPreise[mode] / 4);
-  document.getElementById('gp6').textContent = r5(einzelPreise[mode] / 6);
 }
 </script>
 
