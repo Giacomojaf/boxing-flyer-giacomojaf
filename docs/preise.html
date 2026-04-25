@@ -845,7 +845,11 @@
 
     <div class="agb-row">
       <input type="checkbox" id="agb-check">
-      <label for="agb-check">Ich habe die <a href="/agb.html" target="_blank">AGB & Stornobedingungen</a> gelesen und akzeptiere diese verbindlich.</label>
+      <label for="agb-check" id="label-agb-check">Ich habe die <a href="/agb.html" target="_blank">AGB & Stornobedingungen</a> gelesen und akzeptiere diese verbindlich.</label>
+    </div>
+    <div class="agb-row" style="margin-top:8px;">
+      <input type="checkbox" id="vertrag-check">
+      <label for="vertrag-check" id="label-vertrag-check">Ich bestätige, dass das Abo für die gewählte Laufzeit verbindlich ist.</label>
     </div>
 
     <button class="buchung-btn" id="buchung-btn" onclick="submitBuchung()">JETZT BUCHEN →</button>
@@ -1073,7 +1077,8 @@ function submitBuchung() {
   const name  = document.getElementById('b-name').value.trim();
   const email = document.getElementById('b-email').value.trim();
   const phone = document.getElementById('b-phone').value.trim();
-  const agb   = document.getElementById('agb-check').checked;
+  const agb     = document.getElementById('agb-check').checked;
+  const vertrag = document.getElementById('vertrag-check').checked;
   const errEl = document.getElementById('buchung-error');
 
   if (!name || !email || !phone) {
@@ -1082,6 +1087,10 @@ function submitBuchung() {
   }
   if (!agb) {
     errEl.textContent = 'Bitte AGB akzeptieren.';
+    errEl.style.display = 'block'; return;
+  }
+  if (!vertrag) {
+    errEl.textContent = 'Bitte Vertragsbedingungen bestätigen.';
     errEl.style.display = 'block'; return;
   }
   errEl.style.display = 'none';
