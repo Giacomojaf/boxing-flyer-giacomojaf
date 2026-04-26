@@ -721,7 +721,7 @@
   <div style="font-size:16px;font-weight:800;color:#fff;" id="mode-label">Wo möchtest du trainieren?</div>
   <div id="mode-toggle" style="background:rgba(255,255,255,0.06);border:1px solid rgba(126,200,255,0.15);border-radius:12px;padding:6px;display:flex;gap:6px;flex-wrap:wrap;">
     <button id="btn-online" onclick="setMode('online')" style="display:none;padding:10px 24px;border-radius:8px;border:none;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">über Videocall 💻</button>
-    <button id="btn-home" onclick="setMode('home')" style="padding:10px 24px;border-radius:8px;border:none;background:transparent;color:rgba(200,232,255,0.50);font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">zu Hause & Outdoor 📍</button>
+    <button id="btn-home" onclick="setMode('home')" style="padding:10px 24px;border-radius:8px;border:none;background:transparent;color:rgba(200,232,255,0.50);font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">zu Hause & Draussen 📍</button>
     <button id="btn-gym" onclick="setMode('gym')" style="padding:10px 24px;border-radius:8px;border:none;background:transparent;color:rgba(200,232,255,0.50);font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">im Boxgym 🥊</button>
   </div>
 </div>
@@ -1104,7 +1104,7 @@ function submitBuchung() {
   const info  = pakete[selectedPaket];
   const datum = new Date().toLocaleDateString('de-CH');
   const referenz = info.name;
-  const ortLabel = { online: 'über Videocall', home: 'zu Hause & Outdoor', gym: 'im Boxgym' };
+  const ortLabel = { online: 'über Videocall', home: 'zu Hause & Draussen', gym: 'im Boxgym' };
 
   const btn = document.getElementById('buchung-btn');
   btn.disabled = true;
@@ -1166,7 +1166,7 @@ const translations = {
     'schnupper-sub': 'Keine Bindung · Kein Risiko · Lerne mich kennen',
     'schnupper-extra': '',
     'btn-online': 'über Videocall 💻',
-    'btn-home': 'zu Hause & Outdoor 📍',
+    'btn-home': 'zu Hause & Draussen 📍',
     'btn-gym': 'im Boxgym 🥊',
     'label-pakete': 'Trainingspakete',
     'popular-badge': 'Beliebteste Wahl',
@@ -1246,7 +1246,7 @@ function setLang(lang) {
 
   // Gruppentraining label (dynamic, preserve mode)
   const gruppeLabels = {
-    de: { gym: 'Gruppentraining im Gym', home: 'Gruppentraining zu Hause / Outdoor', online: 'Gruppentraining über Videocall' },
+    de: { gym: 'Gruppentraining im Gym', home: 'Gruppentraining zu Hause / Draussen', online: 'Gruppentraining über Videocall' },
     en: { gym: 'Group training in the gym', home: 'Group training at home / outdoor', online: 'Group training via video call' }
   };
   const currentMode = window._currentMode || 'home';
@@ -1303,7 +1303,7 @@ function setMode(mode) {
   // Gruppentraining
   const lang = window._currentLang || 'de';
   const gruppeLabels = {
-    de: { gym: 'Gruppentraining im Gym', home: 'Gruppentraining zu Hause / Outdoor', online: 'Gruppentraining über Videocall' },
+    de: { gym: 'Gruppentraining im Gym', home: 'Gruppentraining zu Hause / Draussen', online: 'Gruppentraining über Videocall' },
     en: { gym: 'Group training in the gym', home: 'Group training at home / outdoor', online: 'Group training via video call' }
   };
   document.getElementById('gruppe-label').textContent = gruppeLabels[lang][mode];
