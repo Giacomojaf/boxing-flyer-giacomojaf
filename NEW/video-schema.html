@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Video Schema – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Bebas+Neue&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#08152a; color:#fff; padding:32px 16px 80px; }
+  .wrap { max-width:740px; margin:0 auto; display:flex; flex-direction:column; gap:32px; }
+
+  h1 { font-family:'Bebas Neue',sans-serif; font-size:42px; letter-spacing:0.06em; color:#fff; }
+  h1 span { color:#FFD500; }
+  .sub { font-size:13px; color:rgba(200,232,255,0.4); margin-top:6px; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; }
+
+  .section-title { font-size:11px; font-weight:800; letter-spacing:0.2em; color:rgba(126,200,255,0.4); text-transform:uppercase; margin-bottom:14px; }
+
+  /* ── FORMAT ── */
+  .format-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  .fmt-card { background:#0d1f3c; border:1px solid rgba(126,200,255,0.12); border-radius:12px; padding:16px; }
+  .fmt-label { font-size:10px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; color:#7ec8ff; margin-bottom:6px; }
+  .fmt-val { font-size:16px; font-weight:800; color:#fff; }
+  .fmt-note { font-size:11px; color:rgba(200,232,255,0.45); margin-top:4px; }
+
+  /* ── TEXT STYLE ── */
+  .text-demo { background:#0d1f3c; border:1px solid rgba(126,200,255,0.12); border-radius:14px; padding:24px 28px; }
+  .demo-preview { background:#111; border-radius:8px; padding:20px; margin-bottom:16px; text-align:center; }
+  .demo-line1 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.04em; color:#fff; text-shadow: 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000; }
+  .demo-line2 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.04em; color:#FFD500; text-shadow: 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000; }
+  .demo-line3 { font-family:'Bebas Neue',sans-serif; font-size:36px; letter-spacing:0.04em; color:#50D2FF; text-shadow: 3px 3px 0 #000, -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000; }
+  .spec-list { display:flex; flex-direction:column; gap:8px; }
+  .spec { display:flex; gap:12px; align-items:flex-start; font-size:13px; }
+  .spec-key { font-weight:800; color:#7ec8ff; min-width:130px; flex-shrink:0; }
+  .spec-val { color:rgba(200,232,255,0.7); }
+
+  /* ── REGELN ── */
+  .rules { display:flex; flex-direction:column; gap:8px; }
+  .rule { display:flex; gap:14px; background:#0d1f3c; border-radius:10px; padding:14px 16px; border-left:3px solid rgba(126,200,255,0.2); }
+  .rule.ok { border-left-color:#2e7d32; }
+  .rule.nope { border-left-color:#b71c1c; }
+  .rule-icon { font-size:16px; flex-shrink:0; }
+  .rule-text { font-size:13px; color:rgba(200,232,255,0.75); line-height:1.5; }
+  .rule-text strong { color:#fff; }
+
+  /* ── FARBEN ── */
+  .colors { display:flex; gap:12px; flex-wrap:wrap; }
+  .color-swatch { display:flex; flex-direction:column; align-items:center; gap:6px; }
+  .swatch { width:52px; height:52px; border-radius:10px; border:1px solid rgba(255,255,255,0.1); }
+  .swatch-name { font-size:10px; font-weight:700; color:rgba(200,232,255,0.5); letter-spacing:0.08em; }
+  .swatch-hex { font-size:10px; color:rgba(200,232,255,0.3); font-family:monospace; }
+
+  /* ── HOOKS ── */
+  .hooks { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .hook-card { background:#0d1f3c; border:1px solid rgba(126,200,255,0.1); border-radius:12px; padding:16px; }
+  .hook-type { font-size:10px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; color:#FFD500; margin-bottom:8px; }
+  .hook-example { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:0.04em; color:#fff; line-height:1.3; margin-bottom:6px; }
+  .hook-note { font-size:11px; color:rgba(200,232,255,0.45); line-height:1.5; }
+
+  /* ── QUELLEN ── */
+  .sources { display:flex; flex-direction:column; gap:8px; }
+  .src { display:flex; gap:12px; background:#0d1f3c; border-radius:10px; padding:12px 16px; align-items:center; }
+  .src-name { font-size:13px; font-weight:800; color:#fff; min-width:180px; }
+  .src-info { font-size:12px; color:rgba(200,232,255,0.5); }
+  .src-tag { font-size:10px; font-weight:700; padding:2px 8px; border-radius:20px; margin-left:auto; flex-shrink:0; }
+  .tag-portrait { background:rgba(26,101,214,0.3); color:#7ec8ff; }
+  .tag-landscape { background:rgba(229,57,53,0.3); color:#ff8a80; }
+  .tag-4k { background:rgba(46,125,50,0.3); color:#a5d6a7; }
+
+  /* ── VIDEOS ── */
+  .video-list { display:flex; flex-direction:column; gap:8px; }
+  .vid { display:flex; gap:14px; background:#0d1f3c; border-radius:10px; padding:12px 16px; align-items:flex-start; }
+  .vid-num { font-size:11px; font-weight:800; color:rgba(126,200,255,0.35); min-width:36px; }
+  .vid-name { font-size:13px; font-weight:700; color:#fff; margin-bottom:2px; }
+  .vid-text { font-family:'Bebas Neue',sans-serif; font-size:16px; letter-spacing:0.04em; }
+  .vid-text .w { color:#fff; }
+  .vid-text .y { color:#FFD500; }
+  .vid-text .c { color:#50D2FF; }
+  .vid-meta { font-size:11px; color:rgba(200,232,255,0.4); margin-top:2px; }
+
+  .divider { height:1px; background:rgba(126,200,255,0.08); }
+
+  @media(max-width:580px){
+    .format-grid { grid-template-columns:1fr 1fr; }
+    .hooks { grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div>
+    <div class="sub">Private Boxing Zürich · Content</div>
+    <h1>VIDEO<br><span>SCHEMA</span></h1>
+    <p style="font-size:13px;color:rgba(200,232,255,0.4);margin-top:10px;line-height:1.6;">Dieses Dokument definiert wie jedes Video aussehen muss. Wird nach jedem gut laufenden Video aktualisiert.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FORMAT -->
+  <div>
+    <div class="section-title">Format · Technisch</div>
+    <div class="format-grid">
+      <div class="fmt-card">
+        <div class="fmt-label">Auflösung</div>
+        <div class="fmt-val">1080 × 1920</div>
+        <div class="fmt-note">Portrait · 9:16</div>
+      </div>
+      <div class="fmt-card">
+        <div class="fmt-label">Schnitte</div>
+        <div class="fmt-val">3 – 4 max</div>
+        <div class="fmt-note">min. 4s pro Schnitt</div>
+      </div>
+      <div class="fmt-card">
+        <div class="fmt-label">Länge</div>
+        <div class="fmt-val">15 – 25s</div>
+        <div class="fmt-note">Watchtime optimiert</div>
+      </div>
+      <div class="fmt-card">
+        <div class="fmt-label">Codec</div>
+        <div class="fmt-val">H.264</div>
+        <div class="fmt-note">CRF 20 · fast preset</div>
+      </div>
+      <div class="fmt-card">
+        <div class="fmt-label">Audio</div>
+        <div class="fmt-val">AAC 128k</div>
+        <div class="fmt-note">44100 Hz · Stereo</div>
+      </div>
+      <div class="fmt-card">
+        <div class="fmt-label">ffmpeg filter</div>
+        <div class="fmt-val" style="font-size:10px;font-family:monospace;line-height:1.5;">scale=1080:1920:<br>force_original_<br>aspect_ratio=<br>increase,crop=<br>1080:1920</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- TEXT STYLE -->
+  <div>
+    <div class="section-title">Text Overlay</div>
+    <div class="text-demo">
+      <div class="demo-preview">
+        <div class="demo-line1">SO SIEHT</div>
+        <div class="demo-line2">SPARRING AUS.</div>
+      </div>
+      <div class="spec-list">
+        <div class="spec"><span class="spec-key">Font</span><span class="spec-val">Impact · /System/Library/Fonts/Supplemental/Impact.ttf</span></div>
+        <div class="spec"><span class="spec-key">Grösse Zeile 1</span><span class="spec-val">82px (FONT_SM)</span></div>
+        <div class="spec"><span class="spec-key">Grösse Zeile 2</span><span class="spec-val">108px (FONT)</span></div>
+        <div class="spec"><span class="spec-key">Position</span><span class="spec-val">Oben · y=52px · horizontal zentriert</span></div>
+        <div class="spec"><span class="spec-key">Stroke</span><span class="spec-val">±4px schwarz rgba(0,0,0,200) · 8 Richtungen</span></div>
+        <div class="spec"><span class="spec-key">Overlay</span><span class="spec-val">Transparente PNG · ffmpeg [0:v][1:v]overlay=0:0</span></div>
+        <div class="spec"><span class="spec-key">Zeilen</span><span class="spec-val">Max. 3 Zeilen · 1-3 Wörter pro Zeile</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FARBEN -->
+  <div>
+    <div class="section-title">Farben</div>
+    <div class="colors">
+      <div class="color-swatch">
+        <div class="swatch" style="background:#ffffff;"></div>
+        <div class="swatch-name">WEISS</div>
+        <div class="swatch-hex">#FFFFFF</div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch" style="background:#FFD500;"></div>
+        <div class="swatch-name">GELB</div>
+        <div class="swatch-hex">#FFD500</div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch" style="background:#50D2FF;"></div>
+        <div class="swatch-name">CYAN</div>
+        <div class="swatch-hex">#50D2FF</div>
+      </div>
+      <div class="color-swatch">
+        <div class="swatch" style="background:#000000; border:1px solid #333;"></div>
+        <div class="swatch-name">STROKE</div>
+        <div class="swatch-hex">rgba(0,0,0,200)</div>
+      </div>
+    </div>
+    <p style="font-size:12px;color:rgba(200,232,255,0.4);margin-top:12px;line-height:1.6;">Zeile 1 = Weiss · Zeile 2 = Gelb (Hook/Keyword) · Zeile 3 optional = Cyan. Nie mehr als 2 Farben pro Video.</p>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- HOOKS -->
+  <div>
+    <div class="section-title">Hook Formeln · Was funktioniert</div>
+    <div class="hooks">
+      <div class="hook-card">
+        <div class="hook-type">Showcase</div>
+        <div class="hook-example">SO SIEHT<br>SPARRING AUS.</div>
+        <div class="hook-note">Zeigt was Privattraining ist. "So sieht X aus." funktioniert gut.</div>
+      </div>
+      <div class="hook-card">
+        <div class="hook-type">Personal Brand</div>
+        <div class="hook-example">DEIN TRAINER<br>TRAINIERT SO.</div>
+        <div class="hook-note">Giacomo's eigenes Training zeigen. Baut Vertrauen auf.</div>
+      </div>
+      <div class="hook-card">
+        <div class="hook-type">Resultat</div>
+        <div class="hook-example">IN 8 WOCHEN<br>SIEHST DU DEN<br>UNTERSCHIED.</div>
+        <div class="hook-note">Formel: Feature + "damit du" + Ergebnis. Aus Marketing Vision.</div>
+      </div>
+      <div class="hook-card">
+        <div class="hook-type">Community</div>
+        <div class="hook-example">3 KUNDEN.<br>1 TRAINER.<br>GLEICHE ENERGIE.</div>
+        <div class="hook-note">Zeigt dass andere bereits dabei sind. Social Proof.</div>
+      </div>
+      <div class="hook-card">
+        <div class="hook-type">Black Title Card</div>
+        <div class="hook-example">DU WILLST<br>BOXEN<br>LERNEN?</div>
+        <div class="hook-note">Schwarze Karte als erster Clip (2-3s). Dann sofort Action.</div>
+      </div>
+      <div class="hook-card">
+        <div class="hook-type">Emotion / B&W</div>
+        <div class="hook-example">KEIN PLATZ<br>FÜR ANGST.</div>
+        <div class="hook-note">Kombination mit B&W Footage. Gelb Zeile 1, Weiss Zeile 2.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- REGELN -->
+  <div>
+    <div class="section-title">Regeln · Do and Don't</div>
+    <div class="rules">
+      <div class="rule ok"><div class="rule-icon">✓</div><div class="rule-text"><strong>Max. 3-4 Schnitte pro Video.</strong> Jeder Schnitt mindestens 4 Sekunden. Kein Stroboskop-Cutting.</div></div>
+      <div class="rule ok"><div class="rule-icon">✓</div><div class="rule-text"><strong>Text auf jedem Video.</strong> Immer Impact Font, weiss + gelb oder weiss + cyan. Stroke für Lesbarkeit.</div></div>
+      <div class="rule ok"><div class="rule-icon">✓</div><div class="rule-text"><strong>Hook im ersten Frame.</strong> Entweder starke Action sofort oder schwarze Title Card (max. 2.5s).</div></div>
+      <div class="rule ok"><div class="rule-icon">✓</div><div class="rule-text"><strong>Audio immer.</strong> `-c:a aac -b:a 128k -ar 44100 -ac 2` in jedem ffmpeg Befehl.</div></div>
+      <div class="rule ok"><div class="rule-icon">✓</div><div class="rule-text"><strong>IMG_0792 braucht transpose=1.</strong> Kein Rotations-Metadaten, physisch 90° gedreht.</div></div>
+      <div class="rule ok"><div class="rule-icon">✓</div><div class="rule-text"><strong>IMG_0796: kein transpose nötig.</strong> 3840×2160, ffmpeg auto-rotiert via Display Matrix (-90°). Einfach scale+crop verwenden ohne transpose.</div></div>
+      <div class="rule nope"><div class="rule-icon">✗</div><div class="rule-text"><strong>Kein Slow Motion (setpts).</strong> Giacomo mag kein Slow Motion in den Videos.</div></div>
+      <div class="rule nope"><div class="rule-icon">✗</div><div class="rule-text"><strong>Keine Title Cards + Text Overlay gleichzeitig.</strong> Entweder Title Card am Anfang ODER Text auf Footage. Nicht beides.</div></div>
+      <div class="rule nope"><div class="rule-icon">✗</div><div class="rule-text"><strong>Nicht annehmen ob Personen männlich/weiblich.</strong> Giacomo ist der Trainer. Kunden ohne Genderannahme beschreiben.</div></div>
+      <div class="rule ok" style="border-left-color:#FFD500;"><div class="rule-icon">⚑</div><div class="rule-text"><strong>Vor jeder Video-Erstellung: Downloads-Ordner durchsuchen.</strong> Immer zuerst <code style="font-size:11px;background:rgba(0,0,0,0.3);padding:1px 5px;border-radius:4px;">find ~/Downloads -maxdepth 1 \( -name "*.MOV" -o -name "*.MP4" \)</code> ausführen und Giacomo fragen welche Videos verwendet werden sollen. Nie auf altem Material arbeiten wenn neue Quellen vorhanden sein könnten.</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- QUELLEN -->
+  <div>
+    <div class="section-title">Video Quellen · Wichtige Hinweise</div>
+    <div class="sources">
+      <div class="src"><span class="src-name">IMG_0792.MOV</span><span class="src-info">Padwork Giacomo als Trainer · braucht transpose=1</span><span class="src-tag tag-landscape">landscape+rotate</span></div>
+      <div class="src"><span class="src-name">IMG_0793.MOV</span><span class="src-info">Verschiedenes Material</span><span class="src-tag tag-landscape">landscape</span></div>
+      <div class="src"><span class="src-name">IMG_0796.MOV</span><span class="src-info">3:35 min Padwork mit Gewichtsweste · ffmpeg auto-rotiert (kein transpose)</span><span class="src-tag tag-4k">4K+autorotate</span></div>
+      <div class="src"><span class="src-name">IMG_0791.MOV</span><span class="src-info">Sparring anderes Gym · 16s</span><span class="src-tag tag-4k">4K landscape</span></div>
+      <div class="src"><span class="src-name">IMG_5378/5374.MOV</span><span class="src-info">Sparring · landscape 1280×720</span><span class="src-tag tag-landscape">landscape</span></div>
+      <div class="src"><span class="src-name">IMG_5878/8413/8415/8439.MOV</span><span class="src-info">Sparring · bereits portrait</span><span class="src-tag tag-portrait">portrait ✓</span></div>
+      <div class="src"><span class="src-name">IMG_7716/7717.MP4</span><span class="src-info">Sparring · Giacomo im Everlast Headgear</span><span class="src-tag tag-portrait">portrait ✓</span></div>
+      <div class="src"><span class="src-name">IMG_7412.MOV</span><span class="src-info">Sparring · Mann in pinken Shorts</span><span class="src-tag tag-portrait">portrait ✓</span></div>
+      <div class="src"><span class="src-name">IMG_0868/0871.MOV</span><span class="src-info">Verschiedenes Training Material</span><span class="src-tag tag-portrait">portrait ✓</span></div>
+      <div class="src"><span class="src-name">IMG_9221.MOV</span><span class="src-info">14.6s · 4K · Solo Punching Bag Budo Chi Gym</span><span class="src-tag tag-4k">4K portrait</span></div>
+      <div class="src"><span class="src-name">IMG_9250.MOV</span><span class="src-info">24s · 4K · Padwork gelber Ring mit Kunden</span><span class="src-tag tag-4k">4K portrait</span></div>
+      <div class="src"><span class="src-name">IMG_9255.MOV</span><span class="src-info">42s · 4K · Padwork gelber Ring (lange Session)</span><span class="src-tag tag-4k">4K portrait</span></div>
+      <div class="src"><span class="src-name">IMG_9257.MOV</span><span class="src-info">6.3s · 4K · Close-up Padwork</span><span class="src-tag tag-4k">4K portrait</span></div>
+      <div class="src"><span class="src-name">IMG_9259.MOV</span><span class="src-info">62.8s · 4K · Padwork pinke Vorhänge (beste Quelle)</span><span class="src-tag tag-4k">4K portrait</span></div>
+      <div class="src"><span class="src-name">IMG_9487.MOV</span><span class="src-info">7.4s · 1080p · Sparring richtiges Gym (landscape)</span><span class="src-tag tag-landscape">landscape</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ERSTELLTE VIDEOS -->
+  <div>
+    <div class="section-title">Erstellte Videos · Referenz</div>
+    <div class="video-list">
+      <div class="vid"><div class="vid-num">v21</div><div><div class="vid-name">B&W Sparring</div><div class="vid-text"><span class="w">SO SIEHT</span> <span class="y">SPARRING AUS.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v22</div><div><div class="vid-name">Title Card Hook</div><div class="vid-text"><span class="w">DU WILLST</span> <span class="y">BOXEN</span> <span class="w">LERNEN?</span></div></div></div>
+      <div class="vid"><div class="vid-num">v23</div><div><div class="vid-name">Emotion B&W</div><div class="vid-text"><span class="y">KEIN PLATZ</span> <span class="w">FÜR ANGST.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v25</div><div><div class="vid-name">Community</div><div class="vid-text"><span class="w">3 KUNDEN.</span> <span class="y">1 TRAINER.</span> <span class="c">GLEICHE ENERGIE.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v33</div><div><div class="vid-name">1:1 Sparring (3 Cuts)</div><div class="vid-text"><span class="w">SO SIEHT</span> <span class="y">1:1 SPARRING AUS.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v36</div><div><div class="vid-name">Personal Brand Vest</div><div class="vid-text"><span class="w">DEIN TRAINER</span> <span class="y">TRAINIERT SO.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v37</div><div><div class="vid-name">Transformation Hook</div><div class="vid-text"><span class="w">IN 8 WOCHEN</span> <span class="y">SIEHST DU DEN UNTERSCHIED.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v38</div><div><div class="vid-name">Community 3 Partner</div><div class="vid-text"><span class="w">VERSCHIEDENE KUNDEN.</span> <span class="c">GLEICHE ENERGIE.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v39</div><div><div class="vid-name">Showcase (old footage)</div><div class="vid-text"><span class="w">SO SIEHT</span> <span class="y">PRIVATTRAINING</span> <span class="w">AUS.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v40</div><div><div class="vid-name">Mental Health Hook</div><div class="vid-text"><span class="w">BOXEN IST</span> <span class="c">MEDITATION.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v41</div><div><div class="vid-name">Partner Energie</div><div class="vid-text"><span class="w">DEIN TRAINER</span> <span class="y">TRAINIERT</span> <span class="w">MIT DIR.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v42</div><div><div class="vid-name">Lokal + Exklusiv (B&W)</div><div class="vid-text"><span class="w">NUR ZÜRICH.</span> <span class="y">NUR 1:1.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v43</div><div><div class="vid-name">Transformation</div><div class="vid-text"><span class="w">IN 8 WOCHEN</span> <span class="y">SIEHST DU DEN</span> <span class="w">UNTERSCHIED.</span></div></div></div>
+      <div class="vid"><div class="vid-num">v44</div><div><div class="vid-name">Padwork Neu</div><div class="vid-text"><span class="w">SO TRAINIERST DU</span> <span class="y">MIT MIR.</span></div><div class="vid-meta">9221 · 9250 · 9257</div></div></div>
+      <div class="vid"><div class="vid-num">v45</div><div><div class="vid-name">Gym Energie</div><div class="vid-text"><span class="w">ECHTER</span> <span class="y">GYM.</span> <span class="w">ECHTES TRAINING.</span></div><div class="vid-meta">9259 · 9255 · 9487</div></div></div>
+      <div class="vid"><div class="vid-num">v46</div><div><div class="vid-name">Bag Work Solo (B&W)</div><div class="vid-text"><span class="w">BEVOR DU</span> <span class="y">SPAREST</span> <span class="w">LERNE BOXEN.</span></div><div class="vid-meta">9221 · 9255 · 9259</div></div></div>
+      <div class="vid"><div class="vid-num">v47</div><div><div class="vid-name">1:1 Padwork Hook</div><div class="vid-text"><span class="w">KEIN KURS.</span> <span class="y">NUR DU</span> <span class="w">UND ICH.</span></div><div class="vid-meta">9250 · 9257 · 9259</div></div></div>
+      <div class="vid"><div class="vid-num">v48</div><div><div class="vid-name">Sparring Real Gym</div><div class="vid-text"><span class="w">SPARRING IN</span> <span class="y">ZÜRICH.</span></div><div class="vid-meta">9487 · 9255 · 9250</div></div></div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
