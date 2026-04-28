@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>E-Mail Ausgleichskasse Korrektur</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f4f6f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.08);
+    max-width: 620px;
+    width: 100%;
+    padding: 36px 40px;
+  }
+  .subject {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #1a65d6;
+    margin-bottom: 6px;
+  }
+  .subject-text {
+    font-size: 15px;
+    font-weight: 800;
+    color: #08152a;
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #eee;
+  }
+  .email-text {
+    font-size: 14px;
+    font-weight: 500;
+    color: #222;
+    line-height: 2;
+    white-space: pre-line;
+  }
+  .copy-btn {
+    display: block;
+    width: 100%;
+    margin-top: 28px;
+    padding: 12px;
+    background: #08152a;
+    color: #7ec8ff;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: opacity 0.15s;
+  }
+  .copy-btn:hover { opacity: 0.85; }
+  .copy-btn.copied { color: #4caf80; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="subject">Betreff</div>
+  <div class="subject-text">Korrektur Antrag Selbstständigerwerbende – Giacomo La Rocca</div>
+  <div class="email-text" id="emailText">Guten Tag
+
+Ich habe am 17. April 2026 den Antrag Selbstständigerwerbende (Formular 318.146) eingereicht. Dabei habe ich das Datum des Beginns meiner Tätigkeit falsch angegeben.
+
+Das korrekte Datum ist der 02. Mai 2026.
+
+Ich bitte Sie, dieses Datum in meinem Dossier zu korrigieren.
+
+Besten Dank und freundliche Grüsse
+Giacomo La Rocca</div>
+
+  <button class="copy-btn" onclick="copy(this)">Text kopieren</button>
+</div>
+
+<script>
+  function copy(btn) {
+    const text = document.getElementById('emailText').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+      btn.textContent = 'Kopiert ✓';
+      btn.classList.add('copied');
+      setTimeout(() => {
+        btn.textContent = 'Text kopieren';
+        btn.classList.remove('copied');
+      }, 2000);
+    });
+  }
+</script>
+</body>
+</html>

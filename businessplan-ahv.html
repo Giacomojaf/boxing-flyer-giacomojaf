@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tätigkeitsbeschreibung – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  @page { size: A4; margin: 18mm 20mm; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #fff;
+    color: #111;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 48px 60px;
+  }
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 32px;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #08152a;
+  }
+  .logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 30px;
+    letter-spacing: 0.06em;
+    color: #08152a;
+    line-height: 1;
+  }
+  .logo span { color: #1a65d6; }
+  .logo-sub {
+    font-size: 11px;
+    font-weight: 600;
+    color: #999;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    margin-top: 4px;
+  }
+  .doc-info {
+    text-align: right;
+  }
+  .doc-info h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+    color: #08152a;
+  }
+  .doc-info p {
+    font-size: 12px;
+    color: #999;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .section {
+    margin-bottom: 24px;
+    page-break-inside: avoid;
+  }
+
+  .section-title {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #1a65d6;
+    margin-bottom: 10px;
+  }
+
+  .section p {
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    line-height: 1.7;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    page-break-inside: avoid;
+  }
+
+  .info-box {
+    background: #f7f9fc;
+    border: 1px solid #e0e8f0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    page-break-inside: avoid;
+  }
+  .info-box label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #1a65d6;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .info-box p {
+    font-size: 13px;
+    font-weight: 600;
+    color: #111;
+    line-height: 1.6;
+  }
+
+  .finance-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    page-break-inside: avoid;
+  }
+  .finance-table tr {
+    border-bottom: 1px solid #eee;
+  }
+  .finance-table tr:last-child {
+    border-bottom: none;
+    font-weight: 800;
+    color: #08152a;
+    background: #f0f5ff;
+  }
+  .finance-table td {
+    padding: 9px 12px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+  }
+  .finance-table td:last-child {
+    text-align: right;
+    font-weight: 700;
+  }
+
+  .footer {
+    margin-top: 36px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    page-break-inside: avoid;
+  }
+  .footer p {
+    font-size: 11px;
+    color: #bbb;
+    font-weight: 500;
+  }
+
+  .signature-line {
+    display: flex;
+    gap: 48px;
+    margin-top: 32px;
+    page-break-inside: avoid;
+  }
+  .sig-block {
+    flex: 1;
+  }
+  .sig-block .line {
+    border-bottom: 1px solid #ccc;
+    height: 36px;
+    margin-bottom: 6px;
+  }
+  .sig-block p {
+    font-size: 11px;
+    color: #999;
+    font-weight: 600;
+  }
+
+  @media print {
+    body { padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="header">
+    <div>
+      <div class="logo">PRIVATE <span>BOXING</span> ZÜRICH</div>
+      <div class="logo-sub">Giacomo La Rocca · Selbstständig</div>
+    </div>
+    <div class="doc-info">
+      <h1>Tätigkeitsbeschreibung</h1>
+      <p>Beilage Antrag Selbstständigerwerbende<br>Ausgleichskasse · April 2026</p>
+    </div>
+  </div>
+
+  <!-- PERSON -->
+  <div class="section">
+    <div class="section-title">Angaben zur Person</div>
+    <div class="grid">
+      <div class="info-box">
+        <label>Name</label>
+        <p>Giacomo La Rocca</p>
+      </div>
+      <div class="info-box">
+        <label>Beginn Selbstständigkeit</label>
+        <p>17. April 2026</p>
+      </div>
+      <div class="info-box">
+        <label>Wohnort</label>
+        <p>Zürich, Schweiz</p>
+      </div>
+      <div class="info-box">
+        <label>Branche</label>
+        <p>Unterrichts- und Kurswesen</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- TÄTIGKEIT -->
+  <div class="section">
+    <div class="section-title">Tätigkeit</div>
+    <p>Ich bin selbstständig tätig als Privattrainer für Boxsport unter dem Namen <strong>Private Boxing Zürich</strong>. Meine Leistungen umfassen individuelles 1:1 Boxtraining sowie die Durchführung von Kursen im Rahmen von Jugend und Sport (J+S) des Bundes. Das Training findet in gemieteten Räumlichkeiten in Zürich statt, die ich selbst organisiere und bezahle. Ich stelle Kunden Rechnungen in eigenem Namen und betreibe aktiv Werbung über Social Media und Flyer.</p>
+  </div>
+
+  <!-- LEISTUNGEN -->
+  <div class="section">
+    <div class="section-title">Angebotene Leistungen</div>
+    <div class="grid">
+      <div class="info-box">
+        <label>1:1 Privattraining</label>
+        <p>Persönliches Boxtraining für Einzelpersonen. Preis: CHF 80 pro Session.</p>
+      </div>
+      <div class="info-box">
+        <label>J+S Kurse</label>
+        <p>Bundessubventionierte Sportkurse für Jugendliche. Ca. 2 Kurse pro Jahr.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FINANZEN -->
+  <div class="section">
+    <div class="section-title">Geschätzte Einnahmen und Ausgaben 2026</div>
+    <table class="finance-table">
+      <tr>
+        <td>Einnahmen 1:1 Privattraining (ab April 2026)</td>
+        <td>CHF 11'840</td>
+      </tr>
+      <tr>
+        <td>Einnahmen J+S Kurse</td>
+        <td>CHF 3'485</td>
+      </tr>
+      <tr>
+        <td>Ausgaben (Raummiete, Material, Versicherung, Kurs, Marketing)</td>
+        <td>CHF 6'520</td>
+      </tr>
+      <tr>
+        <td><strong>Reineinkommen 2026 (Schätzung)</strong></td>
+        <td><strong>CHF 8'805</strong></td>
+      </tr>
+    </table>
+    <p style="margin-top:10px;font-size:11px;color:#999;">Alle Angaben sind Schätzungen für das erste Geschäftsjahr. Die definitiven Zahlen werden mit der Steuererklärung 2026 gemeldet.</p>
+  </div>
+
+  <div class="footer">
+    <p>Private Boxing Zürich · @giacomojaf · www.privateboxingzurich.ch</p>
+    <p>Zürich, April 2026</p>
+  </div>
+
+</body>
+</html>
