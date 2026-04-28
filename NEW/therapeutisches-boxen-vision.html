@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Therapeutisches Boxen – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #08152a; color: #fff; }
+  .page { max-width: 780px; margin: 0 auto; padding: 64px 48px 80px; }
+
+  .cover { padding: 56px 0 44px; border-bottom: 1px solid rgba(76,175,128,0.15); margin-bottom: 52px; }
+  .cover-label { font-size: 11px; font-weight: 800; letter-spacing: 0.22em; color: rgba(78,200,144,0.5); text-transform: uppercase; margin-bottom: 18px; }
+  .cover-title { font-family: 'Bebas Neue', sans-serif; font-size: 64px; letter-spacing: 0.04em; line-height: 1; color: #fff; }
+  .cover-title span { color: #4ec890; }
+  .cover-sub { font-size: 15px; font-weight: 500; color: rgba(200,232,255,0.45); margin-top: 14px; line-height: 1.6; }
+
+  .section { margin-bottom: 52px; page-break-inside: avoid; }
+  .section-tag { font-size: 10px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(78,200,144,0.45); margin-bottom: 10px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.06em; color: #fff; margin-bottom: 22px; }
+  .section-title span { color: #4ec890; }
+  .section-body { font-size: 14px; font-weight: 500; color: rgba(200,232,255,0.6); line-height: 1.85; }
+
+  .divider { height: 1px; background: rgba(76,175,128,0.1); margin: 44px 0; }
+
+  /* Wirkung cards */
+  .wirkung-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .wirkung-card { background: rgba(76,175,128,0.06); border: 1px solid rgba(76,175,128,0.18); border-radius: 12px; padding: 20px; page-break-inside: avoid; }
+  .wirkung-icon { font-size: 22px; margin-bottom: 10px; }
+  .wirkung-title { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .wirkung-body { font-size: 12px; font-weight: 500; color: rgba(200,232,255,0.5); line-height: 1.7; }
+
+  /* Path cards */
+  .path { display: flex; gap: 20px; page-break-inside: avoid; }
+  .path-line { display: flex; flex-direction: column; align-items: center; }
+  .path-dot { width: 14px; height: 14px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
+  .path-connector { width: 1px; background: rgba(76,175,128,0.15); flex: 1; margin: 6px 0; min-height: 16px; }
+  .path:last-child .path-connector { display: none; }
+  .path-content { padding-bottom: 28px; flex: 1; }
+  .path-tag { font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 6px; }
+  .path-title { font-size: 16px; font-weight: 800; color: #fff; margin-bottom: 10px; }
+  .path-items { display: flex; flex-direction: column; gap: 7px; }
+  .path-item { font-size: 13px; font-weight: 500; color: rgba(200,232,255,0.6); line-height: 1.6; padding-left: 14px; position: relative; }
+  .path-item::before { content: '→'; position: absolute; left: 0; color: rgba(78,200,144,0.5); font-size: 11px; }
+  .path-item strong { color: #fff; }
+
+  /* Cert table */
+  .cert-row { display: flex; gap: 0; border-bottom: 1px solid rgba(76,175,128,0.1); page-break-inside: avoid; }
+  .cert-row:first-child { border-top: 1px solid rgba(76,175,128,0.1); }
+  .cert-cell { padding: 14px 16px; font-size: 13px; font-weight: 600; line-height: 1.5; }
+  .cert-cell.name { width: 200px; flex-shrink: 0; color: #fff; font-weight: 700; }
+  .cert-cell.dauer { width: 120px; flex-shrink: 0; color: #4ec890; }
+  .cert-cell.desc { color: rgba(200,232,255,0.55); font-weight: 500; }
+
+  /* Pitch box */
+  .pitch-box { background: rgba(76,175,128,0.08); border: 1px solid rgba(76,175,128,0.25); border-radius: 16px; padding: 28px 32px; page-break-inside: avoid; }
+  .pitch-label { font-size: 10px; font-weight: 800; letter-spacing: 0.2em; text-transform: uppercase; color: #4ec890; margin-bottom: 14px; }
+  .pitch-text { font-size: 15px; font-weight: 600; color: rgba(200,232,255,0.85); line-height: 1.8; border-left: 3px solid #4ec890; padding-left: 20px; font-style: italic; }
+
+  /* Model box */
+  .model-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .model-card { background: #0d1f3c; border: 1px solid rgba(76,175,128,0.12); border-radius: 12px; padding: 18px; text-align: center; page-break-inside: avoid; }
+  .model-icon { font-size: 26px; margin-bottom: 10px; }
+  .model-title { font-size: 13px; font-weight: 800; color: #fff; margin-bottom: 6px; }
+  .model-body { font-size: 11px; font-weight: 500; color: rgba(200,232,255,0.5); line-height: 1.6; }
+
+  /* Quote */
+  .quote { background: rgba(76,175,128,0.07); border-left: 3px solid #4ec890; border-radius: 0 12px 12px 0; padding: 22px 28px; font-size: 16px; font-weight: 700; color: rgba(200,232,255,0.85); line-height: 1.6; font-style: italic; page-break-inside: avoid; }
+
+  .footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid rgba(76,175,128,0.1); text-align: center; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.15); letter-spacing: 0.08em; }
+  .footer span { color: #4ec890; }
+
+  @media print {
+    body { background: #fff; color: #111; }
+    .cover-title { color: #111; }
+    .cover-title span, .section-title span { color: #2e7d32; }
+    .cover-label, .section-tag, .path-tag { color: #2e7d32; }
+    .cover-sub, .section-body { color: #555; }
+    .section-title { color: #111; }
+    .wirkung-card { background: #f0fff8; border-color: #a5d6a7; page-break-inside: avoid; }
+    .wirkung-title { color: #111; }
+    .wirkung-body { color: #444; }
+    .path-item { color: #444; }
+    .path-item strong { color: #111; }
+    .path-item::before { color: #2e7d32; }
+    .cert-row { border-color: #e0e8f0; page-break-inside: avoid; }
+    .cert-cell.name { color: #111; }
+    .cert-cell.dauer { color: #2e7d32; }
+    .cert-cell.desc { color: #555; }
+    .pitch-box { background: #f0fff8; border-color: #a5d6a7; page-break-inside: avoid; }
+    .pitch-label { color: #2e7d32; }
+    .pitch-text { color: #333; border-left-color: #2e7d32; }
+    .model-card { background: #f5f7fa; border-color: #e0e8f0; page-break-inside: avoid; }
+    .model-title { color: #111; }
+    .model-body { color: #555; }
+    .quote { background: #f0fff8; border-left-color: #2e7d32; color: #333; }
+    .footer { color: #aaa; border-top-color: #e0e8f0; }
+    .footer span { color: #2e7d32; }
+    .divider { background: #e0e8f0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cover">
+    <div class="cover-label">Private Boxing Zürich · Neue Dimension · April 2026</div>
+    <div class="cover-title">THERAPEUTISCHES<br><span>BOXEN</span></div>
+    <div class="cover-sub">Boxing als mentale Gesundheitsbegleitung · Kooperationen · Zertifikate · Vision</div>
+  </div>
+
+  <!-- WARUM -->
+  <div class="section">
+    <div class="section-tag">Die Idee</div>
+    <div class="section-title">WARUM <span>BOXING HEILT</span></div>
+    <div class="section-body" style="margin-bottom: 24px;">
+      Boxing ist wissenschaftlich belegt wirksam bei Stress, Angst, Depression und fehlendem Selbstvertrauen. 1:1 Privattraining ist die ideale Form: strukturierte Bewegung, Accountability, messbare Fortschritte, ohne Gruppendruck oder sozialen Vergleich.
+    </div>
+    <div class="wirkung-grid">
+      <div class="wirkung-card">
+        <div class="wirkung-icon">🧠</div>
+        <div class="wirkung-title">Stress und Angst</div>
+        <div class="wirkung-body">Boxing reduziert Cortisol, erhöht Serotonin und Dopamin. Schon eine Session verändert die Stimmung messbar.</div>
+      </div>
+      <div class="wirkung-card">
+        <div class="wirkung-icon">💪</div>
+        <div class="wirkung-title">Selbstvertrauen</div>
+        <div class="wirkung-body">Wer lernt sich zu verteidigen, steht anders in der Welt. Körperliche Kompetenz überträgt sich direkt ins Selbstbild.</div>
+      </div>
+      <div class="wirkung-card">
+        <div class="wirkung-icon">🎯</div>
+        <div class="wirkung-title">Struktur und Fokus</div>
+        <div class="wirkung-body">Feste Trainingszeiten, klare Ziele, sichtbarer Fortschritt. Für Menschen mit Burnout oder ADHS besonders wertvoll.</div>
+      </div>
+      <div class="wirkung-card">
+        <div class="wirkung-icon">🤝</div>
+        <div class="wirkung-title">1:1 ohne Gruppendruck</div>
+        <div class="wirkung-body">Kein Vergleich, keine Scham. Jede Session ist individuell. Ideal für Menschen die Gruppen meiden oder soziale Angst haben.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WEGE -->
+  <div class="section">
+    <div class="section-tag">Wie du es anbietest</div>
+    <div class="section-title">3 WEGE ZUM <span>START</span></div>
+
+    <div style="display: flex; flex-direction: column; gap: 0;">
+
+      <div class="path">
+        <div class="path-line">
+          <div class="path-dot" style="background: #4ec890;"></div>
+          <div class="path-connector"></div>
+        </div>
+        <div class="path-content">
+          <div class="path-tag" style="color: #4ec890;">Weg 1 · Sofort möglich · kein Zertifikat nötig</div>
+          <div class="path-title">Boxing für mentale Gesundheit</div>
+          <div class="path-items">
+            <div class="path-item">Angebot heisst <strong>"Boxing für Stressabbau"</strong> oder <strong>"Boxing für mentale Stärke"</strong></div>
+            <div class="path-item">Das Wort "Therapie" nicht verwenden. Kein Gesetz verletzt.</div>
+            <div class="path-item">Tagline passt bereits: <strong>"Boxen statt Therapie"</strong></div>
+            <div class="path-item">Direkt auf Website und Social Media kommunizierbar</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="path">
+        <div class="path-line">
+          <div class="path-dot" style="background: #7ec8ff;"></div>
+          <div class="path-connector"></div>
+        </div>
+        <div class="path-content">
+          <div class="path-tag" style="color: #7ec8ff;">Weg 2 · Schnellste Option · keine Ausbildung</div>
+          <div class="path-title">Kooperation mit Psychiater oder Therapeut</div>
+          <div class="path-items">
+            <div class="path-item">Arzt oder Therapeut empfiehlt Giacomo an Patienten</div>
+            <div class="path-item"><strong>Kein eigenes Zertifikat nötig</strong>, der Arzt steht dahinter</div>
+            <div class="path-item">Formlose Vereinbarung: Arzt empfiehlt, Giacomo trainiert</div>
+            <div class="path-item">Erster institutioneller Partner macht alle weiteren einfacher</div>
+            <div class="path-item"><strong>Psychiater kennt Giacomo bereits</strong> → direkter Vorteil</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="path">
+        <div class="path-line">
+          <div class="path-dot" style="background: #9b59b6;"></div>
+          <div class="path-connector"></div>
+        </div>
+        <div class="path-content">
+          <div class="path-tag" style="color: #9b59b6;">Weg 3 · Langfristig · Krankenkasse abrechenbar</div>
+          <div class="path-title">Sporttherapeut-Zertifikat</div>
+          <div class="path-items">
+            <div class="path-item">Zertifikat über <strong>Sporttherapie Schweiz</strong> oder SVGE</div>
+            <div class="path-item">Ermöglicht Abrechnung über Krankenkasse (Zusatzversicherung)</div>
+            <div class="path-item">Massiver Wettbewerbsvorteil sobald mehr Kunden da sind</div>
+            <div class="path-item">Kombination mit J+S macht das Portfolio vollständig</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ZERTIFIKATE -->
+  <div class="section">
+    <div class="section-tag">Ausbildungen</div>
+    <div class="section-title">ZERTIFIKATE UND <span>AUSBILDUNGEN</span></div>
+
+    <div style="margin-bottom: 24px;">
+      <div class="cert-row">
+        <div class="cert-cell name">J+S (läuft)</div>
+        <div class="cert-cell dauer">In Arbeit</div>
+        <div class="cert-cell desc">Jugendtraining, Schulen, staatliche Subventionen. Bereits in Arbeit.</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-cell name">Swiss Olympic Coach</div>
+        <div class="cert-cell dauer">Wochenenden</div>
+        <div class="cert-cell desc">Offizieller Boxcoach-Ausweis. Reicht für Kooperationen mit Ärzten.</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-cell name">Sporttherapie Schweiz</div>
+        <div class="cert-cell dauer">1–2 Jahre</div>
+        <div class="cert-cell desc">Krankenkasse abrechenbar. Kombination Sport und Gesundheit.</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-cell name">SVGE Bewegungstherapie</div>
+        <div class="cert-cell dauer">Kürzere Ausbildung</div>
+        <div class="cert-cell desc">Schwerpunkt Psychosomatik und Bewegung. Nahe an therapeutischem Boxen.</div>
+      </div>
+      <div class="cert-row">
+        <div class="cert-cell name">Sporttherapeut HF</div>
+        <div class="cert-cell dauer">3 Jahre</div>
+        <div class="cert-cell desc">Höchste Qualifikation. Für Phase 3 und 4 des Businessplans relevant.</div>
+      </div>
+    </div>
+
+    <div style="background: rgba(76,175,128,0.07); border: 1px solid rgba(76,175,128,0.2); border-radius: 10px; padding: 16px 20px; font-size: 13px; font-weight: 600; color: rgba(200,232,255,0.7); line-height: 1.7;">
+      Empfehlung jetzt: <strong style="color: #fff;">Swiss Olympic Coach + Psychiater-Kooperation.</strong> Günstigste Investition, grösste sofortige Wirkung. Den Rest schrittweise mit dem Business aufbauen.
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PITCH -->
+  <div class="section">
+    <div class="section-tag">Für den Psychiater</div>
+    <div class="section-title">DER <span>PITCH</span></div>
+
+    <div class="pitch-box" style="margin-bottom: 20px;">
+      <div class="pitch-label">Was du sagst</div>
+      <div class="pitch-text">
+        "Ich biete Boxing als Begleitung zu psychiatrischer Behandlung an. Patienten die von Struktur, Bewegung und körperlichem Selbstvertrauen profitieren würden, trainieren 1:1 mit mir. Kein Ersatz für die Therapie, sondern eine Ergänzung die du empfiehlst. Wärst du offen, das auszuprobieren?"
+      </div>
+    </div>
+
+    <div class="model-grid">
+      <div class="model-card">
+        <div class="model-icon">👨‍⚕️</div>
+        <div class="model-title">Psychiater</div>
+        <div class="model-body">Empfiehlt Patienten, die von Bewegung profitieren würden</div>
+      </div>
+      <div class="model-card">
+        <div class="model-icon">🥊</div>
+        <div class="model-title">Giacomo</div>
+        <div class="model-body">Trainiert 1:1, liefert Struktur, Fortschritt, Vertrauen</div>
+      </div>
+      <div class="model-card">
+        <div class="model-icon">🧠</div>
+        <div class="model-title">Patient</div>
+        <div class="model-body">Kommt als Patient, wird mit der Zeit Stammkunde</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="quote">
+    "Boxen statt Therapie. Oder besser: Boxen damit die Therapie schneller wirkt."
+  </div>
+
+  <div class="footer">
+    Private Boxing Zürich · <span>@giacomojaf</span> · <span>www.privateboxingzurich.ch</span> · April 2026
+  </div>
+
+</div>
+</body>
+</html>

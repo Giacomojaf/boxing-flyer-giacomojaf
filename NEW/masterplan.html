@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Masterplan – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#08152a; color:#fff; }
+  .page { max-width:800px; margin:0 auto; padding:64px 48px 80px; }
+
+  /* COVER */
+  .cover { padding:56px 0 44px; border-bottom:1px solid rgba(126,200,255,0.12); margin-bottom:52px; }
+  .cover-label { font-size:11px; font-weight:800; letter-spacing:0.22em; color:rgba(126,200,255,0.4); text-transform:uppercase; margin-bottom:18px; }
+  .cover-title { font-family:'Bebas Neue',sans-serif; font-size:64px; letter-spacing:0.04em; line-height:1; color:#fff; }
+  .cover-title span { color:#7ec8ff; }
+  .cover-sub { font-size:15px; font-weight:500; color:rgba(200,232,255,0.4); margin-top:14px; line-height:1.6; }
+
+  /* STATUS */
+  .status-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:48px; }
+  .status-card { border-radius:12px; padding:18px 20px; }
+  .status-card.done { background:rgba(46,125,50,0.1); border:1px solid rgba(46,125,50,0.25); }
+  .status-card.open { background:rgba(198,40,40,0.08); border:1px solid rgba(198,40,40,0.2); }
+  .status-label { font-size:10px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; margin-bottom:10px; }
+  .status-card.done .status-label { color:#4caf50; }
+  .status-card.open .status-label { color:#ef5350; }
+  .status-items { display:flex; flex-direction:column; gap:5px; }
+  .status-item { font-size:12px; font-weight:600; color:rgba(200,232,255,0.7); padding-left:14px; position:relative; line-height:1.5; }
+  .status-item::before { position:absolute; left:0; font-size:11px; }
+  .status-card.done .status-item::before { content:'✓'; color:#4caf50; }
+  .status-card.open .status-item::before { content:'○'; color:#ef5350; }
+
+  /* BLOCKER */
+  .blocker { background:rgba(255,152,0,0.08); border:1px solid rgba(255,152,0,0.25); border-radius:14px; padding:22px 26px; margin-bottom:48px; page-break-inside:avoid; }
+  .blocker-label { font-size:10px; font-weight:800; letter-spacing:0.18em; text-transform:uppercase; color:#ffb74d; margin-bottom:12px; }
+  .blocker-items { display:flex; flex-direction:column; gap:8px; }
+  .blocker-item { display:flex; gap:12px; align-items:flex-start; }
+  .blocker-num { background:rgba(255,152,0,0.15); border-radius:6px; width:22px; height:22px; font-size:11px; font-weight:800; color:#ffb74d; display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:1px; }
+  .blocker-text { font-size:13px; font-weight:600; color:rgba(200,232,255,0.8); line-height:1.6; }
+  .blocker-text strong { color:#fff; }
+
+  /* SECTION */
+  .section { margin-bottom:52px; page-break-inside:avoid; }
+  .section-tag { font-size:10px; font-weight:800; letter-spacing:0.22em; text-transform:uppercase; color:rgba(126,200,255,0.4); margin-bottom:10px; }
+  .section-title { font-family:'Bebas Neue',sans-serif; font-size:30px; letter-spacing:0.06em; color:#fff; margin-bottom:24px; }
+  .section-title span { color:#7ec8ff; }
+
+  .divider { height:1px; background:rgba(126,200,255,0.08); margin:44px 0; }
+
+  /* TASKS */
+  .task-group { margin-bottom:28px; }
+  .task-group-title { font-size:11px; font-weight:800; letter-spacing:0.16em; text-transform:uppercase; color:rgba(126,200,255,0.4); margin-bottom:12px; padding-bottom:8px; border-bottom:1px solid rgba(126,200,255,0.08); }
+
+  .task { display:flex; gap:16px; align-items:flex-start; background:#0d1f3c; border:1px solid rgba(126,200,255,0.1); border-radius:12px; padding:16px 18px; margin-bottom:8px; page-break-inside:avoid; }
+  .task.urgent { border-color:rgba(198,40,40,0.3); background:rgba(198,40,40,0.05); }
+  .task.green  { border-color:rgba(76,175,128,0.25); background:rgba(76,175,128,0.06); }
+  .task.gold   { border-color:rgba(232,200,74,0.2);  background:rgba(232,200,74,0.04); }
+  .task.blue   { border-color:rgba(26,101,214,0.25); background:rgba(26,101,214,0.07); }
+
+  .task-icon { font-size:20px; flex-shrink:0; margin-top:1px; }
+  .task-content { flex:1; }
+  .task-title { font-size:14px; font-weight:700; color:#fff; margin-bottom:4px; line-height:1.4; }
+  .task-desc { font-size:12px; font-weight:500; color:rgba(200,232,255,0.5); line-height:1.65; }
+  .task-tag { display:inline-block; margin-top:8px; font-size:10px; font-weight:800; letter-spacing:0.1em; text-transform:uppercase; padding:3px 8px; border-radius:5px; }
+  .tag-red   { background:rgba(198,40,40,0.2);  color:#ef5350; border:1px solid rgba(198,40,40,0.3); }
+  .tag-green { background:rgba(46,125,50,0.2);  color:#4caf50; border:1px solid rgba(46,125,50,0.3); }
+  .tag-gold  { background:rgba(232,200,74,0.15); color:#e8c84a; border:1px solid rgba(232,200,74,0.25); }
+  .tag-blue  { background:rgba(26,101,214,0.2);  color:#7ec8ff; border:1px solid rgba(26,101,214,0.3); }
+  .tag-purple { background:rgba(155,89,182,0.15); color:#c39bd3; border:1px solid rgba(155,89,182,0.25); }
+
+  /* PHASES */
+  .phase-block { border-radius:16px; padding:28px 32px; margin-bottom:16px; page-break-inside:avoid; }
+  .phase-block.p1 { background:rgba(76,175,128,0.07); border:1px solid rgba(76,175,128,0.2); }
+  .phase-block.p2 { background:rgba(126,200,255,0.06); border:1px solid rgba(126,200,255,0.18); }
+  .phase-block.p3 { background:rgba(26,101,214,0.07); border:1px solid rgba(26,101,214,0.2); }
+  .phase-block.p4 { background:rgba(155,89,182,0.06); border:1px solid rgba(155,89,182,0.18); }
+  .phase-tag { font-size:10px; font-weight:800; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:8px; }
+  .p1 .phase-tag { color:#4ec890; }
+  .p2 .phase-tag { color:#7ec8ff; }
+  .p3 .phase-tag { color:#5b9bd6; }
+  .p4 .phase-tag { color:#c39bd3; }
+  .phase-title { font-size:18px; font-weight:800; color:#fff; margin-bottom:14px; }
+  .phase-items { display:flex; flex-direction:column; gap:7px; }
+  .phase-item { font-size:13px; font-weight:500; color:rgba(200,232,255,0.6); padding-left:16px; position:relative; line-height:1.6; }
+  .phase-item::before { content:'→'; position:absolute; left:0; font-size:11px; }
+  .p1 .phase-item::before { color:#4ec890; }
+  .p2 .phase-item::before { color:#7ec8ff; }
+  .p3 .phase-item::before { color:#5b9bd6; }
+  .p4 .phase-item::before { color:#c39bd3; }
+  .phase-item strong { color:#fff; }
+
+  /* QUOTE */
+  .quote { background:rgba(26,101,214,0.1); border-left:3px solid #1a65d6; border-radius:0 12px 12px 0; padding:20px 26px; font-size:15px; font-weight:700; color:rgba(200,232,255,0.85); line-height:1.6; font-style:italic; page-break-inside:avoid; }
+
+  .footer { margin-top:56px; padding-top:20px; border-top:1px solid rgba(126,200,255,0.08); text-align:center; font-size:11px; font-weight:600; color:rgba(255,255,255,0.15); }
+  .footer span { color:#7ec8ff; }
+
+  @media print {
+    body { background:#fff; color:#111; }
+    .cover-title { color:#111; }
+    .cover-title span, .section-title span { color:#1a65d6; }
+    .cover-label, .section-tag { color:#1a65d6; }
+    .cover-sub { color:#555; }
+    .section-title { color:#111; }
+    .status-card.done { background:#f0fff8; border-color:#a5d6a7; }
+    .status-card.open { background:#fff5f5; border-color:#ffcdd2; }
+    .status-card.done .status-label { color:#2e7d32; }
+    .status-card.open .status-label { color:#c62828; }
+    .status-item { color:#333; }
+    .status-card.done .status-item::before { color:#2e7d32; }
+    .status-card.open .status-item::before { color:#c62828; }
+    .blocker { background:#fff8e1; border-color:#ffe082; }
+    .blocker-label { color:#e65100; }
+    .blocker-num { background:#fff3e0; color:#e65100; }
+    .blocker-text { color:#333; }
+    .blocker-text strong { color:#111; }
+    .task { background:#f5f7fa; border-color:#e0e8f0; page-break-inside:avoid; }
+    .task.urgent { background:#fff5f5; border-color:#ffcdd2; }
+    .task.green { background:#f0fff8; border-color:#a5d6a7; }
+    .task.gold { background:#fffde7; border-color:#ffe082; }
+    .task.blue { background:#f0f5ff; border-color:#c5d8f5; }
+    .task-title { color:#111; }
+    .task-desc { color:#555; }
+    .phase-block { page-break-inside:avoid; }
+    .phase-block.p1 { background:#f0fff8; border-color:#a5d6a7; }
+    .phase-block.p2 { background:#f0f5ff; border-color:#c5d8f5; }
+    .phase-block.p3 { background:#e8f0ff; border-color:#9ab4e8; }
+    .phase-block.p4 { background:#f8f0ff; border-color:#d1b3e8; }
+    .p1 .phase-tag { color:#2e7d32; }
+    .p2 .phase-tag { color:#1a65d6; }
+    .p3 .phase-tag { color:#1a3d8f; }
+    .p4 .phase-tag { color:#6a1b9a; }
+    .phase-title { color:#111; }
+    .phase-item { color:#444; }
+    .phase-item strong { color:#111; }
+    .p1 .phase-item::before { color:#2e7d32; }
+    .p2 .phase-item::before { color:#1a65d6; }
+    .p3 .phase-item::before { color:#1a3d8f; }
+    .p4 .phase-item::before { color:#6a1b9a; }
+    .quote { background:#f0f5ff; border-left-color:#1a65d6; color:#333; }
+    .footer { color:#aaa; border-top-color:#e0e8f0; }
+    .footer span { color:#1a65d6; }
+    .divider { background:#e0e8f0; }
+    .task-group-title { color:#1a65d6; border-bottom-color:#e0e8f0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-label">Private Boxing Zürich · Giacomo La Rocca · April 2026</div>
+    <div class="cover-title">MASTER<span>PLAN</span></div>
+    <div class="cover-sub">Von null zu Marktführer · Schritt für Schritt · mit Daten und Prioritäten</div>
+  </div>
+
+  <!-- AKTUELLER STAND -->
+  <div class="section">
+    <div class="section-tag">Wo du heute stehst</div>
+    <div class="section-title">AKTUELLER <span>STAND</span></div>
+
+    <div class="status-grid">
+      <div class="status-card done">
+        <div class="status-label">Erledigt</div>
+        <div class="status-items">
+          <div class="status-item">Website live (privateboxingzurich.ch)</div>
+          <div class="status-item">EmailJS Buchungssystem aktiv</div>
+          <div class="status-item">ZKB Geschäftskonto eröffnet</div>
+          <div class="status-item">IBAN + QR-Code im Buchungspopup</div>
+          <div class="status-item">J+S Antrag eingereicht</div>
+          <div class="status-item">Ausgleichskasse kontaktiert</div>
+          <div class="status-item">38 Marketing-Videos produziert</div>
+          <div class="status-item">Preisstruktur + AGB live</div>
+          <div class="status-item">Bereits ein Langzeitkunde</div>
+        </div>
+      </div>
+      <div class="status-card open">
+        <div class="status-label">Noch offen</div>
+        <div class="status-items">
+          <div class="status-item">Kein fixes Gym (dringendster Blocker)</div>
+          <div class="status-item">Reels noch nicht veröffentlicht</div>
+          <div class="status-item">Instagram Ads noch nicht live</div>
+          <div class="status-item">Google Ads noch nicht live</div>
+          <div class="status-item">Haftpflichtversicherung fehlt</div>
+          <div class="status-item">UID-Nummer nicht beantragt</div>
+          <div class="status-item">J+S Einführungskurs (18. Juni)</div>
+          <div class="status-item">Therapeutisches Boxen Konzept</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="blocker">
+      <div class="blocker-label">Die zwei Hauptblocker</div>
+      <div class="blocker-items">
+        <div class="blocker-item">
+          <div class="blocker-num">1</div>
+          <div class="blocker-text"><strong>Kein Gym:</strong> Ohne festen Trainingsort können keine neuen Kunden angenommen werden. Alles andere ist zweitrangig bis das gelöst ist.</div>
+        </div>
+        <div class="blocker-item">
+          <div class="blocker-num">2</div>
+          <div class="blocker-text"><strong>Reels nicht live:</strong> 38 fertige Videos liegen im Ordner. Niemand weiss dass es dich gibt solange du nicht postest.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SOFORTMASSNAHMEN -->
+  <div class="section">
+    <div class="section-tag">Diese Woche · April 2026</div>
+    <div class="section-title">SOFORT<span>MASSNAHMEN</span></div>
+
+    <div class="task-group">
+      <div class="task-group-title">Heute</div>
+
+      <div class="task urgent">
+        <div class="task-icon">🏥</div>
+        <div class="task-content">
+          <div class="task-title">Psychiater-Pitch: Therapeutisches Boxen</div>
+          <div class="task-desc">Du kennst den Psychiater bereits. Pitch: "Patienten die von Struktur und Bewegung profitieren, trainiere ich 1:1. Du empfiehlst, ich trainiere." Kein Zertifikat nötig für diese Kooperation. Erster institutioneller Partner macht alle weiteren einfacher.</div>
+          <span class="task-tag tag-red">Heute</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="task-group">
+      <div class="task-group-title">Diese Woche</div>
+
+      <div class="task urgent">
+        <div class="task-icon">🏋️</div>
+        <div class="task-content">
+          <div class="task-title">Gyms anrufen: Trainingsraum finden</div>
+          <div class="task-desc">Reihenfolge: Hotel Gyms (Stundenbasis, keine Mitgliedschaft nötig), Kampfsport Gyms, Boxvereine, Outdoor. Täglich 2–3 anrufen. Kein Gym = kein Wachstum. Das ist der kritischste Schritt.</div>
+          <span class="task-tag tag-red">Dringend</span>
+        </div>
+      </div>
+
+      <div class="task urgent">
+        <div class="task-icon">📱</div>
+        <div class="task-content">
+          <div class="task-title">Erste 3 Reels live schalten</div>
+          <div class="task-desc">38 Videos sind fertig in /Downloads/Videos/marketing/. Stärkste 3 auswählen: ein Padwork-Video, ein Gewichtswesten-Video, ein Sparring-Video. @privateboxingzurich TikTok + Instagram gleichzeitig. Täglich 1 Video ab sofort.</div>
+          <span class="task-tag tag-blue">Content</span>
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="task-icon">🛡️</div>
+        <div class="task-content">
+          <div class="task-title">Berufshaftpflichtversicherung abschliessen</div>
+          <div class="task-desc">Pflicht als selbständiger Trainer. Schützt bei Verletzungen während dem Training. Kostet ca. CHF 200–400/Jahr. Anbieter: Helvetia, Zurich, AXA. Ohne diese läuft du rechtlich ein unnötiges Risiko.</div>
+          <span class="task-tag tag-red">Pflicht</span>
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="task-icon">🔢</div>
+        <div class="task-content">
+          <div class="task-title">UID-Nummer beantragen</div>
+          <div class="task-desc">Online auf uid.admin.ch. Kostenlos, dauert wenige Minuten. Benötigt für QualiCert und spätere Zertifizierungen als Kursanbieter.</div>
+          <span class="task-tag tag-blue">Admin</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- MAI 2026 -->
+  <div class="section">
+    <div class="section-tag">Mai 2026</div>
+    <div class="section-title">MARKETING <span>HOCHFAHREN</span></div>
+
+    <div class="task-group">
+      <div class="task-group-title">Sobald Gym gefunden</div>
+
+      <div class="task blue">
+        <div class="task-icon">📣</div>
+        <div class="task-content">
+          <div class="task-title">Instagram Story Ads schalten</div>
+          <div class="task-desc">CHF 5–7 / Tag. Zielgruppe: Berufstätige 25–45, Zürich Altstetten 10mi Radius. Bestes Video als Ad nehmen. Ziel: erste Anfragen über die Website generieren.</div>
+          <span class="task-tag tag-blue">Ads</span>
+        </div>
+      </div>
+
+      <div class="task blue">
+        <div class="task-icon">🔍</div>
+        <div class="task-content">
+          <div class="task-title">Google Ads schalten</div>
+          <div class="task-desc">Keywords: "Privattraining Zürich", "Boxtraining Zürich", "1:1 Boxen Zürich". Kleines Budget CHF 3–5/Tag reicht am Anfang. Ziel: Website-Besucher die aktiv suchen.</div>
+          <span class="task-tag tag-blue">Ads</span>
+        </div>
+      </div>
+
+      <div class="task blue">
+        <div class="task-icon">✍️</div>
+        <div class="task-content">
+          <div class="task-title">Therapeutisches Boxen Konzeptpapier erstellen</div>
+          <div class="task-desc">Für Institutionen, Psychiater und Therapeuten. Zeigt: Wirkung von Boxing auf mentale Gesundheit, dein Angebot, Kooperationsmodell. Basis für weitere Partnerschaften nach dem Psychiater-Gespräch.</div>
+          <span class="task-tag tag-green">Konzept</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="task-group">
+      <div class="task-group-title">Parallel laufend</div>
+
+      <div class="task">
+        <div class="task-icon">📹</div>
+        <div class="task-content">
+          <div class="task-title">Täglich 1 Reel posten</div>
+          <div class="task-desc">@privateboxingzurich TikTok + Instagram gleichzeitig. Beste Posts nach 48h analysieren (Saves, Watchtime, Shares). Die besten als @giacomojaf Kollaborator auf Instagram einladen.</div>
+          <span class="task-tag tag-blue">Content</span>
+        </div>
+      </div>
+
+      <div class="task">
+        <div class="task-icon">⭐</div>
+        <div class="task-content">
+          <div class="task-title">Erste Google Reviews sammeln</div>
+          <div class="task-desc">Bestehenden Langzeitkunden um eine Google Bewertung bitten. Jede Bewertung erhöht die Sichtbarkeit bei lokaler Google Suche massiv. 5 Reviews sind besser als 0 Ads.</div>
+          <span class="task-tag tag-green">Reputation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- JUNI 2026 -->
+  <div class="section">
+    <div class="section-tag">Juni 2026</div>
+    <div class="section-title">J+S <span>EINFÜHRUNGSKURS</span></div>
+
+    <div class="task gold">
+      <div class="task-icon">🎓</div>
+      <div class="task-content">
+        <div class="task-title">J+S Einführungskurs absolvieren · 18. Juni 2026</div>
+        <div class="task-desc">Bereits angemeldet. Dieser Kurs öffnet die Türen zu Schulkooperationen, staatlichen Subventionen und Jugendprogrammen. Nach Abschluss: sofort Schulen kontaktieren.</div>
+        <span class="task-tag tag-gold">J+S · fixierter Termin</span>
+      </div>
+    </div>
+
+    <div class="task gold">
+      <div class="task-icon">🏫</div>
+      <div class="task-content">
+        <div class="task-title">Nach J+S: Schulen in Zürich Altstetten kontaktieren</div>
+        <div class="task-desc">Sportlehrpersonen ansprechen mit Angebot für Box-AGs oder Projekttage. J+S-zertifiziertes Angebot ist für Schulen einfach zu bewilligen. Stabiles Nebeneinkommen und Markenaufbau in der Schüler-Eltern-Community.</div>
+        <span class="task-tag tag-gold">J+S</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- HERBST 2026 -->
+  <div class="section">
+    <div class="section-tag">Herbst 2026</div>
+    <div class="section-title">ZERTIFIZIERUNG <span>AUSBAUEN</span></div>
+
+    <div class="task gold">
+      <div class="task-icon">🥊</div>
+      <div class="task-content">
+        <div class="task-title">J+S Leiterkurs Boxen anmelden und absolvieren</div>
+        <div class="task-desc">Nach dem Einführungskurs ist dieser der nächste Pflichtschritt für J+S. Ermöglicht eigenständige J+S-Kurse als anerkannter Leiter. Voraussetzung für QualiCert 2027.</div>
+        <span class="task-tag tag-gold">J+S</span>
+      </div>
+    </div>
+
+    <div class="task blue">
+      <div class="task-icon">🏢</div>
+      <div class="task-content">
+        <div class="task-title">Corporate Boxing: Erste Firmen pitchen</div>
+        <div class="task-desc">Zürich: UBS, Google, Deloitte, McKinsey, Accenture. Angebot: halbtägiger Boxing Workshop für Teams, CHF 500–800. Buchung über Website oder direkte Anfrage. Einmalige Events mit hoher Marge. Mitarbeiter werden danach Privatkunden.</div>
+        <span class="task-tag tag-blue">B2B</span>
+      </div>
+    </div>
+
+    <div class="task green">
+      <div class="task-icon">🏥</div>
+      <div class="task-content">
+        <div class="task-title">Pilotprogramm Therapeutisches Boxen starten</div>
+        <div class="task-desc">Nach Psychiater-Kooperation: formelles Pilotprogramm mit 3–5 Patienten. Strukturiertes Protokoll: wöchentliches Training, Fortschrittsmessung, Feedback. Das wird die Basis für weitere Institutionen und später QualiCert.</div>
+        <span class="task-tag tag-green">Therapeutisch</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- WINTER 2026 -->
+  <div class="section">
+    <div class="section-tag">Winter 2026</div>
+    <div class="section-title">NETZWERK <span>VORBEREITEN</span></div>
+
+    <div class="task gold">
+      <div class="task-icon">💪</div>
+      <div class="task-content">
+        <div class="task-title">J+S Leiterkurs Fitness anmelden</div>
+        <div class="task-desc">Ergänzt den Boxkurs. Ermöglicht kombinierte Box+Fitness Kurse. Wichtig für QualiCert Anforderungen im Frühling 2027.</div>
+        <span class="task-tag tag-gold">J+S</span>
+      </div>
+    </div>
+
+    <div class="task">
+      <div class="task-icon">📖</div>
+      <div class="task-content">
+        <div class="task-title">Coach-Handbuch beginnen</div>
+        <div class="task-desc">Dokumentiere: wie du trainierst, welche Übungen, welche Progression, welche Regeln. Das wird später das Onboarding-System für externe Coaches im Netzwerk. Jetzt anfangen = weniger Arbeit in Phase 2.</div>
+        <span class="task-tag tag-blue">Phase 2 vorbereiten</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- 2027 -->
+  <div class="section">
+    <div class="section-tag">Frühling 2027</div>
+    <div class="section-title">QUALICERT + <span>KRANKENKASSE</span></div>
+
+    <div class="task gold">
+      <div class="task-icon">📋</div>
+      <div class="task-content">
+        <div class="task-title">QualiCert Kursleiter Antrag einreichen</div>
+        <div class="task-desc">Voraussetzungen: J+S Leiterkurs Boxen abgeschlossen, UID-Nummer vorhanden, Haftpflichtversicherung aktiv. Mit QualiCert können Kunden das Training über Krankenkassen-Zusatzversicherung abrechnen. Massiver Vorteil gegenüber jedem anderen Trainer.</div>
+        <span class="task-tag tag-gold">QualiCert</span>
+      </div>
+    </div>
+
+    <div class="task gold">
+      <div class="task-icon">🏢</div>
+      <div class="task-content">
+        <div class="task-title">QualiCert Kursanbieter Antrag einreichen</div>
+        <div class="task-desc">Separates Zertifikat für Private Boxing Zürich als Anbieter. Ermöglicht Gruppenangebote über Krankenkasse. Zusammen mit Kursleiter-Zertifikat macht das die Marke für Institutionen und Kooperationen attraktiv.</div>
+        <span class="task-tag tag-gold">QualiCert</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PHASEN ROADMAP -->
+  <div class="section">
+    <div class="section-tag">Langfristige Vision</div>
+    <div class="section-title">ROADMAP <span>2026–2030+</span></div>
+
+    <div class="phase-block p1">
+      <div class="phase-tag">Phase 1 · Jetzt bis Ende 2026</div>
+      <div class="phase-title">Etablierung</div>
+      <div class="phase-items">
+        <div class="phase-item"><strong>10–20 Stammkunden</strong> in Zürich</div>
+        <div class="phase-item">Gym gefunden und gebucht</div>
+        <div class="phase-item">Social Media läuft täglich</div>
+        <div class="phase-item">J+S Einführungs- und Leiterkurs absolviert</div>
+        <div class="phase-item">Psychiater-Kooperation aktiv</div>
+        <div class="phase-item">Haftpflicht, UID, Berufsprofil komplett</div>
+      </div>
+    </div>
+
+    <div class="phase-block p2">
+      <div class="phase-tag">Phase 2 · 2027–2028</div>
+      <div class="phase-title">Skalierung</div>
+      <div class="phase-items">
+        <div class="phase-item">QualiCert aktiv: Kunden rechnen über Krankenkasse ab</div>
+        <div class="phase-item"><strong>Externe Coaches einbinden</strong> unter der Marke Private Boxing Zürich</div>
+        <div class="phase-item">Vermittlungsmodell: <strong>20–30% pro Session</strong> die über das Netzwerk kommt</div>
+        <div class="phase-item">Schulen und Institutionen als feste Partner</div>
+        <div class="phase-item">Therapeutisches Boxen als offizielles Angebot mit Partnerpraxen</div>
+      </div>
+    </div>
+
+    <div class="phase-block p3">
+      <div class="phase-tag">Phase 3 · 2028–2030</div>
+      <div class="phase-title">Expansion</div>
+      <div class="phase-items">
+        <div class="phase-item">Eigenes <strong>Boxing Studio in Zürich</strong></div>
+        <div class="phase-item">Standorte: <strong>Basel, Bern, Lausanne</strong></div>
+        <div class="phase-item"><strong>Profiboxer-Netzwerk:</strong> Schweizer Kämpfer verdienen durch Coaching</div>
+        <div class="phase-item">Sponsoring von lokalen und nationalen Sportmarken</div>
+      </div>
+    </div>
+
+    <div class="phase-block p4">
+      <div class="phase-tag">Phase 4 · 2030+</div>
+      <div class="phase-title">Marktführer Schweiz</div>
+      <div class="phase-items">
+        <div class="phase-item"><strong>Führendes Boxing-Netzwerk der Schweiz</strong></div>
+        <div class="phase-item">Standorte in allen grossen Schweizer Städten</div>
+        <div class="phase-item">Boxing als Sport in der Schweiz sichtbarer machen</div>
+        <div class="phase-item">Athleten-Sponsoring: Nike, Adidas, Under Armour</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="quote">
+    "Reihenfolge einhalten. Erst das Gym finden. Dann die Reels live. Dann die Kunden. Dann das Netzwerk. Kein Schritt überspringen."
+  </div>
+
+  <div class="footer">
+    Private Boxing Zürich · <span>@giacomojaf</span> · <span>www.privateboxingzurich.ch</span> · Stand April 2026
+  </div>
+
+</div>
+</body>
+</html>

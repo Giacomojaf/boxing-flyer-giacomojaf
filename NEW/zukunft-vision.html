@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zukunft Vision – Private Boxing Zürich</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #08152a; color: #fff; padding: 0; }
+  .page { max-width: 780px; margin: 0 auto; padding: 64px 48px 80px; }
+
+  .cover { padding: 56px 0 44px; border-bottom: 1px solid rgba(126,200,255,0.12); margin-bottom: 52px; }
+  .cover-label { font-size: 11px; font-weight: 800; letter-spacing: 0.22em; color: rgba(126,200,255,0.45); text-transform: uppercase; margin-bottom: 18px; }
+  .cover-title { font-family: 'Bebas Neue', sans-serif; font-size: 64px; letter-spacing: 0.04em; line-height: 1; color: #fff; }
+  .cover-title span { color: #7ec8ff; }
+  .cover-sub { font-size: 15px; font-weight: 500; color: rgba(200,232,255,0.45); margin-top: 14px; line-height: 1.6; }
+
+  .section { margin-bottom: 52px; page-break-inside: avoid; }
+  .section-tag { font-size: 10px; font-weight: 800; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(126,200,255,0.4); margin-bottom: 10px; }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 30px; letter-spacing: 0.06em; color: #fff; margin-bottom: 22px; }
+  .section-title span { color: #7ec8ff; }
+
+  .divider { height: 1px; background: rgba(126,200,255,0.08); margin: 44px 0; page-break-inside: avoid; }
+
+  /* Strength cards */
+  .strength-row { display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,0.03); border: 1px solid rgba(126,200,255,0.1); border-radius: 12px; padding: 18px 20px; margin-bottom: 10px; page-break-inside: avoid; }
+  .strength-icon { font-size: 22px; flex-shrink: 0; }
+  .strength-title { font-size: 14px; font-weight: 800; color: #fff; margin-bottom: 4px; }
+  .strength-body { font-size: 13px; font-weight: 500; color: rgba(200,232,255,0.55); line-height: 1.7; }
+
+  .strength-row.green { border-color: rgba(76,175,128,0.2); background: rgba(76,175,128,0.05); }
+  .strength-row.blue  { border-color: rgba(26,101,214,0.2); background: rgba(26,101,214,0.07); }
+  .strength-row.gold  { border-color: rgba(255,213,0,0.2);  background: rgba(255,213,0,0.04); }
+
+  /* Gap box */
+  .gap-box { background: rgba(255,80,80,0.07); border: 1px solid rgba(255,80,80,0.2); border-radius: 14px; padding: 24px 28px; page-break-inside: avoid; }
+  .gap-title { font-size: 15px; font-weight: 800; color: #ff6b6b; margin-bottom: 12px; }
+  .gap-body { font-size: 13px; font-weight: 500; color: rgba(200,232,255,0.65); line-height: 1.8; }
+  .gap-body strong { color: #fff; }
+
+  /* Expansion grid */
+  .expansion-grid { display: flex; flex-direction: column; gap: 10px; }
+  .exp-card { background: #0d1f3c; border: 1px solid rgba(126,200,255,0.12); border-radius: 14px; padding: 22px 24px; page-break-inside: avoid; }
+  .exp-header { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .exp-badge { font-size: 10px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 6px; padding: 4px 10px; }
+  .badge-now    { background: rgba(76,175,128,0.15); color: #4ec890; }
+  .badge-mid    { background: rgba(126,200,255,0.12); color: #7ec8ff; }
+  .badge-long   { background: rgba(155,89,182,0.15); color: #c39bd3; }
+  .exp-title { font-size: 16px; font-weight: 800; color: #fff; }
+  .exp-items { display: flex; flex-direction: column; gap: 8px; }
+  .exp-item { display: flex; gap: 12px; align-items: flex-start; }
+  .exp-item-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(126,200,255,0.4); flex-shrink: 0; margin-top: 6px; }
+  .exp-item-text { font-size: 13px; font-weight: 500; color: rgba(200,232,255,0.6); line-height: 1.6; }
+  .exp-item-text strong { color: #fff; }
+
+  /* Revenue potential */
+  .revenue-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+  .rev-card { background: #0d1f3c; border: 1px solid rgba(126,200,255,0.1); border-radius: 12px; padding: 18px; text-align: center; page-break-inside: avoid; }
+  .rev-amount { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #7ec8ff; letter-spacing: 0.04em; }
+  .rev-label { font-size: 11px; font-weight: 700; color: rgba(200,232,255,0.5); margin-top: 4px; line-height: 1.5; }
+
+  /* Quote */
+  .quote { background: rgba(26,101,214,0.1); border-left: 3px solid #1a65d6; border-radius: 0 12px 12px 0; padding: 22px 28px; font-size: 16px; font-weight: 700; color: rgba(200,232,255,0.85); line-height: 1.6; font-style: italic; page-break-inside: avoid; }
+
+  .footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid rgba(126,200,255,0.08); text-align: center; font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.15); letter-spacing: 0.08em; }
+  .footer span { color: #7ec8ff; }
+
+  @media print {
+    body { background: #fff; color: #111; }
+    .cover-title { color: #111; }
+    .cover-title span, .section-title span { color: #1a65d6; }
+    .cover-label, .section-tag { color: #1a65d6; }
+    .cover-sub { color: #555; }
+    .section-title { color: #111; }
+    .strength-row { background: #f5f7fa; border-color: #e0e8f0; page-break-inside: avoid; }
+    .strength-row.green { background: #f0fff8; border-color: #b2dfdb; }
+    .strength-row.blue  { background: #f0f5ff; border-color: #c5d8f5; }
+    .strength-row.gold  { background: #fffde7; border-color: #ffe082; }
+    .strength-title { color: #111; }
+    .strength-body { color: #444; }
+    .gap-box { background: #fff5f5; border-color: #ffcdd2; page-break-inside: avoid; }
+    .gap-title { color: #c62828; }
+    .gap-body { color: #333; }
+    .gap-body strong { color: #111; }
+    .exp-card { background: #f5f7fa; border-color: #e0e8f0; page-break-inside: avoid; }
+    .exp-title { color: #111; }
+    .exp-item-text { color: #444; }
+    .exp-item-text strong { color: #111; }
+    .badge-now  { background: #e0f5ea; color: #2e7d32; }
+    .badge-mid  { background: #e8f0ff; color: #1a65d6; }
+    .badge-long { background: #f3e5f5; color: #6a1b9a; }
+    .rev-card { background: #f5f7fa; border-color: #e0e8f0; page-break-inside: avoid; }
+    .rev-amount { color: #1a65d6; }
+    .rev-label { color: #555; }
+    .quote { background: #f0f5ff; border-left-color: #1a65d6; color: #333; }
+    .footer { color: #aaa; border-top-color: #e0e8f0; }
+    .footer span { color: #1a65d6; }
+    .divider { background: #e0e8f0; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="cover">
+    <div class="cover-label">Private Boxing Zürich · Giacomo La Rocca · April 2026</div>
+    <div class="cover-title">ZUKUNFT<br><span>VISION</span></div>
+    <div class="cover-sub">Wachstum · Erweiterung · Marktführerschaft</div>
+  </div>
+
+  <!-- STÄRKEN -->
+  <div class="section">
+    <div class="section-tag">Warum das Konzept funktioniert</div>
+    <div class="section-title">DIE STÄRKEN DES <span>KONZEPTS</span></div>
+
+    <div class="strength-row green">
+      <div class="strength-icon">🏗</div>
+      <div>
+        <div class="strength-title">Du baust eine Plattform, keinen Job</div>
+        <div class="strength-body">Das Netzwerkmodell ab Phase 2 skaliert unabhängig von deiner Zeit. Andere Trainer arbeiten, du verdienst 20–30% an jeder Session mit. Kein anderer Trainer in Zürich denkt so.</div>
+      </div>
+    </div>
+    <div class="strength-row blue">
+      <div class="strength-icon">🌍</div>
+      <div>
+        <div class="strength-title">5 Sprachen in Zürich sind ein Monopol</div>
+        <div class="strength-body">Deutsch, Italienisch, Portugiesisch, Englisch, Französisch. Zürich ist eine der internationalsten Städte Europas. Du erreichst Kunden die kein anderer Coach ansprechen kann.</div>
+      </div>
+    </div>
+    <div class="strength-row green">
+      <div class="strength-icon">🥊</div>
+      <div>
+        <div class="strength-title">Aktiver Boxer als Coach ist nicht kaufbar</div>
+        <div class="strength-body">Glaubwürdigkeit die keine Ausbildung und kein Zertifikat ersetzen kann. Du stehst selbst im Ring. Das ist dein stärkstes Verkaufsargument und dein Alleinstellungsmerkmal in der ganzen Schweiz.</div>
+      </div>
+    </div>
+    <div class="strength-row gold">
+      <div class="strength-icon">💡</div>
+      <div>
+        <div class="strength-title">Das Profiboxer-Netzwerk löst ein echtes Problem</div>
+        <div class="strength-body">Schweizer Boxer können vom Kampfsport allein nicht leben. Dein Netzwerk gibt ihnen Einkommen durch Coaching. Das zieht die besten Trainer automatisch an und macht die Marke unschlagbar stark.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- LÜCKE -->
+  <div class="section">
+    <div class="section-tag">Was noch fehlt</div>
+    <div class="section-title">DIE EINZIGE <span>LÜCKE</span></div>
+
+    <div class="gap-box">
+      <div class="gap-title">Du brauchst Proof</div>
+      <div class="gap-body">
+        Alles ist bereit: Website, Preise, Buchungssystem, Social Media, Branding. Was noch fehlt sind <strong>echte Resultate die andere sehen können.</strong><br><br>
+        <strong>Lösung:</strong> 2–3 Erstkunden stark rabattieren oder gratis trainieren. Im Gegenzug: ein ehrliches Vorher/Nachher Video, ein Google Review, ein Testimonial. Diese drei Dinge schalten den Rest frei.
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ERWEITERUNGEN -->
+  <div class="section">
+    <div class="section-tag">Wie du wächst</div>
+    <div class="section-title">KONKRETE <span>ERWEITERUNGEN</span></div>
+
+    <div class="expansion-grid">
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-badge badge-now">Jetzt</span>
+          <div class="exp-title">Psychiater-Kooperation</div>
+        </div>
+        <div class="exp-items">
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Psychiater empfiehlt, Giacomo trainiert. <strong>Kein Zertifikat nötig.</strong></div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Erster institutioneller Referenzpartner in Zürich</div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Unterscheidet dich sofort von jedem anderen Trainer</div></div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-badge badge-now">Jetzt</span>
+          <div class="exp-title">Erstkunden-Proof aufbauen</div>
+        </div>
+        <div class="exp-items">
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">2–3 Sessions stark rabattiert oder gratis</div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Im Gegenzug: <strong>Video, Review, Testimonial</strong></div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Das stärkste Content-Material das du jemals haben wirst</div></div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-badge badge-mid">Mittelfristig</span>
+          <div class="exp-title">Corporate Boxing</div>
+        </div>
+        <div class="exp-items">
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Zürich: UBS, Google, Deloitte, McKinsey suchen Team-Events</div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text"><strong>CHF 500–800 pro Workshop-Event</strong>, halbtägig</div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Einmalige Buchung, hohe Marge, grosses Netzwerk</div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Diese Mitarbeiter werden anschliessend Privatkunden</div></div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-badge badge-mid">Mittelfristig</span>
+          <div class="exp-title">Schulen via J+S</div>
+        </div>
+        <div class="exp-items">
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Staatlich subventioniert, stabile Einnahmen</div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Baut deinen Namen in Zürich systematisch auf</div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">J+S Zertifizierung ist bereits in Arbeit</div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text"><strong>Eltern der Schüler werden zu Privatkunden</strong></div></div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-badge badge-mid">Mittelfristig</span>
+          <div class="exp-title">Coach-Handbuch aufbauen</div>
+        </div>
+        <div class="exp-items">
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Jetzt schon dokumentieren: Was trainierst du? Was funktioniert?</div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Wird später das <strong>Onboarding-System für neue Coaches</strong></div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Qualitätskontrolle im Netzwerk wird dadurch skalierbar</div></div>
+        </div>
+      </div>
+
+      <div class="exp-card">
+        <div class="exp-header">
+          <span class="exp-badge badge-long">Langfristig</span>
+          <div class="exp-title">Profiboxer-Netzwerk</div>
+        </div>
+        <div class="exp-items">
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Schweizer Kämpfer die vom Sport allein nicht leben können</div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text"><strong>Verdienen durch Coaching im Netzwerk</strong></div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Du lieferst Kunden, Marke und Marketing</div></div>
+          <div class="exp-item"><div class="exp-item-dot"></div><div class="exp-item-text">Löst ein echtes Problem im Schweizer Boxsport</div></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- UMSATZ POTENZIAL -->
+  <div class="section">
+    <div class="section-tag">Zahlen</div>
+    <div class="section-title">UMSATZ <span>POTENZIAL</span></div>
+
+    <div class="revenue-grid" style="margin-bottom: 16px;">
+      <div class="rev-card">
+        <div class="rev-amount">CHF 6'400</div>
+        <div class="rev-label">/ Monat Phase 1<br>8 Kunden × 2 Sessions/Woche</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-amount">CHF 20'000+</div>
+        <div class="rev-label">/ Monat Phase 2<br>5 Coaches + eigene Kunden</div>
+      </div>
+      <div class="rev-card">
+        <div class="rev-amount">CHF 100'000+</div>
+        <div class="rev-label">/ Monat Phase 3<br>Studio + mehrere Standorte</div>
+      </div>
+    </div>
+    <div style="font-size: 12px; font-weight: 500; color: rgba(200,232,255,0.35); text-align: center;">Konservative Schätzungen. Coaching-Markt Zürich ist unterversorgt.</div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="quote">
+    "Das Ziel ist nicht mehr Kunden zu finden. Das Ziel ist ein System aufzubauen, das Kunden findet, während du schläfst."
+  </div>
+
+  <div class="footer">
+    Private Boxing Zürich · <span>@giacomojaf</span> · <span>www.privateboxingzurich.ch</span> · April 2026
+  </div>
+
+</div>
+</body>
+</html>
