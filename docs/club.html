@@ -15,8 +15,8 @@
   nav { display:flex; align-items:center; justify-content:space-between; padding:18px 32px; background:rgba(8,21,42,0.95); border-bottom:1px solid rgba(126,200,255,0.08); position:sticky; top:0; z-index:100; }
   .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:0.12em; color:#fff; text-decoration:none; }
   .nav-logo span { color:#7ec8ff; }
-  .nav-back { font-size:12px; font-weight:700; color:rgba(200,232,255,0.45); text-decoration:none; letter-spacing:0.08em; }
-  .nav-back:hover { color:#7ec8ff; }
+  .lang-toggle { display:flex; gap:4px; }
+  .lang-btn { padding:6px 12px; border:none; font-size:12px; font-weight:800; cursor:pointer; font-family:'Inter',sans-serif; border-radius:6px; transition:background 0.15s, color 0.15s; }
 
   /* HERO */
   .hero { padding:64px 24px 48px; text-align:center; max-width:620px; margin:0 auto; }
@@ -86,106 +86,194 @@
 
 <nav>
   <a class="nav-logo" href="/">PRIVATE BOXING <span>ZÜRICH</span></a>
-  <a class="nav-back" href="/">← Zurück zur Website</a>
+  <div class="lang-toggle">
+    <button id="btn-de" class="lang-btn" onclick="setLang('de')">DE</button>
+    <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
 </nav>
 
 <div class="hero">
-<div class="hero-tag">Neues Angebot · Outdoor · Glattpark</div>
+  <div class="hero-tag" id="hero-tag">Neues Angebot · Outdoor · Glattpark</div>
   <div class="hero-title">BOXING &<br><span>CONDITIONING</span><br>CLUB</div>
-  <div class="hero-sub">Kraft, Boxkondition und Laufen im Freien. Kein Gym, keine Ausrüstung nötig. Komm einfach.</div>
+  <div class="hero-sub" id="hero-sub">Kraft, Boxkondition und Laufen im Freien. Kein Gym, keine Ausrüstung nötig. Komm einfach.</div>
   <div class="hero-pills">
     <span class="pill pill-green">Di + Do · 12:15 Uhr</span>
     <span class="pill pill-blue">Glattpark Zürich</span>
-    <span class="pill pill-gold">Erste Session gratis</span>
+    <span class="pill pill-gold" id="pill-gold">Erste Session gratis</span>
   </div>
 </div>
 
 <div class="section">
   <div class="termin-block">
-    <div class="termin-label">Termin</div>
+    <div class="termin-label" id="termin-label">Termin</div>
     <div class="termin-val">Dienstag + Donnerstag · 12:15 Uhr</div>
     <div class="termin-sub">Glattpark Zürich</div>
   </div>
-  <div class="section-label">Session-Ablauf · 45 Minuten</div>
+  <div class="section-label" id="sect-label-schedule">Session-Ablauf · 45 Minuten</div>
   <div class="schedule">
     <div class="schedule-row">
       <div class="schedule-time">12:15 – 12:20</div>
-      <div class="schedule-desc">Warm-up und Ankommen</div>
+      <div class="schedule-desc" id="sched-desc-0">Warm-up und Ankommen</div>
     </div>
     <div class="schedule-row">
       <div class="schedule-time">12:20 – 12:35</div>
-      <div class="schedule-desc">Laufrunde Glattpark · angepasstes Tempo</div>
+      <div class="schedule-desc" id="sched-desc-1">Laufrunde Glattpark · angepasstes Tempo</div>
     </div>
     <div class="schedule-row">
       <div class="schedule-time">12:35 – 12:50</div>
-      <div class="schedule-desc">Kraft und Boxkondition: Footwork, Körperspannung, Kombinations-Drills</div>
+      <div class="schedule-desc" id="sched-desc-2">Kraft und Boxkondition: Footwork, Körperspannung, Kombinations-Drills</div>
     </div>
     <div class="schedule-row">
       <div class="schedule-time">12:50 – 13:00</div>
-      <div class="schedule-desc">Cool-down und Stretching</div>
+      <div class="schedule-desc" id="sched-desc-3">Cool-down und Stretching</div>
     </div>
   </div>
 
   <div class="info-grid">
     <div class="info-card">
-      <div class="info-label">Preis</div>
+      <div class="info-label" id="info-lbl-preis">Preis</div>
       <div class="info-val">CHF 20</div>
-      <div class="info-sub">pro Person · vor Ort</div>
+      <div class="info-sub" id="info-sub-preis">pro Person · vor Ort</div>
     </div>
     <div class="info-card">
-      <div class="info-label">Niveau</div>
-      <div class="info-val">Alle</div>
-      <div class="info-sub">Keine Vorkenntnisse nötig</div>
+      <div class="info-label" id="info-lbl-niveau">Niveau</div>
+      <div class="info-val" id="info-val-niveau">Alle</div>
+      <div class="info-sub" id="info-sub-niveau">Keine Vorkenntnisse nötig</div>
     </div>
   </div>
 
   <div class="highlight-row">
     <div class="highlight-item">
-      <div class="highlight-tag">Erste Session</div>
-      <div class="highlight-val">Gratis</div>
-      <div class="highlight-sub">Einfach kommen. Keine Anmeldung nötig.</div>
+      <div class="highlight-tag" id="hl-tag">Erste Session</div>
+      <div class="highlight-val" id="hl-val">Gratis</div>
+      <div class="highlight-sub" id="hl-sub">Einfach kommen. Keine Anmeldung nötig.</div>
     </div>
   </div>
 </div>
 
 <div class="section">
-  <div class="section-label">Jetzt anmelden</div>
+  <div class="section-label" id="sect-label-form">Jetzt anmelden</div>
   <div class="form-box">
-    <div class="form-title">Ich bin dabei</div>
-    <div class="form-sub">Du bekommst eine WhatsApp-Nachricht mit den Details vor der ersten Session.</div>
+    <div class="form-title" id="form-title">Ich bin dabei</div>
+    <div class="form-sub" id="form-sub">Du bekommst eine WhatsApp-Nachricht mit den Details vor der ersten Session.</div>
     <form id="club-form">
       <div class="form-group">
-        <label class="form-label" for="name">Name</label>
+        <label class="form-label" id="lbl-name" for="name">Name</label>
         <input class="form-input" type="text" id="name" placeholder="Dein Name" required>
       </div>
       <div class="form-group">
-        <label class="form-label" for="whatsapp">WhatsApp Nummer</label>
+        <label class="form-label" id="lbl-whatsapp" for="whatsapp">WhatsApp Nummer</label>
         <input class="form-input" type="tel" id="whatsapp" placeholder="+41 79 123 45 67" required>
       </div>
-      <button class="form-btn" type="submit">ICH BIN DABEI →</button>
+      <button class="form-btn" id="form-btn" type="submit">ICH BIN DABEI →</button>
     </form>
     <div class="success-box" id="success-box">
-      <div class="success-title">Angemeldet!</div>
-      <div class="success-text">Giacomo meldet sich per WhatsApp vor der ersten Session bei dir. Bis bald im Glattpark.</div>
+      <div class="success-title" id="success-title">Angemeldet!</div>
+      <div class="success-text" id="success-text">Giacomo meldet sich per WhatsApp vor der ersten Session bei dir. Bis bald im Glattpark.</div>
     </div>
   </div>
 </div>
 
 <div class="footer-back">
-  <a href="/">← Zurück zu privateboxingzurich.ch</a>
+  <a href="/" id="footer-link">← Zurück zu privateboxingzurich.ch</a>
 </div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 emailjs.init('DPN76hd1SjOuEgZLb');
 
+const translations = {
+  de: {
+    'hero-tag':           'Neues Angebot · Outdoor · Glattpark',
+    'hero-sub':           'Kraft, Boxkondition und Laufen im Freien. Kein Gym, keine Ausrüstung nötig. Komm einfach.',
+    'pill-gold':          'Erste Session gratis',
+    'termin-label':       'Termin',
+    'sect-label-schedule':'Session-Ablauf · 45 Minuten',
+    'sched-desc-0':       'Warm-up und Ankommen',
+    'sched-desc-1':       'Laufrunde Glattpark · angepasstes Tempo',
+    'sched-desc-2':       'Kraft und Boxkondition: Footwork, Körperspannung, Kombinations-Drills',
+    'sched-desc-3':       'Cool-down und Stretching',
+    'info-lbl-preis':     'Preis',
+    'info-sub-preis':     'pro Person · vor Ort',
+    'info-lbl-niveau':    'Niveau',
+    'info-val-niveau':    'Alle',
+    'info-sub-niveau':    'Keine Vorkenntnisse nötig',
+    'hl-tag':             'Erste Session',
+    'hl-val':             'Gratis',
+    'hl-sub':             'Einfach kommen. Keine Anmeldung nötig.',
+    'sect-label-form':    'Jetzt anmelden',
+    'form-title':         'Ich bin dabei',
+    'form-sub':           'Du bekommst eine WhatsApp-Nachricht mit den Details vor der ersten Session.',
+    'lbl-name':           'Name',
+    'lbl-whatsapp':       'WhatsApp Nummer',
+    'form-btn':           'ICH BIN DABEI →',
+    'success-title':      'Angemeldet!',
+    'success-text':       'Giacomo meldet sich per WhatsApp vor der ersten Session bei dir. Bis bald im Glattpark.',
+    'footer-link':        '← Zurück zu privateboxingzurich.ch',
+  },
+  en: {
+    'hero-tag':           'New Offer · Outdoor · Glattpark',
+    'hero-sub':           'Strength, boxing conditioning and running outdoors. No gym, no equipment needed. Just show up.',
+    'pill-gold':          'First Session Free',
+    'termin-label':       'Schedule',
+    'sect-label-schedule':'Session Schedule · 45 Minutes',
+    'sched-desc-0':       'Warm-up and Arrival',
+    'sched-desc-1':       'Running Round Glattpark · adjusted pace',
+    'sched-desc-2':       'Strength and Boxing Conditioning: Footwork, Core Tension, Combination Drills',
+    'sched-desc-3':       'Cool-down and Stretching',
+    'info-lbl-preis':     'Price',
+    'info-sub-preis':     'per person · on site',
+    'info-lbl-niveau':    'Level',
+    'info-val-niveau':    'All levels',
+    'info-sub-niveau':    'No experience needed',
+    'hl-tag':             'First Session',
+    'hl-val':             'Free',
+    'hl-sub':             'Just show up. No registration needed.',
+    'sect-label-form':    'Sign Up Now',
+    'form-title':         "I'm In",
+    'form-sub':           "You'll receive a WhatsApp message with details before the first session.",
+    'lbl-name':           'Name',
+    'lbl-whatsapp':       'WhatsApp Number',
+    'form-btn':           "I'M IN →",
+    'success-title':      'Signed Up!',
+    'success-text':       "Giacomo will contact you via WhatsApp before the first session. See you soon at Glattpark.",
+    'footer-link':        '← Back to privateboxingzurich.ch',
+  }
+};
+
+const placeholders = {
+  de: { name: 'Dein Name', whatsapp: '+41 79 123 45 67' },
+  en: { name: 'Your Name', whatsapp: '+41 79 123 45 67' }
+};
+
+function setLang(lang) {
+  window._currentLang = lang;
+  document.getElementById('btn-de').style.cssText = lang === 'de'
+    ? 'background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;'
+    : 'background:transparent;color:rgba(200,232,255,0.50);';
+  document.getElementById('btn-en').style.cssText = lang === 'en'
+    ? 'background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;'
+    : 'background:transparent;color:rgba(200,232,255,0.50);';
+
+  const t = translations[lang];
+  Object.keys(t).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = t[id];
+  });
+
+  document.getElementById('name').placeholder = placeholders[lang].name;
+  document.getElementById('whatsapp').placeholder = placeholders[lang].whatsapp;
+}
+
+setLang('de');
+
 document.getElementById('club-form').addEventListener('submit', function(e) {
   e.preventDefault();
-  const btn = this.querySelector('.form-btn');
+  const btn = document.getElementById('form-btn');
   const name = document.getElementById('name').value.trim();
   const whatsapp = document.getElementById('whatsapp').value.trim();
   if (!name || !whatsapp) {
-    alert('Bitte Name und WhatsApp-Nummer eingeben.');
+    alert(window._currentLang === 'en' ? 'Please enter your name and WhatsApp number.' : 'Bitte Name und WhatsApp-Nummer eingeben.');
     return;
   }
   btn.textContent = '…';
@@ -203,9 +291,11 @@ document.getElementById('club-form').addEventListener('submit', function(e) {
     document.getElementById('club-form').style.display = 'none';
     document.getElementById('success-box').classList.add('visible');
   }).catch(function() {
-    btn.textContent = 'ICH BIN DABEI →';
+    btn.textContent = translations[window._currentLang]['form-btn'];
     btn.disabled = false;
-    alert('Fehler beim Senden. Bitte direkt per Instagram anmelden: @privateboxingzurich');
+    alert(window._currentLang === 'en'
+      ? 'Error sending. Please sign up directly via Instagram: @privateboxingzurich'
+      : 'Fehler beim Senden. Bitte direkt per Instagram anmelden: @privateboxingzurich');
   });
 });
 </script>
