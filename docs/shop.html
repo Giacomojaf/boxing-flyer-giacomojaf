@@ -15,6 +15,12 @@
   nav { display:flex; align-items:center; justify-content:space-between; padding:18px 32px; background:rgba(8,21,42,0.95); border-bottom:1px solid rgba(126,200,255,0.08); position:sticky; top:0; z-index:100; }
   .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:0.12em; color:#fff; text-decoration:none; }
   .nav-logo span { color:#7ec8ff; }
+  .nav-links { display:flex; list-style:none; gap:20px; align-items:center; }
+  .nav-links a { font-size:13px; font-weight:700; color:rgba(200,232,255,0.55); text-decoration:none; letter-spacing:0.06em; transition:color 0.15s; }
+  .nav-links a:hover { color:#fff; }
+  @media(max-width:600px){ .nav-links { display:none; } }
+  .lang-toggle { display:flex; gap:4px; }
+  .lang-btn { padding:6px 12px; border:none; font-size:12px; font-weight:800; cursor:pointer; font-family:'Inter',sans-serif; border-radius:6px; transition:background 0.15s, color 0.15s; }
   .cart-btn { position:relative; background:none; border:none; color:rgba(200,232,255,0.65); cursor:pointer; padding:6px 8px; display:flex; align-items:center; gap:8px; transition:color 0.15s; }
   .cart-btn:hover { color:#fff; }
   .cart-btn svg { display:block; }
@@ -133,6 +139,16 @@
 
 <nav>
   <a class="nav-logo" href="/">PRIVATE BOXING <span>ZÜRICH</span></a>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <ul class="nav-links">
+      <li><a href="/preise">Preise</a></li>
+      <li><a href="/club">B&amp;C Club</a></li>
+      <li><a href="/shop">Shop</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button id="btn-de" class="lang-btn" onclick="setLang('de')">DE</button>
+      <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
   <button class="cart-btn" onclick="openCart()">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
       <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
@@ -141,6 +157,7 @@
     </svg>
     <span class="cart-badge" id="cart-badge">0</span>
   </button>
+  </div>
 </nav>
 
 <div class="hero">
@@ -175,6 +192,17 @@
     </div>
   </div>
 
+  <div class="product-card">
+    <img class="product-img" src="/img/mundschutz.png" alt="PBZ Mundschutz">
+    <div class="product-body">
+      <div class="product-tag">Equipment</div>
+      <div class="product-name">MUNDSCHUTZ</div>
+      <div class="product-desc">PBZ Mundschutz in Blau und Weiss mit B&amp;C Club Branding. Inkl. Schutzbox.</div>
+      <div class="product-price">CHF 15 <span>/ Stück</span></div>
+      <button class="product-btn" id="btn-mouth" onclick="addToCart('mouth', 'PBZ Mundschutz', 15, this)">IN DEN WARENKORB</button>
+    </div>
+  </div>
+
 </div>
 
 <div class="footer-back">
@@ -184,6 +212,16 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>
 emailjs.init('DPN76hd1SjOuEgZLb');
+
+function setLang(lang) {
+  document.getElementById('btn-de').style.cssText = lang === 'de'
+    ? 'background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;'
+    : 'background:transparent;color:rgba(200,232,255,0.50);';
+  document.getElementById('btn-en').style.cssText = lang === 'en'
+    ? 'background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;'
+    : 'background:transparent;color:rgba(200,232,255,0.50);';
+}
+setLang('de');
 
 let cart = [];
 

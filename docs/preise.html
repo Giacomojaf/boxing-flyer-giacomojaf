@@ -668,13 +668,12 @@
 <!-- NAV -->
 <nav>
   <a href="/" class="nav-logo">PRIVATE <span>BOXING</span> ZÜRICH</a>
-  <ul class="nav-links">
-    <li><a href="/#about" id="nav-about">Über mich</a></li>
-    <li><a href="/#offers" id="nav-offers">Angebote</a></li>
-    <li><a href="/#testimonials" id="nav-testimonials">Stimmen</a></li>
-    <li><a href="/#institutionen" id="nav-institutionen">Institutionen</a></li>
-  </ul>
-  <div style="display:flex;align-items:center;gap:12px;">
+  <div style="display:flex;align-items:center;gap:20px;">
+    <ul class="nav-links">
+      <li><a href="/preise" id="nav-preise">Preise</a></li>
+      <li><a href="/club" id="nav-club">B&C Club</a></li>
+      <li><a href="/shop" id="nav-shop">Shop</a></li>
+    </ul>
     <div style="display:flex;background:rgba(255,255,255,0.06);border:1px solid rgba(126,200,255,0.15);border-radius:8px;overflow:hidden;">
       <button id="btn-de" onclick="setLang('de')" style="padding:6px 12px;border:none;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;">DE</button>
       <button id="btn-en" onclick="setLang('en')" style="padding:6px 12px;border:none;background:transparent;color:rgba(200,232,255,0.50);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;">EN</button>
@@ -1154,10 +1153,9 @@ window.onload = () => { setMode('gym'); setLang('de'); };
 
 const translations = {
   de: {
-    'nav-about': 'Über mich',
-    'nav-offers': 'Angebote',
-    'nav-testimonials': 'Stimmen',
-    'nav-institutionen': 'Institutionen',
+    'nav-preise': 'Preise',
+    'nav-club': 'B&C Club',
+    'nav-shop': 'Shop',
     'nav-cta': 'Termin buchen',
     'page-title': 'PREISE',
     'header-sub': 'Monatliche Trainingspakete für regelmässiges 1:1 Boxtraining. Je mehr du trainierst, desto günstiger wird jedes Training.',
@@ -1185,10 +1183,9 @@ const translations = {
     'institutionen-btn': 'Jetzt anfragen',
   },
   en: {
-    'nav-about': 'About me',
-    'nav-offers': 'Offers',
-    'nav-testimonials': 'Reviews',
-    'nav-institutionen': 'Institutions',
+    'nav-preise': 'Pricing',
+    'nav-club': 'B&C Club',
+    'nav-shop': 'Shop',
     'nav-cta': 'Book session',
     'page-title': 'PRICING',
     'header-sub': 'Monthly training packages for regular 1:1 boxing coaching. The more you train, the cheaper each session gets.',

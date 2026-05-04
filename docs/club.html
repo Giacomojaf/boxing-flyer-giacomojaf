@@ -15,6 +15,10 @@
   nav { display:flex; align-items:center; justify-content:space-between; padding:18px 32px; background:rgba(8,21,42,0.95); border-bottom:1px solid rgba(126,200,255,0.08); position:sticky; top:0; z-index:100; }
   .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:0.12em; color:#fff; text-decoration:none; }
   .nav-logo span { color:#7ec8ff; }
+  .nav-links { display:flex; list-style:none; gap:20px; align-items:center; }
+  .nav-links a { font-size:13px; font-weight:700; color:rgba(200,232,255,0.55); text-decoration:none; letter-spacing:0.06em; transition:color 0.15s; }
+  .nav-links a:hover { color:#fff; }
+  @media(max-width:600px){ .nav-links { display:none; } }
   .lang-toggle { display:flex; gap:4px; }
   .lang-btn { padding:6px 12px; border:none; font-size:12px; font-weight:800; cursor:pointer; font-family:'Inter',sans-serif; border-radius:6px; transition:background 0.15s, color 0.15s; }
 
@@ -86,9 +90,16 @@
 
 <nav>
   <a class="nav-logo" href="/">PRIVATE BOXING <span>ZÜRICH</span></a>
-  <div class="lang-toggle">
-    <button id="btn-de" class="lang-btn" onclick="setLang('de')">DE</button>
-    <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <ul class="nav-links">
+      <li><a href="/preise" id="nav-preise">Preise</a></li>
+      <li><a href="/club" id="nav-club">B&amp;C Club</a></li>
+      <li><a href="/shop" id="nav-shop">Shop</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button id="btn-de" class="lang-btn" onclick="setLang('de')">DE</button>
+      <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
   </div>
 </nav>
 
@@ -184,6 +195,7 @@ emailjs.init('DPN76hd1SjOuEgZLb');
 
 const translations = {
   de: {
+    'nav-preise': 'Preise', 'nav-club': 'B&C Club', 'nav-shop': 'Shop',
     'hero-tag':           'Neues Angebot · Outdoor · Glattpark',
     'hero-sub':           'Kraft, Boxkondition und Laufen im Freien. Kein Gym, keine Ausrüstung nötig. Komm einfach.',
     'pill-gold':          'Erste Session gratis',
@@ -212,6 +224,7 @@ const translations = {
     'footer-link':        '← Zurück zu privateboxingzurich.ch',
   },
   en: {
+    'nav-preise': 'Pricing', 'nav-club': 'B&C Club', 'nav-shop': 'Shop',
     'hero-tag':           'New Offer · Outdoor · Glattpark',
     'hero-sub':           'Strength, boxing conditioning and running outdoors. No gym, no equipment needed. Just show up.',
     'pill-gold':          'First Session Free',
