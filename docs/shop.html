@@ -19,11 +19,13 @@
   .nav-back:hover { color:#7ec8ff; }
 
   /* HERO */
-  .hero { padding:56px 24px 40px; text-align:center; max-width:620px; margin:0 auto; }
-  .hero-tag { font-size:11px; font-weight:800; letter-spacing:0.22em; color:rgba(126,200,255,0.55); text-transform:uppercase; margin-bottom:14px; }
-  .hero-title { font-family:'Bebas Neue',sans-serif; font-size:80px; letter-spacing:0.06em; line-height:0.9; color:#fff; margin-bottom:14px; }
+  .hero { padding:64px 24px 52px; text-align:center; max-width:640px; margin:0 auto; }
+  .hero-tag { font-size:11px; font-weight:800; letter-spacing:0.22em; color:rgba(126,200,255,0.50); text-transform:uppercase; margin-bottom:18px; }
+  .hero-title { font-family:'Bebas Neue',sans-serif; font-size:104px; letter-spacing:0.06em; line-height:0.88; color:#fff; margin-bottom:20px; }
   .hero-title span { color:#7ec8ff; }
-  .hero-sub { font-size:14px; color:rgba(200,232,255,0.50); line-height:1.7; }
+  .hero-divider { width:48px; height:3px; background:#1a65d6; border-radius:2px; margin:0 auto 24px; }
+  .hero-main { font-size:22px; font-weight:800; color:#fff; line-height:1.45; margin-bottom:16px; }
+  .hero-sub { font-size:14px; color:rgba(200,232,255,0.45); line-height:1.85; max-width:480px; margin:0 auto; }
 
   /* BADGE */
   .badge-row { display:flex; justify-content:center; gap:10px; margin-top:20px; flex-wrap:wrap; }
@@ -91,9 +93,11 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-tag">Offizielles Equipment</div>
+  <div class="hero-tag">Offizielles Equipment · Limitierte Auflage</div>
   <div class="hero-title">PBZ <span>SHOP</span></div>
-  <div class="hero-sub">Mein Equipment. Für dein Training. Direkt von mir in Zürich.</div>
+  <div class="hero-divider"></div>
+  <div class="hero-main">Mein Equipment.<br>Für dein Training.<br>Direkt von mir in Zürich.</div>
+  <div class="hero-sub">Jedes Produkt das ich selbst im Training benutze. Limitierte Stückzahl. Du bestellst vor, ich melde mich per WhatsApp und wir treffen uns persönlich in Zürich.</div>
 </div>
 
 <div class="products">
@@ -105,9 +109,7 @@
       <div class="product-name">BOXHANDSCHUHE</div>
       <div class="product-desc">PBZ Boxhandschuhe in Dunkelblau und Weiss mit offiziellem Branding.</div>
       <div class="size-row">
-        <button class="size-btn active" onclick="setSize(this,'10oz')">10 oz</button>
-        <button class="size-btn" onclick="setSize(this,'12oz')">12 oz</button>
-        <button class="size-btn" onclick="setSize(this,'14oz')">14 oz</button>
+        <button class="size-btn active" onclick="setSize(this,'14oz')">14 oz</button>
       </div>
       <div class="product-price">CHF 50 <span>/ Paar</span></div>
       <button class="product-btn" onclick="selectProduct('PBZ Boxhandschuhe')">VORBESTELLEN</button>
@@ -146,8 +148,6 @@
         <select class="form-select" id="shop-artikel" required>
           <option value="">Artikel wählen</option>
           <option value="PBZ Handwickel">PBZ Handwickel, CHF 15</option>
-          <option value="PBZ Boxhandschuhe 10oz">PBZ Boxhandschuhe 10 oz, CHF 50</option>
-          <option value="PBZ Boxhandschuhe 12oz">PBZ Boxhandschuhe 12 oz, CHF 50</option>
           <option value="PBZ Boxhandschuhe 14oz">PBZ Boxhandschuhe 14 oz, CHF 50</option>
         </select>
       </div>
