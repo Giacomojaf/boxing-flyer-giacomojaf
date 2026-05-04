@@ -384,7 +384,7 @@ function submitCart() {
   const artikelList = cart.map(i => `${i.name} x${i.qty}`).join(', ');
   const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
 
-  emailjs.send('service_giuepkx', 'template_oymlj1d', {
+  const params = {
     kunde_name: name,
     kunde_telefon: contact,
     kunde_email: email,
@@ -392,7 +392,11 @@ function submitCart() {
     wunschtermin: 'Vorbestellung Shop',
     ort: 'Zürich',
     nachricht: 'Shop-Vorbestellung: ' + artikelList + '. Total: CHF ' + total + '. Adresse: ' + adresse + ', ' + plz,
-  }).then(function() {
+  };
+
+  emailjs.send('service_giuepkx', 'template_oymlj1d', params)
+    .then(() => emailjs.send('service_giuepkx', 'template_63l4kqt', params))
+  .then(function() {
     const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
     const orderHtml = cart.map(i =>
       `<div class="cart-success-order-item"><span>${i.name} x${i.qty}</span><span>CHF ${i.price * i.qty}</span></div>`
