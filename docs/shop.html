@@ -19,7 +19,7 @@
   .nav-links a { font-size:13px; font-weight:700; color:rgba(200,232,255,0.55); text-decoration:none; letter-spacing:0.06em; transition:color 0.15s; }
   .nav-links a:hover { color:#fff; }
   @media(max-width:600px){ .nav-links { display:none; } }
-  .lang-toggle { display:flex; gap:4px; }
+  .lang-toggle { display:flex; background:rgba(255,255,255,0.06); border:1px solid rgba(126,200,255,0.15); border-radius:8px; overflow:hidden; }
   .lang-btn { padding:6px 12px; border:none; font-size:12px; font-weight:800; cursor:pointer; font-family:'Inter',sans-serif; border-radius:6px; transition:background 0.15s, color 0.15s; }
   .cart-btn { position:relative; background:none; border:none; color:rgba(200,232,255,0.65); cursor:pointer; padding:6px 8px; display:flex; align-items:center; gap:8px; transition:color 0.15s; }
   .cart-btn:hover { color:#fff; }
@@ -101,9 +101,16 @@
 
   .cart-success { display:none; padding:40px 24px; text-align:center; }
   .cart-success.visible { display:block; }
-  .cart-success-icon { font-size:40px; margin-bottom:16px; }
-  .cart-success-title { font-size:18px; font-weight:800; color:#7ec8ff; margin-bottom:8px; }
-  .cart-success-text { font-size:13px; color:rgba(200,232,255,0.55); line-height:1.7; }
+  .cart-success-title { font-size:18px; font-weight:800; color:#7ec8ff; margin-bottom:6px; }
+  .cart-success-text { font-size:13px; color:rgba(200,232,255,0.55); line-height:1.7; margin-bottom:20px; }
+  .cart-success-order { background:rgba(255,255,255,0.03); border:1px solid rgba(126,200,255,0.10); border-radius:12px; padding:14px 16px; margin-bottom:20px; text-align:left; }
+  .cart-success-order-item { font-size:13px; color:rgba(200,232,255,0.70); padding:4px 0; display:flex; justify-content:space-between; }
+  .cart-success-total { font-size:16px; font-weight:800; color:#fff; padding-top:10px; margin-top:6px; border-top:1px solid rgba(126,200,255,0.10); display:flex; justify-content:space-between; }
+  .cart-success-total span { color:#7ec8ff; }
+  .cart-success-qr { width:160px; height:160px; margin:0 auto 12px; display:block; border-radius:12px; background:#fff; padding:8px; }
+  .cart-success-qr-label { font-size:12px; color:rgba(200,232,255,0.40); margin-bottom:6px; }
+  .cart-success-qr-amount { font-size:15px; font-weight:800; color:#4caf50; margin-bottom:4px; }
+  .cart-success-iban { font-size:11px; color:rgba(200,232,255,0.35); letter-spacing:0.04em; }
 </style>
 </head>
 <body>
@@ -131,9 +138,13 @@
     <div class="cart-note">Keine Vorauszahlung. Giacomo meldet sich per WhatsApp.</div>
   </div>
   <div class="cart-success" id="cart-success">
-    <div class="cart-success-icon">🥊</div>
     <div class="cart-success-title">Vorbestellung eingegangen!</div>
-    <div class="cart-success-text">Giacomo meldet sich per WhatsApp sobald dein Artikel abholbereit ist. Bis bald in Zürich.</div>
+    <div class="cart-success-text">Giacomo meldet sich per WhatsApp sobald dein Artikel abholbereit ist.</div>
+    <div class="cart-success-order" id="cart-success-order"></div>
+    <div class="cart-success-qr-label">QR-Code zum Bezahlen</div>
+    <img class="cart-success-qr" src="/qr-iban.png" alt="QR Code Zahlung">
+    <div class="cart-success-qr-amount" id="cart-success-amount"></div>
+    <div class="cart-success-iban">IBAN: CH34 0070 0114 9053 9000 6</div>
   </div>
 </div>
 
@@ -335,6 +346,12 @@ function submitCart() {
     ort: 'Zürich',
     nachricht: 'Shop-Vorbestellung: ' + artikelList + '. Total: CHF ' + total,
   }).then(function() {
+    const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
+    const orderHtml = cart.map(i =>
+      `<div class="cart-success-order-item"><span>${i.name} x${i.qty}</span><span>CHF ${i.price * i.qty}</span></div>`
+    ).join('') + `<div class="cart-success-total"><span>Total</span><span>CHF ${total}</span></div>`;
+    document.getElementById('cart-success-order').innerHTML = orderHtml;
+    document.getElementById('cart-success-amount').textContent = 'Bitte CHF ' + total + ' eingeben';
     document.getElementById('cart-footer').style.display = 'none';
     document.getElementById('cart-body').innerHTML = '';
     document.getElementById('cart-success').classList.add('visible');
