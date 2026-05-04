@@ -55,8 +55,18 @@
   .product-btn:hover { opacity:0.85; }
   .product-btn.added { background:linear-gradient(100deg,#2e7d32,#1b5e20); }
 
+  /* PAYMENT INFO */
+  .payment-info { max-width:680px; margin:0 auto 48px; padding:0 24px; }
+  .payment-info-box { background:rgba(126,200,255,0.05); border:1px solid rgba(126,200,255,0.14); border-radius:14px; padding:18px 22px; display:flex; flex-wrap:wrap; gap:14px; align-items:flex-start; }
+  .payment-info-icon { font-size:20px; flex-shrink:0; margin-top:1px; }
+  .payment-info-content { flex:1; min-width:220px; }
+  .payment-info-title { font-size:11px; font-weight:800; letter-spacing:0.16em; text-transform:uppercase; color:rgba(126,200,255,0.55); margin-bottom:8px; }
+  .payment-info-row { font-size:13px; color:rgba(200,232,255,0.65); line-height:1.75; }
+  .payment-info-row strong { color:rgba(200,232,255,0.90); }
+  .payment-info-iban { font-size:12px; font-weight:700; color:rgba(126,200,255,0.70); letter-spacing:0.04em; margin-top:4px; }
+
   /* FOOTER */
-  .footer-back { text-align:center; padding:0 24px 60px; }
+  .footer-back { text-align:center; padding:0 24px 60px; display:flex; justify-content:center; align-items:center; gap:24px; flex-wrap:wrap; }
   .footer-back a { font-size:13px; font-weight:700; color:rgba(200,232,255,0.28); text-decoration:none; letter-spacing:0.08em; }
   .footer-back a:hover { color:#7ec8ff; }
 
@@ -233,8 +243,21 @@
 
 </div>
 
+<div class="payment-info">
+  <div class="payment-info-box">
+    <div class="payment-info-icon">💳</div>
+    <div class="payment-info-content">
+      <div class="payment-info-title">Zahlung & Lieferung</div>
+      <div class="payment-info-row"><strong>Zahlung:</strong> Per Banküberweisung vor der Übergabe. IBAN und QR-Code werden nach der Bestellung angezeigt.</div>
+      <div class="payment-info-row"><strong>Abholung:</strong> Persönlich beim Training in Zürich oder Versand auf Kosten des Käufers.</div>
+      <div class="payment-info-iban">IBAN: CH34 0070 0114 9053 9000 6</div>
+    </div>
+  </div>
+</div>
+
 <div class="footer-back">
   <a href="/">← Zurück zu privateboxingzurich.ch</a>
+  <a href="/agb.html">AGB & Stornobedingungen</a>
 </div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
