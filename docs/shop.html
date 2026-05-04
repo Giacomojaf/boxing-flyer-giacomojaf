@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop – Private Boxing Zürich</title>
+<meta name="description" content="Offizielles PBZ Equipment. Handwickel und Boxhandschuhe mit Private Boxing Zürich Branding.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#08152a; color:#fff; min-height:100vh; }
+
+  /* NAV */
+  nav { display:flex; align-items:center; justify-content:space-between; padding:18px 32px; background:rgba(8,21,42,0.95); border-bottom:1px solid rgba(126,200,255,0.08); position:sticky; top:0; z-index:100; }
+  .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:0.12em; color:#fff; text-decoration:none; }
+  .nav-logo span { color:#7ec8ff; }
+  .nav-back { font-size:12px; font-weight:700; color:rgba(200,232,255,0.45); text-decoration:none; letter-spacing:0.08em; }
+  .nav-back:hover { color:#7ec8ff; }
+
+  /* HERO */
+  .hero { padding:56px 24px 40px; text-align:center; max-width:620px; margin:0 auto; }
+  .hero-tag { font-size:11px; font-weight:800; letter-spacing:0.22em; color:rgba(126,200,255,0.55); text-transform:uppercase; margin-bottom:14px; }
+  .hero-title { font-family:'Bebas Neue',sans-serif; font-size:80px; letter-spacing:0.06em; line-height:0.9; color:#fff; margin-bottom:14px; }
+  .hero-title span { color:#7ec8ff; }
+  .hero-sub { font-size:14px; color:rgba(200,232,255,0.50); line-height:1.7; }
+
+  /* BADGE */
+  .badge-row { display:flex; justify-content:center; gap:10px; margin-top:20px; flex-wrap:wrap; }
+  .badge { font-size:11px; font-weight:700; padding:6px 13px; border-radius:20px; background:rgba(126,200,255,0.08); color:rgba(126,200,255,0.60); border:1px solid rgba(126,200,255,0.15); }
+
+  /* PRODUCTS */
+  .products { max-width:680px; margin:48px auto; padding:0 24px; display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  @media(max-width:560px){ .products { grid-template-columns:1fr; } }
+
+  .product-card { background:#0d1f3c; border:1px solid rgba(126,200,255,0.10); border-radius:18px; overflow:hidden; display:flex; flex-direction:column; transition:border-color 0.2s; }
+  .product-card:hover { border-color:rgba(126,200,255,0.25); }
+
+  .product-img { width:100%; aspect-ratio:1/1; object-fit:cover; background:#0a1a30; display:block; }
+
+  .product-body { padding:20px 20px 22px; flex:1; display:flex; flex-direction:column; }
+  .product-tag { font-size:10px; font-weight:800; letter-spacing:0.18em; text-transform:uppercase; color:rgba(126,200,255,0.40); margin-bottom:7px; }
+  .product-name { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.06em; color:#fff; line-height:1; margin-bottom:8px; }
+  .product-desc { font-size:12px; color:rgba(200,232,255,0.45); line-height:1.6; flex:1; margin-bottom:16px; }
+  .product-price { font-size:22px; font-weight:800; color:#7ec8ff; margin-bottom:14px; }
+  .product-price span { font-size:12px; font-weight:600; color:rgba(200,232,255,0.35); margin-left:4px; }
+  .product-btn { width:100%; background:linear-gradient(100deg,#1a65d6,#0e3f9a); border:none; border-radius:10px; padding:13px; font-size:13px; font-weight:800; color:#fff; letter-spacing:0.07em; cursor:pointer; transition:opacity 0.2s; }
+  .product-btn:hover { opacity:0.85; }
+
+  /* COMING SOON CARD */
+  .product-card.coming { border-style:dashed; border-color:rgba(126,200,255,0.12); }
+  .product-card.coming .product-img-ph { aspect-ratio:1/1; background:rgba(126,200,255,0.04); display:flex; align-items:center; justify-content:center; }
+  .coming-label { font-size:11px; font-weight:800; letter-spacing:0.18em; text-transform:uppercase; color:rgba(126,200,255,0.20); }
+
+  /* FORM SECTION */
+  .form-section { max-width:580px; margin:0 auto 64px; padding:0 24px; }
+  .section-label { font-size:10px; font-weight:800; letter-spacing:0.20em; text-transform:uppercase; color:rgba(126,200,255,0.40); margin-bottom:14px; }
+  .form-box { background:#0d1f3c; border:1px solid rgba(26,101,214,0.30); border-radius:16px; padding:28px 28px 24px; }
+  .form-title { font-size:18px; font-weight:800; color:#fff; margin-bottom:6px; }
+  .form-sub { font-size:13px; color:rgba(200,232,255,0.45); margin-bottom:24px; }
+  .form-group { margin-bottom:14px; }
+  .form-label { font-size:11px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:rgba(200,232,255,0.45); margin-bottom:6px; display:block; }
+  .form-input, .form-select { width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(126,200,255,0.15); border-radius:10px; padding:13px 16px; font-size:14px; color:#fff; font-family:'Inter',sans-serif; outline:none; transition:border-color 0.2s; appearance:none; }
+  .form-input:focus, .form-select:focus { border-color:rgba(26,101,214,0.60); }
+  .form-input::placeholder { color:rgba(200,232,255,0.25); }
+  .form-select option { background:#0d1f3c; color:#fff; }
+  .form-btn { width:100%; background:linear-gradient(100deg,#1a65d6,#0e3f9a); border:none; border-radius:12px; padding:16px; font-size:15px; font-weight:800; color:#fff; letter-spacing:0.06em; cursor:pointer; margin-top:8px; transition:opacity 0.2s; }
+  .form-btn:hover { opacity:0.88; }
+  .form-note { font-size:11px; color:rgba(200,232,255,0.28); text-align:center; margin-top:12px; line-height:1.6; }
+
+  .success-box { display:none; background:rgba(26,80,180,0.12); border:1px solid rgba(26,101,214,0.35); border-radius:12px; padding:20px; text-align:center; margin-top:16px; }
+  .success-box.visible { display:block; }
+  .success-title { font-size:16px; font-weight:800; color:#7ec8ff; margin-bottom:6px; }
+  .success-text { font-size:13px; color:rgba(200,232,255,0.60); line-height:1.6; }
+
+  /* FOOTER */
+  .footer-back { text-align:center; padding:16px 24px 60px; }
+  .footer-back a { font-size:13px; font-weight:700; color:rgba(200,232,255,0.30); text-decoration:none; letter-spacing:0.08em; }
+  .footer-back a:hover { color:#7ec8ff; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">PRIVATE BOXING <span>ZÜRICH</span></a>
+  <a class="nav-back" href="/">← Zurück</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Offizielles Equipment</div>
+  <div class="hero-title">PBZ <span>SHOP</span></div>
+  <div class="hero-sub">Limitiertes PBZ Equipment. Vorbestellung — persönliche Übergabe in Zürich.</div>
+  <div class="badge-row">
+    <div class="badge">Limitierte Auflage</div>
+    <div class="badge">Persönliche Übergabe</div>
+    <div class="badge">Zürich</div>
+  </div>
+</div>
+
+<div class="products">
+
+  <div class="product-card">
+    <img class="product-img" src="/img/handwickel.png" alt="PBZ Handwickel">
+    <div class="product-body">
+      <div class="product-tag">Equipment</div>
+      <div class="product-name">HANDWICKEL</div>
+      <div class="product-desc">Elastische 4.5m Handwickel in PBZ Blau. Mit offiziellem Private Boxing Zürich Branding.</div>
+      <div class="product-price">CHF 29 <span>/ Paar</span></div>
+      <button class="product-btn" onclick="selectProduct('PBZ Handwickel')">VORBESTELLEN</button>
+    </div>
+  </div>
+
+  <div class="product-card">
+    <img class="product-img" src="/img/boxhandschuhe.png" alt="PBZ Boxhandschuhe">
+    <div class="product-body">
+      <div class="product-tag">Equipment</div>
+      <div class="product-name">BOXHANDSCHUHE</div>
+      <div class="product-desc">Navy-weisse PBZ Boxhandschuhe mit offiziellem Branding. Erhältlich in 10 oz und 12 oz.</div>
+      <div class="product-price">CHF 119 <span>/ Paar</span></div>
+      <button class="product-btn" onclick="selectProduct('PBZ Boxhandschuhe')">VORBESTELLEN</button>
+    </div>
+  </div>
+
+</div>
+
+<div class="form-section" id="preorder-form">
+  <div class="section-label">Vorbestellen</div>
+  <div class="form-box">
+    <div class="form-title">Artikel vorbestellen</div>
+    <div class="form-sub">Du wirst kontaktiert sobald dein Artikel verfügbar ist. Bezahlung und Übergabe persönlich in Zürich.</div>
+    <form id="shop-form">
+      <div class="form-group">
+        <label class="form-label" for="shop-name">Name</label>
+        <input class="form-input" type="text" id="shop-name" placeholder="Dein Name" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="shop-contact">WhatsApp oder Email</label>
+        <input class="form-input" type="text" id="shop-contact" placeholder="+41 79 123 45 67 oder name@email.ch" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="shop-artikel">Artikel</label>
+        <select class="form-select" id="shop-artikel" required>
+          <option value="">Artikel wählen</option>
+          <option value="PBZ Handwickel">PBZ Handwickel – CHF 29</option>
+          <option value="PBZ Boxhandschuhe 10oz">PBZ Boxhandschuhe 10 oz – CHF 119</option>
+          <option value="PBZ Boxhandschuhe 12oz">PBZ Boxhandschuhe 12 oz – CHF 119</option>
+        </select>
+      </div>
+      <button class="form-btn" id="shop-btn" type="submit">JETZT VORBESTELLEN</button>
+    </form>
+    <div class="form-note">Keine Vorauszahlung. Giacomo meldet sich per WhatsApp zur Abholung.</div>
+    <div class="success-box" id="shop-success">
+      <div class="success-title">Vorbestellung eingegangen!</div>
+      <div class="success-text">Giacomo meldet sich per WhatsApp sobald der Artikel abholbereit ist. Bis bald in Zürich.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-back">
+  <a href="/">← Zurück zu privateboxingzurich.ch</a>
+</div>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>
+emailjs.init('DPN76hd1SjOuEgZLb');
+
+function selectProduct(name) {
+  const select = document.getElementById('shop-artikel');
+  for (let i = 0; i < select.options.length; i++) {
+    if (select.options[i].value.startsWith(name)) {
+      select.selectedIndex = i;
+      break;
+    }
+  }
+  document.getElementById('preorder-form').scrollIntoView({ behavior:'smooth', block:'start' });
+}
+
+document.getElementById('shop-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('shop-btn');
+  const name = document.getElementById('shop-name').value.trim();
+  const contact = document.getElementById('shop-contact').value.trim();
+  const artikel = document.getElementById('shop-artikel').value;
+  if (!name || !contact || !artikel) {
+    alert('Bitte alle Felder ausfüllen.');
+    return;
+  }
+  btn.textContent = '…';
+  btn.disabled = true;
+
+  emailjs.send('service_giuepkx', 'template_oymlj1d', {
+    kunde_name: name,
+    kunde_telefon: contact,
+    kunde_email: contact,
+    referenz: artikel,
+    wunschtermin: 'Vorbestellung Shop',
+    ort: 'Zürich',
+    nachricht: 'Shop-Vorbestellung via privateboxingzurich.ch/shop',
+  }).then(function() {
+    document.getElementById('shop-form').style.display = 'none';
+    document.getElementById('shop-success').classList.add('visible');
+  }).catch(function() {
+    btn.textContent = 'JETZT VORBESTELLEN';
+    btn.disabled = false;
+    alert('Fehler beim Senden. Bitte direkt per Instagram anmelden: @privateboxingzurich');
+  });
+});
+</script>
+</body>
+</html>
