@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boxing & Conditioning Club – Private Boxing Zürich</title>
+<meta name="description" content="Outdoor Gruppentraining im Glattpark. Kraft, Boxkondition und Laufen. Di + Do 12:15 Uhr. CHF 20 pro Person.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#08152a; color:#fff; min-height:100vh; }
+
+  /* NAV */
+  nav { display:flex; align-items:center; justify-content:space-between; padding:18px 32px; background:rgba(8,21,42,0.95); border-bottom:1px solid rgba(126,200,255,0.08); position:sticky; top:0; z-index:100; }
+  .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:20px; letter-spacing:0.12em; color:#fff; text-decoration:none; }
+  .nav-logo span { color:#7ec8ff; }
+  .nav-back { font-size:12px; font-weight:700; color:rgba(200,232,255,0.45); text-decoration:none; letter-spacing:0.08em; }
+  .nav-back:hover { color:#7ec8ff; }
+
+  /* HERO */
+  .hero { padding:64px 24px 48px; text-align:center; max-width:620px; margin:0 auto; }
+  .hero-tag { font-size:11px; font-weight:800; letter-spacing:0.22em; color:rgba(76,175,80,0.70); text-transform:uppercase; margin-bottom:16px; }
+  .hero-title { font-family:'Bebas Neue',sans-serif; font-size:72px; letter-spacing:0.06em; line-height:0.9; color:#fff; margin-bottom:16px; }
+  .hero-title span { color:#4caf50; }
+  .hero-sub { font-size:15px; color:rgba(200,232,255,0.60); line-height:1.7; margin-bottom:32px; }
+
+  .hero-pills { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
+  .pill { font-size:12px; font-weight:700; padding:7px 14px; border-radius:20px; }
+  .pill-green { background:rgba(76,175,80,0.15); color:#4caf50; border:1px solid rgba(76,175,80,0.30); }
+  .pill-blue  { background:rgba(26,101,214,0.15); color:#7ec8ff; border:1px solid rgba(26,101,214,0.30); }
+  .pill-gold  { background:rgba(232,200,74,0.12); color:#e8c84a; border:1px solid rgba(232,200,74,0.25); }
+
+  /* SESSION */
+  .section { max-width:580px; margin:0 auto 48px; padding:0 24px; }
+  .section-label { font-size:10px; font-weight:800; letter-spacing:0.20em; text-transform:uppercase; color:rgba(126,200,255,0.40); margin-bottom:14px; }
+
+  .schedule { background:#0d1f3c; border:1px solid rgba(126,200,255,0.10); border-radius:16px; overflow:hidden; margin-bottom:16px; }
+  .schedule-row { display:flex; align-items:center; gap:16px; padding:14px 20px; border-bottom:1px solid rgba(126,200,255,0.06); }
+  .schedule-row:last-child { border-bottom:none; }
+  .schedule-time { font-size:13px; font-weight:800; color:#4caf50; min-width:100px; }
+  .schedule-desc { font-size:13px; color:rgba(200,232,255,0.70); }
+
+  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
+  .info-card { background:#0d1f3c; border:1px solid rgba(126,200,255,0.10); border-radius:14px; padding:18px 20px; }
+  .info-label { font-size:10px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; color:rgba(126,200,255,0.40); margin-bottom:6px; }
+  .info-val { font-size:20px; font-weight:800; color:#fff; }
+  .info-sub { font-size:11px; color:rgba(200,232,255,0.40); margin-top:3px; }
+
+  /* FORM */
+  .form-box { background:#0d1f3c; border:1px solid rgba(76,175,80,0.25); border-radius:16px; padding:28px 28px 24px; }
+  .form-title { font-size:18px; font-weight:800; color:#fff; margin-bottom:6px; }
+  .form-sub { font-size:13px; color:rgba(200,232,255,0.45); margin-bottom:24px; }
+  .form-group { margin-bottom:16px; }
+  .form-label { font-size:11px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; color:rgba(200,232,255,0.45); margin-bottom:6px; display:block; }
+  .form-input { width:100%; background:rgba(255,255,255,0.04); border:1px solid rgba(126,200,255,0.15); border-radius:10px; padding:13px 16px; font-size:14px; color:#fff; font-family:'Inter',sans-serif; outline:none; transition:border-color 0.2s; }
+  .form-input:focus { border-color:rgba(76,175,80,0.50); }
+  .form-input::placeholder { color:rgba(200,232,255,0.25); }
+  .form-btn { width:100%; background:linear-gradient(100deg,#2e7d32,#1b5e20); border:none; border-radius:12px; padding:16px; font-size:15px; font-weight:800; color:#fff; letter-spacing:0.06em; cursor:pointer; margin-top:8px; transition:opacity 0.2s; }
+  .form-btn:hover { opacity:0.88; }
+  .form-note { font-size:11px; color:rgba(200,232,255,0.30); text-align:center; margin-top:12px; line-height:1.6; }
+
+  .success-box { display:none; background:rgba(46,125,50,0.12); border:1px solid rgba(46,125,50,0.35); border-radius:12px; padding:20px; text-align:center; margin-top:16px; }
+  .success-box.visible { display:block; }
+  .success-title { font-size:16px; font-weight:800; color:#4caf50; margin-bottom:6px; }
+  .success-text { font-size:13px; color:rgba(200,232,255,0.60); line-height:1.6; }
+
+  /* FOOTER */
+  .footer-back { text-align:center; padding:40px 24px 60px; }
+  .footer-back a { font-size:13px; font-weight:700; color:rgba(200,232,255,0.35); text-decoration:none; letter-spacing:0.08em; }
+  .footer-back a:hover { color:#7ec8ff; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">PRIVATE BOXING <span>ZÜRICH</span></a>
+  <a class="nav-back" href="/">← Zurück zur Website</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Neues Angebot · Outdoor · Glattpark</div>
+  <div class="hero-title">BOXING &<br><span>CONDITIONING</span><br>CLUB</div>
+  <div class="hero-sub">Kraft, Boxkondition und Laufen im Freien. Kein Gym, keine Ausrüstung nötig. Komm einfach.</div>
+  <div class="hero-pills">
+    <span class="pill pill-green">Di + Do · 12:15 Uhr</span>
+    <span class="pill pill-blue">Glattpark Zürich</span>
+    <span class="pill pill-gold">Erste Session gratis</span>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Session-Ablauf · 45 Minuten</div>
+  <div class="schedule">
+    <div class="schedule-row">
+      <div class="schedule-time">12:15 – 12:20</div>
+      <div class="schedule-desc">Warm-up und Ankommen</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">12:20 – 12:35</div>
+      <div class="schedule-desc">Laufrunde Glattpark · angepasstes Tempo</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">12:35 – 12:50</div>
+      <div class="schedule-desc">Kraft und Boxkondition: Footwork, Körperspannung, Kombinations-Drills</div>
+    </div>
+    <div class="schedule-row">
+      <div class="schedule-time">12:50 – 13:00</div>
+      <div class="schedule-desc">Cool-down und Stretching</div>
+    </div>
+  </div>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-label">Preis</div>
+      <div class="info-val">CHF 20</div>
+      <div class="info-sub">pro Person · vor Ort</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">Erste Session</div>
+      <div class="info-val">Gratis</div>
+      <div class="info-sub">Einfach kommen</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">Termin</div>
+      <div class="info-val">Di + Do</div>
+      <div class="info-sub">12:15 Uhr · Glattpark</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">Niveau</div>
+      <div class="info-val">Alle</div>
+      <div class="info-sub">Keine Vorkenntnisse nötig</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Jetzt anmelden</div>
+  <div class="form-box">
+    <div class="form-title">Ich bin dabei</div>
+    <div class="form-sub">Du bekommst eine WhatsApp-Nachricht mit den Details vor der ersten Session.</div>
+    <form id="club-form">
+      <div class="form-group">
+        <label class="form-label" for="name">Name</label>
+        <input class="form-input" type="text" id="name" placeholder="Dein Name" required>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="whatsapp">WhatsApp Nummer</label>
+        <input class="form-input" type="tel" id="whatsapp" placeholder="+41 79 123 45 67" required>
+      </div>
+      <button class="form-btn" type="submit">ICH BIN DABEI →</button>
+      <div class="form-note">Kein Risiko. Keine Verpflichtung. Erste Session gratis.</div>
+    </form>
+    <div class="success-box" id="success-box">
+      <div class="success-title">Angemeldet!</div>
+      <div class="success-text">Giacomo meldet sich per WhatsApp vor der ersten Session bei dir. Bis bald im Glattpark.</div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-back">
+  <a href="/">← Zurück zu privateboxingzurich.ch</a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+emailjs.init('YOUR_PUBLIC_KEY');
+
+document.getElementById('club-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value.trim();
+  const whatsapp = document.getElementById('whatsapp').value.trim();
+
+  emailjs.send('service_privateboxing', 'template_club_signup', {
+    name: name,
+    whatsapp: whatsapp,
+  }).then(function() {
+    document.getElementById('club-form').style.display = 'none';
+    document.getElementById('success-box').classList.add('visible');
+  }).catch(function() {
+    // Fallback: direkt per WhatsApp
+    window.location.href = 'https://wa.me/41XXXXXXXXX?text=Hallo%20Giacomo%2C%20ich%20m%C3%B6chte%20mich%20f%C3%BCr%20den%20Boxing%20%26%20Conditioning%20Club%20anmelden.%20Name%3A%20' + encodeURIComponent(name);
+  });
+});
+</script>
+</body>
+</html>
