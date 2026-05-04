@@ -41,11 +41,17 @@
   .schedule-time { font-size:13px; font-weight:800; color:#4caf50; min-width:100px; }
   .schedule-desc { font-size:13px; color:rgba(200,232,255,0.70); }
 
-  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
+  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
   .info-card { background:#0d1f3c; border:1px solid rgba(126,200,255,0.10); border-radius:14px; padding:18px 20px; }
   .info-label { font-size:10px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; color:rgba(126,200,255,0.40); margin-bottom:6px; }
   .info-val { font-size:20px; font-weight:800; color:#fff; }
   .info-sub { font-size:11px; color:rgba(200,232,255,0.40); margin-top:3px; }
+
+  .highlight-row { display:flex; flex-direction:column; gap:12px; margin-bottom:16px; }
+  .highlight-item { padding:0 4px; }
+  .highlight-tag { font-size:10px; font-weight:800; letter-spacing:0.18em; text-transform:uppercase; color:rgba(76,175,80,0.55); margin-bottom:5px; }
+  .highlight-val { font-size:22px; font-weight:800; color:#4caf50; line-height:1.2; }
+  .highlight-sub { font-size:12px; color:rgba(76,175,80,0.60); margin-top:3px; }
 
   /* FORM */
   .form-box { background:#0d1f3c; border:1px solid rgba(76,175,80,0.25); border-radius:16px; padding:28px 28px 24px; }
@@ -117,19 +123,22 @@
       <div class="info-sub">pro Person · vor Ort</div>
     </div>
     <div class="info-card">
-      <div class="info-label">Erste Session</div>
-      <div class="info-val">Gratis</div>
-      <div class="info-sub">Einfach kommen</div>
-    </div>
-    <div class="info-card">
-      <div class="info-label">Termin</div>
-      <div class="info-val">Di + Do</div>
-      <div class="info-sub">12:15 Uhr · Glattpark</div>
-    </div>
-    <div class="info-card">
       <div class="info-label">Niveau</div>
       <div class="info-val">Alle</div>
       <div class="info-sub">Keine Vorkenntnisse nötig</div>
+    </div>
+  </div>
+
+  <div class="highlight-row">
+    <div class="highlight-item">
+      <div class="highlight-tag">Erste Session</div>
+      <div class="highlight-val">Gratis</div>
+      <div class="highlight-sub">Einfach kommen — keine Anmeldung nötig</div>
+    </div>
+    <div class="highlight-item">
+      <div class="highlight-tag">Termin</div>
+      <div class="highlight-val">Di + Do · 12:15 Uhr</div>
+      <div class="highlight-sub">Glattpark Zürich</div>
     </div>
   </div>
 </div>
@@ -168,10 +177,14 @@ emailjs.init('DPN76hd1SjOuEgZLb');
 document.getElementById('club-form').addEventListener('submit', function(e) {
   e.preventDefault();
   const btn = this.querySelector('.form-btn');
-  btn.textContent = '…';
-  btn.disabled = true;
   const name = document.getElementById('name').value.trim();
   const whatsapp = document.getElementById('whatsapp').value.trim();
+  if (!name || !whatsapp) {
+    alert('Bitte Name und WhatsApp-Nummer eingeben.');
+    return;
+  }
+  btn.textContent = '…';
+  btn.disabled = true;
 
   emailjs.send('service_giuepkx', 'template_oymlj1d', {
     kunde_name: name,
