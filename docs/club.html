@@ -23,11 +23,20 @@
   .lang-toggle { display:flex; background:rgba(255,255,255,0.06); border:1px solid rgba(126,200,255,0.15); border-radius:8px; overflow:hidden; }
   .lang-btn { padding:6px 12px; border:none; font-size:12px; font-weight:800; cursor:pointer; font-family:'Inter',sans-serif; border-radius:6px; transition:background 0.15s, color 0.15s; }
 
+  /* HAMBURGER */
+  .hamburger { display:none; background:none; border:none; color:rgba(200,232,255,0.80); font-size:24px; cursor:pointer; padding:4px 6px; line-height:1; }
+  @media(max-width:768px){
+    .hamburger { display:block; }
+    nav { position:relative; }
+    .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(8,21,42,0.97); padding:20px 24px; border-bottom:1px solid rgba(126,200,255,0.12); gap:20px; z-index:99; }
+    .nav-links.open { display:flex; }
+    .nav-links a { font-size:15px; }
+  }
+
   /* HERO */
   .hero { padding:64px 24px 48px; text-align:center; max-width:620px; margin:0 auto; }
   .hero-tag { font-size:11px; font-weight:800; letter-spacing:0.22em; color:rgba(76,175,80,0.70); text-transform:uppercase; margin-bottom:16px; }
-  .hero-title { font-family:'Bebas Neue',sans-serif; font-size:72px; letter-spacing:0.06em; line-height:0.9; color:#fff; margin-bottom:16px; }
-  .hero-title span { color:#4caf50; }
+  .hero-logo { max-width:380px; width:90%; margin-bottom:20px; display:block; margin-left:auto; margin-right:auto; }
   .hero-sub { font-size:15px; color:rgba(200,232,255,0.60); line-height:1.7; margin-bottom:32px; }
 
   .hero-pills { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:40px; }
@@ -45,6 +54,7 @@
   .schedule-row:last-child { border-bottom:none; }
   .schedule-time { font-size:13px; font-weight:800; color:#4caf50; min-width:100px; }
   .schedule-desc { font-size:13px; color:rgba(200,232,255,0.70); }
+  @media(max-width:480px){ .schedule-row { flex-direction:column; gap:3px; align-items:flex-start; } .schedule-time { min-width:unset; } }
 
   .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:12px; }
   .info-card { background:#0d1f3c; border:1px solid rgba(126,200,255,0.10); border-radius:14px; padding:18px 20px; }
@@ -94,22 +104,23 @@
 
 <nav>
   <a class="nav-logo" href="/">PRIVATE <span>BOXING</span> ZÜRICH</a>
-  <div style="display:flex;align-items:center;gap:20px;">
-    <ul class="nav-links">
-      <li><a href="/preise" id="nav-preise">Preise</a></li>
-      <li><a href="/club" id="nav-club">B&amp;C Club</a></li>
-      <li><a href="/shop" id="nav-shop">Shop</a></li>
-    </ul>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/preise" id="nav-preise" onclick="closeNav()">Preise</a></li>
+    <li><a href="/club" id="nav-club" onclick="closeNav()">B&amp;C Club</a></li>
+    <li><a href="/shop" id="nav-shop" onclick="closeNav()">Shop</a></li>
+  </ul>
+  <div style="display:flex;align-items:center;gap:12px;">
     <div class="lang-toggle">
       <button id="btn-de" class="lang-btn" onclick="setLang('de')">DE</button>
       <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()">☰</button>
   </div>
 </nav>
 
 <div class="hero">
   <div class="hero-tag" id="hero-tag">Neues Angebot · Outdoor · Glattpark</div>
-  <div class="hero-title">BOXING &<br><span>CONDITIONING</span><br>CLUB</div>
+  <img class="hero-logo" src="/img/bc-club-logo.png" alt="Boxing & Conditioning Club">
   <div class="hero-sub" id="hero-sub">Kraft, Boxkondition und Laufen im Freien. Kein Gym, keine Ausrüstung nötig. Komm einfach.</div>
   <div class="hero-pills">
     <span class="pill pill-green">Di + Do · 12:15 Uhr</span>
@@ -263,6 +274,17 @@ const placeholders = {
   de: { name: 'Dein Name', whatsapp: '+41 79 123 45 67' },
   en: { name: 'Your Name', whatsapp: '+41 79 123 45 67' }
 };
+
+function toggleNav() {
+  const links = document.getElementById('nav-links');
+  const btn = document.getElementById('hamburger');
+  links.classList.toggle('open');
+  btn.textContent = links.classList.contains('open') ? '✕' : '☰';
+}
+function closeNav() {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('hamburger').textContent = '☰';
+}
 
 function clearError(id) {
   document.getElementById(id).classList.remove('error');
