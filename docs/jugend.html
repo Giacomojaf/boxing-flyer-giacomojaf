@@ -111,6 +111,8 @@
   .footer-back a { font-size:13px; font-weight:700; color:rgba(200,232,255,0.35); text-decoration:none; letter-spacing:0.08em; }
   .footer-back a:hover { color:#7ec8ff; }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>emailjs.init('DPN76hd1SjOuEgZLb');</script>
 </head>
 <body>
 
@@ -277,8 +279,27 @@
 
   function submitForm(e) {
     e.preventDefault();
-    document.getElementById('jugend-form').style.display = 'none';
-    document.getElementById('success-box').classList.add('visible');
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.textContent = 'Wird gesendet...';
+
+    const params = {
+      eltern_name:     document.getElementById('eltern-name').value,
+      kind_name:       document.getElementById('kind-name').value,
+      eltern_email:    document.getElementById('eltern-email').value,
+      eltern_whatsapp: document.getElementById('eltern-whatsapp').value,
+    };
+
+    emailjs.send('service_giuepkx', 'template_jugend', params)
+      .then(() => {
+        document.getElementById('jugend-form').style.display = 'none';
+        document.getElementById('success-box').classList.add('visible');
+      })
+      .catch(() => {
+        btn.disabled = false;
+        btn.textContent = 'Jetzt anmelden →';
+        alert('Fehler. Bitte schreib direkt an giacomo@privateboxingzurich.ch');
+      });
   }
 </script>
 
