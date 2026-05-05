@@ -114,7 +114,7 @@
   .cart-remove { background:none; border:none; color:rgba(200,232,255,0.22); cursor:pointer; font-size:17px; padding:4px; transition:color 0.15s; font-family:'Inter',sans-serif; }
   .cart-remove:hover { color:#ff6060; }
 
-  .cart-footer { border-top:1px solid rgba(126,200,255,0.08); padding:20px 24px 32px; flex-shrink:0; }
+  .cart-footer { border-top:1px solid rgba(126,200,255,0.08); padding:20px 24px max(32px, env(safe-area-inset-bottom)); flex-shrink:0; overflow-y:auto; }
   .cart-total-row { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:20px; }
   .cart-total-label { font-size:13px; font-weight:700; color:rgba(200,232,255,0.50); text-transform:uppercase; letter-spacing:0.12em; }
   .cart-total-amt { font-size:24px; font-weight:800; color:#7ec8ff; }
