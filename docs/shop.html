@@ -99,7 +99,8 @@
   .cart-close-btn { background:none; border:none; color:rgba(200,232,255,0.40); font-size:22px; cursor:pointer; line-height:1; padding:4px; font-family:'Inter',sans-serif; }
   .cart-close-btn:hover { color:#fff; }
 
-  .cart-body { flex:1; overflow-y:auto; padding:16px 24px; }
+  .cart-scroll { flex:1; overflow-y:auto; display:flex; flex-direction:column; min-height:0; }
+  .cart-body { padding:16px 24px; flex-shrink:0; }
 
   .cart-empty { text-align:center; padding:48px 0; font-size:13px; color:rgba(200,232,255,0.28); font-weight:600; }
 
@@ -156,6 +157,7 @@
     <div class="cart-title">WARENKORB</div>
     <button class="cart-close-btn" onclick="closeCart()">✕</button>
   </div>
+  <div class="cart-scroll">
   <div class="cart-body" id="cart-body">
     <div class="cart-empty" id="cart-empty">Noch keine Artikel hinzugefügt.</div>
   </div>
@@ -189,6 +191,7 @@
     <div class="cart-success-qr-amount" id="cart-success-amount"></div>
     <div class="cart-success-iban">IBAN: CH34 0070 0114 9053 9000 6</div>
   </div>
+  </div><!-- end cart-scroll -->
 </div>
 
 <nav>
@@ -218,11 +221,11 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-tag">Offizielles Equipment · Limitierte Auflage</div>
+  <div class="hero-tag" id="shop-tag">Offizielles Equipment · Limitierte Auflage</div>
   <div class="hero-title">PBZ <span>SHOP</span></div>
   <div class="hero-divider"></div>
-  <div class="hero-main">Mein Equipment.<br>Für dein Training.<br>Direkt von mir.</div>
-  <div class="hero-sub">Jedes Produkt das ich selbst im Training benutze. Limitierte Stückzahl.</div>
+  <div class="hero-main" id="shop-main">Mein Equipment.<br>Für dein Training.<br>Direkt von mir.</div>
+  <div class="hero-sub" id="shop-sub">Jedes Produkt das ich selbst im Training benutze. Limitierte Stückzahl.</div>
 </div>
 
 <div class="products">
@@ -293,6 +296,19 @@ function closeNav() {
   document.getElementById('hamburger').textContent = '☰';
 }
 
+const shopTranslations = {
+  de: {
+    'shop-tag':  'Offizielles Equipment · Limitierte Auflage',
+    'shop-main': 'Mein Equipment.<br>Für dein Training.<br>Direkt von mir.',
+    'shop-sub':  'Jedes Produkt das ich selbst im Training benutze. Limitierte Stückzahl.',
+  },
+  en: {
+    'shop-tag':  'Official Equipment · Limited Edition',
+    'shop-main': 'My Equipment.<br>For Your Training.<br>Straight from Me.',
+    'shop-sub':  'Every product I use in training myself. Limited stock.',
+  }
+};
+
 function setLang(lang) {
   document.getElementById('btn-de').style.cssText = lang === 'de'
     ? 'background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;'
@@ -300,6 +316,11 @@ function setLang(lang) {
   document.getElementById('btn-en').style.cssText = lang === 'en'
     ? 'background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;'
     : 'background:transparent;color:rgba(200,232,255,0.50);';
+  const t = shopTranslations[lang];
+  Object.keys(t).forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = t[id];
+  });
 }
 setLang('de');
 
