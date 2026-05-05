@@ -177,11 +177,11 @@
       <input type="checkbox" id="cart-agb-check">
       <label for="cart-agb-check">Ich habe die <a href="/agb.html" target="_blank">AGB</a> gelesen und akzeptiere diese verbindlich.</label>
     </div>
-    <button class="cart-submit" id="cart-submit" onclick="submitCart()">JETZT VORBESTELLEN</button>
-    <div class="cart-note">Vorbestellung verbindlich. Zahlung vorab per Banküberweisung. Kein Rückgaberecht.</div>
+    <button class="cart-submit" id="cart-submit" onclick="submitCart()">JETZT BESTELLEN</button>
+    <div class="cart-note">Bestellung verbindlich. Zahlung vorab per Banküberweisung. Kein Rückgaberecht.</div>
   </div>
   <div class="cart-success" id="cart-success">
-    <div class="cart-success-title">Vorbestellung eingegangen!</div>
+    <div class="cart-success-title">Bestellung eingegangen!</div>
     <div class="cart-success-text">Giacomo meldet sich per WhatsApp sobald dein Artikel abholbereit ist.</div>
     <div class="cart-success-order" id="cart-success-order"></div>
     <div class="cart-success-qr-label">QR-Code zum Bezahlen</div>
@@ -417,9 +417,9 @@ function submitCart() {
     kunde_telefon: contact,
     kunde_email: email,
     referenz: artikelList + ' | Total: CHF ' + total,
-    wunschtermin: 'Vorbestellung Shop',
+    wunschtermin: 'Bestellung Shop',
     ort: 'Zürich',
-    nachricht: 'Shop-Vorbestellung: ' + artikelList + '. Total: CHF ' + total + '. Adresse: ' + adresse + ', ' + plz,
+    nachricht: 'Shop-Bestellung: ' + artikelList + '. Total: CHF ' + total + '. Adresse: ' + adresse + ', ' + plz,
   };
 
   emailjs.send('service_giuepkx', 'template_oymlj1d', params)
@@ -437,7 +437,7 @@ function submitCart() {
     cart = [];
     updateBadge();
   }).catch(function() {
-    btn.textContent = 'JETZT VORBESTELLEN';
+    btn.textContent = 'JETZT BESTELLEN';
     btn.disabled = false;
     alert('Fehler beim Senden. Bitte direkt per Instagram: @privateboxingzurich');
   });
