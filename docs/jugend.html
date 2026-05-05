@@ -95,6 +95,17 @@
   .success-title { font-size:16px; font-weight:800; color:#f0a030; margin-bottom:6px; }
   .success-text { font-size:13px; color:rgba(200,232,255,0.60); line-height:1.6; }
 
+  /* TEXT BLOCKS */
+  .text-block { display:flex; flex-direction:column; gap:14px; }
+  .text-block p { font-size:15px; color:rgba(200,232,255,0.70); line-height:1.75; }
+
+  /* DETAILS LIST */
+  .details-list { display:flex; flex-direction:column; gap:0; }
+  .detail-row { display:flex; justify-content:space-between; align-items:baseline; padding:12px 0; border-bottom:1px solid rgba(126,200,255,0.07); gap:16px; }
+  .detail-row:last-child { border-bottom:none; }
+  .detail-label { font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:rgba(200,232,255,0.35); flex-shrink:0; }
+  .detail-val { font-size:14px; font-weight:600; color:rgba(200,232,255,0.80); text-align:right; }
+
   /* FOOTER */
   .footer-back { text-align:center; padding:40px 24px 60px; }
   .footer-back a { font-size:13px; font-weight:700; color:rgba(200,232,255,0.35); text-decoration:none; letter-spacing:0.08em; }
@@ -111,7 +122,7 @@
       <li><a href="/preise" onclick="closeNav()">Preise</a></li>
       <li><a href="/club" onclick="closeNav()">B&amp;C Club</a></li>
       <li><a href="/shop" onclick="closeNav()">Shop</a></li>
-      <li><a href="/jugend" onclick="closeNav()" style="color:#f0a030;">Jugend</a></li>
+      <li><a href="/jugend" onclick="closeNav()">Jugend</a></li>
     </ul>
     <div class="lang-toggle">
       <button id="btn-de" class="lang-btn" onclick="setLang('de')">DE</button>
@@ -124,10 +135,10 @@
 <div class="hero">
   <div class="hero-tag">Jugendförderung durch Sport · J+S anerkannt</div>
   <img src="/jugend-logo.png" alt="Boxing Zürich Jugend" style="width:220px;height:220px;object-fit:contain;margin-bottom:24px;">
-  <div class="hero-sub">Boxtraining für Jugendliche in Zürich Altstetten. Disziplin, Respekt und Kondition. Kein Vorwissen nötig.</div>
+  <div class="hero-sub">Boxtraining für Jugendliche in Zürich. Disziplin, Respekt und Kondition. Kein Vorwissen nötig.</div>
   <div class="hero-pills">
     <span class="pill pill-orange">10 bis 16 Jahre</span>
-    <span class="pill pill-blue">Zürich Altstetten</span>
+    <span class="pill pill-blue">Zürich Oerlikon / Schwamendingen</span>
     <span class="pill pill-green">J+S anerkannt</span>
   </div>
   <div class="coming-soon">
@@ -137,62 +148,32 @@
 </div>
 
 <div class="section">
-  <div class="section-label">Das Programm</div>
-  <div class="feature-list">
-    <div class="feature-item">
-      <div class="feature-icon">🥊</div>
-      <div>
-        <div class="feature-title">Light Contact Boxing</div>
-        <div class="feature-desc">Technik, Koordination und Kondition im Vordergrund. Kein Vollkontakt, sicher und kontrolliert für alle Niveaus.</div>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon">🛡️</div>
-      <div>
-        <div class="feature-title">Gewaltprävention durch Sport</div>
-        <div class="feature-desc">Boxen lehrt Kontrolle, Disziplin und Respekt. Das Programm ist offiziell im Bereich Gewaltprävention verankert.</div>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon">🏅</div>
-      <div>
-        <div class="feature-title">J+S zertifiziert</div>
-        <div class="feature-desc">Das Programm ist durch Jugend+Sport (Bund) anerkannt. Subventionierte Preise dank staatlicher Förderung.</div>
-      </div>
-    </div>
-    <div class="feature-item">
-      <div class="feature-icon">👥</div>
-      <div>
-        <div class="feature-title">Kleine Gruppen</div>
-        <div class="feature-desc">Maximal 10 bis 12 Teilnehmer. Jeder bekommt die nötige Aufmerksamkeit und individuelle Korrekturen.</div>
-      </div>
-    </div>
+  <div class="section-label">Für wen ist das Programm?</div>
+  <div class="text-block">
+    <p>Boxing Zürich Jugend richtet sich an Jugendliche zwischen 10 und 16 Jahren, die eine sinnvolle Freizeitaktivität suchen. Kein Vorwissen nötig, kein bestimmtes Niveau vorausgesetzt. Das Programm ist offen für Mädchen und Jungs gleichermassen.</p>
+    <p>Besonders geeignet für Jugendliche, die körperlich aktiv sein wollen, aber keinen typischen Mannschaftssport mögen. Boxen ist individuell: jeder trainiert in seinem Tempo und verbessert sich sichtbar von Training zu Training.</p>
+    <p>Eltern, die sich wünschen dass ihr Kind Disziplin, Respekt und Selbstvertrauen durch Sport aufbaut, sind bei uns richtig. Das Programm ist durch Jugend+Sport des Bundes anerkannt und entspricht den nationalen Standards für Jugendsportförderung.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Was wird trainiert?</div>
+  <div class="text-block">
+    <p>Im Mittelpunkt steht Light Contact Boxing: Technik, Koordination und Kondition. Kein Vollkontakt, kein Wettkampffokus. Die Jugendlichen lernen Grundtechniken, Kombinationen, Footwork und Verteidigung in einem kontrollierten und sicheren Rahmen.</p>
+    <p>Jede Einheit beginnt mit einem strukturierten Aufwärmen, gefolgt von Technikübungen, Partnerdrills und Konditionsarbeit. Die Trainingsgruppen sind klein, maximal 10 bis 12 Personen, damit jeder die nötige Aufmerksamkeit bekommt und individuell korrigiert wird.</p>
+    <p>Das Programm ist bewusst im Bereich Gewaltprävention verankert. Boxen lehrt Kontrolle und Verantwortung gegenüber dem eigenen Körper und dem Gegenüber. Aggression wird im Training kanalisiert, nicht gefördert.</p>
   </div>
 </div>
 
 <div class="section">
   <div class="section-label">Trainingsdetails</div>
-  <div class="info-grid">
-    <div class="info-card orange">
-      <div class="info-label orange">Zielgruppe</div>
-      <div class="info-val orange">10–16 Jahre</div>
-      <div class="info-sub">Alle Niveaus willkommen</div>
-    </div>
-    <div class="info-card orange">
-      <div class="info-label orange">Format</div>
-      <div class="info-val orange">3x / Woche</div>
-      <div class="info-sub">Mo / Mi / Fr 17–18 Uhr</div>
-    </div>
-    <div class="info-card">
-      <div class="info-label">Standort</div>
-      <div class="info-val">Altstetten</div>
-      <div class="info-sub">Zürich Kreis 9</div>
-    </div>
-    <div class="info-card">
-      <div class="info-label">Gruppengrösse</div>
-      <div class="info-val">8–12</div>
-      <div class="info-sub">Personen pro Kurs</div>
-    </div>
+  <div class="details-list">
+    <div class="detail-row"><span class="detail-label">Zielgruppe</span><span class="detail-val">10 bis 16 Jahre, alle Niveaus</span></div>
+    <div class="detail-row"><span class="detail-label">Trainings pro Woche</span><span class="detail-val">3x wöchentlich</span></div>
+    <div class="detail-row"><span class="detail-label">Standort</span><span class="detail-val">Zürich Oerlikon / Schwamendingen</span></div>
+    <div class="detail-row"><span class="detail-label">Gruppengrösse</span><span class="detail-val">Maximal 10 bis 12 Personen</span></div>
+    <div class="detail-row"><span class="detail-label">Kursstart</span><span class="detail-val">Herbst 2026</span></div>
+    <div class="detail-row"><span class="detail-label">Anerkennung</span><span class="detail-val">J+S zertifiziert (Jugend+Sport, Bund)</span></div>
   </div>
 </div>
 
@@ -202,18 +183,18 @@
     <div class="price-row">
       <div>
         <div class="price-name">Monatsabo</div>
-        <div class="price-sub">3x pro Woche, ~12 Trainings</div>
+        <div class="price-sub">3x pro Woche, ca. 12 Trainings</div>
       </div>
       <div class="price-val">CHF 90</div>
     </div>
     <div class="price-row">
       <div>
         <div class="price-name">Einzeleintritt</div>
-        <div class="price-sub">Ohne Abo</div>
+        <div class="price-sub">Zum Reinschnuppern, ohne Abo</div>
       </div>
       <div class="price-val">CHF 20</div>
     </div>
-    <div class="price-note">Dank J+S Subventionen können die Preise tief gehalten werden. Für Familien in finanziellen Engpässen gibt es auf Anfrage Lösungen.</div>
+    <div class="price-note">Die Preise sind dank J+S Subventionen des Bundes tief gehalten. Für Familien in finanziellen Engpässen gibt es auf Anfrage Lösungen.</div>
   </div>
 </div>
 
