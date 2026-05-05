@@ -154,40 +154,40 @@
 <!-- CART DRAWER -->
 <div class="cart-drawer" id="cart-drawer">
   <div class="cart-header">
-    <div class="cart-title">WARENKORB</div>
+    <div class="cart-title" data-de="WARENKORB" data-en="CART">WARENKORB</div>
     <button class="cart-close-btn" onclick="closeCart()">✕</button>
   </div>
   <div class="cart-scroll">
   <div class="cart-body" id="cart-body">
-    <div class="cart-empty" id="cart-empty">Noch keine Artikel hinzugefügt.</div>
+    <div class="cart-empty" id="cart-empty" data-de="Noch keine Artikel hinzugefügt." data-en="No items added yet.">Noch keine Artikel hinzugefügt.</div>
   </div>
   <div class="cart-footer" id="cart-footer" style="display:none">
     <div class="cart-total-row">
-      <div class="cart-total-label">Total</div>
+      <div class="cart-total-label" data-de="Total" data-en="Total">Total</div>
       <div class="cart-total-amt" id="cart-total-amt">CHF 0</div>
     </div>
-    <label class="cart-label">Name</label>
-    <input class="cart-input" type="text" id="cart-name" placeholder="Vollständiger Name *">
-    <label class="cart-label">E-Mail</label>
-    <input class="cart-input" type="email" id="cart-email" placeholder="Email-Adresse *">
-    <label class="cart-label">WhatsApp</label>
-    <input class="cart-input" type="tel" id="cart-contact" placeholder="Telefon / WhatsApp *">
-    <label class="cart-label">Adresse</label>
-    <input class="cart-input" type="text" id="cart-adresse" placeholder="Strasse und Hausnummer *">
-    <input class="cart-input" type="text" id="cart-plz" placeholder="PLZ und Ort *">
+    <label class="cart-label" data-de="Name" data-en="Name">Name</label>
+    <input class="cart-input" type="text" id="cart-name" placeholder="Vollständiger Name *" data-de-ph="Vollständiger Name *" data-en-ph="Full Name *">
+    <label class="cart-label" data-de="E-Mail" data-en="Email">E-Mail</label>
+    <input class="cart-input" type="email" id="cart-email" placeholder="Email-Adresse *" data-de-ph="Email-Adresse *" data-en-ph="Email Address *">
+    <label class="cart-label" data-de="WhatsApp" data-en="WhatsApp">WhatsApp</label>
+    <input class="cart-input" type="tel" id="cart-contact" placeholder="Telefon / WhatsApp *" data-de-ph="Telefon / WhatsApp *" data-en-ph="Phone / WhatsApp *">
+    <label class="cart-label" data-de="Adresse" data-en="Address">Adresse</label>
+    <input class="cart-input" type="text" id="cart-adresse" placeholder="Strasse und Hausnummer *" data-de-ph="Strasse und Hausnummer *" data-en-ph="Street and Number *">
+    <input class="cart-input" type="text" id="cart-plz" placeholder="PLZ und Ort *" data-de-ph="PLZ und Ort *" data-en-ph="ZIP and City *">
     <div class="cart-agb-row">
       <input type="checkbox" id="cart-agb-check">
-      <label for="cart-agb-check">Ich habe die <a href="/agb.html" target="_blank">AGB</a> gelesen und akzeptiere diese verbindlich.</label>
+      <label for="cart-agb-check" data-de='Ich habe die <a href="/agb.html" target="_blank">AGB</a> gelesen und akzeptiere diese verbindlich.' data-en='I have read the <a href="/agb.html" target="_blank">Terms</a> and accept them as binding.'>Ich habe die <a href="/agb.html" target="_blank">AGB</a> gelesen und akzeptiere diese verbindlich.</label>
     </div>
-    <button class="cart-submit" id="cart-submit" onclick="submitCart()">JETZT VORBESTELLEN</button>
-    <div class="cart-note">Vorbestellung verbindlich. Zahlung vorab per Banküberweisung. Kein Rückgaberecht.</div>
+    <button class="cart-submit" id="cart-submit" onclick="submitCart()" data-de="JETZT VORBESTELLEN" data-en="PRE-ORDER NOW">JETZT VORBESTELLEN</button>
+    <div class="cart-note" data-de="Vorbestellung verbindlich. Zahlung vorab per Banküberweisung. Kein Rückgaberecht." data-en="Pre-order is binding. Payment in advance by bank transfer. No returns.">Vorbestellung verbindlich. Zahlung vorab per Banküberweisung. Kein Rückgaberecht.</div>
   </div>
   <div class="cart-success" id="cart-success">
-    <div class="cart-success-title">Vorbestellung eingegangen!</div>
-    <div class="cart-success-text">Giacomo meldet sich per WhatsApp sobald dein Artikel abholbereit ist.</div>
+    <div class="cart-success-title" data-de="Vorbestellung eingegangen!" data-en="Pre-order received!">Vorbestellung eingegangen!</div>
+    <div class="cart-success-text" data-de="Giacomo meldet sich per WhatsApp sobald dein Artikel abholbereit ist." data-en="Giacomo will contact you via WhatsApp as soon as your item is ready.">Giacomo meldet sich per WhatsApp sobald dein Artikel abholbereit ist.</div>
     <div class="cart-success-order" id="cart-success-order"></div>
-    <div class="cart-success-qr-label">QR-Code zum Bezahlen</div>
-    <img class="cart-success-qr" src="/qr-iban.png" alt="QR Code Zahlung">
+    <div class="cart-success-qr-label" data-de="QR-Code zum Bezahlen" data-en="QR Code for Payment">QR-Code zum Bezahlen</div>
+    <img class="cart-success-qr" src="/qr-iban.png" alt="QR Code">
     <div class="cart-success-qr-amount" id="cart-success-amount"></div>
     <div class="cart-success-iban">IBAN: CH34 0070 0114 9053 9000 6</div>
   </div>
@@ -221,45 +221,45 @@
 </nav>
 
 <div class="hero">
-  <div class="hero-tag" id="shop-tag">Offizielles Equipment · Limitierte Auflage</div>
+  <div class="hero-tag" data-de="Offizielles Equipment · Limitierte Auflage" data-en="Official Equipment · Limited Edition">Offizielles Equipment · Limitierte Auflage</div>
   <div class="hero-title">PBZ <span>SHOP</span></div>
   <div class="hero-divider"></div>
-  <div class="hero-main" id="shop-main">Mein Equipment.<br>Für dein Training.<br>Direkt von mir.</div>
-  <div class="hero-sub" id="shop-sub">Jedes Produkt das ich selbst im Training benutze. Limitierte Stückzahl.</div>
+  <div class="hero-main" data-de="Mein Equipment.<br>Für dein Training.<br>Direkt von mir." data-en="My Equipment.<br>For Your Training.<br>Straight from Me.">Mein Equipment.<br>Für dein Training.<br>Direkt von mir.</div>
+  <div class="hero-sub" data-de="Jedes Produkt das ich selbst im Training benutze. Limitierte Stückzahl." data-en="Every product I use myself in training. Limited stock.">Jedes Produkt das ich selbst im Training benutze. Limitierte Stückzahl.</div>
 </div>
 
 <div class="products">
 
   <div class="product-card">
-    <img class="product-img" src="/img/boxhandschuhe.png" alt="PBZ Boxhandschuhe">
+    <img class="product-img" loading="lazy" src="/img/boxhandschuhe.png" alt="PBZ Boxhandschuhe">
     <div class="product-body">
       <div class="product-tag">Equipment</div>
-      <div class="product-name">BOXHANDSCHUHE</div>
-      <div class="product-desc">PBZ Boxhandschuhe in Dunkelblau und Weiss mit offiziellem Branding. 14 oz.</div>
-      <div class="product-price">CHF 50 <span>/ Paar</span></div>
-      <button class="product-btn" id="btn-gloves" onclick="addToCart('gloves', 'PBZ Boxhandschuhe 14 oz', 50, this)">IN DEN WARENKORB</button>
+      <div class="product-name" data-de="BOXHANDSCHUHE" data-en="BOXING GLOVES">BOXHANDSCHUHE</div>
+      <div class="product-desc" data-de="PBZ Boxhandschuhe in Dunkelblau und Weiss mit offiziellem Branding. 14 oz." data-en="PBZ Boxing Gloves in dark blue and white with official branding. 14 oz.">PBZ Boxhandschuhe in Dunkelblau und Weiss mit offiziellem Branding. 14 oz.</div>
+      <div class="product-price">CHF 50 <span data-de="/ Paar" data-en="/ Pair">/ Paar</span></div>
+      <button class="product-btn" id="btn-gloves" onclick="addToCart('gloves', 'PBZ Boxhandschuhe 14 oz', 50, this)" data-de="IN DEN WARENKORB" data-en="ADD TO CART">IN DEN WARENKORB</button>
     </div>
   </div>
 
   <div class="product-card">
-    <img class="product-img" src="/img/handwickel.png" alt="PBZ Bandagen">
+    <img class="product-img" loading="lazy" src="/img/handwickel.png" alt="PBZ Bandagen">
     <div class="product-body">
       <div class="product-tag">Equipment</div>
-      <div class="product-name">BANDAGEN</div>
-      <div class="product-desc">Elastische 4.5m Bandagen in PBZ Blau. Mit offiziellem Private Boxing Zürich Branding.</div>
-      <div class="product-price">CHF 15 <span>/ Paar</span></div>
-      <button class="product-btn" id="btn-wraps" onclick="addToCart('wraps', 'PBZ Bandagen', 15, this)">IN DEN WARENKORB</button>
+      <div class="product-name" data-de="BANDAGEN" data-en="HAND WRAPS">BANDAGEN</div>
+      <div class="product-desc" data-de="Elastische 4.5m Bandagen in PBZ Blau. Mit offiziellem Private Boxing Zürich Branding." data-en="Elastic 4.5m hand wraps in PBZ blue. With official Private Boxing Zürich branding.">Elastische 4.5m Bandagen in PBZ Blau. Mit offiziellem Private Boxing Zürich Branding.</div>
+      <div class="product-price">CHF 15 <span data-de="/ Paar" data-en="/ Pair">/ Paar</span></div>
+      <button class="product-btn" id="btn-wraps" onclick="addToCart('wraps', 'PBZ Bandagen', 15, this)" data-de="IN DEN WARENKORB" data-en="ADD TO CART">IN DEN WARENKORB</button>
     </div>
   </div>
 
   <div class="product-card">
-    <img class="product-img" src="/img/mundschutz.png" alt="PBZ Mundschutz">
+    <img class="product-img" loading="lazy" src="/img/mundschutz.png" alt="PBZ Mundschutz">
     <div class="product-body">
       <div class="product-tag">Equipment</div>
-      <div class="product-name">MUNDSCHUTZ</div>
-      <div class="product-desc">PBZ Mundschutz in Blau und Weiss mit B&amp;C Club Branding. Inkl. Schutzbox.</div>
-      <div class="product-price">CHF 15 <span>/ Stück</span></div>
-      <button class="product-btn" id="btn-mouth" onclick="addToCart('mouth', 'PBZ Mundschutz', 15, this)">IN DEN WARENKORB</button>
+      <div class="product-name" data-de="MUNDSCHUTZ" data-en="MOUTHGUARD">MUNDSCHUTZ</div>
+      <div class="product-desc" data-de="PBZ Mundschutz in Blau und Weiss mit B&amp;C Club Branding. Inkl. Schutzbox." data-en="PBZ Mouthguard in blue and white with B&amp;C Club branding. Incl. protective case.">PBZ Mundschutz in Blau und Weiss mit B&amp;C Club Branding. Inkl. Schutzbox.</div>
+      <div class="product-price">CHF 15 <span data-de="/ Stück" data-en="/ Piece">/ Stück</span></div>
+      <button class="product-btn" id="btn-mouth" onclick="addToCart('mouth', 'PBZ Mundschutz', 15, this)" data-de="IN DEN WARENKORB" data-en="ADD TO CART">IN DEN WARENKORB</button>
     </div>
   </div>
 
@@ -269,16 +269,16 @@
   <div class="payment-info-box">
     <div class="payment-info-icon">💳</div>
     <div class="payment-info-content">
-      <div class="payment-info-title">Zahlung & Lieferung</div>
-      <div class="payment-info-row"><strong>Zahlung:</strong> Per Banküberweisung vor der Übergabe. IBAN und QR-Code werden nach der Bestellung angezeigt.</div>
-      <div class="payment-info-row"><strong>Abholung:</strong> Persönlich beim Training in Zürich oder Versand auf Kosten des Käufers.</div>
+      <div class="payment-info-title" data-de="Zahlung & Lieferung" data-en="Payment & Delivery">Zahlung & Lieferung</div>
+      <div class="payment-info-row" data-de="<strong>Zahlung:</strong> Per Banküberweisung vor der Übergabe. IBAN und QR-Code werden nach der Bestellung angezeigt." data-en="<strong>Payment:</strong> By bank transfer before handover. IBAN and QR code are shown after the order."><strong>Zahlung:</strong> Per Banküberweisung vor der Übergabe. IBAN und QR-Code werden nach der Bestellung angezeigt.</div>
+      <div class="payment-info-row" data-de="<strong>Abholung:</strong> Persönlich beim Training in Zürich oder Versand auf Kosten des Käufers." data-en="<strong>Pickup:</strong> In person at training in Zürich or shipping at buyer's expense."><strong>Abholung:</strong> Persönlich beim Training in Zürich oder Versand auf Kosten des Käufers.</div>
     </div>
   </div>
 </div>
 
 <div class="footer-back">
-  <a href="/">← Zurück zu privateboxingzurich.ch</a>
-  <a href="/agb.html">AGB & Stornobedingungen</a>
+  <a href="/" data-de="← Zurück zu privateboxingzurich.ch" data-en="← Back to privateboxingzurich.ch">← Zurück zu privateboxingzurich.ch</a>
+  <a href="/agb.html" data-de="AGB & Stornobedingungen" data-en="Terms & Cancellation">AGB & Stornobedingungen</a>
 </div>
 
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
@@ -296,33 +296,46 @@ function closeNav() {
   document.getElementById('hamburger').textContent = '☰';
 }
 
-const shopTranslations = {
-  de: {
-    'shop-tag':  'Offizielles Equipment · Limitierte Auflage',
-    'shop-main': 'Mein Equipment.<br>Für dein Training.<br>Direkt von mir.',
-    'shop-sub':  'Jedes Produkt das ich selbst im Training benutze. Limitierte Stückzahl.',
-  },
-  en: {
-    'shop-tag':  'Official Equipment · Limited Edition',
-    'shop-main': 'My Equipment.<br>For Your Training.<br>Straight from Me.',
-    'shop-sub':  'Every product I use in training myself. Limited stock.',
-  }
-};
-
 function setLang(lang) {
+  window._currentLang = lang;
   document.getElementById('btn-de').style.cssText = lang === 'de'
     ? 'background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;'
     : 'background:transparent;color:rgba(200,232,255,0.50);';
   document.getElementById('btn-en').style.cssText = lang === 'en'
     ? 'background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;'
     : 'background:transparent;color:rgba(200,232,255,0.50);';
-  const t = shopTranslations[lang];
-  Object.keys(t).forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.innerHTML = t[id];
+  const attr = lang === 'en' ? 'data-en' : 'data-de';
+  document.querySelectorAll('[data-de]').forEach(el => {
+    const val = el.getAttribute(attr);
+    if (val !== null) el.innerHTML = val;
   });
+  const phAttr = lang === 'en' ? 'data-en-ph' : 'data-de-ph';
+  document.querySelectorAll('[data-de-ph]').forEach(el => {
+    const val = el.getAttribute(phAttr);
+    if (val !== null) el.placeholder = val;
+  });
+  document.title = lang === 'en' ? 'Shop – Private Boxing Zürich' : 'Shop – Private Boxing Zürich';
+  document.documentElement.lang = lang;
 }
 setLang('de');
+
+const T = {
+  added:        { de: 'HINZUGEFÜGT ✓',                       en: 'ADDED ✓' },
+  addToCart:    { de: 'IN DEN WARENKORB',                    en: 'ADD TO CART' },
+  cartEmpty:    { de: 'Noch keine Artikel hinzugefügt.',     en: 'No items added yet.' },
+  perPiece:     { de: '/ Stück',                             en: '/ piece' },
+  pleaseEnter:  { de: 'Bitte CHF {n} eingeben',              en: 'Please enter CHF {n}' },
+  submitBtn:    { de: 'JETZT VORBESTELLEN',                  en: 'PRE-ORDER NOW' },
+  alertFields:  { de: 'Bitte alle Felder ausfüllen.',        en: 'Please fill in all fields.' },
+  alertAGB:     { de: 'Bitte die AGB akzeptieren.',          en: 'Please accept the terms.' },
+  alertError:   { de: 'Fehler beim Senden. Bitte direkt per Instagram: @privateboxingzurich', en: 'Error sending. Please contact directly via Instagram: @privateboxingzurich' },
+  totalLbl:     { de: 'Total',                               en: 'Total' },
+};
+function t(key, vars = {}) {
+  let s = T[key][window._currentLang || 'de'];
+  Object.keys(vars).forEach(k => s = s.replace('{'+k+'}', vars[k]));
+  return s;
+}
 
 let cart = [];
 
@@ -336,10 +349,10 @@ function addToCart(id, name, price, btn) {
   updateBadge();
   openCart();
 
-  btn.textContent = 'HINZUGEFÜGT ✓';
+  btn.textContent = t('added');
   btn.classList.add('added');
   setTimeout(() => {
-    btn.textContent = 'IN DEN WARENKORB';
+    btn.textContent = t('addToCart');
     btn.classList.remove('added');
   }, 1800);
 }
@@ -385,7 +398,7 @@ function renderCart() {
   const footerEl = document.getElementById('cart-footer');
 
   if (cart.length === 0) {
-    body.innerHTML = '<div class="cart-empty">Noch keine Artikel hinzugefügt.</div>';
+    body.innerHTML = '<div class="cart-empty">' + t('cartEmpty') + '</div>';
     footerEl.style.display = 'none';
     return;
   }
@@ -396,7 +409,7 @@ function renderCart() {
     <div class="cart-item">
       <div class="cart-item-info">
         <div class="cart-item-title">${item.name}</div>
-        <div class="cart-item-price">CHF ${item.price} / Stück</div>
+        <div class="cart-item-price">CHF ${item.price} ${t('perPiece')}</div>
       </div>
       <div class="cart-qty">
         <button class="qty-btn" onclick="changeQty('${item.id}', -1)">−</button>
@@ -419,11 +432,11 @@ function submitCart() {
   const plz = document.getElementById('cart-plz').value.trim();
   const agb = document.getElementById('cart-agb-check').checked;
   if (!name || !email || !contact || !adresse || !plz) {
-    alert('Bitte alle Felder ausfüllen.');
+    alert(t('alertFields'));
     return;
   }
   if (!agb) {
-    alert('Bitte die AGB akzeptieren.');
+    alert(t('alertAGB'));
     return;
   }
   if (cart.length === 0) return;
@@ -451,18 +464,18 @@ function submitCart() {
     const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
     const orderHtml = cart.map(i =>
       `<div class="cart-success-order-item"><span>${i.name} x${i.qty}</span><span>CHF ${i.price * i.qty}</span></div>`
-    ).join('') + `<div class="cart-success-total"><span>Total</span><span>CHF ${total}</span></div>`;
+    ).join('') + `<div class="cart-success-total"><span>${t('totalLbl')}</span><span>CHF ${total}</span></div>`;
     document.getElementById('cart-success-order').innerHTML = orderHtml;
-    document.getElementById('cart-success-amount').textContent = 'Bitte CHF ' + total + ' eingeben';
+    document.getElementById('cart-success-amount').textContent = t('pleaseEnter', { n: total });
     document.getElementById('cart-footer').style.display = 'none';
     document.getElementById('cart-body').innerHTML = '';
     document.getElementById('cart-success').classList.add('visible');
     cart = [];
     updateBadge();
   }).catch(function() {
-    btn.textContent = 'JETZT VORBESTELLEN';
+    btn.textContent = t('submitBtn');
     btn.disabled = false;
-    alert('Fehler beim Senden. Bitte direkt per Instagram: @privateboxingzurich');
+    alert(t('alertError'));
   });
 }
 </script>
