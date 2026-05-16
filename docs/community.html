@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Community – Private Boxing Zürich</title>
+<meta name="description" content="Die PBZ Community: Sparring, Events, Outdoor-Training. Tritt unserer WhatsApp Gruppe bei.">
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#08152a; color:#fff; min-height:100vh; }
+
+  /* NAV */
+  nav { display:flex; align-items:center; justify-content:space-between; padding:16px 40px; background:rgba(8,21,42,0.85); backdrop-filter:blur(12px); border-bottom:1px solid rgba(126,200,255,0.12); position:sticky; top:0; z-index:100; }
+  .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.06em; color:#fff; text-decoration:none; }
+  .nav-logo span { color:#7ec8ff; }
+  .nav-links { display:flex; list-style:none; gap:24px; align-items:center; }
+  .nav-links a { font-size:13px; font-weight:700; color:rgba(255,255,255,0.70); text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; transition:color 0.2s; }
+  .nav-links a:hover, .nav-links a.active { color:#7ec8ff; }
+  @media(max-width:768px){ .nav-logo { font-size:20px; } }
+  .lang-toggle { display:flex; background:rgba(255,255,255,0.06); border:1px solid rgba(126,200,255,0.15); border-radius:8px; overflow:hidden; }
+  .lang-btn { padding:6px 12px; border:none; font-size:12px; font-weight:800; cursor:pointer; font-family:'Inter',sans-serif; border-radius:6px; transition:background 0.15s, color 0.15s; }
+  .hamburger { display:none; background:none; border:none; color:rgba(200,232,255,0.80); font-size:24px; cursor:pointer; padding:4px 6px; line-height:1; }
+  @media(max-width:768px){
+    .hamburger { display:block; }
+    nav { overflow:visible; padding: 14px 16px; }
+    .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(8,21,42,0.97); padding:20px 24px; border-bottom:1px solid rgba(126,200,255,0.12); gap:20px; z-index:99; }
+    .nav-links.open { display:flex; }
+    .nav-links a { font-size:15px; }
+  }
+
+  /* HERO */
+  .hero { padding:72px 24px 48px; text-align:center; max-width:640px; margin:0 auto; }
+  .hero-tag { font-size:11px; font-weight:800; letter-spacing:0.22em; color:rgba(126,200,255,0.70); text-transform:uppercase; margin-bottom:16px; }
+  .hero-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(48px,10vw,80px); letter-spacing:0.05em; line-height:1; margin-bottom:16px; }
+  .hero-title span { color:#25d366; }
+  .hero-sub { font-size:15px; color:rgba(200,232,255,0.60); line-height:1.7; margin-bottom:40px; max-width:440px; margin-left:auto; margin-right:auto; }
+
+  /* WA BUTTON */
+  .wa-btn { display:inline-flex; align-items:center; gap:14px; background:linear-gradient(100deg,#25d366,#128c4e); border:none; border-radius:16px; padding:18px 36px; font-size:16px; font-weight:800; color:#fff; letter-spacing:0.04em; cursor:pointer; text-decoration:none; transition:opacity 0.2s, transform 0.15s; margin-bottom:14px; }
+  .wa-btn:hover { opacity:0.90; transform:translateY(-2px); }
+  .wa-icon { width:28px; height:28px; flex-shrink:0; }
+  .wa-note { font-size:12px; color:rgba(200,232,255,0.30); margin-bottom:56px; }
+
+  /* SECTION */
+  .section { max-width:580px; margin:0 auto 56px; padding:0 24px; }
+  .section-label { font-size:10px; font-weight:800; letter-spacing:0.20em; text-transform:uppercase; color:rgba(126,200,255,0.40); margin-bottom:14px; }
+  .section-title { font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:0.04em; color:#fff; margin-bottom:20px; }
+
+  /* FEATURE CARDS */
+  .feature-list { display:flex; flex-direction:column; gap:12px; }
+  .feature-item { background:#0d1f3c; border:1px solid rgba(126,200,255,0.08); border-radius:14px; padding:20px 22px; display:flex; align-items:flex-start; gap:16px; }
+  .feature-icon { font-size:26px; flex-shrink:0; margin-top:2px; }
+  .feature-title { font-size:14px; font-weight:800; color:#fff; margin-bottom:4px; }
+  .feature-desc { font-size:13px; color:rgba(200,232,255,0.55); line-height:1.65; }
+
+  /* DIVIDER */
+  .divider { max-width:580px; margin:0 auto 56px; padding:0 24px; }
+  .divider-line { height:1px; background:rgba(126,200,255,0.08); }
+
+  /* FOOTER */
+  .footer-back { text-align:center; padding:40px 24px 60px; }
+  .footer-back a { font-size:13px; font-weight:700; color:rgba(200,232,255,0.35); text-decoration:none; letter-spacing:0.08em; }
+  .footer-back a:hover { color:#7ec8ff; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">PRIVATE <span>BOXING</span> ZÜRICH</a>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/" onclick="closeNav()">Home</a></li>
+      <li><a href="/preise" onclick="closeNav()">Preise</a></li>
+      <li><a href="/community" class="active" onclick="closeNav()">Community</a></li>
+      <li><a href="/shop" onclick="closeNav()">Shop</a></li>
+      <li><a href="/jugend" onclick="closeNav()">Jugend</a></li>
+    </ul>
+    <div class="lang-toggle">
+      <button id="btn-de" class="lang-btn" onclick="setLang('de')">DE</button>
+      <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <button class="hamburger" id="hamburger" onclick="toggleNav()">☰</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag" data-de="Private Boxing Zürich · Community" data-en="Private Boxing Zürich · Community">Private Boxing Zürich · Community</div>
+  <div class="hero-title" data-de="COMMUNITY" data-en="COMMUNITY">COMMU<span>NITY</span></div>
+  <p class="hero-sub" data-de="Sparring, Events und Outdoor-Training. Alles läuft über unsere WhatsApp Gruppe." data-en="Sparring, events and outdoor training. Everything runs through our WhatsApp group.">Sparring, Events und Outdoor-Training. Alles läuft über unsere WhatsApp Gruppe.</p>
+
+  <a class="wa-btn" href="https://chat.whatsapp.com/DnVsdZi0KO81Hl85SjWK82" target="_blank" rel="noopener">
+    <svg class="wa-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M16 2C8.27 2 2 8.27 2 16c0 2.47.66 4.79 1.82 6.79L2 30l7.42-1.79A13.93 13.93 0 0016 30c7.73 0 14-6.27 14-14S23.73 2 16 2z" fill="rgba(255,255,255,0.20)"/>
+      <path d="M21.5 18.7c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.87 1.22 3.07.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.09 1.76-.72 2.01-1.41.25-.69.25-1.28.17-1.41-.07-.13-.27-.2-.57-.35z" fill="#fff"/>
+    </svg>
+    <span data-de="WhatsApp Gruppe beitreten" data-en="Join WhatsApp Group">WhatsApp Gruppe beitreten</span>
+  </a>
+  <p class="wa-note" data-de="Kostenlos · Kein Abo · Jederzeit kündbar" data-en="Free · No subscription · Leave anytime">Kostenlos · Kein Abo · Jederzeit kündbar</p>
+</div>
+
+<div class="section">
+  <div class="section-label" data-de="Was dich erwartet" data-en="What to expect">Was dich erwartet</div>
+  <div class="feature-list">
+    <div class="feature-item">
+      <div class="feature-icon">🥊</div>
+      <div>
+        <div class="feature-title" data-de="Sparring Sessions" data-en="Sparring Sessions">Sparring Sessions</div>
+        <div class="feature-desc" data-de="Kontrolliertes Sparring in kleinen Gruppen. Für alle Levels, immer mit Fokus auf Technik und Respekt." data-en="Controlled sparring in small groups. For all levels, always focused on technique and respect.">Kontrolliertes Sparring in kleinen Gruppen. Für alle Levels, immer mit Fokus auf Technik und Respekt.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🌳</div>
+      <div>
+        <div class="feature-title" data-de="Outdoor Training" data-en="Outdoor Training">Outdoor Training</div>
+        <div class="feature-desc" data-de="Boxing-Kondition und Laufen im Glattpark. Sessions per Ankündigung in der Gruppe." data-en="Boxing fitness and running at Glattpark. Sessions announced in the group.">Boxing-Kondition und Laufen im Glattpark. Sessions per Ankündigung in der Gruppe.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🏆</div>
+      <div>
+        <div class="feature-title" data-de="Events und Fights" data-en="Events and Fights">Events und Fights</div>
+        <div class="feature-desc" data-de="Infos zu lokalen Box-Events, Kämpfen und gemeinsamen Ausflügen. Alles direkt in der Gruppe." data-en="Info on local boxing events, fights and group outings. Everything directly in the group.">Infos zu lokalen Box-Events, Kämpfen und gemeinsamen Ausflügen. Alles direkt in der Gruppe.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">💬</div>
+      <div>
+        <div class="feature-title" data-de="Austausch und Motivation" data-en="Exchange and Motivation">Austausch und Motivation</div>
+        <div class="feature-desc" data-de="Fragen, Tipps, Fortschritte teilen. Eine kleine, fokussierte Community rund ums Boxen." data-en="Questions, tips, sharing progress. A small, focused community around boxing.">Fragen, Tipps, Fortschritte teilen. Eine kleine, fokussierte Community rund ums Boxen.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"><div class="divider-line"></div></div>
+
+<div class="footer-back">
+  <a href="/" data-de="← Zurück zur Startseite" data-en="← Back to Home">← Zurück zur Startseite</a>
+</div>
+
+<script>
+function toggleNav(){
+  document.getElementById('nav-links').classList.toggle('open');
+}
+function closeNav(){
+  document.getElementById('nav-links').classList.remove('open');
+}
+
+const T = {
+  de: { btnStyle: 'background:rgba(255,255,255,0.12);color:#fff;' },
+  en: { btnStyle: 'background:rgba(255,255,255,0.12);color:#fff;' }
+};
+
+function setLang(l){
+  localStorage.setItem('pbz-lang', l);
+  document.querySelectorAll('[data-'+l+']').forEach(el => {
+    if(el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') el.placeholder = el.getAttribute('data-'+l);
+    else el.textContent = el.getAttribute('data-'+l);
+  });
+  document.getElementById('btn-de').style.cssText = l==='de' ? 'background:rgba(126,200,255,0.20);color:#7ec8ff;' : 'background:none;color:rgba(255,255,255,0.50);';
+  document.getElementById('btn-en').style.cssText = l==='en' ? 'background:rgba(126,200,255,0.20);color:#7ec8ff;' : 'background:none;color:rgba(255,255,255,0.50);';
+}
+
+(function(){
+  const saved = localStorage.getItem('pbz-lang') || 'de';
+  setLang(saved);
+})();
+</script>
+</body>
+</html>
