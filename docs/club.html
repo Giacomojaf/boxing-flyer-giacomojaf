@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boxing & Conditioning Club – Private Boxing Zürich</title>
-<meta name="description" content="Outdoor Gruppentraining im Glattpark. Kraft, Boxkondition und Laufen. Di + Do 12:00 Uhr. CHF 20 pro Person.">
+<meta name="description" content="Outdoor Gruppentraining im Glattpark. Kraft, Boxkondition und Laufen. Sessions per Ankündigung. CHF 20 pro Person.">
 <link rel="icon" type="image/png" href="/favicon.png">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
@@ -27,7 +27,7 @@
   .hamburger { display:none; background:none; border:none; color:rgba(200,232,255,0.80); font-size:24px; cursor:pointer; padding:4px 6px; line-height:1; }
   @media(max-width:768px){
     .hamburger { display:block; }
-    nav { overflow:visible; padding: 14px 16px; }
+    nav { overflow:visible; }
     .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(8,21,42,0.97); padding:20px 24px; border-bottom:1px solid rgba(126,200,255,0.12); gap:20px; z-index:99; }
     .nav-links.open { display:flex; }
     .nav-links a { font-size:15px; }
@@ -108,9 +108,8 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="/" onclick="closeNav()">Home</a></li>
       <li><a href="/preise" id="nav-preise" onclick="closeNav()">Preise</a></li>
-      <li><a href="/club" id="nav-club" onclick="closeNav()">Club</a></li>
+      <li><a href="/club" id="nav-club" onclick="closeNav()">Outdoor</a></li>
       <li><a href="/shop" id="nav-shop" onclick="closeNav()">Shop</a></li>
-      <li><a href="/jugend" onclick="closeNav()">Jugend</a></li>
     </ul>
     <div class="lang-toggle">
       <button id="btn-de" class="lang-btn" onclick="setLang('de')">DE</button>
@@ -125,7 +124,7 @@
   <img class="hero-logo" loading="lazy" src="/img/bc-club-logo.png" alt="Boxing & Conditioning Club">
   <div class="hero-sub" id="hero-sub">Kraft, Boxkondition und Laufen im Freien. Kein Gym, keine Ausrüstung nötig. Komm einfach.</div>
   <div class="hero-pills">
-    <span class="pill pill-green">Di + Do · 12:00 Uhr</span>
+    <span class="pill pill-green">Sessions per Ankündigung</span>
     <span class="pill pill-blue">Glattpark Zürich</span>
     <span class="pill pill-gold" id="pill-gold">Erste Session gratis</span>
   </div>
@@ -134,26 +133,25 @@
 <div class="section">
   <div class="termin-block">
     <div class="termin-label" id="termin-label">Termin</div>
-    <div class="termin-val">Dienstag + Donnerstag · 12:00 Uhr</div>
+    <div class="termin-val">Sessions per Ankündigung</div>
     <div class="termin-sub">Glattpark Zürich</div>
-    <div class="termin-sub" id="termin-treffpunkt">Treffpunkt: Station Fernsehstudio</div>
   </div>
-  <div class="section-label" id="sect-label-schedule">Session-Ablauf · 55 Minuten</div>
+  <div class="section-label" id="sect-label-schedule">Session-Ablauf · 45 Minuten</div>
   <div class="schedule">
     <div class="schedule-row">
-      <div class="schedule-time">12:00 – 12:05</div>
+      <div class="schedule-time">12:15 – 12:20</div>
       <div class="schedule-desc" id="sched-desc-0">Warm-up und Ankommen</div>
     </div>
     <div class="schedule-row">
-      <div class="schedule-time">12:05 – 12:15</div>
+      <div class="schedule-time">12:20 – 12:35</div>
       <div class="schedule-desc" id="sched-desc-1">Laufrunde Glattpark · angepasstes Tempo</div>
     </div>
     <div class="schedule-row">
-      <div class="schedule-time">12:15 – 12:40</div>
+      <div class="schedule-time">12:35 – 12:50</div>
       <div class="schedule-desc" id="sched-desc-2">Kraft und Boxkondition: Footwork, Körperspannung, Kombinations-Drills</div>
     </div>
     <div class="schedule-row">
-      <div class="schedule-time">12:40 – 12:55</div>
+      <div class="schedule-time">12:50 – 13:00</div>
       <div class="schedule-desc" id="sched-desc-3">Cool-down und Stretching</div>
     </div>
   </div>
@@ -214,13 +212,12 @@ emailjs.init('DPN76hd1SjOuEgZLb');
 
 const translations = {
   de: {
-    'nav-preise': 'Preise', 'nav-club': 'Club', 'nav-shop': 'Shop',
+    'nav-preise': 'Preise', 'nav-club': 'Outdoor', 'nav-shop': 'Shop',
     'hero-tag':           'Neues Angebot · Outdoor · Glattpark',
     'hero-sub':           'Kraft, Boxkondition und Laufen im Freien. Kein Gym, keine Ausrüstung nötig. Komm einfach.',
     'pill-gold':          'Erste Session gratis',
     'termin-label':       'Termin',
-    'termin-treffpunkt':  'Treffpunkt: Station Fernsehstudio',
-    'sect-label-schedule':'Session-Ablauf · 55 Minuten',
+    'sect-label-schedule':'Session-Ablauf · 45 Minuten',
     'sched-desc-0':       'Warm-up und Ankommen',
     'sched-desc-1':       'Laufrunde Glattpark · angepasstes Tempo',
     'sched-desc-2':       'Kraft und Boxkondition: Footwork, Körperspannung, Kombinations-Drills',
@@ -244,13 +241,12 @@ const translations = {
     'footer-link':        '← Zurück zu privateboxingzurich.ch',
   },
   en: {
-    'nav-preise': 'Pricing', 'nav-club': 'Club', 'nav-shop': 'Shop',
+    'nav-preise': 'Pricing', 'nav-club': 'Outdoor', 'nav-shop': 'Shop',
     'hero-tag':           'New Offer · Outdoor · Glattpark',
     'hero-sub':           'Strength, boxing conditioning and running outdoors. No gym, no equipment needed. Just show up.',
     'pill-gold':          'First Session Free',
     'termin-label':       'Schedule',
-    'termin-treffpunkt':  'Meeting Point: Fernsehstudio Station',
-    'sect-label-schedule':'Session Schedule · 55 Minutes',
+    'sect-label-schedule':'Session Schedule · 45 Minutes',
     'sched-desc-0':       'Warm-up and Arrival',
     'sched-desc-1':       'Running Round Glattpark · adjusted pace',
     'sched-desc-2':       'Strength and Boxing Conditioning: Footwork, Core Tension, Combination Drills',
@@ -343,7 +339,7 @@ document.getElementById('club-form').addEventListener('submit', function(e) {
     kunde_telefon: whatsapp,
     kunde_email: '',
     referenz: 'Boxing & Conditioning Club',
-    wunschtermin: 'Di/Do 12:00 Uhr Glattpark',
+    wunschtermin: 'Per Ankündigung · Glattpark',
     ort: 'Glattpark Zürich',
     nachricht: 'Club-Anmeldung via privateboxingzurich.ch/club',
   }).then(function() {

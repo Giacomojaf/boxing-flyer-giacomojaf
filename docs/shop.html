@@ -32,7 +32,7 @@
   .hamburger { display:none; background:none; border:none; color:rgba(200,232,255,0.80); font-size:24px; cursor:pointer; padding:4px 6px; line-height:1; }
   @media(max-width:768px){
     .hamburger { display:block; }
-    nav { position:relative; padding: 14px 16px; }
+    nav { position:relative; }
     .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(8,21,42,0.97); padding:20px 24px; border-bottom:1px solid rgba(126,200,255,0.12); gap:20px; z-index:99; }
     .nav-links.open { display:flex; }
     .nav-links a { font-size:15px; }
@@ -200,9 +200,8 @@
     <ul class="nav-links" id="nav-links">
       <li><a href="/" onclick="closeNav()">Home</a></li>
       <li><a href="/preise" onclick="closeNav()">Preise</a></li>
-      <li><a href="/club" onclick="closeNav()">Club</a></li>
+      <li><a href="/club" onclick="closeNav()">Outdoor</a></li>
       <li><a href="/shop" onclick="closeNav()">Shop</a></li>
-      <li><a href="/jugend" onclick="closeNav()">Jugend</a></li>
     </ul>
     <div style="display:flex;align-items:center;gap:10px;">
     <div class="lang-toggle">
@@ -255,22 +254,11 @@
   </div>
 
   <div class="product-card">
-    <img class="product-img" loading="lazy" src="/img/starter-set.png" alt="PBZ Starter Set">
-    <div class="product-body">
-      <div class="product-tag">Bundle</div>
-      <div class="product-name" data-de="STARTER SET" data-en="STARTER SET">STARTER SET</div>
-      <div class="product-desc" data-de="Handschuhe 14 oz, Bandagen und Mundschutz mit offiziellem PBZ Branding. Alles was du für den Einstieg brauchst." data-en="Gloves 14 oz, hand wraps and mouthguard with official PBZ branding. Everything you need to get started.">Handschuhe 14 oz, Bandagen und Mundschutz mit offiziellem PBZ Branding. Alles was du für den Einstieg brauchst.</div>
-      <div class="product-price">CHF 70 <span data-de="/ Set" data-en="/ Set">/ Set</span></div>
-      <button class="product-btn" id="btn-set" onclick="addToCart('set', 'PBZ Starter Set', 70, this)" data-de="IN DEN WARENKORB" data-en="ADD TO CART">IN DEN WARENKORB</button>
-    </div>
-  </div>
-
-  <div class="product-card">
     <img class="product-img" loading="lazy" src="/img/mundschutz.png" alt="PBZ Mundschutz">
     <div class="product-body">
       <div class="product-tag">Equipment</div>
       <div class="product-name" data-de="MUNDSCHUTZ" data-en="MOUTHGUARD">MUNDSCHUTZ</div>
-      <div class="product-desc" data-de="PBZ Mundschutz in Blau und Weiss mit Club Branding. Inkl. Schutzbox." data-en="PBZ Mouthguard in blue and white with Club branding. Incl. protective case.">PBZ Mundschutz in Blau und Weiss mit Club Branding. Inkl. Schutzbox.</div>
+      <div class="product-desc" data-de="PBZ Mundschutz in Blau und Weiss mit Outdoor Branding. Inkl. Schutzbox." data-en="PBZ Mouthguard in blue and white with Outdoor branding. Incl. protective case.">PBZ Mundschutz in Blau und Weiss mit Outdoor Branding. Inkl. Schutzbox.</div>
       <div class="product-price">CHF 15 <span data-de="/ Stück" data-en="/ Piece">/ Stück</span></div>
       <button class="product-btn" id="btn-mouth" onclick="addToCart('mouth', 'PBZ Mundschutz', 15, this)" data-de="IN DEN WARENKORB" data-en="ADD TO CART">IN DEN WARENKORB</button>
     </div>
