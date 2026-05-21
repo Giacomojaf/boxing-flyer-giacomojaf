@@ -202,18 +202,19 @@
 <script>
 // ─── TRAININGS ── monatlich hier aktualisieren ───────────────────────────────
 const SESSIONS = [
-  { id:'mai-23', datum:'Sa, 23. Mai',  zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
-  { id:'mai-30', datum:'Sa, 30. Mai',  zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
-  { id:'jun-7',  datum:'So, 7. Juni',  zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
-  { id:'jun-14', datum:'So, 14. Juni', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
-  { id:'jun-21', datum:'So, 21. Juni', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
-  { id:'jun-28', datum:'So, 28. Juni', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'mai-23', datum:'Sa, 23. Mai',  datum_iso:'2026-05-23', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'mai-30', datum:'Sa, 30. Mai',  datum_iso:'2026-05-30', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'jun-7',  datum:'So, 7. Juni',  datum_iso:'2026-06-07', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'jun-14', datum:'So, 14. Juni', datum_iso:'2026-06-14', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'jun-21', datum:'So, 21. Juni', datum_iso:'2026-06-21', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'jun-28', datum:'So, 28. Juni', datum_iso:'2026-06-28', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
 function renderSessions() {
   const list = document.getElementById('training-list');
-  const visible = SESSIONS.filter(s => s.offen);
+  const today = new Date().toISOString().slice(0, 10);
+  const visible = SESSIONS.filter(s => s.offen && s.datum_iso >= today);
   if (!visible.length) {
     document.getElementById('trainings-section').style.display = 'none';
     return;
