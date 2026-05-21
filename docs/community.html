@@ -202,10 +202,12 @@
 <script>
 // ─── TRAININGS ── monatlich hier aktualisieren ───────────────────────────────
 const SESSIONS = [
-  { id:'jun-7',  datum:'So, 7. Juni',  zeit:'15:00', ort:'Chin Woo, Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
-  { id:'jun-14', datum:'So, 14. Juni', zeit:'15:00', ort:'Chin Woo, Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
-  { id:'jun-21', datum:'So, 21. Juni', zeit:'15:00', ort:'Chin Woo, Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
-  { id:'jun-28', datum:'So, 28. Juni', zeit:'15:00', ort:'Chin Woo, Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'mai-23', datum:'Fr, 23. Mai',  zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'mai-30', datum:'Fr, 30. Mai',  zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'jun-7',  datum:'So, 7. Juni',  zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'jun-14', datum:'So, 14. Juni', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'jun-21', datum:'So, 21. Juni', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
+  { id:'jun-28', datum:'So, 28. Juni', zeit:'15:00', ort:'Altstetten', preis:'CHF 25–45', typ:'gruppe', offen:true,  freiePlaetze:7 },
 ];
 // ─────────────────────────────────────────────────────────────────────────────
 
@@ -259,7 +261,7 @@ function submitSignup(id, datum, zeit) {
     kunde_name:   name,
     kunde_phone:  wa || 'nicht angegeben',
     kunde_email:  'community@privateboxingzurich.ch',
-    trainingsort: 'Chin Woo, Altstetten',
+    trainingsort: 'Altstetten',
     datum:        datum + ' ' + zeit,
     paket:        'Community Gruppentraining',
     sessions:     '1',
