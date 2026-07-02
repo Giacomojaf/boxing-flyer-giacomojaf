@@ -1162,9 +1162,11 @@ function submitBuchung() {
     zweck:        (isGruppe ? 'Gruppentraining' : 'Abo') + ' Private Boxing Zürich ' + datum,
   };
 
-  // Send to Giacomo
-  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_GIA, params)
-    .then(() => emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CUS, params))
+  // Send Giacomo (primary) und Customer (secondary) parallel
+  const sendGia = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_GIA, params);
+  const sendCus = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CUS, params).catch(e => { console.warn('Kunden Bestätigung fehlgeschlagen:', e); return null; });
+  sendGia
+    .then(() => sendCus)
     .then(() => {
       // Show success
       document.getElementById('buchung-form').style.display = 'none';
