@@ -25,12 +25,14 @@
 
   /* HAMBURGER */
   .hamburger { display:none; background:none; border:none; color:rgba(200,232,255,0.80); font-size:24px; cursor:pointer; padding:4px 6px; line-height:1; }
+  .nav-cta { background:linear-gradient(100deg,#1a65d6,#0e3f9a); border:1.5px solid rgba(126,200,255,0.45); border-radius:8px; padding:10px 20px; font-size:14px; font-weight:800; color:#fff; text-decoration:none; letter-spacing:0.05em; }
   @media(max-width:768px){
     .hamburger { display:block; }
     nav { overflow:visible; }
     .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(8,21,42,0.97); padding:20px 24px; border-bottom:1px solid rgba(126,200,255,0.12); gap:20px; z-index:99; }
     .nav-links.open { display:flex; }
     .nav-links a { font-size:15px; }
+    .nav-cta { display:none; }
   }
 
   /* HERO */
@@ -115,7 +117,7 @@
       <button id="btn-de" class="lang-btn" onclick="setLang('de')">DE</button>
       <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
-    <a href="/#booking" style="background:linear-gradient(100deg,#1a65d6,#0e3f9a);border:1.5px solid rgba(126,200,255,0.45);border-radius:8px;padding:10px 20px;font-size:14px;font-weight:800;color:#fff;text-decoration:none;letter-spacing:0.05em;">Termin buchen</a>
+    <a href="/#booking" class="nav-cta">Termin buchen</a>
     <button class="hamburger" id="hamburger" onclick="toggleNav()">☰</button>
   </div>
 </nav>
