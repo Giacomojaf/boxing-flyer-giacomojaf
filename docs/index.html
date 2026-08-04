@@ -804,7 +804,7 @@
   }
 </style>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>emailjs.init('DPN76hd1SjOuEgZLb');</script>
+<script type="text/javascript">(function(){ emailjs.init({ publicKey: "DPN76hd1SjOuEgZLb" }); })();</script>
 
 <script type="application/ld+json">
 {
@@ -1589,7 +1589,12 @@
       .catch(() => {
         btn.disabled = false;
         btn.textContent = 'TERMIN ANFRAGEN →';
-        alert('Fehler. Bitte schreib direkt an giacomo@privateboxingzurich.ch');
+        const errMsg = document.createElement('div');
+        errMsg.style.cssText = 'margin-top:14px;padding:16px 20px;background:rgba(200,50,50,0.12);border:1.5px solid rgba(200,50,50,0.35);border-radius:12px;text-align:center;';
+        errMsg.innerHTML = '<div style="font-size:14px;font-weight:800;color:#ff6b6b;margin-bottom:8px;">Formular gerade nicht erreichbar</div>' +
+          '<div style="font-size:13px;color:rgba(200,232,255,0.70);margin-bottom:12px;">Bitte schreib direkt per WhatsApp — ich antworte innerhalb von 2 Stunden.</div>' +
+          '<a href="https://wa.me/41797011016?text=Hallo%20Giacomo%2C%20ich%20möchte%20ein%20Ersttraining%20buchen." style="display:inline-block;background:linear-gradient(100deg,#25d366,#1ebe5d);color:#fff;font-weight:800;font-size:13px;padding:10px 20px;border-radius:8px;text-decoration:none;letter-spacing:0.04em;">WhatsApp →</a>';
+        btn.parentElement.appendChild(errMsg);
       });
   }
 </script>
