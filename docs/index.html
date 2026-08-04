@@ -1547,7 +1547,7 @@
     const day   = document.querySelector('.cal-option.active .cal-day')?.textContent || '–';
     const goal  = document.getElementById('bk-goal')?.value || '–';
     const note  = document.getElementById('bk-note')?.value.trim() || '–';
-    const ort   = document.getElementById('selected-ort').value || '–';
+    const ort   = document.getElementById('selected-ort')?.value || 'im Boxgym';
     const btn   = document.getElementById('submit-btn');
 
     if (!name || !email) { alert('Bitte Namen und E-Mail ausfüllen.'); return; }
