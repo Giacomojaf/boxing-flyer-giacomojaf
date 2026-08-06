@@ -2,7 +2,6 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<script>if(location.hostname==='www.privateboxingzurich.ch')location.replace(location.href.replace('//www.','//'));</script>
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -674,23 +673,6 @@
   }
 </style>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1053131573915653');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -705,7 +687,6 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       <li><a href="/community" id="nav-community" onclick="closeNav()">Community</a></li>
       <li><a href="/shop" id="nav-shop" onclick="closeNav()">Shop</a></li>
     </ul>
-    <a href="/#booking" class="nav-cta" id="nav-cta">Termin buchen</a>
     <div style="display:flex;background:rgba(255,255,255,0.06);border:1px solid rgba(126,200,255,0.15);border-radius:8px;overflow:hidden;">
       <button id="btn-de" onclick="setLang('de')" style="padding:6px 12px;border:none;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;">DE</button>
       <button id="btn-en" onclick="setLang('en')" style="padding:6px 12px;border:none;background:transparent;color:rgba(200,232,255,0.50);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;">EN</button>
@@ -742,13 +723,13 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
     <div id="schnupper-extra" style="display:none;"></div>
   </div>
   <div style="text-align:right;flex-shrink:0;">
-    <div id="schnupper-price" style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#4caf80;line-height:1;" data-gym="80" data-home="80" data-online="80">80</div>
+    <div id="schnupper-price" style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#4caf80;line-height:1;" data-gym="80" data-home="60" data-online="40">40</div>
     <div style="font-size:12px;font-weight:700;color:rgba(76,175,128,0.60);">CHF pro Training</div>
   </div>
 </div>
 
 <!-- TOGGLE -->
-<div style="display:none;">
+<div style="display:flex;flex-direction:column;align-items:center;margin-bottom:32px;gap:12px;">
   <div style="font-size:16px;font-weight:800;color:#fff;" id="mode-label">Wo möchtest du trainieren?</div>
   <div id="mode-toggle" style="background:rgba(255,255,255,0.06);border:1px solid rgba(126,200,255,0.15);border-radius:12px;padding:6px;display:flex;gap:6px;flex-wrap:wrap;">
     <button id="btn-online" onclick="setMode('online')" style="display:none;padding:10px 24px;border-radius:8px;border:none;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">über Videocall 💻</button>
@@ -764,7 +745,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   <div class="card" id="card-starter" onclick="selectCard(this,'starter')">
     <div class="card-name">Starter</div>
     <div style="display:flex;align-items:baseline;justify-content:center;gap:6px;margin:4px 0 16px;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" data-gym="400" data-home="400" data-online="400">400</span></div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" data-gym="400" data-home="320" data-online="200">400</span></div>
       <div style="font-size:15px;font-weight:700;color:rgba(200,232,255,0.45);">pro Monat</div>
     </div>
     <div class="card-divider"></div>
@@ -775,7 +756,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">CHF <span data-gym="100" data-home="100" data-online="100">100</span></strong> pro Training</span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">CHF <span data-gym="100" data-home="80" data-online="50">100</span></strong> pro Training</span>
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
@@ -794,7 +775,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
     <div class="popular-badge" id="popular-badge">Beliebteste Wahl</div>
     <div class="card-name">Standard</div>
     <div style="display:flex;align-items:baseline;justify-content:center;gap:6px;margin:4px 0 16px;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" data-gym="360" data-home="360" data-online="360">360</span></div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" data-gym="360" data-home="280" data-online="180">360</span></div>
       <div style="font-size:15px;font-weight:700;color:rgba(200,232,255,0.45);">pro Monat</div>
     </div>
     <div class="card-divider"></div>
@@ -805,7 +786,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">CHF <span data-gym="90" data-home="90" data-online="90">90</span></strong> pro Training</span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">CHF <span data-gym="90" data-home="70" data-online="45">90</span></strong> pro Training</span>
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
@@ -823,7 +804,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   <div class="card" id="card-premium" onclick="selectCard(this,'premium')">
     <div class="card-name">Premium</div>
     <div style="display:flex;align-items:baseline;justify-content:center;gap:6px;margin:4px 0 16px;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" data-gym="320" data-home="320" data-online="320">320</span></div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" data-gym="320" data-home="240" data-online="160">320</span></div>
       <div style="font-size:15px;font-weight:700;color:rgba(200,232,255,0.45);">pro Monat</div>
     </div>
     <div class="card-divider"></div>
@@ -834,7 +815,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">CHF <span data-gym="80" data-home="80" data-online="80">80</span></strong> pro Training</span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">CHF <span data-gym="80" data-home="60" data-online="40">80</span></strong> pro Training</span>
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
@@ -893,9 +874,9 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   <div class="success-wrap" id="buchung-success">
     <div class="success-icon">🥊</div>
     <div class="success-title">BUCHUNG BESTÄTIGT</div>
-    <div class="success-sub">Bestätigungs-Email wurde an dich gesendet. Ich melde mich innerhalb von 24 Stunden auf WhatsApp um den Trainingsstart zu koordinieren.</div>
+    <div class="success-sub">Bestätigungs-Email wurde an dich gesendet. Bitte überweise den Betrag:</div>
 
-    <div class="iban-box" style="display:none !important;">
+    <div class="iban-box">
       <div class="iban-row">
         <div class="iban-label">Empfänger</div>
         <div class="iban-val">Giacomo Andrea La Rocca</div>
@@ -933,73 +914,53 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
 <div class="einzelstunde" id="einzelstunde-card" onclick="selectAngebot('einzelstunde', this)">
   <div>
     <p id="einzelstunde-text">Kein Abo? Einzelstunde ohne Bindung verfügbar.</p>
-    <strong id="einzelstunde-price" data-gym="CHF 120 pro Training" data-home="CHF 120 pro Training" data-online="CHF 120 pro Training">CHF 80 pro Training</strong>
+    <strong id="einzelstunde-price" data-gym="CHF 120 pro Training" data-home="CHF 100 pro Training" data-online="CHF 80 pro Training">CHF 80 pro Training</strong>
   </div>
   <button class="einzelstunde-btn" id="einzelstunde-btn">Jetzt buchen</button>
 </div>
 
+<!-- GRUPPENTRAINING -->
+<div class="rentabilitaet" id="gruppe-container">
+  <div class="section-label" id="gruppe-label">Gruppentraining</div>
+  <p class="rent-intro" id="gruppe-intro">Trainiere gemeinsam mit Freunden oder Bekannten. Günstiger pro Person und mehr Spass.</p>
+  <div id="gruppe-grid" style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:8px;">
 
-<!-- TRAININGSORT -->
-<div class="erklaerung">
-  <div class="section-label" id="label-trainingsort">Trainingsort in Zürich</div>
-  <div class="erklaer-grid">
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="ort1-title">Boxgym Altstetten</div>
-      <div class="erklaer-text" id="ort1-text">Badenerstrasse 569, 8048 Zürich. Ausgestattet mit Boxring, Sandsäcken, Doppelendball und Mattenfläche. Hier finden die meisten 1:1 Sessions statt, in ruhiger Atmosphäre ohne Anonymität eines Fitness Studios.</div>
+    <div id="gkarte-2" class="gruppe-karte" style="background:rgba(255,255,255,0.04);border:1px solid rgba(126,200,255,0.12);border-radius:14px;padding:24px 20px;text-align:center;" onclick="selectAngebot('gruppe2', this)">
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;" data-de="2 Personen" data-en="2 people">2 Personen</div>
+      <div id="gp2" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">60</div>
+      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;" data-de="CHF pro Person" data-en="CHF / person">CHF pro Person</div>
+      <button class="gruppe-buchen-btn" data-de="Buchen" data-en="Book">Buchen</button>
     </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="ort2-title">Anfahrt und Parkplatz</div>
-      <div class="erklaer-text" id="ort2-text">Tram 2 oder 3 bis Albisriederplatz, danach 5 Minuten zu Fuss. Parkplätze entlang Badenerstrasse oder im nahen Parkhaus. Outdoor und Home Sessions auf Anfrage in ganz Zürich.</div>
+
+    <div id="gkarte-4" class="gruppe-karte" style="background:rgba(26,101,214,0.14);border:1px solid rgba(26,101,214,0.45);border-radius:14px;padding:24px 20px;text-align:center;position:relative;" onclick="selectAngebot('gruppe4', this)">
+      <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:#1a65d6;color:#fff;font-size:9px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;padding:4px 12px;border-radius:20px;white-space:nowrap;" data-de="Beliebt" data-en="Popular">Beliebt</div>
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;" data-de="4 Personen" data-en="4 people">4 Personen</div>
+      <div id="gp4" style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">40</div>
+      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;" data-de="CHF pro Person" data-en="CHF / person">CHF pro Person</div>
+      <button class="gruppe-buchen-btn" data-de="Buchen" data-en="Book">Buchen</button>
     </div>
+
+    <div style="background:rgba(255,255,255,0.04);border:1px solid rgba(126,200,255,0.12);border-radius:14px;padding:24px 20px;text-align:center;">
+      <div style="font-size:10px;font-weight:800;letter-spacing:0.18em;text-transform:uppercase;color:rgba(126,200,255,0.55);margin-bottom:12px;" data-de="5+ Personen" data-en="5+ people">5+ Personen</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:48px;color:#fff;line-height:1;">···</div>
+      <div style="font-size:12px;font-weight:700;color:rgba(200,232,255,0.40);margin-top:4px;" data-de="Auf Anfrage" data-en="On request">Auf Anfrage</div>
+      <a href="mailto:giacomo@privateboxingzurich.ch" style="display:inline-block;margin-top:12px;padding:8px 18px;border-radius:8px;border:1.5px solid rgba(126,200,255,0.25);font-size:12px;font-weight:800;color:#7ec8ff;text-decoration:none;letter-spacing:0.06em;" data-de="Anfragen →" data-en="Contact →">Anfragen →</a>
+    </div>
+
   </div>
 </div>
 
-<!-- TESTIMONIALS -->
+<!-- ERKLÄRUNG -->
 <div class="erklaerung">
-  <div class="section-label" id="label-testimonials">Was Kunden sagen</div>
+  <div class="section-label" id="label-faq">Wie funktioniert das Abo?</div>
   <div class="erklaer-grid">
     <div class="erklaer-box">
-      <div class="erklaer-title" id="t1-title">Stefan</div>
-      <div class="erklaer-text" id="t1-text">"I started a year ago with Giacomo and I'm having a blast. He is considering your level, progress over time, has clear vision and structure."</div>
+      <div class="erklaer-title" id="faq1-title">Monatliche Zahlung</div>
+      <div class="erklaer-text" id="faq1-text">Das Abo wird monatlich per Banküberweisung bezahlt. Die Zahlung ist jeweils bis zum 1. des Monats fällig. Als Verwendungszweck bitte Paketname und deinen Namen angeben. Nach Zahlungseingang werden die Sessions für den laufenden Monat bestätigt.</div>
     </div>
     <div class="erklaer-box">
-      <div class="erklaer-title" id="t2-title">Yassin</div>
-      <div class="erklaer-text" id="t2-text">"Giacomo macht ein super Training, man hat die Möglichkeit Fragen zu stellen, genau das zu lernen worauf man hinarbeiten möchte."</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="t3-title">Deny</div>
-      <div class="erklaer-text" id="t3-text">"Es wird sehr gut auf dich geachtet, jede Sekunde wird voll in dich investiert und es wird alles sehr gut erklärt. Ich kann es nur weiter empfehlen."</div>
-    </div>
-  </div>
-</div>
-
-<!-- FAQ -->
-<div class="erklaerung">
-  <div class="section-label" id="label-faq">Häufige Fragen</div>
-  <div class="erklaer-grid">
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq1-title">Wie buche ich ein Probetraining?</div>
-      <div class="erklaer-text" id="faq1-text">Einfach über das Buchungsformular auf der <a href="/#booking" style="color:#7ec8ff;">Startseite</a> oder per WhatsApp an 076 844 11 10. Du erhältst innerhalb von 24 Stunden eine Antwort mit Terminvorschlag.</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq2-title">Was bringe ich zum Training mit?</div>
-      <div class="erklaer-text" id="faq2-text">Sportkleidung, Hallenschuhe und ein Handtuch. Bandagen und Handschuhe stelle ich beim Probetraining zur Verfügung. Wasser nicht vergessen.</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq3-title">Wie funktioniert die Zahlung?</div>
-      <div class="erklaer-text" id="faq3-text">Das Abo wird monatlich per Banküberweisung bezahlt. Zahlung jeweils bis zum 1. des Monats. Als Verwendungszweck Paketname und Name angeben. Nach Zahlungseingang werden Sessions bestätigt.</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq4-title">Wie flexibel sind die Termine?</div>
-      <div class="erklaer-text" id="faq4-text">Trainingszeiten werden individuell vereinbart. Sessions können flexibel über den Monat verteilt werden, je nach Verfügbarkeit von Trainer und Kunde. Absagen sind 24 Stunden vorher möglich.</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq5-title">Sind Branded Bandagen inbegriffen?</div>
-      <div class="erklaer-text" id="faq5-text">Im Standard Paket bekommst du einmalig Branded Bandagen geschenkt. Bei Starter und Premium ist das Equipment nicht inbegriffen, kann aber im Shop separat bestellt werden.</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq6-title">Ab welchem Alter kann ich starten?</div>
-      <div class="erklaer-text" id="faq6-text">Personal Boxing Training ab 18 Jahren. Für Jugendliche von 10 bis 17 Jahren biete ich das Subbrand Boxing Zürich Jugend an, mit eigenem Format und Vereinsstruktur.</div>
+      <div class="erklaer-title" id="faq2-title">Flexible Buchung</div>
+      <div class="erklaer-text" id="faq2-text">Trainingszeiten werden individuell vereinbart. Die Sessions können flexibel über den Monat verteilt werden, je nach Verfügbarkeit von Trainer und Kunde.</div>
     </div>
   </div>
 </div>
@@ -1039,7 +1000,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   </div>
 </div>
 
-<div class="footer">Private Boxing Zürich · www.privateboxingzurich.ch · <a href="/vergleich.html" style="color:inherit;text-decoration:none;border-bottom:1px dashed rgba(255,255,255,0.20);">Vergleich Boxstudios Zürich</a></div>
+<div class="footer">Private Boxing Zürich · www.privateboxingzurich.ch</div>
 
 <script>
 // ── EMAILJS CONFIG (ausfüllen nach EmailJS Account-Erstellung) ──
@@ -1069,8 +1030,8 @@ const paketeEN = {
   gruppe6:      { name: 'Group training – 6 people',   sessions: 'CHF per person / training' },
 };
 const preisData = {
-  online: { starter: 400, standard: 720, premium: 960, einzelstunde: 120, gruppe2: 80, gruppe4: 60 },
-  home:   { starter: 400, standard: 720, premium: 960, einzelstunde: 120, gruppe2: 80, gruppe4: 60 },
+  online: { starter: 200, standard: 360, premium: 480, einzelstunde: 80,  gruppe2: 40, gruppe4: 20 },
+  home:   { starter: 320, standard: 560, premium: 720, einzelstunde: 100, gruppe2: 60, gruppe4: 40 },
   gym:    { starter: 400, standard: 720, premium: 960, einzelstunde: 120, gruppe2: 80, gruppe4: 60 },
 };
 
@@ -1181,11 +1142,9 @@ function submitBuchung() {
     zweck:        (isGruppe ? 'Gruppentraining' : 'Abo') + ' Private Boxing Zürich ' + datum,
   };
 
-  // Send Giacomo (primary) und Customer (secondary) parallel
-  const sendGia = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_GIA, params);
-  const sendCus = emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CUS, params).catch(e => { console.warn('Kunden Bestätigung fehlgeschlagen:', e); return null; });
-  sendGia
-    .then(() => sendCus)
+  // Send to Giacomo
+  emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_GIA, params)
+    .then(() => emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_CUS, params))
     .then(() => {
       // Show success
       document.getElementById('buchung-form').style.display = 'none';
@@ -1225,31 +1184,11 @@ const translations = {
     'einzelstunde-text': 'Kein Abo? Einzelstunde ohne Bindung verfügbar.',
     'einzelstunde-btn': 'Jetzt buchen',
     'gruppe-intro': 'Trainiere gemeinsam mit Freunden oder Bekannten. Günstiger pro Person und mehr Spass.',
-    'label-trainingsort': 'Trainingsort in Zürich',
-    'ort1-title': 'Boxgym Altstetten',
-    'ort1-text': 'Badenerstrasse 569, 8048 Zürich. Ausgestattet mit Boxring, Sandsäcken, Doppelendball und Mattenfläche. Hier finden die meisten 1:1 Sessions statt, in ruhiger Atmosphäre ohne Anonymität eines Fitness Studios.',
-    'ort2-title': 'Anfahrt und Parkplatz',
-    'ort2-text': 'Tram 2 oder 3 bis Albisriederplatz, danach 5 Minuten zu Fuss. Parkplätze entlang Badenerstrasse oder im nahen Parkhaus. Outdoor und Home Sessions auf Anfrage in ganz Zürich.',
-    'label-testimonials': 'Was Kunden sagen',
-    't1-title': 'Stefan',
-    't1-text': '"I started a year ago with Giacomo and I\'m having a blast. He is considering your level, progress over time, has clear vision and structure."',
-    't2-title': 'Yassin',
-    't2-text': '"Giacomo macht ein super Training, man hat die Möglichkeit Fragen zu stellen, genau das zu lernen worauf man hinarbeiten möchte."',
-    't3-title': 'Deny',
-    't3-text': '"Es wird sehr gut auf dich geachtet, jede Sekunde wird voll in dich investiert und es wird alles sehr gut erklärt. Ich kann es nur weiter empfehlen."',
-    'label-faq': 'Häufige Fragen',
-    'faq1-title': 'Wie buche ich ein Probetraining?',
-    'faq1-text': 'Simply use the booking form on the <a href="/#booking" style="color:#7ec8ff;">homepage</a> or via WhatsApp at 076 844 11 10. You will receive a reply with a suggested appointment within 24 hours.',
-    'faq2-title': 'Was bringe ich zum Training mit?',
-    'faq2-text': 'Sportkleidung, Hallenschuhe und ein Handtuch. Bandagen und Handschuhe stelle ich beim Probetraining zur Verfügung. Wasser nicht vergessen.',
-    'faq3-title': 'Wie funktioniert die Zahlung?',
-    'faq3-text': 'Das Abo wird monatlich per Banküberweisung bezahlt. Zahlung jeweils bis zum 1. des Monats. Als Verwendungszweck Paketname und Name angeben. Nach Zahlungseingang werden Sessions bestätigt.',
-    'faq4-title': 'Wie flexibel sind die Termine?',
-    'faq4-text': 'Trainingszeiten werden individuell vereinbart. Sessions können flexibel über den Monat verteilt werden, je nach Verfügbarkeit von Trainer und Kunde. Absagen sind 24 Stunden vorher möglich.',
-    'faq5-title': 'Sind Branded Bandagen inbegriffen?',
-    'faq5-text': 'Im Standard Paket bekommst du einmalig Branded Bandagen geschenkt. Bei Starter und Premium ist das Equipment nicht inbegriffen, kann aber im Shop separat bestellt werden.',
-    'faq6-title': 'Ab welchem Alter kann ich starten?',
-    'faq6-text': 'Personal Boxing Training ab 18 Jahren. Für Jugendliche von 10 bis 17 Jahren biete ich das Subbrand Boxing Zürich Jugend an, mit eigenem Format und Vereinsstruktur.',
+    'label-faq': 'Wie funktioniert das Abo?',
+    'faq1-title': 'Monatliche Zahlung',
+    'faq1-text': 'Das Abo wird monatlich per Banküberweisung bezahlt. Die Zahlung ist jeweils bis zum 1. des Monats fällig. Als Verwendungszweck bitte Paketname und deinen Namen angeben. Nach Zahlungseingang werden die Sessions für den laufenden Monat bestätigt.',
+    'faq2-title': 'Flexible Buchung',
+    'faq2-text': 'Trainingszeiten werden individuell vereinbart. Die Sessions können flexibel über den Monat verteilt werden, je nach Verfügbarkeit von Trainer und Kunde.',
     'label-openboxing': 'Open Boxing',
     'openboxing-intro': 'Wenn der Trainingsraum bereits gemietet ist, können weitere Personen für ein eigenständiges Training dazukommen. Kein Coaching, einfach trainieren.',
     'label-institutionen': 'Schulen und Institutionen',
@@ -1275,31 +1214,11 @@ const translations = {
     'einzelstunde-text': 'No subscription? Single session available without commitment.',
     'einzelstunde-btn': 'Book now',
     'gruppe-intro': 'Train together with friends. Cheaper per person and more fun.',
-    'label-trainingsort': 'Training location in Zurich',
-    'ort1-title': 'Boxgym Altstetten',
-    'ort1-text': 'Badenerstrasse 569, 8048 Zurich. Equipped with boxing ring, heavy bags, double-end bag and mat area. Most 1:1 sessions take place here, in a calm atmosphere without the anonymity of a fitness studio.',
-    'ort2-title': 'Directions and parking',
-    'ort2-text': 'Tram 2 or 3 to Albisriederplatz, then 5 minutes on foot. Parking along Badenerstrasse or in the nearby parking garage. Outdoor and home sessions available on request throughout Zurich.',
-    'label-testimonials': 'What clients say',
-    't1-title': 'Stefan',
-    't1-text': '"I started a year ago with Giacomo and I\'m having a blast. He is considering your level, progress over time, has clear vision and structure."',
-    't2-title': 'Yassin',
-    't2-text': '"Giacomo offers excellent training, you have the chance to ask questions and learn exactly what you want to work on."',
-    't3-title': 'Deny',
-    't3-text': '"You receive full attention, every second is fully invested in you and everything is explained very clearly. I can only recommend it."',
-    'label-faq': 'Frequently asked questions',
-    'faq1-title': 'How do I book a trial session?',
-    'faq1-text': 'Simply use the booking form on this page or message me on WhatsApp at +41 76 844 11 10. You will get a reply with a time suggestion within 24 hours.',
-    'faq2-title': 'What do I bring to training?',
-    'faq2-text': 'Sportswear, indoor shoes and a towel. Hand wraps and gloves are provided for the trial session. Do not forget water.',
-    'faq3-title': 'How does payment work?',
-    'faq3-text': 'The subscription is paid monthly by bank transfer. Payment is due by the 1st of each month. Include package name and your name as reference. Sessions are confirmed once payment is received.',
-    'faq4-title': 'How flexible are the times?',
-    'faq4-text': 'Training times are arranged individually. Sessions can be distributed flexibly throughout the month, depending on trainer and client availability. Cancellations possible 24 hours in advance.',
-    'faq5-title': 'Are branded hand wraps included?',
-    'faq5-text': 'The Standard package includes a one-time branded hand wrap set. Starter and Premium do not include equipment, but it can be ordered separately from the shop.',
-    'faq6-title': 'What is the minimum age to start?',
-    'faq6-text': 'Personal Boxing Training from 18 years. For youth aged 10 to 17, I offer the sub-brand Boxing Zurich Jugend with its own format and association structure.',
+    'label-faq': 'How does the subscription work?',
+    'faq1-title': 'Monthly payment',
+    'faq1-text': 'The subscription is paid monthly by bank transfer. Payment is due by the 1st of each month. Please include the package name and your name as the payment reference. Sessions for the current month will be confirmed once payment is received.',
+    'faq2-title': 'Flexible booking',
+    'faq2-text': 'Training times are arranged individually. Sessions can be distributed flexibly throughout the month, depending on trainer and client availability.',
     'label-openboxing': 'Open Boxing',
     'openboxing-intro': 'When the training room is already rented, additional people can join for independent training. No coaching, just train.',
     'label-institutionen': 'Schools and institutions',

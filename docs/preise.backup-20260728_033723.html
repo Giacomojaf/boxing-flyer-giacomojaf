@@ -2,7 +2,6 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<script>if(location.hostname==='www.privateboxingzurich.ch')location.replace(location.href.replace('//www.','//'));</script>
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -674,23 +673,6 @@
   }
 </style>
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1053131573915653');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -705,7 +687,6 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       <li><a href="/community" id="nav-community" onclick="closeNav()">Community</a></li>
       <li><a href="/shop" id="nav-shop" onclick="closeNav()">Shop</a></li>
     </ul>
-    <a href="/#booking" class="nav-cta" id="nav-cta">Termin buchen</a>
     <div style="display:flex;background:rgba(255,255,255,0.06);border:1px solid rgba(126,200,255,0.15);border-radius:8px;overflow:hidden;">
       <button id="btn-de" onclick="setLang('de')" style="padding:6px 12px;border:none;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;">DE</button>
       <button id="btn-en" onclick="setLang('en')" style="padding:6px 12px;border:none;background:transparent;color:rgba(200,232,255,0.50);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;">EN</button>
@@ -748,7 +729,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
 </div>
 
 <!-- TOGGLE -->
-<div style="display:none;">
+<div style="display:flex;flex-direction:column;align-items:center;margin-bottom:32px;gap:12px;">
   <div style="font-size:16px;font-weight:800;color:#fff;" id="mode-label">Wo möchtest du trainieren?</div>
   <div id="mode-toggle" style="background:rgba(255,255,255,0.06);border:1px solid rgba(126,200,255,0.15);border-radius:12px;padding:6px;display:flex;gap:6px;flex-wrap:wrap;">
     <button id="btn-online" onclick="setMode('online')" style="display:none;padding:10px 24px;border-radius:8px;border:none;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:13px;font-weight:800;letter-spacing:0.08em;cursor:pointer;font-family:'Inter',sans-serif;">über Videocall 💻</button>
@@ -979,7 +960,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   <div class="erklaer-grid">
     <div class="erklaer-box">
       <div class="erklaer-title" id="faq1-title">Wie buche ich ein Probetraining?</div>
-      <div class="erklaer-text" id="faq1-text">Einfach über das Buchungsformular auf der <a href="/#booking" style="color:#7ec8ff;">Startseite</a> oder per WhatsApp an 076 844 11 10. Du erhältst innerhalb von 24 Stunden eine Antwort mit Terminvorschlag.</div>
+      <div class="erklaer-text" id="faq1-text">Einfach über das Buchungsformular auf dieser Seite oder per WhatsApp an 076 844 11 10. Du erhältst innerhalb von 24 Stunden eine Antwort mit Terminvorschlag.</div>
     </div>
     <div class="erklaer-box">
       <div class="erklaer-title" id="faq2-title">Was bringe ich zum Training mit?</div>
@@ -1239,7 +1220,7 @@ const translations = {
     't3-text': '"Es wird sehr gut auf dich geachtet, jede Sekunde wird voll in dich investiert und es wird alles sehr gut erklärt. Ich kann es nur weiter empfehlen."',
     'label-faq': 'Häufige Fragen',
     'faq1-title': 'Wie buche ich ein Probetraining?',
-    'faq1-text': 'Simply use the booking form on the <a href="/#booking" style="color:#7ec8ff;">homepage</a> or via WhatsApp at 076 844 11 10. You will receive a reply with a suggested appointment within 24 hours.',
+    'faq1-text': 'Einfach über das Buchungsformular auf dieser Seite oder per WhatsApp an 076 844 11 10. Du erhältst innerhalb von 24 Stunden eine Antwort mit Terminvorschlag.',
     'faq2-title': 'Was bringe ich zum Training mit?',
     'faq2-text': 'Sportkleidung, Hallenschuhe und ein Handtuch. Bandagen und Handschuhe stelle ich beim Probetraining zur Verfügung. Wasser nicht vergessen.',
     'faq3-title': 'Wie funktioniert die Zahlung?',

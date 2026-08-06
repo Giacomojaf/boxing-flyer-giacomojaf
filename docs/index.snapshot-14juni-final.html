@@ -2,14 +2,13 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<script>if(location.hostname==='www.privateboxingzurich.ch')location.replace(location.href.replace('//www.','//'));</script>
   <link rel="icon" type="image/png" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Boxen Zürich Altstetten · Personal Trainer | Private Boxing Zürich</title>
-<meta name="description" content="Boxen Zürich Altstetten mit Personal Trainer Giacomo La Rocca, anerkannter J+S Coach. Privates 1:1 Boxtraining im Boxgym Altstetten oder Outdoor. Probetraining CHF 80.">
-<meta property="og:title" content="Boxen Zürich Altstetten · Personal Trainer | Private Boxing Zürich">
-<meta property="og:description" content="Boxen Zürich Altstetten mit Personal Trainer Giacomo La Rocca, anerkannter J+S Coach. Privates 1:1 Boxtraining im Boxgym Altstetten oder Outdoor. Probetraining CHF 80.">
+<title>Boxen Zürich · Personal Boxing Trainer | Private Boxing Zürich</title>
+<meta name="description" content="Boxen lernen in Zürich mit J+S Coach Giacomo La Rocca, Personal Boxing Trainer. Privates Boxtraining im Gym, zuhause oder draussen. Ersttraining CHF 80.">
+<meta property="og:title" content="Boxen Zürich · Personal Boxing Trainer | Private Boxing Zürich">
+<meta property="og:description" content="Boxen lernen in Zürich mit J+S Coach Giacomo La Rocca, Personal Boxing Trainer. Privates Boxtraining im Gym, zuhause oder draussen. Ersttraining CHF 80.">
 <meta property="og:image" content="https://privateboxingzurich.ch/og-image.jpg">
 <meta property="og:url" content="https://privateboxingzurich.ch/">
 <meta property="og:type" content="website">
@@ -804,7 +803,7 @@
   }
 </style>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script type="text/javascript">(function(){ emailjs.init({ publicKey: "DPN76hd1SjOuEgZLb" }); })();</script>
+<script>emailjs.init('DPN76hd1SjOuEgZLb');</script>
 
 <script type="application/ld+json">
 {
@@ -840,23 +839,6 @@
   ]
 }
 </script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1053131573915653');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -1069,17 +1051,28 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
           <option>Allgemein / Spass</option>
         </select>
       </div>
-      <div id="ersttraining-deal" style="margin-bottom:16px;background:linear-gradient(135deg,rgba(76,175,128,0.12) 0%,rgba(26,101,214,0.10) 100%);border:1.5px solid rgba(76,175,128,0.35);border-radius:14px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;overflow:hidden;">
-        <div style="position:absolute;top:-16px;right:-16px;width:90px;height:90px;background:rgba(76,175,128,0.06);border-radius:50%;"></div>
-        <div>
-          <div style="font-size:9px;font-weight:800;letter-spacing:0.20em;text-transform:uppercase;color:#4caf80;margin-bottom:6px;" id="deal-label">Einstieg</div>
-          <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:3px;" id="deal-title">Erstes Training zum Kennenlernen</div>
-          <div style="font-size:12px;font-weight:500;color:rgba(200,232,255,0.50);" id="deal-sub">Keine Bindung · Kein Risiko · Lerne mich kennen</div>
-          <div style="margin-top:8px;font-size:12px;font-weight:700;color:#4caf80;" id="deal-extra">✓ Gratis Branded Bandagen inklusive</div>
+      <div style="margin-bottom:16px;">
+        <div style="font-size:15px;font-weight:800;color:#fff;margin-bottom:10px;" id="ort-label">Wo möchtest du trainieren?</div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button type="button" id="ort-btn-online" onclick="selectOrt(this,'online')" data-ort="über Videocall" data-mode="online" style="display:none;padding:9px 16px;border-radius:8px;border:1.5px solid rgba(126,200,255,0.25);background:transparent;color:rgba(200,232,255,0.60);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">über Videocall 💻</button>
+          <button type="button" id="ort-btn-home" onclick="selectOrt(this,'home')" data-ort="zu Hause & Outdoor" data-mode="home" style="padding:9px 16px;border-radius:8px;border:1.5px solid rgba(126,200,255,0.25);background:transparent;color:rgba(200,232,255,0.60);font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">zu Hause & Outdoor 📍</button>
+          <button type="button" id="ort-btn-gym" onclick="selectOrt(this,'gym')" data-ort="im Boxgym" data-mode="gym" style="padding:9px 16px;border-radius:8px;border:1.5px solid #1a65d6;background:linear-gradient(100deg,#1a65d6,#0e3f9a);color:#fff;font-size:12px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;letter-spacing:0.06em;transition:all 0.15s;">im Boxgym 🥊</button>
         </div>
-        <div style="text-align:right;flex-shrink:0;">
-          <div id="deal-price" style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:#4caf80;line-height:1;">80</div>
-          <div style="font-size:11px;font-weight:700;color:rgba(76,175,128,0.60);" id="deal-price-label">CHF / Session</div>
+        <input type="hidden" id="selected-ort" value="Zu Hause / Outdoor">
+
+        <!-- ERSTTRAINING DEAL -->
+        <div id="ersttraining-deal" style="margin-top:16px;background:linear-gradient(135deg,rgba(76,175,128,0.12) 0%,rgba(26,101,214,0.10) 100%);border:1.5px solid rgba(76,175,128,0.35);border-radius:14px;padding:20px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;position:relative;overflow:hidden;">
+          <div style="position:absolute;top:-16px;right:-16px;width:90px;height:90px;background:rgba(76,175,128,0.06);border-radius:50%;"></div>
+          <div>
+            <div style="font-size:9px;font-weight:800;letter-spacing:0.20em;text-transform:uppercase;color:#4caf80;margin-bottom:6px;" id="deal-label">Einstieg</div>
+            <div style="font-size:16px;font-weight:800;color:#fff;margin-bottom:3px;" id="deal-title">Erstes Training zum Kennenlernen</div>
+            <div style="font-size:12px;font-weight:500;color:rgba(200,232,255,0.50);" id="deal-sub">Keine Bindung · Kein Risiko · Lerne mich kennen</div>
+            <div style="margin-top:8px;font-size:12px;font-weight:700;color:#4caf80;" id="deal-extra">✓ Gratis Branded Bandagen inklusive</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div id="deal-price" style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:#4caf80;line-height:1;">60</div>
+            <div style="font-size:11px;font-weight:700;color:rgba(76,175,128,0.60);" id="deal-price-label">CHF / Session</div>
+          </div>
         </div>
       </div>
       <textarea placeholder="Nachricht (optional), Level, Fragen, Wünsche..."></textarea>
@@ -1564,7 +1557,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
     const day   = document.querySelector('.cal-option.active .cal-day')?.textContent || '–';
     const goal  = document.getElementById('bk-goal')?.value || '–';
     const note  = document.getElementById('bk-note')?.value.trim() || '–';
-    const ort   = document.getElementById('selected-ort')?.value || 'im Boxgym';
+    const ort   = document.getElementById('selected-ort').value || '–';
     const btn   = document.getElementById('submit-btn');
 
     if (!name || !email) { alert('Bitte Namen und E-Mail ausfüllen.'); return; }
@@ -1606,12 +1599,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       .catch(() => {
         btn.disabled = false;
         btn.textContent = 'TERMIN ANFRAGEN →';
-        const errMsg = document.createElement('div');
-        errMsg.style.cssText = 'margin-top:14px;padding:16px 20px;background:rgba(200,50,50,0.12);border:1.5px solid rgba(200,50,50,0.35);border-radius:12px;text-align:center;';
-        errMsg.innerHTML = '<div style="font-size:14px;font-weight:800;color:#ff6b6b;margin-bottom:8px;">Formular gerade nicht erreichbar</div>' +
-          '<div style="font-size:13px;color:rgba(200,232,255,0.70);margin-bottom:12px;">Bitte schreib direkt per WhatsApp — ich antworte innerhalb von 2 Stunden.</div>' +
-          '<a href="https://wa.me/41797011016?text=Hallo%20Giacomo%2C%20ich%20möchte%20ein%20Ersttraining%20buchen." style="display:inline-block;background:linear-gradient(100deg,#25d366,#1ebe5d);color:#fff;font-weight:800;font-size:13px;padding:10px 20px;border-radius:8px;text-decoration:none;letter-spacing:0.04em;">WhatsApp →</a>';
-        btn.parentElement.appendChild(errMsg);
+        alert('Fehler. Bitte schreib direkt an giacomo@privateboxingzurich.ch');
       });
   }
 </script>

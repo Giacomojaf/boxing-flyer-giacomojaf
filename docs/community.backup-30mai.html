@@ -2,14 +2,13 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<script>if(location.hostname==='www.privateboxingzurich.ch')location.replace(location.href.replace('//www.','//'));</script>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Boxing Community Zürich – Sparring, Events &amp; Outdoor-Training</title>
 <meta name="description" content="Die PBZ Community in Zürich: gemeinsames Sparring, Events und Outdoor-Training. Kostenlos beitreten via WhatsApp.">
-<link rel="canonical" href="https://privateboxingzurich.ch/community.html">
+<link rel="canonical" href="https://privateboxingzurich.ch/community">
 <meta property="og:title" content="Boxing Community Zürich – Private Boxing Zürich">
 <meta property="og:description" content="Sparring, Events und Outdoor-Training in Zürich. Kostenlos beitreten.">
-<meta property="og:url" content="https://privateboxingzurich.ch/community.html">
+<meta property="og:url" content="https://privateboxingzurich.ch/community">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="de_CH">
 <link rel="icon" type="image/png" href="/favicon.png">
@@ -29,14 +28,12 @@
   .lang-toggle { display:flex; background:rgba(255,255,255,0.06); border:1px solid rgba(126,200,255,0.15); border-radius:8px; overflow:hidden; }
   .lang-btn { padding:6px 12px; border:none; font-size:12px; font-weight:800; cursor:pointer; font-family:'Inter',sans-serif; border-radius:6px; transition:background 0.15s, color 0.15s; }
   .hamburger { display:none; background:none; border:none; color:rgba(200,232,255,0.80); font-size:24px; cursor:pointer; padding:4px 6px; line-height:1; }
-  .nav-cta { background:linear-gradient(100deg,#1a65d6,#0e3f9a); border:1.5px solid rgba(126,200,255,0.45); border-radius:8px; padding:10px 20px; font-size:14px; font-weight:800; color:#fff; text-decoration:none; letter-spacing:0.05em; }
   @media(max-width:768px){
     .hamburger { display:block; }
     nav { overflow:visible; padding: 14px 16px; }
     .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(8,21,42,0.97); padding:20px 24px; border-bottom:1px solid rgba(126,200,255,0.12); gap:20px; z-index:99; }
     .nav-links.open { display:flex; }
     .nav-links a { font-size:15px; }
-    .nav-cta { display:none; }
   }
 
   /* HERO */
@@ -116,23 +113,6 @@
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script>emailjs.init('DPN76hd1SjOuEgZLb');</script>
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1053131573915653');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
 </head>
 <body>
 
@@ -150,7 +130,6 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       <button id="btn-de" class="lang-btn" onclick="setLang('de')">DE</button>
       <button id="btn-en" class="lang-btn" onclick="setLang('en')">EN</button>
     </div>
-    <a href="/#booking" class="nav-cta">Termin buchen</a>
     <button class="hamburger" id="hamburger" onclick="toggleNav()">☰</button>
   </div>
 </nav>
