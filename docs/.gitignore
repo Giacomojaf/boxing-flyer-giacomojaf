@@ -1,0 +1,4 @@
+*.backup-*
+*.snapshot-*
+sitemap.backup-*
+*.backup-*_rollback
