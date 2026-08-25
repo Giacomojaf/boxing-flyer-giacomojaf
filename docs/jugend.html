@@ -397,6 +397,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       .then(() => {
         document.getElementById('jugend-form').style.display = 'none';
         document.getElementById('success-box').classList.add('visible');
+        fbq('track', 'Lead');
       })
       .catch(() => {
         btn.disabled = false;
