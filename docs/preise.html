@@ -18,6 +18,7 @@
   @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow-x: hidden; max-width: 100%; }
 
   /* NAV */
   nav {
@@ -172,6 +173,119 @@
     color: #fff;
     line-height: 1;
   }
+
+  .period-toggle-btn {
+    background: rgba(255,255,255,0.04);
+    border: 1.5px solid rgba(126,200,255,0.25);
+    border-radius: 20px;
+    padding: 8px 22px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(200,232,255,0.55);
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+  }
+  .period-toggle-btn.active {
+    background: linear-gradient(100deg,#1a65d6,#0e3f9a);
+    border-color: rgba(126,200,255,0.45);
+    color: #fff;
+  }
+
+  .pakete-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+  }
+  .pakete-header-row .section-label { margin-bottom: 0; }
+  .jahresabo-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: rgba(200,232,255,0.65);
+    user-select: none;
+  }
+  .jahresabo-switch {
+    position: relative;
+    width: 52px;
+    height: 28px;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.14);
+    border: 1.5px solid rgba(126,200,255,0.35);
+    display: inline-block;
+    transition: background 0.2s;
+    flex-shrink: 0;
+  }
+  .jahresabo-switch.active {
+    background: linear-gradient(100deg,#c62828,#ff5252);
+    border-color: #ff8a80;
+    box-shadow: 0 0 14px rgba(255,82,82,0.55);
+  }
+  .jahresabo-switch-knob {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+  }
+  .jahresabo-switch.active .jahresabo-switch-knob {
+    transform: translateX(24px);
+  }
+  .jahresabo-toggle-label {
+    font-size: 13px;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 30px;
+    background: rgba(126,200,255,0.08);
+    border: 1px solid rgba(126,200,255,0.20);
+  }
+  .premium-price-old {
+    position: relative;
+    display: inline-block;
+  }
+  .premium-price-old::after {
+    content: '';
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    top: 50%;
+    height: 4px;
+    background: #ff5252;
+    transform: translateY(-50%);
+    border-radius: 2px;
+  }
+  .premium-discount-badge {
+    position: absolute;
+    top: -13px;
+    right: 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    color: #fff;
+    background: linear-gradient(100deg,#c62828,#ff5252);
+    padding: 4px 13px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  #card-premium.jahresabo-active {
+    border-color: rgba(255,82,82,0.55);
+    box-shadow: 0 0 0 1px rgba(255,82,82,0.25);
+  }
   .card-price sup {
     font-family: 'Inter', sans-serif;
     font-size: 16px;
@@ -271,6 +385,11 @@
   .einzelstunde.selected {
     border-color: #4caf80 !important;
     box-shadow: 0 0 0 2px rgba(76,175,128,0.25);
+  }
+  #schnupper-card:hover { border-color: rgba(76,175,128,0.60) !important; }
+  #schnupper-card.selected {
+    border-color: #4caf80 !important;
+    box-shadow: 0 0 0 2px rgba(76,175,128,0.35);
   }
   .einzelstunde p {
     font-size: 13px;
@@ -628,7 +747,7 @@
     .nav-links.open { display:flex; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(8,21,42,0.97); padding:20px 24px; border-bottom:1px solid rgba(126,200,255,0.12); gap:20px; z-index:99; }
     .nav-links.open a { font-size:15px; }
     .hamburger { display:block; }
-    .nav-logo { font-size: 20px; }
+    .nav-logo { font-size: 15px; letter-spacing: 0.03em; }
     .nav-cta { display: none; }
 
     body { padding: 24px 16px; }
@@ -721,7 +840,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
 </div>
 
 <!-- SCHNUPPERSTUNDE -->
-<div id="schnupper-card" style="
+<div id="schnupper-card" onclick="selectAngebot('erstraining', this)" style="
   background: linear-gradient(135deg, rgba(76,175,128,0.12) 0%, rgba(26,101,214,0.10) 100%);
   border: 1.5px solid rgba(76,175,128,0.35);
   border-radius: 16px;
@@ -733,6 +852,8 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   gap: 24px;
   position: relative;
   overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, box-shadow 0.2s;
 ">
   <div style="position:absolute;top:-20px;right:-20px;width:120px;height:120px;background:rgba(76,175,128,0.06);border-radius:50%;"></div>
   <div>
@@ -743,7 +864,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   </div>
   <div style="text-align:right;flex-shrink:0;">
     <div id="schnupper-price" style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#4caf80;line-height:1;" data-gym="80" data-home="80" data-online="80">80</div>
-    <div style="font-size:12px;font-weight:700;color:rgba(76,175,128,0.60);">CHF pro Training</div>
+    <div style="font-size:12px;font-weight:700;color:rgba(76,175,128,0.60);">CHF / Session</div>
   </div>
 </div>
 
@@ -758,28 +879,36 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
 </div>
 
 <!-- PAKETE -->
-<div class="section-label" id="label-pakete">Trainingspakete</div>
+<div class="pakete-header-row">
+  <div class="section-label" id="label-pakete">Trainingspakete</div>
+  <label class="jahresabo-toggle-label">
+    <span id="jahresabo-toggle-text">In Jahresabo umwandeln</span>
+    <span class="jahresabo-switch" id="jahresabo-switch" onclick="toggleJahresabo()">
+      <span class="jahresabo-switch-knob"></span>
+    </span>
+  </label>
+</div>
 <div class="cards" id="abo-container">
 
   <div class="card" id="card-starter" onclick="selectCard(this,'starter')">
     <div class="card-name">Starter</div>
     <div style="display:flex;align-items:baseline;justify-content:center;gap:6px;margin:4px 0 16px;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" data-gym="400" data-home="400" data-online="400">400</span></div>
-      <div style="font-size:15px;font-weight:700;color:rgba(200,232,255,0.45);">pro Monat</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:66px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" data-gym="100" data-home="100" data-online="100">100</span></div>
+      <div style="font-size:15px;font-weight:700;color:rgba(200,232,255,0.45);">pro Training</div>
     </div>
     <div class="card-divider"></div>
     <ul style="list-style:none;padding:0;margin:10px 0 0;text-align:left;">
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);">beinhaltet <strong style="font-weight:800;color:#fff;">4 Sessions</strong></span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);">Paket beinhaltet <strong style="font-weight:800;color:#fff;">4 Sessions</strong></span>
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">CHF <span data-gym="100" data-home="100" data-online="100">100</span></strong> pro Training</span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">1</strong> Session pro Woche</span>
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">1</strong> Session pro Woche</span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);">Gesamttotal <strong style="font-weight:800;color:#fff;">CHF 400</strong></span>
       </li>
     </ul>
     <div style="margin:10px -20px 14px;padding:9px 20px;background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);text-align:center;">
@@ -794,22 +923,22 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
     <div class="popular-badge" id="popular-badge">Beliebteste Wahl</div>
     <div class="card-name">Standard</div>
     <div style="display:flex;align-items:baseline;justify-content:center;gap:6px;margin:4px 0 16px;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" data-gym="360" data-home="360" data-online="360">360</span></div>
-      <div style="font-size:15px;font-weight:700;color:rgba(200,232,255,0.45);">pro Monat</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:66px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" data-gym="90" data-home="90" data-online="90">90</span></div>
+      <div style="font-size:15px;font-weight:700;color:rgba(200,232,255,0.45);">pro Training</div>
     </div>
     <div class="card-divider"></div>
     <ul style="list-style:none;padding:0;margin:10px 0 0;text-align:left;">
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);">beinhaltet <strong style="font-weight:800;color:#fff;">8 Sessions</strong></span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);">Paket beinhaltet <strong style="font-weight:800;color:#fff;">8 Sessions</strong></span>
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">CHF <span data-gym="90" data-home="90" data-online="90">90</span></strong> pro Training</span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">1 bis 2</strong> Sessions pro Woche</span>
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">1 bis 2</strong> Sessions pro Woche</span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);">Gesamttotal <strong style="font-weight:800;color:#fff;">CHF 720</strong></span>
       </li>
     </ul>
     <div style="margin:10px -20px 14px;padding:9px 20px;background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);text-align:center;">
@@ -820,33 +949,42 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
     </ul>
   </div>
 
-  <div class="card" id="card-premium" onclick="selectCard(this,'premium')">
+  <div style="display:flex;flex-direction:column;">
+  <div id="premium-suboptions" style="display:none;justify-content:center;gap:10px;margin-bottom:10px;">
+    <button type="button" class="period-toggle-btn active" id="premium-btn-elite" onclick="event.stopPropagation(); selectJahresaboOption('elite')">Elite</button>
+    <button type="button" class="period-toggle-btn" id="premium-btn-pro" onclick="event.stopPropagation(); selectJahresaboOption('pro')">Pro</button>
+  </div>
+  <div class="card" id="card-premium" style="flex:1;" onclick="selectCard(this, window._jahresabo ? window._jahresaboOption : 'premium')">
     <div class="card-name">Premium</div>
     <div style="display:flex;align-items:baseline;justify-content:center;gap:6px;margin:4px 0 16px;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:52px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" data-gym="320" data-home="320" data-online="320">320</span></div>
-      <div style="font-size:15px;font-weight:700;color:rgba(200,232,255,0.45);">pro Monat</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:66px;color:#fff;line-height:1;"><sup style="font-family:'Inter',sans-serif;font-size:14px;font-weight:700;color:rgba(200,232,255,0.55);vertical-align:middle;">CHF </sup><span class="price-val" id="premium-price" data-gym="80" data-home="80" data-online="80">80</span><span class="premium-discount-badge" id="premium-discount-badge" style="display:none;"></span></div>
+      <div style="display:flex;flex-direction:column;align-items:flex-start;gap:1px;">
+        <span id="premium-new-price" style="display:none;font-family:'Bebas Neue',sans-serif;font-size:22px;color:#ff5252;line-height:1;">CHF 75.83</span>
+        <div id="premium-price-sub" style="font-size:15px;font-weight:700;color:rgba(200,232,255,0.45);">pro Training</div>
+      </div>
     </div>
     <div class="card-divider"></div>
     <ul style="list-style:none;padding:0;margin:10px 0 0;text-align:left;">
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);">beinhaltet <strong style="font-weight:800;color:#fff;">12 Sessions</strong></span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);">Paket beinhaltet <strong style="font-weight:800;color:#fff;" id="premium-sessions-count">12 Sessions</strong></span>
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.06);">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">CHF <span data-gym="80" data-home="80" data-online="80">80</span></strong> pro Training</span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;" id="premium-freq">1 bis 3</strong><span id="premium-freq-unit"> Sessions pro Woche</span></span>
       </li>
       <li style="display:flex;align-items:center;gap:10px;padding:9px 0;">
         <span style="width:6px;height:6px;border-radius:50%;background:#7ec8ff;flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);"><strong style="font-weight:800;color:#fff;">1 bis 3</strong> Sessions pro Woche</span>
+        <span style="font-size:14px;font-weight:600;color:rgba(200,232,255,0.85);">Gesamttotal <span id="premium-total-old" style="display:none;color:#fff;text-decoration:line-through;text-decoration-color:#ff5252;text-decoration-thickness:2px;font-weight:700;margin-right:6px;"></span><strong style="font-weight:800;color:#fff;" id="premium-total">CHF 960</strong></span>
       </li>
     </ul>
     <div style="margin:10px -20px 14px;padding:9px 20px;background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.07);border-bottom:1px solid rgba(255,255,255,0.07);text-align:center;">
-      <span style="font-size:15px;font-weight:800;color:#4caf80;">Laufzeit: 3 Monate</span>
+      <span style="font-size:15px;font-weight:800;color:#4caf80;" id="premium-duration-label">Laufzeit: 3 Monate</span>
     </div>
     <ul class="features">
-      <li id="premium-nein-handschuhe" class="nein" data-de="Keine Branded Bandagen inklusive" data-en="No branded hand wraps included">Keine Branded Bandagen inklusive</li>
+      <li id="premium-bandagen" class="nein" data-de="Keine Branded Bandagen inklusive" data-en="No branded hand wraps included">Keine Branded Bandagen inklusive</li>
     </ul>
+  </div>
   </div>
 
 </div>
@@ -954,56 +1092,6 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   </div>
 </div>
 
-<!-- TESTIMONIALS -->
-<div class="erklaerung">
-  <div class="section-label" id="label-testimonials">Was Kunden sagen</div>
-  <div class="erklaer-grid">
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="t1-title">Stefan</div>
-      <div class="erklaer-text" id="t1-text">"I started a year ago with Giacomo and I'm having a blast. He is considering your level, progress over time, has clear vision and structure."</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="t2-title">Yassin</div>
-      <div class="erklaer-text" id="t2-text">"Giacomo macht ein super Training, man hat die Möglichkeit Fragen zu stellen, genau das zu lernen worauf man hinarbeiten möchte."</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="t3-title">Deny</div>
-      <div class="erklaer-text" id="t3-text">"Es wird sehr gut auf dich geachtet, jede Sekunde wird voll in dich investiert und es wird alles sehr gut erklärt. Ich kann es nur weiter empfehlen."</div>
-    </div>
-  </div>
-</div>
-
-<!-- FAQ -->
-<div class="erklaerung">
-  <div class="section-label" id="label-faq">Häufige Fragen</div>
-  <div class="erklaer-grid">
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq1-title">Wie buche ich ein Probetraining?</div>
-      <div class="erklaer-text" id="faq1-text">Einfach über das Buchungsformular auf der <a href="/#booking" style="color:#7ec8ff;">Startseite</a> oder per WhatsApp an 076 844 11 10. Du erhältst innerhalb von 24 Stunden eine Antwort mit Terminvorschlag.</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq2-title">Was bringe ich zum Training mit?</div>
-      <div class="erklaer-text" id="faq2-text">Sportkleidung, Hallenschuhe und ein Handtuch. Bandagen und Handschuhe stelle ich beim Probetraining zur Verfügung. Wasser nicht vergessen.</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq3-title">Wie funktioniert die Zahlung?</div>
-      <div class="erklaer-text" id="faq3-text">Das Abo wird monatlich per Banküberweisung bezahlt. Zahlung jeweils bis zum 1. des Monats. Als Verwendungszweck Paketname und Name angeben. Nach Zahlungseingang werden Sessions bestätigt.</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq4-title">Wie flexibel sind die Termine?</div>
-      <div class="erklaer-text" id="faq4-text">Trainingszeiten werden individuell vereinbart. Sessions können flexibel über den Monat verteilt werden, je nach Verfügbarkeit von Trainer und Kunde. Absagen sind 24 Stunden vorher möglich.</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq5-title">Sind Branded Bandagen inbegriffen?</div>
-      <div class="erklaer-text" id="faq5-text">Im Standard Paket bekommst du einmalig Branded Bandagen geschenkt. Bei Starter und Premium ist das Equipment nicht inbegriffen, kann aber im Shop separat bestellt werden.</div>
-    </div>
-    <div class="erklaer-box">
-      <div class="erklaer-title" id="faq6-title">Ab welchem Alter kann ich starten?</div>
-      <div class="erklaer-text" id="faq6-text">Personal Boxing Training ab 18 Jahren. Für Jugendliche von 10 bis 17 Jahren biete ich das Subbrand Boxing Zürich Jugend an, mit eigenem Format und Vereinsstruktur.</div>
-    </div>
-  </div>
-</div>
-
 <!-- OPEN BOXING -->
 <div class="rentabilitaet" id="rent-section">
   <div class="section-label" id="label-openboxing">Open Boxing</div>
@@ -1051,33 +1139,92 @@ const IBAN                 = 'CH34 0070 0114 9053 9000 6';       // z.B. CH56 04
 
 // Paket-Daten
 const pakete = {
+  erstraining:  { name: 'Erstraining',                 sessions: '1 Training zum Kennenlernen' },
   starter:      { name: 'Starter',                     sessions: 'beinhaltet 4 Sessions' },
   standard:     { name: 'Standard',                    sessions: 'beinhaltet 8 Sessions' },
   premium:      { name: 'Premium',                     sessions: 'beinhaltet 12 Sessions' },
+  elite:        { name: 'Elite (Jahresabo)',           sessions: 'beinhaltet 48 Sessions' },
+  pro:          { name: 'Pro (Jahresabo)',             sessions: 'beinhaltet 96 Sessions' },
   einzelstunde: { name: 'Einzelstunde',                sessions: '1 Session (ohne Abo)' },
   gruppe2:      { name: 'Gruppentraining – 2 Pers.',   sessions: 'CHF pro Person pro Training' },
   gruppe4:      { name: 'Gruppentraining – 4 Pers.',   sessions: 'CHF pro Person pro Training' },
   gruppe6:      { name: 'Gruppentraining – 6 Pers.',   sessions: 'CHF pro Person pro Training' },
 };
 const paketeEN = {
+  erstraining:  { name: 'First Session',               sessions: '1 session to get to know each other' },
   starter:      { name: 'Starter',                     sessions: '4 sessions / month' },
   standard:     { name: 'Standard',                    sessions: '8 sessions / month' },
   premium:      { name: 'Premium',                     sessions: '12 sessions / month' },
+  elite:        { name: 'Elite (Annual)',              sessions: '48 sessions / year' },
+  pro:          { name: 'Pro (Annual)',                sessions: '96 sessions / year' },
   einzelstunde: { name: 'Single session',              sessions: '1 session (no subscription)' },
   gruppe2:      { name: 'Group training – 2 people',   sessions: 'CHF per person / session' },
   gruppe4:      { name: 'Group training – 4 people',   sessions: 'CHF per person / training' },
   gruppe6:      { name: 'Group training – 6 people',   sessions: 'CHF per person / training' },
 };
 const preisData = {
-  online: { starter: 400, standard: 720, premium: 960, einzelstunde: 120, gruppe2: 80, gruppe4: 60 },
-  home:   { starter: 400, standard: 720, premium: 960, einzelstunde: 120, gruppe2: 80, gruppe4: 60 },
-  gym:    { starter: 400, standard: 720, premium: 960, einzelstunde: 120, gruppe2: 80, gruppe4: 60 },
+  online: { erstraining: 80, starter: 400, standard: 720, premium: 960, elite: 3640, pro: 6900, einzelstunde: 120, gruppe2: 80, gruppe4: 60 },
+  home:   { erstraining: 80, starter: 400, standard: 720, premium: 960, elite: 3640, pro: 6900, einzelstunde: 120, gruppe2: 80, gruppe4: 60 },
+  gym:    { erstraining: 80, starter: 400, standard: 720, premium: 960, elite: 3640, pro: 6900, einzelstunde: 120, gruppe2: 80, gruppe4: 60 },
 };
 
 let selectedPaket = null;
 
+const jahresaboData = {
+  premium: { discount: null,    newPrice: null,    fullTotal: null,     sessions: { de: '12 Sessions', en: '12 sessions' }, freq: '1 bis 3', freqUnit: { de: ' Sessions pro Woche', en: ' sessions per week' }, total: 'CHF 960',    duration: { de: 'Laufzeit: 3 Monate', en: 'Duration: 3 months' },     bandagenText: { de: 'Keine Branded Bandagen inklusive', en: 'No branded hand wraps included' }, bandagenNein: true },
+  pro:     { discount: '10%',    newPrice: 'CHF 71.88', fullTotal: "CHF 7'680", sessions: { de: '96 Sessions', en: '96 sessions' }, freq: '2',       freqUnit: { de: ' Sessions pro Woche', en: ' sessions per week' }, total: "CHF 6'900", duration: { de: 'Gültigkeit: 12 Monate', en: 'Valid for 12 months' }, bandagenText: { de: 'Branded Bandagen inklusive', en: 'Branded hand wraps included' },       bandagenNein: false },
+  elite:   { discount: '5%',     newPrice: 'CHF 75.83', fullTotal: "CHF 3'840", sessions: { de: '48 Sessions', en: '48 sessions' }, freq: '1',       freqUnit: { de: ' Session pro Woche', en: ' session per week' },  total: "CHF 3'640", duration: { de: 'Gültigkeit: 12 Monate', en: 'Valid for 12 months' }, bandagenText: { de: 'Branded Bandagen inklusive', en: 'Branded hand wraps included' },       bandagenNein: false }
+};
+window._jahresabo = false;
+window._jahresaboOption = 'elite';
+
+function toggleJahresabo() {
+  window._jahresabo = !window._jahresabo;
+  document.getElementById('jahresabo-switch').classList.toggle('active', window._jahresabo);
+  document.getElementById('premium-suboptions').style.display = window._jahresabo ? 'flex' : 'none';
+  document.getElementById('card-premium').classList.toggle('jahresabo-active', window._jahresabo);
+  renderPremiumCard();
+}
+
+function selectJahresaboOption(opt) {
+  window._jahresaboOption = opt;
+  document.getElementById('premium-btn-pro').classList.toggle('active', opt === 'pro');
+  document.getElementById('premium-btn-elite').classList.toggle('active', opt === 'elite');
+  renderPremiumCard();
+}
+
+function renderPremiumCard() {
+  const key = window._jahresabo ? window._jahresaboOption : 'premium';
+  const d = jahresaboData[key];
+  const lang = window._currentLang || 'de';
+
+  document.getElementById('premium-price').classList.toggle('premium-price-old', window._jahresabo);
+
+  const badgeEl = document.getElementById('premium-discount-badge');
+  badgeEl.style.display = window._jahresabo ? 'inline' : 'none';
+  badgeEl.textContent = window._jahresabo ? ('-' + d.discount) : '';
+
+  const newPriceEl = document.getElementById('premium-new-price');
+  newPriceEl.style.display = window._jahresabo ? 'block' : 'none';
+  newPriceEl.textContent = window._jahresabo ? d.newPrice : '';
+
+  document.getElementById('premium-sessions-count').textContent = d.sessions[lang];
+  document.getElementById('premium-freq').textContent = d.freq;
+  document.getElementById('premium-freq-unit').textContent = d.freqUnit[lang];
+  document.getElementById('premium-total').textContent = d.total;
+  document.getElementById('premium-duration-label').textContent = d.duration[lang];
+
+  const totalOldEl = document.getElementById('premium-total-old');
+  totalOldEl.style.display = (window._jahresabo && d.fullTotal) ? 'inline' : 'none';
+  totalOldEl.textContent = (window._jahresabo && d.fullTotal) ? d.fullTotal : '';
+
+  const bandagenEl = document.getElementById('premium-bandagen');
+  bandagenEl.textContent = d.bandagenText[lang];
+  bandagenEl.classList.toggle('nein', d.bandagenNein);
+}
+
 function clearAllSelected() {
-  document.querySelectorAll('.card, .einzelstunde, .gruppe-karte').forEach(c => c.classList.remove('selected'));
+  document.querySelectorAll('.card, .einzelstunde, .gruppe-karte, #schnupper-card').forEach(c => c.classList.remove('selected'));
 }
 
 function openBuchungForm(paket) {
@@ -1099,7 +1246,9 @@ function openBuchungForm(paket) {
 
   // Move form below the relevant section
   let anchor;
-  if (['starter','standard','premium'].includes(paket)) {
+  if (paket === 'erstraining') {
+    anchor = document.getElementById('schnupper-card');
+  } else if (['starter','standard','premium','pro','elite'].includes(paket)) {
     anchor = document.getElementById('abo-container');
   } else if (paket === 'einzelstunde') {
     anchor = document.getElementById('einzelstunde-card');
@@ -1221,6 +1370,7 @@ const translations = {
     'btn-home': 'zu Hause & Outdoor 📍',
     'btn-gym': 'im Boxgym 🥊',
     'label-pakete': 'Trainingspakete',
+    'jahresabo-toggle-text': 'In Jahresabo umwandeln',
     'popular-badge': 'Beliebteste Wahl',
     'einzelstunde-text': 'Kein Abo? Einzelstunde ohne Bindung verfügbar.',
     'einzelstunde-btn': 'Jetzt buchen',
@@ -1271,6 +1421,7 @@ const translations = {
     'btn-home': 'at Home & Outdoor 📍',
     'btn-gym': 'in the Boxing Gym 🥊',
     'label-pakete': 'Training packages',
+    'jahresabo-toggle-text': 'Switch to annual plan',
     'popular-badge': 'Most popular',
     'einzelstunde-text': 'No subscription? Single session available without commitment.',
     'einzelstunde-btn': 'Book now',
@@ -1346,15 +1497,10 @@ function setLang(lang) {
     hf.textContent = txt;
   }
 
-  // Gruppentraining label (dynamic, preserve mode)
-  const gruppeLabels = {
-    de: { gym: 'Gruppentraining im Gym', home: 'Gruppentraining zu Hause / Outdoor', online: 'Gruppentraining über Videocall' },
-    en: { gym: 'Group training in the gym', home: 'Group training at home / outdoor', online: 'Group training via video call' }
-  };
-  const currentMode = window._currentMode || 'home';
-  document.getElementById('gruppe-label').textContent = gruppeLabels[lang][currentMode];
-
   window._currentLang = lang;
+
+  // Re-apply Jahresabo state (setLang's generic data-de/data-en pass would otherwise reset premium-bandagen)
+  if (typeof renderPremiumCard === 'function') renderPremiumCard();
 }
 
 
@@ -1399,20 +1545,10 @@ function setMode(mode) {
   document.getElementById('schnupper-extra').style.display = mode === 'gym' ? 'block' : 'none';
   document.getElementById('handschuhe-feature').style.display = mode !== 'online' ? 'flex' : 'none';
   document.getElementById('starter-nein-handschuhe').style.display = mode !== 'online' ? 'flex' : 'none';
-  document.getElementById('premium-nein-handschuhe').style.display = mode !== 'online' ? 'flex' : 'none';
+  const premiumBandagenEl = document.getElementById('premium-bandagen');
+  if (premiumBandagenEl) premiumBandagenEl.style.display = mode !== 'online' ? 'flex' : 'none';
 
   window._currentMode = mode;
-  // Gruppentraining
-  const lang = window._currentLang || 'de';
-  const gruppeLabels = {
-    de: { gym: 'Gruppentraining im Gym', home: 'Gruppentraining zu Hause / Outdoor', online: 'Gruppentraining über Videocall' },
-    en: { gym: 'Group training in the gym', home: 'Group training at home / outdoor', online: 'Group training via video call' }
-  };
-  document.getElementById('gruppe-label').textContent = gruppeLabels[lang][mode];
-  const einzelPreise = { gym: 120, home: 100, online: 80 };
-  const r5 = v => Math.ceil(v / 5) * 5;
-  document.getElementById('gp2').textContent = preisData[mode].gruppe2;
-  document.getElementById('gp4').textContent = preisData[mode].gruppe4;
 }
 </script>
 
