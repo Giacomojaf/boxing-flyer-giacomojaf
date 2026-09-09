@@ -384,8 +384,8 @@ document.getElementById('club-form').addEventListener('submit', function(e) {
     position: fixed;
     bottom: 18px;
     right: 18px;
-    padding: 14px 24px;
-    border-radius: 30px;
+    padding: 17px 30px;
+    border-radius: 34px;
     background: linear-gradient(135deg,#1a65d6,#0e3f9a);
     color: #fff;
     text-decoration: none;
@@ -394,18 +394,83 @@ document.getElementById('club-form').addEventListener('submit', function(e) {
     text-align: center;
     white-space: nowrap;
     font-family: 'Inter', sans-serif;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 800;
     letter-spacing: 0.03em;
     text-transform: uppercase;
-    box-shadow: 0 6px 20px rgba(10,40,100,0.5);
+    box-shadow: 0 10px 32px rgba(10,40,100,0.70), 0 0 0 3px rgba(126,200,255,0.18);
     z-index: 999;
-    border: 1.5px solid rgba(255,255,255,0.20);
+    border: 2px solid rgba(255,255,255,0.30);
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
   }
+  .mobile-book-fab:active { cursor: grabbing; }
   @media (max-width: 768px) {
     .mobile-book-fab { display: flex; }
   }
 </style>
 <a href="/#booking" class="mobile-book-fab">Termin buchen</a>
+
+<script>
+(function(){
+  function initFab() {
+    var fab = document.querySelector('.mobile-book-fab');
+    if (!fab) return;
+    var dragging = false, moved = false, startX, startY, startRight, startBottom;
+
+    try {
+      var pos = JSON.parse(localStorage.getItem('pbz_fab_pos') || 'null');
+      if (pos) { fab.style.right = pos.right + 'px'; fab.style.bottom = pos.bottom + 'px'; }
+    } catch(e) {}
+
+    function point(e) { return e.touches ? e.touches[0] : e; }
+
+    function onDown(e) {
+      dragging = true; moved = false;
+      var p = point(e);
+      startX = p.clientX; startY = p.clientY;
+      var rect = fab.getBoundingClientRect();
+      startRight = window.innerWidth - rect.right;
+      startBottom = window.innerHeight - rect.bottom;
+    }
+    function onMove(e) {
+      if (!dragging) return;
+      var p = point(e);
+      var dx = p.clientX - startX, dy = p.clientY - startY;
+      if (Math.abs(dx) > 4 || Math.abs(dy) > 4) moved = true;
+      if (!moved) return;
+      if (e.cancelable) e.preventDefault();
+      var rect = fab.getBoundingClientRect();
+      var newRight = Math.max(4, Math.min(startRight - dx, window.innerWidth - rect.width - 4));
+      var newBottom = Math.max(4, Math.min(startBottom - dy, window.innerHeight - rect.height - 4));
+      fab.style.right = newRight + 'px';
+      fab.style.bottom = newBottom + 'px';
+    }
+    function onUp() {
+      if (!dragging) return;
+      dragging = false;
+      if (moved) {
+        var rect = fab.getBoundingClientRect();
+        var right = window.innerWidth - rect.right, bottom = window.innerHeight - rect.bottom;
+        try { localStorage.setItem('pbz_fab_pos', JSON.stringify({right: right, bottom: bottom})); } catch(e) {}
+      }
+    }
+    fab.addEventListener('touchstart', onDown, {passive:true});
+    fab.addEventListener('touchmove', onMove, {passive:false});
+    fab.addEventListener('touchend', onUp);
+    fab.addEventListener('mousedown', onDown);
+    window.addEventListener('mousemove', onMove);
+    window.addEventListener('mouseup', onUp);
+    fab.addEventListener('click', function(e){ if (moved) { e.preventDefault(); moved = false; } });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFab);
+  } else {
+    initFab();
+  }
+})();
+</script>
 </body>
 </html>
