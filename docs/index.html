@@ -724,7 +724,7 @@
   @media (max-width: 768px) {
     nav { padding: 14px 16px; }
     .nav-links { display: none; }
-    .nav-links.open { display:flex; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(8,21,42,0.97); padding:20px 24px; border-bottom:1px solid rgba(126,200,255,0.12); gap:20px; z-index:99; }
+    .nav-links.open { display:flex; flex-direction:column; align-items:center; position:absolute; top:100%; left:0; right:0; background:rgba(8,21,42,0.97); padding:20px 24px; border-bottom:1px solid rgba(126,200,255,0.12); gap:20px; z-index:99; }
     .nav-links.open a { font-size:15px; }
     .hamburger { display:block; }
     .nav-cta { padding: 8px 14px; font-size: 12px; }
@@ -1624,31 +1624,30 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   .mobile-book-fab {
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
+    bottom: 18px;
+    right: 18px;
+    padding: 14px 24px;
+    border-radius: 30px;
     background: linear-gradient(135deg,#1a65d6,#0e3f9a);
     color: #fff;
     text-decoration: none;
     align-items: center;
     justify-content: center;
     text-align: center;
+    white-space: nowrap;
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 800;
-    line-height: 1.25;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     box-shadow: 0 6px 20px rgba(10,40,100,0.5);
     z-index: 999;
-    border: 2px solid rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.20);
   }
   @media (max-width: 768px) {
     .mobile-book-fab { display: flex; }
   }
 </style>
-<a href="#booking" class="mobile-book-fab">Termin<br>buchen</a>
+<a href="#booking" class="mobile-book-fab">Termin buchen</a>
 </body>
 </html>

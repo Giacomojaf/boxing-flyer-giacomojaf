@@ -38,12 +38,24 @@
   }
   .nav-logo {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 22px;
+    font-size: 28px;
     letter-spacing: 0.06em;
     color: #fff;
     text-decoration: none;
   }
   .nav-logo span { color: var(--blue); }
+  .nav-links { display: flex; list-style: none; gap: 24px; align-items: center; }
+  .nav-links a {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.70);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+  .hamburger { display:none; background:none; border:none; color:rgba(200,232,255,0.80); font-size:24px; cursor:pointer; padding:4px 6px; line-height:1; }
   .nav-cta {
     background: linear-gradient(100deg, #1a65d6, #0e3f9a);
     color: #fff;
@@ -53,6 +65,15 @@
     font-size: 13px;
     font-weight: 800;
     letter-spacing: 0.06em;
+  }
+  @media (max-width: 768px) {
+    .nav-logo { font-size: 20px; }
+    .hamburger { display: block; }
+    nav { position: relative; }
+    .nav-links { display:none; flex-direction:column; align-items:center; position:absolute; top:100%; left:0; right:0; background:rgba(8,21,42,0.97); padding:20px 24px; border-bottom:1px solid rgba(126,200,255,0.12); gap:20px; z-index:99; }
+    .nav-links.open { display:flex; }
+    .nav-links a { font-size:15px; }
+    .nav-cta { display: none; }
   }
 
   /* MAIN CONTENT */
@@ -206,7 +227,15 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
 
 <nav>
   <a href="/" class="nav-logo">PRIVATE <span>BOXING</span> ZÜRICH</a>
+  <ul class="nav-links" id="nav-links">
+    <li><a href="/" onclick="closeNav()">Home</a></li>
+    <li><a href="/preise" onclick="closeNav()">Preise</a></li>
+    <li><a href="/jugend" onclick="closeNav()">Jugend</a></li>
+    <li><a href="/community" onclick="closeNav()">Community</a></li>
+    <li><a href="/shop" onclick="closeNav()">Shop</a></li>
+  </ul>
   <a href="/#booking" class="nav-cta">Termin buchen</a>
+  <button class="hamburger" id="hamburger" onclick="toggleNav()">☰</button>
 </nav>
 
 <div class="page-wrap">
@@ -276,36 +305,47 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   <div class="footer-copy">© 2026 Private Boxing Zürich · Giacomo La Rocca · Zürich</div>
 </footer>
 
+<script>
+function toggleNav() {
+  const links = document.getElementById('nav-links');
+  const btn = document.getElementById('hamburger');
+  links.classList.toggle('open');
+  btn.textContent = links.classList.contains('open') ? '✕' : '☰';
+}
+function closeNav() {
+  document.getElementById('nav-links').classList.remove('open');
+  document.getElementById('hamburger').textContent = '☰';
+}
+</script>
 
 <style>
   .mobile-book-fab {
     display: none;
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 68px;
-    height: 68px;
-    border-radius: 50%;
+    bottom: 18px;
+    right: 18px;
+    padding: 14px 24px;
+    border-radius: 30px;
     background: linear-gradient(135deg,#1a65d6,#0e3f9a);
     color: #fff;
     text-decoration: none;
     align-items: center;
     justify-content: center;
     text-align: center;
+    white-space: nowrap;
     font-family: 'Inter', sans-serif;
-    font-size: 10px;
+    font-size: 13px;
     font-weight: 800;
-    line-height: 1.25;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.03em;
     text-transform: uppercase;
     box-shadow: 0 6px 20px rgba(10,40,100,0.5);
     z-index: 999;
-    border: 2px solid rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.20);
   }
   @media (max-width: 768px) {
     .mobile-book-fab { display: flex; }
   }
 </style>
-<a href="/#booking" class="mobile-book-fab">Termin<br>buchen</a>
+<a href="/#booking" class="mobile-book-fab">Termin buchen</a>
 </body>
 </html>
