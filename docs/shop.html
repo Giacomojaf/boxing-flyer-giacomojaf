@@ -499,7 +499,6 @@ function submitCart() {
   };
 
   emailjs.send('service_giuepkx', 'template_oymlj1d', params)
-    .then(() => emailjs.send('service_giuepkx', 'template_63l4kqt', params))
   .then(function() {
     const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
     const orderHtml = cart.map(i =>
