@@ -1636,7 +1636,9 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
     gap: 14px;
     font-family: 'Inter', sans-serif;
   }
-  .sticky-cta-bar.visible { display: flex; }
+  @media (max-width: 768px) {
+    .sticky-cta-bar.visible { display: flex; }
+  }
   .sticky-cta-text {
     color: #fff;
     font-size: 13px;
