@@ -114,6 +114,7 @@
   .detail-row:last-child { border-bottom:none; }
   .detail-label { font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:rgba(200,232,255,0.35); flex-shrink:0; }
   .detail-val { font-size:14px; font-weight:600; color:rgba(200,232,255,0.80); text-align:right; }
+  .detail-val-wrap { display:flex; flex-direction:column; align-items:flex-end; gap:3px; }
   .detail-val.detail-sub { font-size:12px; font-weight:600; color:rgba(200,232,255,0.40); }
 
   /* MAP */
@@ -206,8 +207,7 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   <div class="details-list">
     <div class="detail-row"><span id="t-d1-l" class="detail-label">Zielgruppe</span><span id="t-d1-v" class="detail-val">bis 20 Jahre, alle Niveaus</span></div>
     <div class="detail-row"><span id="t-d2-l" class="detail-label">Trainingszeiten</span><span id="t-d2-v" class="detail-val">Dienstag + Donnerstag, 18.00 bis 19.15 Uhr</span></div>
-    <div class="detail-row"><span id="t-d3-l" class="detail-label">Standort</span><span id="t-d3-v" class="detail-val">Sporthalle Brunnenhof</span></div>
-    <div class="detail-row" style="padding-top:0;"><span></span><span class="detail-val detail-sub">Brunnenhofweg 30, 8057 Zürich</span></div>
+    <div class="detail-row" style="align-items:flex-start;"><span id="t-d3-l" class="detail-label">Standort</span><span class="detail-val-wrap"><span id="t-d3-v" class="detail-val" style="display:block;">Sporthalle Brunnenhof</span><span class="detail-val detail-sub" style="display:block;">Brunnenhofweg 30, 8057 Zürich</span></span></div>
     <div class="detail-row"><span id="t-d6-l" class="detail-label">Anerkennung</span><span id="t-d6-v" class="detail-val">J+S Coach</span></div>
     <div class="detail-row"><span id="t-d7-l" class="detail-label">Mitgliedschaft</span><span id="t-d7-v" class="detail-val">VERSA (Verhinderung sexueller Ausbeutung im Sport)</span></div>
   </div>
