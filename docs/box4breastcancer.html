@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<script>if(location.hostname==='www.privateboxingzurich.ch')location.replace(location.href.replace('//www.','//'));</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Box4BreastCancer – Charity Boxevent in Zürich</title>
+<meta name="description" content="Box4BreastCancer: kostenloses Boxevent in Zürich zugunsten Brustkrebs-Awareness im Pink October. Offen für alle Levels, alle Einnahmen gehen an eine wohltätige Organisation.">
+<link rel="canonical" href="https://privateboxingzurich.ch/box4breastcancer.html">
+<meta property="og:title" content="Box4BreastCancer – Charity Boxevent in Zürich">
+<meta property="og:description" content="Kostenloses Boxevent in Zürich zugunsten Brustkrebs-Awareness. Offen für alle Levels.">
+<meta property="og:url" content="https://privateboxingzurich.ch/box4breastcancer.html">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_CH">
+<link rel="icon" type="image/png" href="/favicon.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Inter',sans-serif; background:#08152a; color:#fff; min-height:100vh; }
+
+  nav { display:flex; align-items:center; justify-content:space-between; padding:16px 40px; background:rgba(8,21,42,0.85); backdrop-filter:blur(12px); border-bottom:1px solid rgba(255,105,180,0.15); position:sticky; top:0; z-index:100; }
+  .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:28px; letter-spacing:0.06em; color:#fff; text-decoration:none; }
+  .nav-logo span { color:#ff69b4; }
+  .nav-links { display:flex; list-style:none; gap:24px; align-items:center; }
+  .nav-links a { font-size:13px; font-weight:700; color:rgba(255,255,255,0.70); text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; transition:color 0.2s; }
+  .nav-links a:hover { color:#ff69b4; }
+  .hamburger { display:none; background:none; border:none; color:rgba(200,232,255,0.80); font-size:24px; cursor:pointer; padding:4px 6px; line-height:1; }
+  @media(max-width:768px){
+    .nav-logo { font-size:20px; }
+    .hamburger { display:block; }
+    nav { overflow:visible; padding: 14px 16px; }
+    .nav-links { display:none; flex-direction:column; position:absolute; top:100%; left:0; right:0; background:rgba(8,21,42,0.97); padding:20px 24px; border-bottom:1px solid rgba(255,105,180,0.15); gap:20px; z-index:99; }
+    .nav-links.open { display:flex; }
+    .nav-links a { font-size:15px; }
+  }
+
+  .hero { padding:72px 24px 40px; text-align:center; max-width:640px; margin:0 auto; }
+  .hero-tag { font-size:11px; font-weight:800; letter-spacing:0.22em; color:#ff69b4; text-transform:uppercase; margin-bottom:16px; }
+  .hero-title { font-family:'Bebas Neue',sans-serif; font-size:64px; letter-spacing:0.03em; color:#fff; line-height:1; margin-bottom:8px; }
+  .hero-title span { color:#ff69b4; }
+  .hero-sub { font-size:15px; color:rgba(200,232,255,0.65); line-height:1.7; margin:20px auto 32px; max-width:480px; }
+  .hero-pills { display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-bottom:36px; }
+  .pill { font-size:12px; font-weight:700; padding:7px 14px; border-radius:20px; }
+  .pill-pink { background:rgba(255,105,180,0.15); color:#ff69b4; border:1px solid rgba(255,105,180,0.35); }
+  .pill-blue { background:rgba(126,200,255,0.12); color:#7ec8ff; border:1px solid rgba(126,200,255,0.25); }
+
+  .coming-soon { display:inline-flex; align-items:center; gap:10px; background:rgba(255,105,180,0.10); border:1.5px solid rgba(255,105,180,0.35); border-radius:12px; padding:14px 24px; margin-bottom:48px; }
+  .coming-soon-dot { width:8px; height:8px; border-radius:50%; background:#ff69b4; animation:pulse 1.5s infinite; flex-shrink:0; }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.3;} }
+  .coming-soon-text { font-size:13px; font-weight:700; color:#ff69b4; }
+
+  .section { max-width:580px; margin:0 auto 56px; padding:0 24px; }
+  .section-label { font-size:10px; font-weight:800; letter-spacing:0.20em; text-transform:uppercase; color:rgba(255,105,180,0.55); margin-bottom:14px; }
+  .section-title { font-family:'Bebas Neue',sans-serif; font-size:32px; letter-spacing:0.04em; color:#fff; margin-bottom:20px; }
+
+  .info-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-bottom:16px; }
+  @media(max-width:480px){ .info-grid { grid-template-columns:1fr; } }
+  .info-card { background:#0d1f3c; border:1px solid rgba(255,105,180,0.15); border-radius:14px; padding:18px 20px; }
+  .info-label { font-size:10px; font-weight:800; letter-spacing:0.15em; text-transform:uppercase; color:rgba(255,105,180,0.55); margin-bottom:6px; }
+  .info-val { font-size:20px; font-weight:800; color:#fff; }
+  .info-sub { font-size:11px; color:rgba(200,232,255,0.40); margin-top:3px; }
+
+  .feature-list { display:flex; flex-direction:column; gap:12px; margin-bottom:16px; }
+  .feature-item { background:#0d1f3c; border:1px solid rgba(255,105,180,0.10); border-radius:12px; padding:16px 20px; display:flex; align-items:flex-start; gap:14px; }
+  .feature-icon { font-size:22px; flex-shrink:0; margin-top:2px; }
+  .feature-title { font-size:14px; font-weight:800; color:#fff; margin-bottom:3px; }
+  .feature-desc { font-size:12px; color:rgba(200,232,255,0.55); line-height:1.6; }
+
+  .text-block { display:flex; flex-direction:column; gap:14px; }
+  .text-block p { font-size:15px; color:rgba(200,232,255,0.70); line-height:1.75; }
+
+  .donate-box { background:linear-gradient(135deg, rgba(255,105,180,0.10), rgba(255,105,180,0.02)); border:1.5px solid rgba(255,105,180,0.30); border-radius:16px; padding:28px; }
+  .donate-text { font-size:14px; color:rgba(200,232,255,0.70); line-height:1.7; }
+
+  .footer-back { text-align:center; padding:40px 24px 60px; }
+  .footer-back a { font-size:13px; font-weight:700; color:rgba(200,232,255,0.35); text-decoration:none; letter-spacing:0.08em; }
+  .footer-back a:hover { color:#ff69b4; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/">PRIVATE <span>BOXING</span> ZÜRICH</a>
+  <div style="display:flex;align-items:center;gap:20px;">
+    <ul class="nav-links" id="nav-links">
+      <li><a href="/">Home</a></li>
+      <li><a href="/jugend">Jugend</a></li>
+      <li><a href="/box4breastcancer" style="color:#ff69b4;">Box4BreastCancer</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="document.getElementById('nav-links').classList.toggle('open')">☰</button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-tag">Pink October · Charity Boxevent</div>
+  <div class="hero-title">BOX4<span>BREASTCANCER</span></div>
+  <p class="hero-sub">Ein kostenloses, offenes Boxevent in Zürich für alle Levels. Sämtliche Einnahmen und Spenden gehen vollständig an eine Organisation für Brustkrebs-Awareness.</p>
+  <div class="hero-pills">
+    <div class="pill pill-pink">Kostenlos</div>
+    <div class="pill pill-pink">Für alle Levels</div>
+    <div class="pill pill-blue">Live auf TikTok</div>
+    <div class="pill pill-blue">100% Spende</div>
+  </div>
+
+  <div class="coming-soon">
+    <div class="coming-soon-dot"></div>
+    <div class="coming-soon-text">Sonntag, 25. Oktober 2026 · Uhrzeit und genauer Treffpunkt folgen, Anmeldung folgt in Kürze</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Das Event</div>
+  <div class="section-title">Boxen für den guten Zweck</div>
+  <div class="info-grid">
+    <div class="info-card">
+      <div class="info-label">Datum</div>
+      <div class="info-val">25. Oktober</div>
+      <div class="info-sub">Sonntag, 2026</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">Treffpunkt</div>
+      <div class="info-val">Europaallee</div>
+      <div class="info-sub">Zürich, Uhrzeit folgt</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">Teilnahme</div>
+      <div class="info-val">Gratis</div>
+      <div class="info-sub">Alle Levels willkommen</div>
+    </div>
+    <div class="info-card">
+      <div class="info-label">Spenden</div>
+      <div class="info-val">100%</div>
+      <div class="info-sub">Gehen vollständig weiter</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Warum</div>
+  <div class="section-title">Pink October</div>
+  <div class="text-block">
+    <p>Der Oktober ist international der Brustkrebs-Awareness-Monat. Mit Box4BreastCancer möchten wir Boxen als das nutzen, was es für viele von uns ist: ein Ort für Kraft, Gemeinschaft und Zusammenhalt, offen für alle, unabhängig vom Niveau.</p>
+    <p>Sämtliche Einnahmen und freiwilligen Spenden am Event gehen vollständig an eine Organisation, die sich für Brustkrebs-Betroffene und Aufklärung einsetzt.</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Was dich erwartet</div>
+  <div class="section-title">Ablauf</div>
+  <div class="feature-list">
+    <div class="feature-item">
+      <div class="feature-icon">🏃</div>
+      <div>
+        <div class="feature-title">Gemeinsamer Lauf durch die Stadt</div>
+        <div class="feature-desc">Start als Gruppe, Treffpunkt Europaallee.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">🥊</div>
+      <div>
+        <div class="feature-title">Boxtraining an der Europaallee</div>
+        <div class="feature-desc">Geführte Einheit für alle Levels, keine Vorerfahrung nötig.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">☕</div>
+      <div>
+        <div class="feature-title">Café-Session danach</div>
+        <div class="feature-desc">Gemeinsamer Ausklang mit einem Partner-Café.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">📱</div>
+      <div>
+        <div class="feature-title">Live auf TikTok</div>
+        <div class="feature-desc">Das Event wird live gestreamt, auch von zu Hause aus dabei sein.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">👕</div>
+      <div>
+        <div class="feature-title">Pinke Event-Shirts</div>
+        <div class="feature-desc">Für die ersten Teilnehmenden, solange der Vorrat reicht.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="donate-box">
+    <div class="section-label" style="margin-bottom:10px;">Unterstützen</div>
+    <p class="donate-text">Du kannst nicht vor Ort sein, möchtest aber trotzdem unterstützen? Details zur Spendenmöglichkeit folgen in Kürze.</p>
+  </div>
+</div>
+
+<div class="footer-back">
+  <a href="/">← Zurück zur Startseite</a>
+</div>
+
+</body>
+</html>

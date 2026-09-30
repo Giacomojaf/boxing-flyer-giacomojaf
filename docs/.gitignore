@@ -2,3 +2,4 @@
 *.snapshot-*
 sitemap.backup-*
 *.backup-*_rollback
+*.bak.*
