@@ -802,6 +802,22 @@
       text-align: center;
     }
   }
+
+  /* ── BOXEN IN ZÜRICH ── */
+  .zuerich { background: var(--mid); }
+  .zuerich-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start; }
+  .zuerich-grid > * { min-width: 0; }
+  .zuerich-text p, .zuerich-sub, .zuerich-list li { overflow-wrap: break-word; }
+  .zuerich-sub { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 24px; }
+  .zuerich-text p { font-size: 16px; line-height: 1.75; color: rgba(200,232,255,0.75); margin-bottom: 18px; }
+  .zuerich-list-title { font-size: 12px; font-weight: 800; letter-spacing: 0.20em; text-transform: uppercase; color: var(--blue); margin-bottom: 8px; }
+  .zuerich-list { list-style: none; }
+  .zuerich-list li { position: relative; padding: 14px 0 14px 26px; border-bottom: 1px solid rgba(126,200,255,0.10); font-size: 15px; line-height: 1.5; color: rgba(200,232,255,0.85); }
+  .zuerich-list li::before { content: ''; position: absolute; left: 4px; top: 21px; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+  .zuerich-note { margin-top: 24px; font-size: 15px; font-weight: 800; color: #fff; }
+  @media (max-width: 768px) {
+    .zuerich-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  }
 </style>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="text/javascript">(function(){ emailjs.init({ publicKey: "DPN76hd1SjOuEgZLb" }); })();</script>
@@ -1255,6 +1271,31 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- BOXEN IN ZÜRICH -->
+<section class="zuerich" id="boxen-zuerich">
+  <div class="section-tag" id="zh-tag">Boxtraining Zürich</div>
+  <h2 class="section-title" style="margin-top:0;"><span id="zh-title-a" style="color:#fff;">BOXEN IN</span> <span id="zh-title-b">ZÜRICH</span></h2>
+  <div class="section-divider"></div>
+  <div class="zuerich-grid">
+    <div class="zuerich-text">
+      <div class="zuerich-sub" id="zh-sub">1:1 Boxtraining in Altstetten, für Anfänger und Fortgeschrittene</div>
+      <p id="zh-p1">Du suchst Boxtraining in Zürich, aber keinen vollen Gruppenkurs? Bei Private Boxing Zürich trainierst du 1:1 mit Giacomo La Rocca, aktiver Boxer und J+S Leiter Light Contact Boxing.</p>
+      <p id="zh-p2">Das Training findet im Boxgym Altstetten statt (Badenerstrasse 569, 8048 Zürich), gut erreichbar aus der ganzen Stadt. Auf Wunsch trainieren wir auch bei dir zuhause oder draussen.</p>
+      <a href="#booking" class="btn-primary" id="zh-cta" style="display:inline-block;margin-top:12px;">Ersttraining buchen</a>
+    </div>
+    <div>
+      <div class="zuerich-list-title" id="zh-list-title">Was dich erwartet</div>
+      <ul class="zuerich-list">
+        <li id="zh-li1">Boxtechnik von Grund auf: Stand, Schläge, Beinarbeit, Deckung</li>
+        <li id="zh-li2">Pratzen und Sandsack für Kraft und Kondition</li>
+        <li id="zh-li3">Ein Plan, der zu deinem Ziel passt: Fitness, Selbstvertrauen, Stressabbau oder Wettkampf</li>
+        <li id="zh-li4">Training auf Deutsch, Englisch, Italienisch, Französisch oder Portugiesisch</li>
+      </ul>
+      <div class="zuerich-note" id="zh-note">Ersttraining CHF 80. Bewertet mit 5.0 Sternen auf Google.</div>
+    </div>
+  </div>
+</section>
+
 <!-- FAQ -->
 <section class="faq" id="faq">
   <div class="section-tag" id="faq-tag">Häufige Fragen</div>
@@ -1465,6 +1506,20 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       'footer-cta': 'TERMIN BUCHEN →',
       'footer-impressum-label': 'Impressum',
       'footer-cert-label': 'Zertifizierungen',
+      // BOXEN IN ZÜRICH
+      'zh-tag': 'Boxtraining Zürich',
+      'zh-title-a': 'BOXEN IN',
+      'zh-title-b': 'ZÜRICH',
+      'zh-sub': '1:1 Boxtraining in Altstetten, für Anfänger und Fortgeschrittene',
+      'zh-p1': 'Du suchst Boxtraining in Zürich, aber keinen vollen Gruppenkurs? Bei Private Boxing Zürich trainierst du 1:1 mit Giacomo La Rocca, aktiver Boxer und J+S Leiter Light Contact Boxing.',
+      'zh-p2': 'Das Training findet im Boxgym Altstetten statt (Badenerstrasse 569, 8048 Zürich), gut erreichbar aus der ganzen Stadt. Auf Wunsch trainieren wir auch bei dir zuhause oder draussen.',
+      'zh-cta': 'Ersttraining buchen',
+      'zh-list-title': 'Was dich erwartet',
+      'zh-li1': 'Boxtechnik von Grund auf: Stand, Schläge, Beinarbeit, Deckung',
+      'zh-li2': 'Pratzen und Sandsack für Kraft und Kondition',
+      'zh-li3': 'Ein Plan, der zu deinem Ziel passt: Fitness, Selbstvertrauen, Stressabbau oder Wettkampf',
+      'zh-li4': 'Training auf Deutsch, Englisch, Italienisch, Französisch oder Portugiesisch',
+      'zh-note': 'Ersttraining CHF 80. Bewertet mit 5.0 Sternen auf Google.',
       // FAQ
       'faq-q1': 'Kann ich trainieren wenn ich noch nie geboxt habe?',
       'faq-a1': 'Ja, absolut. Anfänger sind herzlich willkommen. Ich fange bei den Basics an und baue deine Technik Schritt für Schritt auf.',
@@ -1544,6 +1599,20 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       'footer-cta': 'BOOK APPOINTMENT →',
       'footer-impressum-label': 'Legal notice',
       'footer-cert-label': 'Certifications',
+      // BOXING IN ZURICH
+      'zh-tag': 'Boxing training Zurich',
+      'zh-title-a': 'BOXING IN',
+      'zh-title-b': 'ZURICH',
+      'zh-sub': '1:1 boxing training in Altstetten, for beginners and advanced',
+      'zh-p1': 'Looking for boxing training in Zurich, but not a crowded group class? At Private Boxing Zürich you train 1:1 with Giacomo La Rocca, active boxer and certified J+S Light Contact Boxing coach.',
+      'zh-p2': 'Sessions take place at Boxgym Altstetten (Badenerstrasse 569, 8048 Zürich), easy to reach from anywhere in the city. On request we also train at your home or outdoors.',
+      'zh-cta': 'Book your first session',
+      'zh-list-title': 'What to expect',
+      'zh-li1': 'Boxing technique from scratch: stance, punches, footwork, defence',
+      'zh-li2': 'Pad work and heavy bag for strength and conditioning',
+      'zh-li3': 'A plan built around your goal: fitness, confidence, stress relief or competition',
+      'zh-li4': 'Training in German, English, Italian, French or Portuguese',
+      'zh-note': 'First session CHF 80. Rated 5.0 stars on Google.',
       // FAQ
       'faq-q1': 'Can I train if I have never boxed before?',
       'faq-a1': 'Yes, absolutely. Beginners are very welcome. I start with the basics and build your technique step by step.',
@@ -1616,10 +1685,14 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
     const ol = ortLabels[lang];
     const ov = ortValues[lang];
     const mode = window._currentOrtMode || 'gym';
-    document.getElementById('ort-btn-online').textContent = ol.online;
-    document.getElementById('ort-btn-home').textContent = ol.home;
-    document.getElementById('ort-btn-gym').textContent = ol.gym;
-    document.getElementById('selected-ort').value = ov[mode];
+    const ortOnline = document.getElementById('ort-btn-online');
+    if (ortOnline) ortOnline.textContent = ol.online;
+    const ortHome = document.getElementById('ort-btn-home');
+    if (ortHome) ortHome.textContent = ol.home;
+    const ortGym = document.getElementById('ort-btn-gym');
+    if (ortGym) ortGym.textContent = ol.gym;
+    const selectedOrt = document.getElementById('selected-ort');
+    if (selectedOrt) selectedOrt.value = ov[mode];
 
     // Update section titles with spans (innerHTML needed)
     if (lang === 'en') {
