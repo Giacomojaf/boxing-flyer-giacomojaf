@@ -145,6 +145,14 @@
   .donate-iban-label { font-size:12px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; color:rgba(200,232,255,0.35); }
   .donate-iban-val { font-size:14px; font-weight:700; color:#fff; letter-spacing:0.02em; }
 
+  /* PARTNER */
+  .partner-row { display:flex; flex-wrap:wrap; justify-content:center; gap:16px; }
+  .partner-tile { display:flex; align-items:center; justify-content:center; background:#fff; border-radius:10px; padding:10px 18px; width:100%; max-width:480px; box-shadow:0 6px 24px rgba(0,0,0,0.25); transition:transform 0.2s; }
+  .partner-tile:hover { transform:translateY(-2px); }
+  .partner-tile img { width:100%; height:auto; display:block; }
+  .partner-text { font-size:13px; color:rgba(200,232,255,0.55); line-height:1.7; text-align:center; margin-top:16px; }
+  @media (max-width:480px) { .partner-tile { padding:8px 12px; } }
+
   /* FOOTER */
   .footer-back { text-align:center; padding:40px 24px 60px; }
   .footer-back a { font-size:13px; font-weight:700; color:rgba(200,232,255,0.35); text-decoration:none; letter-spacing:0.08em; }
@@ -317,6 +325,16 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
   </div>
 </div>
 
+<div class="section">
+  <div id="t-partner-label" class="section-label" style="text-align:center;">Partner &amp; Unterstützer</div>
+  <div class="partner-row">
+    <a class="partner-tile" href="https://www.coolandclean.ch" target="_blank" rel="noopener">
+      <img src="img/coolandclean-quer-web.jpg" alt="cool and clean, Swiss Olympic und J+S" width="1347" height="171" loading="lazy">
+    </a>
+  </div>
+  <div id="t-partner-text" class="partner-text">Wir setzen uns für fairen Sport ohne Tabak, Alkohol und Doping ein.</div>
+</div>
+
 <div class="footer-back">
   <a id="t-footer" href="/">← Zurück zu privateboxingzurich.ch</a>
 </div>
@@ -367,6 +385,8 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       't-form-note':   '15 Plätze verfügbar. Wir bestätigen deine Anmeldung direkt per WhatsApp.',
       't-success-title': 'Angemeldet!',
       't-success-text':  'Wir bestätigen deinen Platz direkt per WhatsApp.',
+      't-partner-label': 'Partner & Unterstützer',
+      't-partner-text':  'Wir setzen uns für fairen Sport ohne Tabak, Alkohol und Doping ein.',
       't-footer':      '← Zurück zu privateboxingzurich.ch',
     },
     en: {
@@ -402,6 +422,8 @@ src="https://www.facebook.com/tr?id=1053131573915653&ev=PageView&noscript=1"
       't-form-note':   '15 spots available. We confirm your registration directly via WhatsApp.',
       't-success-title': 'Registered!',
       't-success-text':  'We will confirm your spot directly via WhatsApp.',
+      't-partner-label': 'Partners & Supporters',
+      't-partner-text':  'We stand for fair sport without tobacco, alcohol and doping.',
       't-footer':      '← Back to privateboxingzurich.ch',
     }
   };
